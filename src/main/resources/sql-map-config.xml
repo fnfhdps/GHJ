@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+
+	<!-- Alias 설정 -->
+	<typeAliases>
+		<typeAlias alias="user" type="com.guhaejwo.biz.user.UserDTO"></typeAlias>
+		<typeAlias alias="sponsor" type="com.guhaejwo.biz.sponsor.SponsorDTO"></typeAlias>
+		<typeAlias alias="sponsorItem" type="com.guhaejwo.biz.sponsor.SponsorItemDTO"></typeAlias>
+		<typeAlias alias="sponsorMyPage" type="com.guhaejwo.biz.sponsor.SponsorMyPageDTO"></typeAlias>
+		<typeAlias alias="adopt" type="com.guhaejwo.biz.adopt.AdoptDTO"></typeAlias>
+		<typeAlias alias="adoptReq" type="com.guhaejwo.biz.adopt.AdoptReqDTO"></typeAlias>
+		<typeAlias alias="adoptMyPage" type="com.guhaejwo.biz.adopt.AdoptMyPageDTO"></typeAlias>
+		<typeAlias alias="reply" type="com.guhaejwo.biz.reply.ReplyDTO"></typeAlias>
+		<typeAlias alias="heart" type="com.guhaejwo.biz.adopt.AdoptHeartDTO"></typeAlias>
+      	<typeAlias alias="blame" type="com.guhaejwo.biz.adopt.AdoptBlameDTO"></typeAlias>
+      	<typeAlias alias="board" type="com.guhaejwo.biz.board.BoardDTO"></typeAlias>
+      	<typeAlias alias="paging" type="com.guhaejwo.biz.paging.PageMakerDTO"></typeAlias>
+      	
+	</typeAliases>
+	
+	<!-- Sql Mapper 설정 -->
+	<mappers>
+		<mapper resource="mappings/user-mapping.xml" />
+		<mapper resource="mappings/sponsor-mapping.xml" />
+		<mapper resource="mappings/adopt-mapping.xml" />
+		<mapper resource="mappings/adoptMyPage-mapping.xml" />
+		<mapper resource="mappings/board-mapping.xml" />
+		<mapper resource="mappings/reply-mapping.xml" />
+	</mappers>
+	
+</configuration>

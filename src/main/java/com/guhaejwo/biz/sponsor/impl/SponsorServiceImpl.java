@@ -1,0 +1,43 @@
+package com.guhaejwo.biz.sponsor.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.guhaejwo.biz.sponsor.SponsorDTO;
+import com.guhaejwo.biz.sponsor.SponsorItemDTO;
+import com.guhaejwo.biz.sponsor.SponsorMyPageDTO;
+import com.guhaejwo.biz.sponsor.SponsorService;
+
+@Service("sponsorService")
+public class SponsorServiceImpl implements SponsorService{
+
+	private SponsorDAO sponsorRepository;
+	
+	@Autowired
+	public SponsorServiceImpl(SponsorDAO sponsorRepository) {
+		this.sponsorRepository = sponsorRepository;
+	}
+	
+	@Override
+	public void insertSponsor(SponsorDTO sponsor) {
+		sponsorRepository.insertSponsor(sponsor);
+	}
+	
+	@Override
+	public List<SponsorMyPageDTO> getSponsorMyPage(SponsorMyPageDTO sponsor) {
+		return sponsorRepository.getSponsorMyPage(sponsor);
+	}
+
+	@Override
+	public SponsorItemDTO getSponsorItem(SponsorItemDTO sponsor) {
+		return sponsorRepository.getSponsorItem(sponsor);
+	}
+
+	@Override
+	public List<SponsorItemDTO> getSponsorItemList(SponsorItemDTO sponsor) {
+		return sponsorRepository.getSponsorItemList(sponsor);
+	}
+
+}

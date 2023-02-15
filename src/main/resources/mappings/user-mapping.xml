@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="UserDAO">
+	
+	<!-- 회원 정보 입력 -->
+	<insert id="insertUser">
+			INSERT INTO USERS(userseq, userid, userpw, username, useremail, userrole, userphone, useraddr1, useraddr2, useraddr3, loginType) 
+			VALUES ((select nvl(max(userseq), 0) + 1 from users), #{userId}, #{userPw, jdbcType=VARCHAR}, #{userName}, #{userEmail, jdbcType=VARCHAR}, 
+						#{userRole},#{userPhone, jdbcType=VARCHAR}, #{userAddr1, jdbcType=VARCHAR}, #{userAddr2, jdbcType=VARCHAR}, #{userAddr3, jdbcType=VARCHAR}, #{loginType})
+	</insert>
+	
+	<!-- 회원 정보 수정 (마이페이지) -->
+	<update id="updateUser">
+		<![CDATA[
+			UPDATE USERS SET
+				userEmail = #{userEmail, jdbcType=VARCHAR}, 
+				userPhone = #{userPhone, jdbcType=VARCHAR},
+				userImg = #{userImg, jdbcType=VARCHAR},
+				userAddr1 = #{userAddr1, jdbcType=VARCHAR},
+				userAddr2 = #{userAddr2, jdbcType=VARCHAR},
+				userAddr3 = #{userAddr3, jdbcType=VARCHAR}
+			WHERE userSeq = #{userSeq}
+		]]>
+	</update>
+
+	<!-- 비밀번호 조회 -->
+	<select id="getUserByPw" resultType="user">
+		<![CDATA[
+			SELECT * 
+			FROM USERS 
+			WHERE USERID = #{userId}
+			AND USERPW = #{userPw}
+		]]>
+	</select>
+
+	<!-- 회원 정보 삭제 (마이페이지, 관리자페이지)-->
+	<delete id="deleteUser">
+		<![CDATA[
+			DELETE FROM USERS
+			WHERE userId = #{userId}
+		]]>
+	</delete>
+
+	<!-- 아이디 중복 체크 조회 -->
+	<select id="getUserById" resultType="user">
+		<![CDATA[
+			SELECT * 
+			FROM USERS 
+			WHERE USERID = #{userId}
+		]]>
+	</select>
+
+	<!-- 이메일 중복 체크 조회 (회원가입, 마이페이지)-->
+	<select id="getUserByEmail" resultType="user">
+		<![CDATA[
+			SELECT * 
+			FROM USERS 
+			WHERE USERID = #{userId} and USEREMAIL = #{userEmail}
+		]]>
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="changePw">
+		<![CDATA[
+			UPDATE users
+			SET userpw = #{userPw}
+			where userseq = #{userSeq}
+		]]>
+	</update>
+	
+</mapper>

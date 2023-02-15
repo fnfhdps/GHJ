@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="BoardDAO">
+
+	<!-- 글 입력 -->
+	<insert id="insertBoard">
+		<![CDATA[
+			INSERT INTO board(boardSeq, boardCategory, boardTitle, userSeq, boardContent, boardDate, boardcnt)
+			values ((select nvl(max(boardseq), 0) + 1 from board), #{boardCategory}, #{boardTitle}, #{userSeq}, #{boardContent}, SYSDATE, 0)
+		]]>
+	</insert>
+	
+	<!-- 글 수정 -->
+	<update id="updateBoard">
+		<![CDATA[
+			UPDATE board
+			SET boardTitle = #{boardTitle}, boardContent = #{boardContent}
+			WHERE boardseq = #{boardSeq}
+		]]>
+	</update>
+	
+	<!-- 글 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+		<![CDATA[
+			DELETE
+			FROM board
+			WHERE boardseq = #{boardSeq}
+		]]>
+	</delete>
+	
+	<!-- 목록 상세 조회 -->
+	<select id="getBoard" resultType="board">
+		<![CDATA[
+			select *
+			from board
+			where boardseq = #{boardSeq}
+		]]>
+	</select>
+	
+	<!-- 목록 조회 -->
+	<select id="getBoardList" resultType="board">
+		<![CDATA[
+			select ROW_NUMBER() OVER(ORDER BY boardseq) as num, board.*
+			from board
+			where boardcategory = #{boardCategory}
+			and userseq = #{userSeq}
+			order by num desc
+		]]>
+	</select>
+	
+	<!-- qna 이전글 조회 -->
+	<select id="getBefore" resultType="board">
+			select *
+			from(
+			     select boardseq,
+			            boardtitle,
+			            LAG(boardseq) OVER (ORDER BY boardseq) findSeq,
+			            LAG(boardtitle) OVER (ORDER BY boardseq) findTitle
+			    from board
+			    where board.boardcategory = #{boardCategory}
+			    <if test="boardCategory == 'QNA'">
+			    and board.userseq = #{userSeq}			    
+			    </if>
+			    order by boardseq
+			    )
+			where boardseq = #{boardSeq}
+	</select>
+	
+	<!-- qna 다음글 조회 -->
+	<select id="getAfter" resultType="board">
+			select *
+			from(
+			     select boardseq,
+			            boardtitle,
+			            LEAD(boardseq) OVER (ORDER BY boardseq) findSeq,
+			            LEAD(boardtitle) OVER (ORDER BY boardseq) findTitle
+			    from board
+			    where board.boardcategory = #{boardCategory}
+			    <if test="boardCategory == 'QNA'">
+			    and board.userseq = #{userSeq}
+			    </if>
+			    order by boardseq
+			    )
+			where boardseq = #{boardSeq}
+	</select>
+	
+</mapper>

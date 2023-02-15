@@ -1,0 +1,131 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap'); */
+
+/* footer 하단 고정 설정 */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  /* background-color: #faaf4c; */
+}
+
+html, body {
+  height: 100%;
+}
+.wrap{
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 212px;
+}
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+}
+/* ------------------------------ */
+
+/* @media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }  
+} */
+
+/* @media (max-width: 768px){
+  body{
+    background-color: aquamarine;
+  }
+} */
+
+/*
+  header font
+    - nav : 20px
+    - login, join : 10px
+  footer font
+    - 브랜드 이름 : 35px
+    - 나머지 : 10px
+*/
+
+/* ---------------------------- */
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+.logo{
+  padding: 1% 0;
+  position: relative;
+  text-align: center; 
+  display: flex;
+  justify-content: center;
+  /* background-color: #FFFAF3; */
+  background-color: #f7ede3;
+}
+
+.logo img{
+  /* 이미지 고유 종횡비 적용 */
+  aspect-ratio: auto 1/1;
+  width: 200px;
+}
+
+#login{
+  position: absolute;
+  right: 30px;
+  font-size: 12px;
+}
+
+#login a{
+  color: #000;
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+#toggle_logo{
+  display: none;
+  aspect-ratio: auto 1/1;
+  width: 30px;
+  }
+
+nav{
+  position: fixed;
+  /* background-color: #FFFAF3; */
+  font-size: 20px;
+  /*font-family: 'Jua', sans-serif;*/
+  /* border-top: #c3b396b9 2px solid; */
+  border-bottom: #f7ede3 2px solid;
+}
+
+#nav_menu{
+  text-align: center;
+  /* margin-left: 50px; */
+}
+
+/* ------------------------ */
+
+footer ul{
+  padding: 20px 0;
+  list-style: none;
+  font-size: 12px;
+  color: white;
+  margin: 10px 30px;
+  font-weight: bold;
+}
+/* 개인정보처리방침, 이용약관 */
+footer ul a{
+  text-decoration: none;
+  margin-right: 12px;
+  color: white;
+}
+/* footer 구해줘!펫즈 */
+#foot_brand{
+  font-family: 'Jua', sans-serif;
+  font-size: 35px;
+  margin-bottom: 10px;
+  /* font-weight: bold; */
+  
+}

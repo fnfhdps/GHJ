@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="AdoptDAO">
+
+	<!-- 입양 관련 board 입력 -->
+	<insert id="insertBoard">
+		<![CDATA[
+			INSERT INTO board(boardSeq, boardCategory, boardTitle, userSeq, boardContent, boardDate, boardcnt)
+			values ((select nvl(max(boardseq), 0) + 1 from board), #{boardCategory}, #{boardTitle}, #{userSeq}, #{boardContent}, SYSDATE, 0)
+		]]>
+	</insert>
+	
+	<!-- 입양 글 입력-->
+	<insert id="insertAdopt">
+		<![CDATA[
+			INSERT INTO adopt(boardSeq, adoptImg, adoptSex, adoptRescueDate, adoptAge, adoptAddr, adoptWeight, adoptNeutor, adoptState, adoptKind)
+			VALUES ((select max(boardseq) from BOARD), #{adoptImg}, #{adoptSex}, TO_DATE(#{adoptRescueDate}, 'YYYY-MM-DD'),
+			#{adoptAge}, #{adoptAddr}, #{adoptWeight}, #{adoptNeutor, jdbcType=VARCHAR}, #{adoptState}, #{adoptKind})
+		]]>
+	</insert>
+	
+	<!-- 입양 관련  board 수정 -->
+	<update id="updateBoard">
+		<![CDATA[
+			UPDATE board
+			SET boardTitle = #{boardTitle}, boardContent = #{boardContent}
+			WHERE boardseq = #{boardSeq}
+		]]>
+	</update>
+	
+	<!-- 입양 글 수정 -->
+	<update id="updateAdopt">
+		<![CDATA[
+			UPDATE adopt
+			SET adoptImg = #{adoptImg}, adoptSex = #{adoptSex}, adoptRescueDate = TO_DATE(#{adoptRescueDate}, 'yyyy-mm-dd'),
+				adoptAge = #{adoptAge}, adoptAddr = #{adoptAddr}, adoptWeight = #{adoptWeight}, adoptNeutor = #{adoptNeutor}, adoptKind = #{adoptKind}
+			WHERE boardseq = #{boardSeq}
+		]]>
+	</update>
+
+	<!-- 입양 글 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+		<![CDATA[
+			DELETE
+			FROM board
+			WHERE boardseq = #{boardSeq}
+		]]>
+	</delete>
+	
+	<!-- 입양 목록 상세 조회 -->
+	<select id="getAdoptDetail" parameterType="int" resultType="adopt">
+		<![CDATA[
+			select username, userid, board.boardSeq, board.boardCategory, board.boardTitle,
+					board.userSeq, board.boardContent, board.boardDate, adopt.adoptImg,
+					adopt.adoptSex, adopt.adoptRescueDate, adopt.adoptAge, adopt.adoptAddr,
+					adopt.adoptWeight, adopt.adoptNeutor, adopt.adoptState, adopt.adoptKind
+			from board, adopt, users
+			where board.boardseq = adopt.boardseq
+			and board.userseq = users.userseq
+			and board.boardseq = #{boardSeq}
+			order by adopt.boardseq DESC
+		]]>
+	</select>
+	
+	<!-- 입양 목록 조회
+		지역 필터 추가해야됨 -->
+	<select id="getAdoptList" resultType="adopt">
+		<![CDATA[
+			SELECT board.boardseq, board.boardtitle, board.boardCategory, adopt.adoptimg,
+					adopt.adoptkind, adopt.adoptaddr, adopt.adoptstate
+			FROM board, adopt
+			WHERE board.boardseq = adopt.boardseq
+			ORDER BY BOARDSEQ DESC
+		]]>
+	</select>
+	
+    <!-- 입양 목록 조회(페이징) -->
+    <select id="getAdoptListPaging" resultType="adopt">
+    	<![CDATA[
+		     SELECT *
+				FROM (
+				 SELECT rownum, a.*
+				 FROM (
+				    select rownum as rn, board.boardCategory, board.boardseq, board.boardtitle, adopt.adoptimg, adopt.adoptkind, adopt.adoptaddr, adopt.adoptstate
+				    from board, adopt
+				    where 1=1
+				    and board.boardseq = adopt.boardseq
+				    and boardTitle like '%%'
+				    order by board.boardseq desc
+				 ) a
+				  WHERE ROWNUM <= ${pageNum} * ${amount}
+				)
+				WHERE rn > (${pageNum} - 1) * ${amount}
+   		]]>
+    
+    </select>
+	
+	 <!-- 입양 목록 게시물 총 갯수 -->
+    <select id="getAdoptTotalCount" resultType="int">
+        select count(*) from board, adopt where board.boardseq = adopt.boardseq
+    </select>
+	
+	<!-- 입양 희망자 입력 -->
+	<insert id="insertAdoptReq" parameterType="int">
+		<![CDATA[
+			INSERT INTO ADOPT_REQ(adoptreqseq, boardseq, userseq, adoptreqdate)
+			VALUES ((select nvl(max(adoptreqseq), 0) + 1 from ADOPT_REQ), #{boardSeq}, #{userSeq}, sysdate)
+		]]>
+	</insert>
+	
+	<!-- 입양 희망자 중복 체크  -->
+	<select id="hopeCheck" resultType="adoptReq">
+		<![CDATA[
+			select *
+			from adopt_req
+			where boardseq = #{boardSeq} and userseq = #{userSeq}
+		]]>
+	</select>
+	
+	<!-- 입양 글 상태 변경 -->
+    <insert id="adoptStateUpdate">
+      	<![CDATA[
+        	update adopt set adoptstate = #{adoptState} where boardseq=#{boardSeq}
+      	]]>
+    </insert>
+	
+	<!-- 좋아요 조회 -->
+	<select id="getHeart" resultType="int">
+	   <![CDATA[
+	   		select count(*) heartcnt from user_heart
+			where boardSeq = #{boardSeq} and userSeq = #{userSeq}
+	   ]]>
+	</select>
+	
+	<!-- 좋아요 누름 -->
+	<insert id="insertHeart" parameterType="int">
+	   <![CDATA[
+			insert into user_heart
+			values ((select nvl(max(userheartseq), 0) + 1 from user_heart), #{boardSeq}, #{userSeq})
+	   ]]>
+	</insert>
+	
+	<!-- 좋아요 취소 -->
+	<delete id="deleteHeart" parameterType="int">
+	   <![CDATA[
+			delete from user_heart
+			where boardSeq = #{boardSeq} and userseq = #{userSeq} 
+	   ]]>
+	</delete>
+	
+	<!-- 신고 조회 -->
+	<select id="getBlame" resultType="int">
+	   <![CDATA[
+			select count(*) blamecnt from BLAME
+			where boardSeq = #{boardSeq} and req_userSeq = #{req_userSeq}
+	   ]]>
+	 </select>
+	
+	<!-- 신고  입력 -->
+	<insert id="insertBlame">
+	   <![CDATA[
+	   		insert into blame
+	      	values ((select nvl(max(blaseq), 0) + 1 from blame), #{boardSeq}, #{req_userSeq}, #{res_userSeq}, sysdate, #{blaTitle}, #{blaContent})
+	   ]]>
+	</insert>
+	
+	<!-- 신고 취소 -->
+	<delete id="deleteBlame" parameterType="int">
+	   <![CDATA[
+	       delete from blame
+	       where boardSeq = #{boardSeq} and userseq = #{userSeq} 
+	   ]]>
+	</delete>
+	
+</mapper>
