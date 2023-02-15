@@ -89,6 +89,8 @@ function idPtnchk(id) {
     	return false;
     }else if( chk_eng && chk_num && chk_len ){
         return true;
+    }else if(chk_eng && chk_len){
+    	return true;
     }else{
         return false;
     }
@@ -159,7 +161,7 @@ function pwPtnchk(pw) {
     }
 }
 
-//비밀번호 재확인
+// 비밀번호 패턴 확인
 $("#userPw").focusout(function() {
 	let userPw  = $(this).val();
 	
@@ -167,19 +169,23 @@ $("#userPw").focusout(function() {
 		alert(userPw+": 비밀번호 패턴 확인");
 		$("#pwCheckMsg").text("");
 	}else{
-		$("#pwCheckMsg").text("8~16자 영문 대 소문자, 숫자를 포함해야 합니다.")
+		$("#pwCheckMsg").text("8~16자 영문 대 소문자, 숫자, 특수문자를 포함해야 합니다.")
 		.css("color","red");
 	}
 });
 
+// 비밀번호 재확인
 $("#pwCheck").focusout(function() {
 	const userPw = $('#userPw').val();
 	const pwCheck = $(this).val();
+	
 	if(userPw !== pwCheck){
 		$("#pwCheckMsg2").text("비밀번호가 일치하지 않습니다.")
 		.css("color","red");
 		return;
-	}else{
+	}else if ((pwCheck != "") && (userPw == pwCheck)){
+		$("#pwCheckMsg2").text("비밀번호가 일치합니다.")
+		.css("color","green");
 		pw_check = true;
 	}
 });
@@ -195,33 +201,34 @@ $("#pwView").click(function() {
 	}
 });
 
+// 회원가입 체크 후 submit
 function checkSummit(){
-	if($("#userName").val() != null){
+	if($("#userName").val() != ""){
 		name_check = true;
 	}
 	
 	if(!($('#member').is(':checked') && $('#individual').is(':checked'))){
 		alert("약관에 동의해주세요");
 		return;
-	} else if(id_check != true){
+	}
+	if(id_check != true){
 		$("#idCheckMsg").text("필수 정보입니다.")
 		.css("color","red");
-		return;
-	} else if(pw_check != true){
+	}
+	if(pw_check != true){
 		$("#pwCheckMsg").text("필수 정보입니다.")
 		.css("color","red");
-		return;
-	} else if(name_check != true){
+	}
+	if(name_check != true){
 		$("#nameCheckMsg").text("필수 정보입니다.")
 		.css("color","red");
-		return;
-	} else if(phone_check != true){
+	}
+	if(phone_check != true){
 		$("#phoneCheckMsg").text("필수 정보입니다.")
 		.css("color","red");
-		return;
 	} 
 	
-	else {
+	if((id_check == true) && (pw_check == true) && (name_check == true) && (phone_check == true)) {
 		alert("환영합니다");
 		$('#join-form').submit();
 	}
