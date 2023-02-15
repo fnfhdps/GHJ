@@ -62,15 +62,20 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 <script type="text/javascript">
+
 function withdraw() {
+	const loginType = $("#loginType").val();
 	if(window.confirm("탈퇴하시면 기존의 저장된 활동 내역이 모두 사라집니다")){
-		$("#deleteForm").submit();
+		if(loginType == "KAKAO"){
+			$("#deleteForm").submit();			
+		}
+		else{
+			dropKakao();
+		}
 	}
-}
+}	
 
 function drop() {
-	const loginType = $("#loginType").val();
-
 	if(window.confirm("탈퇴하시면 기존의 저장된 활동 내역이 모두 사라집니다")){
 		if(loginType == "KAKAO"){
 			dropKakao();

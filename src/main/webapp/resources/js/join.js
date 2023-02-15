@@ -196,6 +196,10 @@ $("#pwView").click(function() {
 });
 
 function checkSummit(){
+	if($("#userName").val() != null){
+		name_check = true;
+	}
+	
 	if(!($('#member').is(':checked') && $('#individual').is(':checked'))){
 		alert("약관에 동의해주세요");
 		return;
@@ -204,7 +208,7 @@ function checkSummit(){
 		.css("color","red");
 		return;
 	} else if(pw_check != true){
-		$("#pwCheckMsg2").text("필수 정보입니다.")
+		$("#pwCheckMsg").text("필수 정보입니다.")
 		.css("color","red");
 		return;
 	} else if(name_check != true){
