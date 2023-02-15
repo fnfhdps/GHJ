@@ -173,9 +173,9 @@
 	
 	// 오늘 날짜 가져오기
 	// 구조일: 오늘 이후로 선택이 안 되도록 설정
-	var now_utc = Date.now()
-	var timeOff = new Date().getTimezoneOffset()*60000;
-	var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+	let now_utc = Date.now()
+	let timeOff = new Date().getTimezoneOffset()*60000;
+	let today = new Date(now_utc-timeOff).toISOString().split("T")[0];
 	document.getElementById("rescueDate").setAttribute("max", today);
 </script>
 

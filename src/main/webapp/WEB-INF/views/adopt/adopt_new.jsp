@@ -25,7 +25,7 @@
       <h2>입양글 작성</h2>
  
       <article class="mypage_content">
-        <form action="/adopt/new" method="post">
+        <form id="adoptForm" action="/adopt/new" method="post">
         
           <!-- 유저 시퀀스 -->	
 	      <input type="hidden" name="userSeq" value="${login.userSeq}">
@@ -33,7 +33,6 @@
 	      <input type="hidden" name="adoptState" value="WAIT">
 	      <!-- 카테고리 구분 -->
           <input type="hidden" name="boardCategory" value="ADOPT">
-              
               
           <div>
           	 <label class="col-sm-2 col-form-label">이미지</label>
@@ -45,7 +44,7 @@
           <div class="mb-3 row">
             <label class="col-sm-2 col-form-label">종류</label>
             <div class="col-md-5">
-            <select name="adoptKind">
+            <select id="adoptKind" name="adoptKind">
 			  <option value='' selected>-- 선택 --</option>
 			  <option value='DOG'>강아지</option>
 			  <option value='CAT'>고양이</option>
@@ -57,7 +56,7 @@
            <div class="mb-3 row">
             <label class="col-sm-2 col-form-label">성별</label>
             <div class="col-md-5">
-             <select name="adoptSex">
+            <select id="adoptSex" name="adoptSex">
 			  <option value="" selected>-- 선택 --</option>
 			  <option value="F">암컷</option>
 			  <option value="M">수컷</option>
@@ -68,7 +67,7 @@
           <div class="mb-3 row">
             <label class="col-sm-2 col-form-label">제목</label>
             <div class="col-md-5">
-              <input type="text" name="boardTitle">
+              <input type="text" id="boardTitle" name="boardTitle">
             </div>
           </div>
           
@@ -129,7 +128,7 @@
             </div>
           </div>
           
-          <input type="submit" value="등록하기">
+          <button id="adoptSbm" type="button">등록하기</button>
         </form>
           <button type="button" class="btn btn-secondary"><a href="/adopt/list">목록으로</a></button>
         </article>
@@ -142,10 +141,45 @@
 <script type="text/javascript">
 	// 오늘 날짜 가져오기
 	// 구조일: 오늘 이후로 선택이 안 되도록 설정
-	var now_utc = Date.now()
-	var timeOff = new Date().getTimezoneOffset()*60000;
-	var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+	let now_utc = Date.now()
+	let timeOff = new Date().getTimezoneOffset()*60000;
+	let today = new Date(now_utc-timeOff).toISOString().split("T")[0];
 	document.getElementById("rescueDate").setAttribute("max", today);
+	document.getElementById("rescueDate").value = today;
+	
+	
+	// 입양글 폼 null checking
+	function nullchk(tag) {
+		let cnt = 0;
+		tag.each(function () {
+			value = $(this).val();
+			//alert(value);
+			if(value == ""){
+				cnt = cnt+ 1;
+			}
+		});			
+		return cnt;
+	};
+	
+	$("#adoptSbm").click(function () {
+		let value = "";
+		let tags = [];
+		tags[0] = $("#adoptForm").find('input');
+		tags[1] = $("#adoptForm").find('select');
+		tags[2] = $("#adoptForm").find('textarea');
+	
+		let nullCnt = 0;
+		tags.forEach(function(tag) {
+			nullCnt += nullchk(tag);
+		});
+		//alert("총숫자: "+nullCnt);
+		if(nullCnt > 0){
+			alert("작성하지 않은 항목이 있습니다.");
+		}else{
+			$("#adoptForm").submit();
+		}
+	});
+
 </script>
 </body>
 </html>
