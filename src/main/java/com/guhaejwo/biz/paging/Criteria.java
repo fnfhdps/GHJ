@@ -38,7 +38,6 @@ public class Criteria {
 		this.amount = amount;	
 	}
 	
-
 	public String getKeyword() {
 		return keyword;
 	}

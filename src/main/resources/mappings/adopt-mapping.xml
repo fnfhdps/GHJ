@@ -105,7 +105,7 @@
         select count(*) from board, adopt where 1=1 and board.boardseq = adopt.boardseq
     ]]>
     	<if test="keyword != null">
-			and boardTitle like %'||#{keyword}||'%'
+			and boardTitle like '%'||#{keyword}||'%'
 		</if>
     </select>
 	
