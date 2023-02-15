@@ -79,27 +79,34 @@
     <!-- 입양 목록 조회(페이징) -->
     <select id="getAdoptListPaging" resultType="adopt">
     	<![CDATA[
-		     SELECT *
-				FROM (
-				 SELECT rownum, a.*
-				 FROM (
-				    select rownum as rn, board.boardCategory, board.boardseq, board.boardtitle, adopt.adoptimg, adopt.adoptkind, adopt.adoptaddr, adopt.adoptstate
-				    from board, adopt
-				    where 1=1
-				    and board.boardseq = adopt.boardseq
-				    and boardTitle like '%%'
-				    order by board.boardseq desc
-				 ) a
-				  WHERE ROWNUM <= ${pageNum} * ${amount}
+		     SELECT * FROM (SELECT rownum, a.*
+		     FROM (select rownum as rn, board.boardCategory, board.boardseq, board.boardtitle, adopt.adoptimg, adopt.adoptkind, adopt.adoptaddr, adopt.adoptstate
+				   from board, adopt
+				   where 1=1
+				   and board.boardseq = adopt.boardseq
+	    ]]>
+		    <if test="keyword != null">
+		    	and boardTitle like '%'||#{keyword}||'%'
+		    </if>
+	    <![CDATA[
+			    order by board.boardseq desc
+			    ) a
+			  	WHERE ROWNUM <= ${pageNum} * ${amount}
 				)
 				WHERE rn > (${pageNum} - 1) * ${amount}
    		]]>
     
     </select>
+    
 	
 	 <!-- 입양 목록 게시물 총 갯수 -->
     <select id="getAdoptTotalCount" resultType="int">
-        select count(*) from board, adopt where board.boardseq = adopt.boardseq
+    <![CDATA[
+        select count(*) from board, adopt where 1=1 and board.boardseq = adopt.boardseq
+    ]]>
+    	<if test="keyword != null">
+			and boardTitle like '%'||#{keyword}||'%'
+		</if>
     </select>
 	
 	<!-- 입양 희망자 입력 -->
