@@ -73,7 +73,7 @@ public class AdoptDAO {
 		}
 	
 	// 입양 목록 게시판 총 갯수 
-	public int getAdoptTotalCount(){
+	public int getAdoptTotalCount(Criteria cri){
 		System.out.println("--> AdoptRepository.getAdoptList() 실행3");
 		return mybatis.selectOne("AdoptDAO.getAdoptTotalCount");
 	}

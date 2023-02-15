@@ -64,8 +64,8 @@ public class AdoptServiceImpl implements AdoptService {
 	}
 
 	@Override
-	public int getAdoptTotalCount() {
-		return adoptDAO.getAdoptTotalCount();
+	public int getAdoptTotalCount(Criteria cri) {
+		return adoptDAO.getAdoptTotalCount(cri);
 	}
 	
 	@Override

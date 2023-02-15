@@ -31,7 +31,7 @@ public interface AdoptService {
     public List<AdoptDTO> getAdoptListPaging(Criteria cri);
 	
 	// 입양 목록 게시판 총 갯수
-    public int getAdoptTotalCount();
+    public int getAdoptTotalCount(Criteria cri);
 	
 	// 입양 희망자 입력
 	public void insertAdoptReq(AdoptReqDTO adopt);
