@@ -70,7 +70,7 @@
 	                <tr>
 	                    <th>구조일</th>
 	                    <td>
-	                    ${adoptDetail.adoptRescueDate}
+	                    <fmt:formatDate value="${adoptDetail.adoptRescueDate}" pattern="yyyy-MM-dd"/>
 	                    </td>
 	                </tr>
 	                <tr>

@@ -16,7 +16,7 @@
 	<insert id="insertAdopt">
 		<![CDATA[
 			INSERT INTO adopt(boardSeq, adoptImg, adoptSex, adoptRescueDate, adoptAge, adoptAddr, adoptWeight, adoptNeutor, adoptState, adoptKind)
-			VALUES ((select max(boardseq) from BOARD), #{adoptImg}, #{adoptSex}, TO_DATE(#{adoptRescueDate}, 'YYYY-MM-DD'),
+			VALUES ((select max(boardseq) from BOARD), #{adoptImg}, #{adoptSex}, #{adoptRescueDate},
 			#{adoptAge}, #{adoptAddr}, #{adoptWeight}, #{adoptNeutor, jdbcType=VARCHAR}, #{adoptState}, #{adoptKind})
 		]]>
 	</insert>

@@ -64,6 +64,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul class="navbar-nav" id="nav_menu">
+           <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/map">소개</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/map">주변병원</a>
             </li>

@@ -75,8 +75,8 @@
           <div class="mb-3 row">
             <label class="col-sm-2 col-form-label">구조일</label>
             <div class="col-md-5">
-            	<span>${adoptRescueDate}</span>
-              <input type="date" id="rescueDate" name="adoptRescueDate" value="${adoptRescueDate}">
+              <input type="date" id="rescueDate" name="adoptRescueDate"
+              		value="<fmt:formatDate value="${adoptDetail.adoptRescueDate}" pattern="yyyy-MM-dd"/>">
             </div>
           </div>
           

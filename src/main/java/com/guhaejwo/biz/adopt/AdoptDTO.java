@@ -2,6 +2,8 @@ package com.guhaejwo.biz.adopt;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class AdoptDTO {
 	
 	private int rownum;
@@ -10,7 +12,8 @@ public class AdoptDTO {
 	private int boardSeq;
 	private String adoptImg;
 	private String adoptSex;
-	private String adoptRescueDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date adoptRescueDate;
 	private int adoptAge;
 	private String adoptAddr;
 	private int adoptWeight;
@@ -59,10 +62,10 @@ public class AdoptDTO {
 	public void setAdoptSex(String adoptSex) {
 		this.adoptSex = adoptSex;
 	}
-	public String getAdoptRescueDate() {
+	public Date getAdoptRescueDate() {
 		return adoptRescueDate;
 	}
-	public void setAdoptRescueDate(String adoptRescueDate) {
+	public void setAdoptRescueDate(Date adoptRescueDate) {
 		this.adoptRescueDate = adoptRescueDate;
 	}	
 	public int getAdoptAge() {

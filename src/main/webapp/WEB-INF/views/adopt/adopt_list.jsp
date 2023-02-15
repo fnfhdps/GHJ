@@ -48,6 +48,10 @@
 	width: 100px;
 	height: 36px;
  }
+ 
+ .adoptSize{
+ 	width: 70px;
+ }
 </style>
 <body>
 
@@ -62,34 +66,6 @@
 	
 	    <div class="container px-4 px-lg-5 mt-5">
 	        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-	           
-	            <%-- <c:forEach items="${adoptList}" var="adopt">
-	            <div class="col mb-5">
-	                <div class="card h-100">
-	                <c:choose>
-	                  <c:when test="${adopt.adoptState eq 'WAIT'}">
-		                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">입양대기</div>
-	                  </c:when>
-	                  <c:otherwise>
-	                  	<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">입양완료</div>
-	                  </c:otherwise>
-	                </c:choose>
-	                    <a href="/adopt/detail/${adopt.boardCategory}/${adopt.boardSeq}/${login.userSeq}">
-	                    	<img class="card-img-top adopt_img" alt="" src="${adopt.adoptImg}">
-	                    </a>
-	                    <div class="card-body p-4">
-	                        <div class="text-center">
-	                            <h5 class="fw-bolder">${adopt.adoptKind}</h5>
-	                            ${adopt.adoptAddr}	
-	                        </div>
-	                    </div>
-	                    <!-- Product actions-->
-	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">후원하기</a></div>
-	                    </div>
-	                </div>
-	            </div>
-	            </c:forEach> --%>
 	            
 	            <c:forEach items="${list}" var="list">
 	            <div class="col mb-5">
@@ -102,18 +78,14 @@
 	                  	<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">입양완료</div>
 	                  </c:otherwise>
 	                </c:choose>
-	                    <a href="/adopt/detail/${list.boardCategory}/${list.boardSeq}/${login.userSeq}">
-	                    	<img class="card-img-top adopt_img" alt="" src="${list.adoptImg}">
+	                    <a class="loginCheck" href="/adopt/detail/${list.boardCategory}/${list.boardSeq}/${login.userSeq}">
+	                    	<img class="card-img-top adopt_img adoptSize" alt="" src="${list.adoptImg}">
 	                    </a>
 	                    <div class="card-body p-4">
 	                        <div class="text-center">
 	                            <h5 class="fw-bolder">${list.adoptKind}</h5>
 	                            ${list.adoptAddr}
 	                        </div>
-	                    </div>
-	                    <!-- Product actions-->
-	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">후원하기</a></div>
 	                    </div>
 	                </div>
 	            </div>
@@ -161,6 +133,8 @@
         <input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
 	</form>
 	
+	<input type="hidden" id="userSeq" value="${login.userSeq}">
+	
 	<script>
 	
 	let moveForm = $("#moveForm");
@@ -187,6 +161,14 @@
         moveForm.submit();
     });
 	
+	// 로그인 체크후 게시글 상세 이동
+	const loginCkeck2 = $("#userSeq").val();
+	$("a.loginCheck").click(function () {
+		if (loginCkeck2 == 0) {
+			alert("로그인 후 열람 가능");
+			return false;
+		}
+	});
 	</script>
 
 	<jsp:include page="../fix/footer.jsp"></jsp:include>
