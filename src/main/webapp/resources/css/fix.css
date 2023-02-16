@@ -1,111 +1,43 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap'); */
+/* header css */
 
-/* footer 하단 고정 설정 */
-
-* {
+*{
   box-sizing: border-box;
-}
-
-body {
   margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
-  /* background-color: #faaf4c; */
+  padding: 0;
+  font: inherit;
+}
+.header{
+  border-bottom: 1px solid #f2f2f2;
+  align-items: center;
+  background: #fff;
+
+}
+#navSize{
+  width: 100%;
+  max-width: 1200px;
+}
+#naveSize a{
+  color: black;
+}
+#navImg{
+  width: 30px;
+  height: 30px;
 }
 
-html, body {
-  height: 100%;
+/* a태그 모두 공통 
+밑줄, 파란색 제거*/
+a{
+  text-decoration-line: none;
+  color: black;
 }
-.wrap{
-  position: relative;
-  min-height: 100%;
-  padding-bottom: 212px;
-}
+
+/* footer css */
 footer{
   position: absolute;
   bottom: 0;
   width: 100%;
   background-color: black;
 }
-/* ------------------------------ */
-
-/* @media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }  
-} */
-
-/* @media (max-width: 768px){
-  body{
-    background-color: aquamarine;
-  }
-} */
-
-/*
-  header font
-    - nav : 20px
-    - login, join : 10px
-  footer font
-    - 브랜드 이름 : 35px
-    - 나머지 : 10px
-*/
-
-/* ---------------------------- */
-
-a {
-  color: #000;
-  text-decoration: none;
-}
-
-.logo{
-  padding: 1% 0;
-  position: relative;
-  text-align: center; 
-  display: flex;
-  justify-content: center;
-  /* background-color: #FFFAF3; */
-  background-color: #f7ede3;
-}
-
-.logo img{
-  /* 이미지 고유 종횡비 적용 */
-  aspect-ratio: auto 1/1;
-  width: 200px;
-}
-
-#login{
-  position: absolute;
-  right: 30px;
-  font-size: 12px;
-}
-
-#login a{
-  color: #000;
-  text-decoration: none;
-  padding: 0 5px;
-}
-
-#toggle_logo{
-  display: none;
-  aspect-ratio: auto 1/1;
-  width: 30px;
-  }
-
-nav{
-  position: fixed;
-  /* background-color: #FFFAF3; */
-  font-size: 20px;
-  /*font-family: 'Jua', sans-serif;*/
-  /* border-top: #c3b396b9 2px solid; */
-  border-bottom: #f7ede3 2px solid;
-}
-
-#nav_menu{
-  text-align: center;
-  /* margin-left: 50px; */
-}
-
-/* ------------------------ */
 
 footer ul{
   padding: 20px 0;
@@ -122,7 +54,7 @@ footer ul a{
   color: white;
 }
 /* footer 구해줘!펫즈 */
-#foot_brand{
+.footBrand{
   font-family: 'Jua', sans-serif;
   font-size: 35px;
   margin-bottom: 10px;

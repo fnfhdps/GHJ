@@ -54,7 +54,7 @@ public class adoptController {
         model.addAttribute("list", adoptService.getAdoptListPaging(cri));
         int total = adoptService.getAdoptTotalCount(cri);
         PageMakerDTO pageMake = new PageMakerDTO(cri, total);
-        System.out.println("??"+pageMake);
+        System.out.println(pageMake);
         model.addAttribute("pageMaker", pageMake);
         return "/adopt/adopt_list";
     }    
