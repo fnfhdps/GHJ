@@ -185,21 +185,18 @@
 	          </form>
 	          
 	          
-	     	 <form id="deleteForm" action="/mypage/delete" method="post">
+<%-- 	     	 <form id="deleteForm" action="/mypage/delete" method="post">
 	     	 	<input type="hidden" id="userId" name="userId" value="${login.userId}">
 		      	<input type="hidden" id="userPw" name="userPw" value="${login.userPw}">
-
-		      
 		        <div>
-		          <img id="drop_img" src="/resources/image/drop.png" alt="회원탈퇴">
-		          <!-- 예, 아니오 한번 물어보기 -->
 		          <div>
 			         	비밀번호 입력<input type="password" name="userPw">
 		            <button type="button" class="btn btn-secondary" onclick="withdraw();">회원탈퇴</button>
 		          </div>
 		        </div>
      	 	</form>
-	          <div id="modalBtn" class="iconColor m-3"><a href="#">회원탈퇴&nbsp;<i class="bi bi-chevron-right"></i></a></div>
+     	 	
+ --%>	          <div id="modalBtn" class="iconColor m-3"><a href="#">회원탈퇴&nbsp;<i class="bi bi-chevron-right"></i></a></div>
 	        </div>
 	      </section>
 	

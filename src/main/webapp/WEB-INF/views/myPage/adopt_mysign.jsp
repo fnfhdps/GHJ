@@ -25,17 +25,6 @@
 		  <!-- 마이페이지 목록 -->
 		  <jsp:include page="../fix/aside.jsp"></jsp:include>
 	
-	      <aside class="sidebarNav col-lg-3 col-md-3 col-sm-12 col-xs-12">
-	        <div class="list-group sidebar">
-	          <a class="list-group-item current" href="#">내정보</a>
-	          <a class="list-group-item " href="#">내입양글</a>
-	          <a class="list-group-item " href="#">신청목록</a>
-	          <a class="list-group-item " href="#">희망자목록</a>
-	          <a class="list-group-item " href="#">주문</a>
-	          <a class="list-group-item " href="#">비밀번호</a>
-	        </div>
-	      </aside>
-	
 	      <section class="sidebarContent col-lg-9 col-md-9 col-sm-12 col-xs-12">
 	        <div>
 	          <h1 class="pageH1">신청목록</h1>
@@ -47,7 +36,7 @@
 	                  <table class="table table-bordered">
 	                    <thead>
 	                    <tr>
-	                      <!-- <th class="index">번호</th> -->
+	                      <th class="index">번호</th>
 	                      <th class="date">신청일</th>
 	                      <!-- 제목 일정글자 넘으면 어쩌고...라고 뜨게하기 -->
 	                      <th class="title">제목</th>
@@ -62,7 +51,7 @@
 							    <c:forEach items="${mysign}" var="mysign">
 							      <tr>
 							        <td class="text-center">${mysign.rownum}</td>
-							        <td class="text-center"><fmt:formatDate value="${mysign.boardDate}" pattern="yyyy-MM-dd"/></td>
+							        <td class="text-center"><fmt:formatDate value="${mysign.adoptReqDate}" pattern="yyyy-MM-dd"/></td>
 							        <td class="text-center"><a href="/adopt/detail/ADOPT/${mysign.boardSeq}/${login.userSeq}">${mysign.boardTitle}</a></td>							        
 							        <td class="text-center">${mysign.userName}(${mysign.userId})</td>
 							        <td class="text-center">${mysign.adoptState}</td>

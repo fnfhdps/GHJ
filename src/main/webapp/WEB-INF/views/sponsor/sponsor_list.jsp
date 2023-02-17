@@ -11,8 +11,6 @@
 <title>후원 상품 목록</title>
 </head>
 <body>
-	<div class="wrap container">
-	
 		<jsp:include page="../fix/header.jsp"></jsp:include>
         
         <section class="py-5">
@@ -46,6 +44,5 @@
         </section>
 			
 		<jsp:include page="../fix/footer.jsp"></jsp:include>
-	</div>
 </body>
 </html>

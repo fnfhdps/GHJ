@@ -34,7 +34,7 @@
 					<c:forEach items="${hopeList}" var="hope">
 		              <li class="list-item">
 		                <div class="media">
-		                  <img src="../img/dog.jpg">
+		                  <img src="/resources/image/dog.jpg">
 		                  <span class="">${hope.userName}(${hope.userId})</span>
 		                  <small>5일 전</small>
 		                </div>
@@ -47,16 +47,6 @@
 	   				입양 희망자가 없습니다.
 	   			  </c:otherwise>        
       			</c:choose>
-      			
-	              <li class="list-item">
-	                <div class="media">
-	                  <img src="../img/dog.jpg">
-	                  <span class="">Github</span>
-	                  <small>5일 전</small>
-	                </div>
-	                <h6>아직 임보중이신가요?</h6>
-	                <a class="btn btn-md btn-outline-primary" rel="nofollow" data-method="post" href="#">대화하기</a>
-	              </li>
 	          </ul>
 	
 	          </article>
