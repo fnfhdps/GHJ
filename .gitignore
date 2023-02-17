@@ -1,9 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/java,gradle,maven,eclipse,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,gradle,maven,eclipse,windows
 
-# Guhaejwo
-applicationContext.xml
-
 ### Eclipse ###
 .metadata
 bin/
@@ -166,5 +163,3 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
-# End of https://www.toptal.com/developers/gitignore/api/java,gradle,maven,eclipse,windows
-src/main/webapp/WEB-INF/spring/applicationContext.xml
