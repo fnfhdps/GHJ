@@ -85,16 +85,16 @@
 <!-- 상단에 회원,비회원  구분 -->
 <script type="text/javascript">
 $(function() {
-	const loginCkeck1 = $("#login_check").val();
+   const loginCkeck1 = $("#login_check").val();
 
-	// 회원이면 class="member"만 보이기
-	if(loginCkeck1 == 0){
-		$(".non_member").css("display", "block");
-		$(".member").css("display", "none");
-	}else{
-		$(".non_member").css("display", "none");
-		$(".member").css("display", "block");
-	}
+   // 회원이면 class="member"만 보이기
+   if(loginCkeck1 == 0){
+      $(".non_member").css("display", "block");
+      $(".member").css("display", "none");
+   }else{
+      $(".non_member").css("display", "none");
+      $(".member").css("display", "block");
+   }
 });
 </script>
 </html>
