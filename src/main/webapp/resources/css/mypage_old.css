@@ -1,0 +1,101 @@
+aside{
+  flex-grow: 1;
+}
+
+h2{
+  /* background-color: aquamarine; */
+  font-size: 35px;
+  font-weight: bold;
+  padding: 30px 0;
+}
+
+/* body{
+  margin: 0 10%;
+} */
+
+/*h2, #mypage, nav{
+  margin: 0 10%;
+}*/
+
+.sidenav {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  /* border-left: solid 2px; */
+  overflow-x: hidden;
+  /* background-color: bisque; */
+}
+
+.sidenav a {
+  color: black;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.font_bold {
+  font-weight: bold;
+}
+
+.sidenav a:hover {
+  border-bottom: solid 1px;
+}
+
+
+/* Style the content */
+.mypage_content {
+  height: 1000px;
+  flex-grow: 8;
+  /* background-color: blueviolet; */
+}
+
+.table{
+  margin: auto;
+  position: relative;
+  top: 10%;
+  width: 80%;
+}
+
+tr, th, td{
+  text-align: center;
+}
+
+.tbl_num{
+  width: 10%;
+}
+
+.tbl_title{
+  width: 50%;
+}
+
+.tbl_sign{
+  width: 20%;
+}
+
+.table a{
+  text-decoration: none;
+  color: black;
+}
+
+.paging{
+  position: absolute;
+  left: 50%;
+  top:70%;
+  
+}
+div.navbar-collapse{
+  display: flex;
+  justify-content: center;
+}
+
+/* 이걸하면 렉걸림 */
+@media (max-width: 768px){
+  div.navbar-collapse{
+    justify-content: start; 
+    /* background-color: blue; */
+  }
+  #nav_menu a{
+    text-align: start;
+    padding-top: 20px;
+  }
+}

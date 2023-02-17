@@ -1,101 +1,235 @@
-aside{
-  flex-grow: 1;
+/* mypage 공통 css */
+.main {
+  /* background-color: aqua; */
+  min-height: calc(100vh - 3.125rem - 24.625rem - 5rem);
 }
 
-h2{
-  /* background-color: aquamarine; */
-  font-size: 35px;
-  font-weight: bold;
-  padding: 30px 0;
+.main > div{
+    max-width: 100%;
+    padding-right: 16px;
+    padding-left: 16px;
+    margin-right: auto;
+    margin-left: auto;
+  max-width: 1200px !important;
 }
-
-/* body{
-  margin: 0 10%;
+.sideNavGap {
+margin-top: 2.5rem !important;
+}
+/* .sidebarNav{
+  max-width: 1200px !important;
+  margin-top: 2.5rem;
+  background-color: blueviolet;
 } */
 
-/*h2, #mypage, nav{
-  margin: 0 10%;
-}*/
+.sidebarNav, .sidebarContent{
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
 
-.sidenav {
+.pageH1{
+  font-size: 32px;
+  font-weight: bolder;
+  letter-spacing: -0.009em;
+  line-height: 1.4;
+  margin: 0 0 1rem 0;
+}
+
+.pageSubtitle{
+  margin-bottom: 0.5rem;
+  color: #263747;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.009em;
+  line-height: 150%;
+}
+
+@media (min-width: 765px){
+  .pageBody{
+    padding: 2.5rem;
+    border: 0.0625rem solid #D7E2EB;
+    margin-bottom: 2.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 1px 1px 10px 0 rgb(72 75 108 / 8%);
+  }
+}
+
+@media (max-width: 765px){
+  .pageH1, .sidebarContent{
+    margin: 1.5rem 0 0.5rem 0;
+  }
+}
+
+/* 회원정보수정 css */
+.pageBody, .formGroup{
   position: relative;
-  z-index: 1;
-  height: 100%;
-  /* border-left: solid 2px; */
-  overflow-x: hidden;
-  /* background-color: bisque; */
+  margin-bottom: 1.5rem;
 }
 
-.sidenav a {
-  color: black;
-  padding: 12px;
-  text-decoration: none;
-  display: block;
+.pageBody label{
+  width: 100%;
+  margin-bottom: 0.4rem;
+  line-height: 1.25rem;
 }
 
-.font_bold {
+.fileUpload{
+  display: flex;
+  position: relative;
+  width: 7.5rem;
+  height: 7.5rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #FBFBFD;
+}
+
+.fileUpload .upload{
+transition-delay: initial;
+transition-duration: 0.08s;
+transition-property: all;
+transition-timing-function: ease-in-out;
+position: absolute;
+width: 7.5rem;
+height: 2.375rem;
+border-bottom-left-radius: 0.1875rem;
+border-bottom-right-radius: 0.1875rem;
+line-height: 2.375rem;
+bottom: 0;
+left: 0;
+background-color: rgba(0,0,0,0.6);
+}
+
+.fileUpload input[type=file] {
+opacity: 0.0;
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+width: 100%;
+height: 100%;
+cursor: pointer;
+}
+
+#profileImage > img{
+width: 120px;
+height: 120px;
+vertical-align: middle;
+border-style: none;
+}
+
+.fileUpload #profileImage > img {
+border-radius: 0.25rem;
+}
+
+.btnAuthentication{
+border: 1px solid #ced4da;
+background-color: #FFFFFF;
+color: #263747;
+}
+
+.formRow{
+display: flex;
+flex-wrap: wrap;
+/* margin-right: -5px; */
+/* margin-left: -5px; */
+}
+.formRow>[class*="col-"] {
+  /* padding-right: 5px; */
+  padding-left: 6px;
+}
+.formRow > div {
+  margin-bottom: 1rem;
+}
+
+.iconColor a{
+  font-weight: bold;
+  color: gray;
+}
+
+/* 회원 탈퇴 모달 css */
+.modal-header{
+  border-bottom: none;
+}
+.modal-footer{
+  border-top: none;
+}
+.modal-title{
   font-weight: bold;
 }
-
-.sidenav a:hover {
-  border-bottom: solid 1px;
+.modalBody{
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border: 0.0625rem solid #D7E2EB;
+  /* margin-bottom: 2.5rem; */
+  border-radius: 0.75rem;
+}
+.modalBody ul{
+  padding: 0;
+  margin-left: 1rem;
+  list-style: none;
+}
+.modalBody ul li{
+  font-size: 0.875rem;
+  /* list-style-position: inside; */
+  /* text-indent: -0.875rem; */
+  letter-spacing: -0.009em;
+  line-height: 2;
 }
 
 
-/* Style the content */
-.mypage_content {
-  height: 1000px;
-  flex-grow: 8;
-  /* background-color: blueviolet; */
+/* 입양희망자 css */
+.listAccountProviders{
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
-
-.table{
-  margin: auto;
-  position: relative;
-  top: 10%;
-  width: 80%;
-}
-
-tr, th, td{
-  text-align: center;
-}
-
-.tbl_num{
-  width: 10%;
-}
-
-.tbl_title{
-  width: 50%;
-}
-
-.tbl_sign{
-  width: 20%;
-}
-
-.table a{
-  text-decoration: none;
-  color: black;
-}
-
-.paging{
-  position: absolute;
-  left: 50%;
-  top:70%;
-  
-}
-div.navbar-collapse{
+.listAccountProviders li{
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+.listAccountProviders li+li{
+  padding-top: 1.25rem;
+  border-top: 0.0625rem solid #D7E2EB;
+  margin-top: 1.25rem;
 }
 
-/* 이걸하면 렉걸림 */
-@media (max-width: 768px){
-  div.navbar-collapse{
-    justify-content: start; 
-    /* background-color: blue; */
-  }
-  #nav_menu a{
-    text-align: start;
-    padding-top: 20px;
-  }
+.listAccountProviders .media{
+  display: block;
+  flex-grow: 1;
+  font-weight: 500;
+}
+.listAccountProviders .media img{
+  width: 5.5rem;
+  height: 5.5rem;
+  margin-right: 1rem;
+  border-radius: 0.125rem;
+}
+
+.listAccountProviders span{
+  font-weight: bold;
+}
+.listAccountProviders h6{
+  margin-right: 3rem;
+  /* color: #98A8B9; */
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* 관심동물 css */
+
+
+/* 표관련 css */
+/* .table thead tr th {
+  border-bottom: 0;
+}
+.table th, .table td {
+  padding: 0.25rem 0.5rem;
+} */
+.table th {
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  font-weight: 700;
 }

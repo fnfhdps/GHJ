@@ -30,59 +30,62 @@
 <title>header</title>
 </head>
 <body>
-  <header class="header">
-    <nav id="navSize" class="container navbar navbar-expand-sm navbar-light">
-      <div class="container-fluid">
+  <header>
+    <!-- 로고 이미지 -->
+	<div class="logo">
+      <a href="/index"><img src="/resources/image/logo.png" alt="logo"></a>
+      <div id="login">
       
-        <a class="navbar-brand" href="/index">
-          <img id="navImg" src="/resources/image/logo/nav_logo.png" alt="logo">구해줘!펫즈
-        </a>
+      	<!-- 유저 시퀀스 -->
+        <input id="login_check" type="hidden" value="${login.userSeq}">
         
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+       	<div class="non_member">
+		  <a href="/login">로그인</a>
+		  <span> | </span>
+		  <a href="/join">회원가입</a>
+       	</div>
+         
+     	  <div class="member">
+       	  <span class="font_bold">${login.userName}(${login.userId})님</span>
+          <a href="/mypage/update">마이페이지</a>
+          <span> | </span>
+          <a href="/logout">로그아웃</a>
+     		</div>
+      </div>
+    </div>
+  
+    <nav class="navbar navbar-expand-md py-3">
+      <div class="container-fluid">
+
+        <!-- 버튼 테두리 없애기 -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/map">소개</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav" id="nav_menu">
+           <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/map">소개</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">공지사항</a>
+              <a class="nav-link active" aria-current="page" href="/map">주변병원</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/adopt/list">입양</a>
+              <a class="nav-link active" aria-current="page" href="#">공지사항</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/sponsor/list">후원</a>
+              <a class="nav-link active" aria-current="page" href="/adopt/list">입양</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/sponsor/list">후원</a>
             </li>
           </ul>
-
-          <div class="d-flex">
-            <div class="non_member">
-              <a class="me-2" href="/login">로그인</a>
-              <span> | </span>
-              <a class="m-2" href="/join">회원가입</a>
-            </div>
-
-            <div class="member">
-              <span class="font_bold">${login.userName}(${login.userId})님</span>
-              <a href="/mypage/update">마이페이지</a>
-              <span> | </span>
-              <a href="/logout">로그아웃</a>
-            </div>
-            
-          </div>
         </div>
-
       </div>
     </nav>
-    <!-- 유저 시퀀스 -->
-    <input id="login_check" type="hidden" value="${login.userSeq}">
   </header>
-</body>
-
-<!-- 상단에 회원,비회원  구분 -->
+  
+  <!-- 상단에 회원,비회원  구분 -->
 <script type="text/javascript">
 $(function() {
 	const loginCkeck1 = $("#login_check").val();
@@ -97,4 +100,5 @@ $(function() {
 	}
 });
 </script>
+</body>
 </html>

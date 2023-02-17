@@ -13,218 +13,242 @@
 <title>회원정보수정</title>
 </head>
 
-<style>
-  form{
-    margin-top: 20px;
-    margin-left: 70px;
-  }
-  label{
-    font-weight: bold;
-    font-size: 17px;
-  }
-
-  #btn_update{
-    margin: 0 15%;
-  }
-  
-  #pwSuccess, #pwDanger{
-  	display: none;
-  }
-  
-  form input::file-selector-button {
-    display: none;
-    overflow: hidden;
-  }
-  
-  #profile{
-  	width: 170px;
-  	height: 150px;
-  	border-radius: 50%;
-  }
-  
-  /* ajax로 인증번호 받기 클릭시 보이도록 */
-  #phone_hidden{
-    display: none;
-  }
-</style>
-
 <body>
-
-  <div class="wrap">
-
     <jsp:include page="../fix/header.jsp"></jsp:include>
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
 
-    <section>
-      <h2>마이페이지</h2>
-      <div id="mypage" class="d-flex justify-content-start">
-		<jsp:include page="../fix/aside.jsp"></jsp:include>
-	  
-        <article class="mypage_content">
-          <form action="/mypage/update" method="post" enctype="multipart/form-data">
-          	
-          	<input type="hidden" name="userSeq" value="${login.userSeq}">
-          	<input type="hidden" id="loginType" name="loginType" value="${login.loginType}">
-          	<input type="hidden" id="userRole" name="userRole" value="${login.userRole}">
-          	<input type="hidden" id="userId" value="${login.userId}">
-          	
-          	
-          	<div class="mb-3 row">
-          	
-          	<c:choose>
-	          	<c:when test="${!empty login.userImg}">
-	            	<img id="profile" src="${login.userImg}">
-	          	</c:when>
-	          	<c:otherwise>
-	          		<img id="profile" src="/resources/image/profile/profile.png">
-	          	</c:otherwise>
-          	</c:choose>
-          	<!--
-          	<input type="file" id="file" name="userImg" accept=".jpg, .png">
-	          	-->
-          	</div>
-          
-            <div class="mb-3 row">
-              <label class="col-sm-2 col-form-label">이름</label>
-              <div class="col-md-5">
-                <input class="form-control-plaintext"
-                		id="staticEmail"
-                		type="text"
-                		value="${login.userName}"
-                		name="userName"
-                		readonly>
-              </div>
-            </div>
-            
-            <div class="mb-3 row">
-              <label class="col-sm-2 col-form-label">아이디</label>
-              <div class="col-md-5">
-                <input class="form-control-plaintext"
-                		id="staticEmail"
+	<div class="main">
+	  <div class="">
+	    <div class="sideNavGap row">
+		  <!-- 마이페이지 목록 -->
+		  <jsp:include page="../fix/aside.jsp"></jsp:include>
+	
+	      <section class="sidebarContent col-lg-9 col-md-9 col-sm-12 col-xs-12">
+	        <div>
+	          <form action="/mypage/update" method="post" enctype="multipart/form-data">
+	        
+	          <h1 class="pageH1">계정관리</h1>
+	          <div class="pageSubtitle">회원 정보</div>
+	          <article class="pageBody">
+	              <!-- 시퀀스 모음 -->
+	          	  <input type="hidden" name="userSeq" value="${login.userSeq}">
+	          	  <input type="hidden" id="loginType" name="loginType" value="${login.loginType}">
+	          	  <input type="hidden" id="userRole" name="userRole" value="${login.userRole}">
+	          	  <input type="hidden" id="userId" value="${login.userId}">
+	            
+	              <!-- 파일 업로드 -->
+	              <div class="formGroup">
+	                <label class="control-label">프로필 이미지 <small>(선택)</small></label>
+	                <div class="fileUpload">
+	                  <div id="profile_area">
+	                    <h5 class="upload">업로드</h5>
+	                    <div id="profileImage">
+	                    <!-- 프로필 사진 없으면 기본 사진 보임 -->
+			          	<c:choose>
+				          	<c:when test="${!empty login.userImg}">
+				            	<img id="profile" src="${login.userImg}">
+				          	</c:when>
+				          	<c:otherwise>
+				          		<img id="profile" src="/resources/image/profile/profile.png">
+				          	</c:otherwise>
+			          	</c:choose>
+	                    </div>
+	                  </div>
+	                  <input type="file" name="file" accept="image/.jpg, .jpeg, .png, .gif">
+	                </div>
+	              </div>
+	
+	              <div class="formGroup">
+	                <label class="required">이름</label>
+	                <input class="form-control"
+	                		id="staticEmail"
+	                		type="text"
+	                		value="${login.userName}"
+	                		name="userName"
+	                		readonly>
+	              </div>
+	
+	              <div class="formGroup">
+	                <label class="required">아이디</label>
+	                <input class="form-control"
                 		type="text"
                  		value="${login.userId}"
                  		name="userId"
                  		readonly>
+	              </div>
+	              
+	              <div class="mb-1 formGroup">
+	                <label class="required">휴대폰번호</label>
+	                <div class="formRow">
+	                  <div class="flex-grow-1">
+	                    <input type="text"
+	                		  class="form-control"
+	                		  name="userPhone"
+	                		  value="${login.userPhone}"
+	                		  readonly="readonly">
+	                  </div>
+	                  <div class="col-auto">
+                        <button type="button" class="btn btnAuthentication">휴대폰 인증</button>
+	                  </div>
+	                </div>
+	              </div>
+	
+	              <div class="mb-1 formGroup">
+	                <label class="required">이메일</label>
+	                <div class="formRow">
+	                  <div class="flex-grow-1">
+		                <input type="text"
+		                		class="form-control"
+		                		name="userEmail"
+		                		value="${login.userEmail}"
+		                		readonly="readonly">
+	                  </div>
+	                  <div class="col-auto">
+						<button type="button" class="btn btnAuthentication">이메일 인증</button>
+	                  </div>
+	                </div>
+	              </div>
+	          </article>
+	
+	          <div class="pageSubtitle">비밀번호 확인</div>
+	          <article class="pageBody">
+	              <div class="pwBox mb-1 formGroup">
+	                <label class="required">비밀번호</label>
+	                <div class="formRow">
+	                  <div class="flex-grow-1">
+                        <input type="password"
+	                	  	  class="form-control"
+	                		  id="userPw"
+	                		  value="${login.userPw}"
+	                		  name="userPw"
+	                		  readonly="readonly">
+	                  </div>
+	                  <div class="col-auto">
+                        <button type="button" class="btn btnAuthentication" onclick="location.href='/change_pw'">변경</button>
+	                  </div> 
+	                </div>
+	              </div>
+	
+	              <div class="pwBox formGroup">
+	                <label class="required" for="user_name">비밀번호 확인</label>
+	                <input class="form-control" type="password" id="pwCheck" required="required">
+	                <span id="pwSuccess">비밀번호가 일치합니다.</span>
+    				<span id="pwDanger">비밀번호가 일치하지 않습니다.</span>
+	              </div>
+	          </article>
+	
+	          <div class="pageSubtitle">주소지 관리</div>
+	          <article class="pageBody">
+	              <div class="mb-0 formGroup">
+	                <label class="required">주소</label>
+	                <div class="formRow">
+	                  <div class="flex-grow-1">
+	                    <input type="text"
+                		  class="form-control"
+                		  id="addr1"
+						  name="userAddr1"             		
+                		  value="${login.userAddr1}"
+                		  readonly="readonly"
+                		  placeholder="우편번호">
+	                  </div>
+	                  
+	                  <div class="col-auto">
+                        <button type="button" class="btn btnAuthentication" onclick="excution_addr()">도로명 주소</button>
+	                  </div>
+	                </div>
+	              </div>
+	              
+	              <div class="mb-3 formGroup">
+	                <input type="text"
+	                		class="form-control"
+	                		id="addr2"
+							name="userAddr2"                		
+	                		value="${login.userAddr2}"
+	                		readonly="readonly"
+	                		placeholder="기본주소">
+	              </div>
+	              <div class="formGroup">
+	                <input type="text"
+                	  	  class="form-control"
+                		  id="addr3"
+						  name="userAddr3"                		
+                		  value="${login.userAddr3}"
+                		  readonly="readonly"
+                		  placeholder="상세주소">
+	              </div>
+	          </article>
+	          
+          	  <div class="mt-4 formRow">
+                <button type="submit" class="col-12 btn btn-secondary" type="button">저장</button>
               </div>
-            </div>
-            
-            <div class="pwBox mb-3 row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
-              <div class="col-md-3">
-                <input type="password"
-                		class="form-control"
-                		id="userPw"
-                		value="${login.userPw}"
-                		name="userPw"
-                		readonly="readonly">
-              </div>
-              <div class="col-md-3">
-                <button type="button" class="btn btn-secondary" onclick="location.href='/change_pw'">비밀번호 변경</button>
-              </div>
-            </div>
-            
-             <div class="pwBox mb-3 row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">비밀번호 확인</label>
-              <div class="col-md-3">
-                <input type="password" class="form-control" id="pwCheck" required="required">
-                 <span id="pwSuccess">비밀번호가 일치합니다.</span>
-    			 <span id="pwDanger">비밀번호가 일치하지 않습니다.</span>
-              </div>
-            </div>
-            
-            <div class="mb-3 row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">전화번호</label>
-              <div class="col-sm-3">
-                <input type="text"
-                		class="form-control"
-                		id="inputPassword"
-                		name="userPhone"
-                		value="${login.userPhone}"
-                		readonly="readonly">
-              </div>
-              <div class="col-md-3">
-                <button type="button" class="btn btn-secondary">인증번호 받기</button>
-              </div>
-            </div>
-            
-            <div id="phone_hidden" class="mb-3 row">
-              <label for="inputPassword" class="col-sm-2 col-form-label"></label>
-              <div class="col-sm-3">
-                <input type="password" class="form-control" id="inputPassword">
-              </div>
-              <div class="col-md-3">
-                <button type="button" class="btn btn-secondary">인증번호 확인</button>
-              </div>
-            </div>
-            
-            <div class="mb-3 row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">우편번호</label>
-              <div class="col-sm-3">
-                <input type="text"
-                		class="form-control"
-                		id="addr1"
-						name="userAddr1"             		
-                		value="${login.userAddr1}"
-                		readonly="readonly">
-              </div>
-              <div class="col-md-3">
-                <button type="button" class="btn btn-secondary" onclick="excution_addr()">도로명 주소</button>
-              </div>
-            </div>
-            
-			<div class="mb-3 row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">주소</label>
-              <div class="col-sm-3">
-                <input type="text"
-                		class="form-control"
-                		id="addr2"
-						name="userAddr2"                		
-                		value="${login.userAddr2}"
-                		readonly="readonly">
-              </div>
-            </div>
-            
-			<div class="mb-3 row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">상세주소</label>
-              <div class="col-sm-3">
-                <input type="text"
-                		class="form-control"
-                		id="addr3"
-						name="userAddr3"                		
-                		value="${login.userAddr3}"
-                		readonly="readonly">
-              </div>
-            </div>
-            
-            <div class="mb-3 row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">메일</label>
-              <div class="col-sm-3">
-                <input type="text"
-                		class="form-control"
-                		id="inputPassword"
-                		name="userEmail"
-                		value="${login.userEmail}">
-              </div>
-              <div class="col-md-3">
-                <button type="button" class="btn btn-secondary">이메일 변경</button>
-              </div>
-            </div>
-            <br>
-            
-             <div class="col-md-3">
-                <a onclick="drop();">회원탈퇴</a>
-              </div>
-              <br><br><br>
-            <button type="submit" class="btn btn-secondary" id="btn_update">수정</button>
-          </form>
-        </article>
+	          </form>
+	          	          
+	          <div id="modalBtn" class="iconColor m-3"><a href="#">회원탈퇴&nbsp;<i class="bi bi-chevron-right"></i></a></div>
+	        </div>
+	      </section>
+	
+	    </div>
 	  </div>
-    </section>
+	</div>
 
-    <jsp:include page="../fix/footer.jsp"></jsp:include>
-   
+	<jsp:include page="../fix/footer.jsp"></jsp:include>
+
+<!-- 회원탈퇴 확인 Modal-->
+<div class="modal fade" id="withdrawModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">회원탈퇴 안내</h3>
+        <button type="button" class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><i class="bi bi-x-lg"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <div class="modalBody">
+            <ul>
+              <li>고객님의 이름, 이메일, 프로필 사진, 주소등을 포함한 모든 개인정보를 삭제합니다.</li>
+              <li>
+                사용하고 계신 아이디(fnfhdps)는 탈퇴할 경우 재사용 및 복구가 불가능합니다.
+              </li>
+              <li>
+                탈퇴 후 회원정보 및 개인형 서비스 이용기록은 모두 삭제됩니다.
+              </li>
+              <li>
+                탈퇴 후 게시판형 서비스에 등록한 게시물은 모두 삭제됩니다.
+              </li>
+            </ul>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <div class="px-3">
+          <label>
+            <input type="checkbox" name="destroy_confirm" id="ck-destroy-account" value="1">
+            계정을 삭제하면 되돌릴 수 없으며, 삭제한 데이터를 복구할 수 없음을 이해했습니다.
+          </label>
+        </div>
+        <button id="withdrawBtn" data-dismiss="modal" class="btn btn-md btn-outline-danger" disabled>계정 삭제하기</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  $('#modalBtn').click(function(e){
+    e.preventDefault();
+    $('#withdrawModal').modal("show");
+  });
+
+  $("input[type='checkbox']").click(function() {
+    if($(this).is(':checked')){
+      $("#withdrawBtn").prop("disabled", false);
+      // $(this).removeAttr("checked");
+    }else{
+      $("#withdrawBtn").prop("disabled", ture);
+    }
+  });
+</script>
 
 <script type="text/javascript">
 	
@@ -234,8 +258,10 @@
 		$('.pwBox').css('display', 'none');
 	};
 	
-	
 	// 비밀번호 확인
+	$('#pwDanger').css('display', 'none');
+	$("#pwSuccess").css('display', 'none');
+	
 	$('input[type="password"]').focusout(function() {
 		let pw1 = $('#userPw').val();
 		let pw2 = $('#pwCheck').val();
@@ -244,11 +270,11 @@
 			null;
 		}else if((pw1 != '') || (pw2 != '')){
 			if(pw1 == pw2){
-				$('#pwSuccess').css('display', 'inline-block');
+				$('#pwSuccess').css('display', 'inline-block').css("color","green");
 				$('#pwDanger').css('display', 'none');
 			}else {
                 $("#pwSuccess").css('display', 'none');
-                $("#pwDanger").css('display', 'inline-block');
+                $("#pwDanger").css('display', 'inline-block').css("color","red");
             }
 		}
 	});
