@@ -183,7 +183,22 @@
                 <button type="submit" class="col-12 btn btn-secondary" type="button">저장</button>
               </div>
 	          </form>
-	          	          
+	          
+	          
+	     	 <form id="deleteForm" action="/mypage/delete" method="post">
+	     	 	<input type="hidden" id="userId" name="userId" value="${login.userId}">
+		      	<input type="hidden" id="userPw" name="userPw" value="${login.userPw}">
+
+		      
+		        <div>
+		          <img id="drop_img" src="/resources/image/drop.png" alt="회원탈퇴">
+		          <!-- 예, 아니오 한번 물어보기 -->
+		          <div>
+			         	비밀번호 입력<input type="password" name="userPw">
+		            <button type="button" class="btn btn-secondary" onclick="withdraw();">회원탈퇴</button>
+		          </div>
+		        </div>
+     	 	</form>
 	          <div id="modalBtn" class="iconColor m-3"><a href="#">회원탈퇴&nbsp;<i class="bi bi-chevron-right"></i></a></div>
 	        </div>
 	      </section>
@@ -193,6 +208,8 @@
 	</div>
 
 	<jsp:include page="../fix/footer.jsp"></jsp:include>
+
+	<input type="hidden" id="loginType" value=" ${login.loginType}">
 
 <!-- 회원탈퇴 확인 Modal-->
 <div class="modal fade" id="withdrawModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -209,15 +226,9 @@
           <div class="modalBody">
             <ul>
               <li>고객님의 이름, 이메일, 프로필 사진, 주소등을 포함한 모든 개인정보를 삭제합니다.</li>
-              <li>
-                사용하고 계신 아이디(fnfhdps)는 탈퇴할 경우 재사용 및 복구가 불가능합니다.
-              </li>
-              <li>
-                탈퇴 후 회원정보 및 개인형 서비스 이용기록은 모두 삭제됩니다.
-              </li>
-              <li>
-                탈퇴 후 게시판형 서비스에 등록한 게시물은 모두 삭제됩니다.
-              </li>
+              <li>사용하고 계신 아이디는 탈퇴할 경우 재사용 및 복구가 불가능합니다.</li>
+              <li>탈퇴 후 회원정보 및 개인형 서비스 이용기록은 모두 삭제됩니다.</li>
+              <li>탈퇴 후 게시판형 서비스에 등록한 게시물은 모두 삭제됩니다.</li>
             </ul>
           </div>
       </div>

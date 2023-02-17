@@ -60,10 +60,10 @@ p {
 <title>main</title>
 </head>
 <body>
-	<div class="wrap container">
-	
-		<jsp:include page="/WEB-INF/views/fix/header.jsp"></jsp:include>
-	
+	<jsp:include page="/WEB-INF/views/fix/header.jsp"></jsp:include>
+
+	<section class="container">
+
 		<!-- 광고칸 -->
 		<div id="advertisement">
 			<div id="carouselExampleDark" class="carousel carousel-dark slide"
@@ -85,7 +85,7 @@ p {
 							alt="광고_02">
 					</div>
 				</div>
-
+	
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleDark" data-bs-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -98,7 +98,7 @@ p {
 				</button>
 			</div>
 		</div>
-
+	
 		<!-- 최근 입양글 -->
 		<h1>강아지를 구해줘!</h1>
 		<section id="latest_adopt">
@@ -125,9 +125,10 @@ p {
 		<div>
 			<img alt="광고_03" class="d-block w-100" src="resources/image/adver_03.png">
 		</div>
-		
-		<jsp:include page="/WEB-INF/views/fix/footer.jsp"></jsp:include>
-	</div>
+	</section>
+	
+	<jsp:include page="/WEB-INF/views/fix/footer.jsp"></jsp:include>
+
 <script type="text/javascript">
 /* 	alert("시잗");
 	$.ajax({

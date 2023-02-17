@@ -12,69 +12,62 @@
 </head>
 
 <body>
-  <div class="wrap">
-  
     <jsp:include page="../fix/header.jsp"></jsp:include>
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
 
-    <h2>마이페이지</h2>
-    <div id="mypage" class="d-flex justify-content-start">
-	  <jsp:include page="../fix/aside.jsp"></jsp:include>
+	<div class="main">
+	  <div class="">
+	    <div class="sideNavGap row">
+		  <!-- 마이페이지 목록 -->
+		  <jsp:include page="../fix/aside.jsp"></jsp:include>
 
-      <section class=" mypage_content">
-	        <table class="table">
-	          <thead class="table-secondary">
-	            <tr>
-	              <th scope="col" class="tbl_num">번호</th>
-	              <th scope="col" class="tbl_title">제목</th>
-	              <th scope="col" class="tbl_sign">신청인</th>
-	              <th scope="col" class="tbl_sign">신청일</th>
-	            </tr>
-	          </thead>
-	          <tbody>
+	      <section class="sidebarContent col-lg-9 col-md-9 col-sm-12 col-xs-12">
+	        <div>
+	          <h1 class="pageH1">희망자목록</h1>
+	
+	          <article class="pageBody">
+	            <ul class="listAccountProviders">
+
 	            <c:choose>
 				  <c:when test="${!empty hopeList}">
 					<c:forEach items="${hopeList}" var="hope">
-		              <tr>
-		       	        <th scope="row">${hope.rownum}</th>
-		       	        <td>${hope.boardTitle}</td>
-		       	        <td>${hope.userName}(${hope.userId})</td>
-		       	        <td><fmt:formatDate value="${hope.adoptReqDate}" pattern="yyyy-MM-dd"/></td>
-		              </tr>
+		              <li class="list-item">
+		                <div class="media">
+		                  <img src="../img/dog.jpg">
+		                  <span class="">${hope.userName}(${hope.userId})</span>
+		                  <small>5일 전</small>
+		                </div>
+		                <h6>${hope.boardTitle}</h6>
+		                <a class="btn btn-md btn-outline-primary" rel="nofollow" data-method="post" href="#">대화하기</a>
+		              </li>
 			        </c:forEach>
 	          	  </c:when>
 	   			  <c:otherwise>
-	   				<td colspan="4">입양 희망자가 없습니다.</td>
+	   				입양 희망자가 없습니다.
 	   			  </c:otherwise>        
       			</c:choose>
-	          </tbody>
-	        </table>
+      			
+	              <li class="list-item">
+	                <div class="media">
+	                  <img src="../img/dog.jpg">
+	                  <span class="">Github</span>
+	                  <small>5일 전</small>
+	                </div>
+	                <h6>아직 임보중이신가요?</h6>
+	                <a class="btn btn-md btn-outline-primary" rel="nofollow" data-method="post" href="#">대화하기</a>
+	              </li>
+	          </ul>
 	
-
-        <div aria-label="Page navigation example" class="paging">
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-        </div>
-      </section>
-    </div>
+	          </article>
+	        </div>
+	      </section>
+	
+	    </div>
+	  </div>
+	</div>
     
 	<jsp:include page="../fix/footer.jsp"></jsp:include>
-
-</div>
-
+	
 </body>
 </html>

@@ -14,75 +14,66 @@
 </head>
 
 <body>
-  <div class="wrap">
-  
   	<jsp:include page="../fix/header.jsp"></jsp:include>
-	<!-- 회원만 열람 가능 -->
-	<script src="/resources/js/login_check.js"></script>
-
-    <h2>마이페이지</h2>
-    <div id="mypage" class="d-flex justify-content-start">
-	  <jsp:include page="../fix/aside.jsp"></jsp:include>
-
-      <section class="mypage_content">
-		<table class="table">
-		  <thead class="table-secondary">
-		    <tr>
-		      <th scope="col" class="tbl_num">번호</th>
-		      <th scope="col" class="tbl_sign">상품명</th>
-		      <th scope="col" class="tbl_sign">수량</th>
-		      <th scope="col" class="tbl_sign">금액</th>
-		      <th scope="col" class="tbl_sign">배송지</th>
-		      <th scope="col" class="tbl_sign">구매일</th>
-		    </tr>
-		  </thead>
-		  
-		  <tbody>
-			<c:choose>
-			  <c:when test="${!empty sponsorMyPage}">    
-				<c:forEach items="${sponsorMyPage}" var="sponsor">
-				  <tr>
-			  		<th scope="row">${sponsor.rownum}</th>
-					<td>${sponsor.sponsorItemName}</td>
-					<td>${sponsor.sponsorAmount}</td>
-					<td>${sponsor.sponsorTotalPrice}</td>
-					<td>${sponsor.sponsorShippingAddr}</td>
-					<td><fmt:formatDate value="${sponsor.sponsorDate}" pattern="yyyy-MM-dd"/></td>
-				  </tr>          
-				</c:forEach>
-			  </c:when>
-			  <c:otherwise>
-			    <tr>
-				  <td colspan="6">후원 내역이 없습니다.</td>
-				</tr>
-			  </c:otherwise>        
-			</c:choose>
-		  </tbody>
-		</table>
-        
-        <div aria-label="Page navigation example" class="paging">
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-        </div>
-      </section>
-    </div>
-    
-	<jsp:include page="../fix/footer.jsp"></jsp:include>
-
-</div>
+  	<!-- 회원만 열람 가능 -->
+  	<script src="/resources/js/login_check.js"></script>
+  
+	<div class="main">
+	  <div class="">
+	    <div class="sideNavGap row">
+		  <!-- 마이페이지 목록 -->
+		  <jsp:include page="../fix/aside.jsp"></jsp:include>
+	
+	      <section class="sidebarContent col-lg-9 col-md-9 col-sm-12 col-xs-12">
+	        <div>
+	          <h1 class="pageH1">주문내역</h1>
+	
+	          <article class="pageBody">
+	              <!-- 파일 업로드 -->
+	              <div class="formGroup">
+	                  <table class="table table-bordered">
+	                    <thead>
+	                      <tr>
+	                        <th class="good">상품</th>
+	                        <th class="date">기간</th>
+	                        <th class="amount">갯수</th>
+	                        <th class="price">금액</th>
+	                        <!-- <th class="method">방법</th> -->
+	                        <th class="status">상태</th>
+	                    </tr>
+	                    </thead>
+	                    <tbody>
+							<c:choose>
+							  <c:when test="${!empty sponsorMyPage}">    
+								<c:forEach items="${sponsorMyPage}" var="sponsor">
+								  <tr>
+							  		<!-- <th scope="row">${sponsor.rownum}</th> -->
+									<td class="text-center">${sponsor.sponsorItemName}</td>
+									<td class="text-center"><fmt:formatDate value="${sponsor.sponsorDate}" pattern="yyyy-MM-dd"/></td>
+									<td class="text-center">${sponsor.sponsorAmount}</td>
+									<td class="text-center">${sponsor.sponsorTotalPrice}</td>
+									<td class="text-center">${sponsor.sponsorShippingAddr}</td>
+								  </tr>          
+								</c:forEach>
+							  </c:when>
+							  <c:otherwise>
+							    <tr>
+								  <td colspan="5" class="text-center">후원 내역이 없습니다.</td>
+								</tr>
+							  </c:otherwise>
+							</c:choose>
+	                    </tbody>
+	                  </table>
+	              </div>
+	          </article>
+	        </div>
+	      </section>
+	
+	    </div>
+	  </div>
+	</div>
+	
+    <jsp:include page="../fix/footer.jsp"></jsp:include>
 
 </body>
 </html>
