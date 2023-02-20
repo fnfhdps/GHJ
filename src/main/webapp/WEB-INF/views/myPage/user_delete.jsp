@@ -23,7 +23,7 @@
   }
 </style>
 
-<title>회원탈퇴</title>
+<title>회원탈퇴(사용x)</title>
 </head>
 
 <body>

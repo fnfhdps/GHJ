@@ -6,6 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<!-- header&footer css -->
+<link rel="stylesheet" href="/resources/css/fix.css">
 <style type="text/css">
 * {
 	margin: 0;
@@ -46,13 +49,12 @@ form {
 저장된 전화번호가 없으면 회원 정보에서 수정하도록 만들기
 입력 이후
 -->
-<div class="wrap container">
-
+<div class="wrap">
 	<jsp:include page="../fix/header.jsp"></jsp:include>
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
-
-	<section>
+	
+	<section class="container py-5">
 		<div class="row">
 		 	<img class="col-12" src="/resources/image/sponsor/sponsor_content.png">	
 			<img class="col-12" src="${sponsorItem.sponsorItemImg}">
