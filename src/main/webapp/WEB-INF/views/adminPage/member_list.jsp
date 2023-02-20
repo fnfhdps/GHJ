@@ -16,133 +16,94 @@
 
 <!-- 관리자 role인지 확인하기 -->
 <body>
-  <div class="main_content d-flex flex-nowrap">
+  <!-- 관리자페이지 헤더 -->
+  <jsp:include page="../fix/admin_header.jsp"></jsp:include>
+  
+  <div class="container-fluid">
+    <div class="row">
     <!-- 관리자페이지 목록 -->
     <jsp:include page="../fix/admin_nav.jsp"></jsp:include>
-
-    <div class="section2">
-      <header>
-        <div class="head_content py-3">
-          <div class="container-fluid align-items-center" style="grid-template-columns: 1fr 2fr;">
-            <div class="d-flex align-items-center">
-              <div class="w-50 fw-bold m-1">
-                <span class="head_text">회원 관리</span>
-              </div>
-              <form class="w-100 me-3" role="search">
-                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-              </form>
   
-              <div class="flex-shrink-0 dropdown">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                </a>
-                <ul class="dropdown-menu text-small shadow">
-                  <li><a class="dropdown-item" href="#">New project...</a></li>
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Sign out</a></li>
-                </ul>
-              </div>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-5 mt-4">
+        <div class="chartjs-size-monitor">
+          <div class="chartjs-size-monitor-expand">
+            <div class=""></div>
+          </div>
+          <div class="chartjs-size-monitor-shrink">
+            <div class=""></div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">회원관리</h1>
+        </div>
+
+        <section class="member_container">
+          <article class="member_content member_size pageBody">
+            <div class="mb-4">
+              <input class="form-control" type="text" placeholder="Search" type="text" name="" id="">
             </div>
-          </div>
-      </div>
-      </header>
-
-      <section class="member_container align-self-center">
-        <article class="member_content member_size pageBody">
-          <div class="mb-4">
-            <input class="form-control" type="text" placeholder="Search" type="text" name="" id="">
-          </div>
-
-          <div class="comment_title">
-            <span>회원수</span>
-            <span>35</span>
-          </div>
-
-          <div class="table_content">
-            <table class="table">
-              <thead>
-              <tr>
-                <th class="">프로필</th>
-                <th class="">아이디</th>
-                <th class="">가입일</th>
-                <th class="">신고횟수</th>
-                <th class=""></th>
-              </tr>
-              </thead>
-              <tbody>
+  
+            <div class="d-flex comment_title tbl_caption">
+              <div class="mt-2">
+                <span>회원수</span>
+                <span>35</span>
+              </div>
+              
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+  
+            <div class="table_content">
+              <table class="table">
+                <thead>
                 <tr>
-                  <td>회원사진1</td>
-                  <td>sdbf1356</td>
-                  <td>2022-12-23</td>
-                  <td>12</td>
-                  <td class="text-center dropdown">
-                        <i class="bi bi-three-dots-vertical" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                  <th class="">번호</th>
+                  <th class="">아이디</th>
+                  <th class="">가입일</th>
+                  <th class="">신고횟수</th>
+                  <th class=""></th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-center">1</td>
+                    <td class="text-center">sdbf1356</td>
+                    <td class="text-center">2022-12-23</td>
+                    <td class="text-center">12</td>
+                    <td class="text-center dropdown">
+                      <i class="bi bi-three-dots-vertical"
+                          id="dropdownMenuButton1"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                      </i>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li><a class="dropdown-item" href="#">조회</a></li>
                         <li><a class="dropdown-item" href="#">삭제</a></li>
                       </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td>회원사진1</td>
-                  <td>sdbf1356</td>
-                  <td>2022-12-23</td>
-                  <td>12</td>
-                  <td class="text-center dropdown">
-                    <i class="bi bi-three-dots-vertical" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">조회</a></li>
-                    <li><a class="dropdown-item" href="#">삭제</a></li>
-                  </ul>
-              </td>
-                </tr>
-                <tr>
-                  <td>회원사진1</td>
-                  <td>sdbf1356</td>
-                  <td>2022-12-23</td>
-                  <td>12</td>
-                  <td class="text-center dropdown">
-                    <i class="bi bi-three-dots-vertical" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">조회</a></li>
-                    <li><a class="dropdown-item" href="#">삭제</a></li>
-                  </ul>
-              </td>
-                </tr>
-                <tr>
-                  <td>회원사진1</td>
-                  <td>sdbf1356</td>
-                  <td>2022-12-23</td>
-                  <td>12</td>
-                  <td class="text-center dropdown">
-                    <i class="bi bi-three-dots-vertical" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">조회</a></li>
-                    <li><a class="dropdown-item" href="#">삭제</a></li>
-                  </ul>
-              </td>
-                </tr>
-                <tr>
-                  <td>회원사진1</td>
-                  <td>sdbf1356</td>
-                  <td>2022-12-23</td>
-                  <td>12</td>
-                  <td class="text-center dropdown">
-                    <i class="bi bi-three-dots-vertical" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">조회</a></li>
-                    <li><a class="dropdown-item" href="#">삭제</a></li>
-                  </ul>
-              </td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
-        </article>
-      </section>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
 
+      </main>
     </div>
   </div>
 </body>

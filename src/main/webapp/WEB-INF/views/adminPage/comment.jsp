@@ -16,158 +16,113 @@
 
 <!-- 관리자 role인지 확인하기 -->
 <body>
-  <div class="main_content d-flex flex-nowrap">
+  <!-- 관리자페이지 헤더 -->
+  <jsp:include page="../fix/admin_header.jsp"></jsp:include>
+  
+  <div class="container-fluid">
+    <div class="row">
     <!-- 관리자페이지 목록 -->
     <jsp:include page="../fix/admin_nav.jsp"></jsp:include>
-
-    <div class="section2">
-      <header>
-        <div class="head_content py-3">
-          <div class="container-fluid align-items-center" style="grid-template-columns: 1fr 2fr;">
-            <div class="d-flex align-items-center">
-              <div class="w-50 fw-bold m-1">
-                <span class="head_text">댓글 관리</span>
-              </div>
-              <form class="w-100 me-3" role="search">
-                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-              </form>
   
-              <div class="flex-shrink-0 dropdown">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                </a>
-                <ul class="dropdown-menu text-small shadow">
-                  <li><a class="dropdown-item" href="#">New project...</a></li>
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Sign out</a></li>
-                </ul>
-              </div>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-5 mt-4">
+        <div class="chartjs-size-monitor">
+          <div class="chartjs-size-monitor-expand">
+            <div class=""></div>
+          </div>
+          <div class="chartjs-size-monitor-shrink">
+            <div class=""></div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">댓글관리</h1>
+        </div>
+
+        <section class="member_container">
+          <article class="member_content member_size pageBody">
+            <div class="mb-4">
+              <input class="form-control" type="text" placeholder="Search" type="text" name="" id="">
             </div>
-          </div>
-      </div>
-      </header>
+  
+            <div class="d-flex comment_title tbl_caption">
+              <div class="mt-2">
+                <span>댓글수</span>
+                <span>35</span>
+              </div>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+  
+            <div class="table_content">
+              <table class="table tal1">
+                <tbody>
+                  <tr class="row mt-3">
+                    <td class="col col-1 text-center">
+                      <input class="tab_chkbax" type="checkbox" name="" id="">
+                    </td>
+                    <td class="col col-1">
+                      <img src="../img/dog.jpg" alt="">
+                    </td>
+                    <td class="col col-8">
+                      <div class="tbl_text_div">
+                        <div class="d-flex comment_tbl_text">
+                          <span>김지수</span>
+                          <small>dfge23@naver.com</small>
+                          <small>2021-03-12</small>
+                        </div>
+                        <div>아가가 귀엽네여</div>
+                      </div>
+                    </td>
+                    <td class="col col-auto text-end ms-5">
+                      <a href="#">삭제</a>
+                    </td>
+                  </tr>
+                  <tr class="row mt-3">
+                    <td class="col col-1 text-center">
+                      <input class="tab_chkbax" type="checkbox" name="" id="">
+                    </td>
+                    <td class="col col-1">
+                      <img src="../img/dog.jpg" alt="">
+                    </td>
+                    <td class="col col-8">
+                      <div class="tbl_text_div">
+                        <div class="d-flex comment_tbl_text">
+                          <span>김지수</span>
+                          <small>dfge23@naver.com</small>
+                          <small>2021-03-12</small>
+                        </div>
+                        <div>아가가 귀엽네여</div>
+                      </div>
+                    </td>
+                    <td class="col col-auto text-end ms-5">
+                      <a href="#">삭제</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-      <section class="member_container align-self-center">
-        <article class="member_content member_size pageBody">
-          <div class="mb-4">
-            <input class="form-control" type="text" placeholder="작성자, 내용 검색" type="text" name="" id="">
-          </div>
+            <div class="notice_btn d-flex justify-content-end">
+              <a href="#" type="button" class="btn btnAuthentication">선택 삭제</a>
+            </div>
+          </article>
+        </section>
 
-          <div class="comment_title">
-            <span>전체 댓글</span>
-            <span>35</span>
-          </div>
-
-          <div class="table_content">
-            <table class="table tal1">
-              <tbody>
-                <tr class="row">
-                  <td class="col-1 text-center">
-                    <input class="tab_chkbax" type="checkbox" name="" id="">
-                  </td>
-                  <td class="col-1">
-                    <img src="../img/dog.jpg" alt="">
-                  </td>
-                  <td class="col-8">
-                    <div class="tbl_text_div">
-                      <div class="d-flex comment_tbl_text">
-                        <span>김지수</span>
-                        <small>dfge23@naver.com</small>
-                        <small>2021-03-12</small>
-                      </div>
-                      <div>
-                        아가가 귀엽네여
-                      </div>
-                    </div>
-                  </td>
-                  <td class="col-1 text-end ms-5">
-                    <a href="#">삭제</a>
-                  </td>
-                </tr>
-                
-                <tr class="row">
-                  <td class="col-1 text-center">
-                    <input class="tab_chkbax" type="checkbox" name="" id="">
-                  </td>
-                  <td class="col-1">
-                    <img src="../img/dog.jpg" alt="">
-                  </td>
-                  <td class="col-8">
-                    <div class="tbl_text_div">
-                      <div class="d-flex comment_tbl_text">
-                        <span>김지수</span>
-                        <small>dfge23@naver.com</small>
-                        <small>2021-03-12</small>
-                      </div>
-                      <div>
-                        아가가 귀엽네여
-                      </div>
-                    </div>
-                  </td>
-                  <td class="col-1 text-end ms-5">
-                    <a href="#">삭제</a>
-                  </td>
-                </tr>
-                <tr class="row">
-                  <td class="col-1 text-center">
-                    <input class="tab_chkbax" type="checkbox" name="" id="">
-                  </td>
-                  <td class="col-1">
-                    <img src="../img/dog.jpg" alt="">
-                  </td>
-                  <td class="col-8">
-                    <div class="tbl_text_div">
-                      <div class="d-flex comment_tbl_text">
-                        <span>김지수</span>
-                        <small>dfge23@naver.com</small>
-                        <small>2021-03-12</small>
-                      </div>
-                      <div>
-                        아가가 귀엽네여
-                      </div>
-                    </div>
-                  </td>
-                  <td class="col-1 text-end ms-5">
-                    <a href="#">삭제</a>
-                  </td>
-                </tr>
-                <tr class="row">
-                  <td class="col-1 text-center">
-                    <input class="tab_chkbax" type="checkbox" name="" id="">
-                  </td>
-                  <td class="col-1">
-                    <img src="../img/dog.jpg" alt="">
-                  </td>
-                  <td class="col-8">
-                    <div class="tbl_text_div">
-                      <div class="d-flex comment_tbl_text">
-                        <span>김지수</span>
-                        <small>dfge23@naver.com</small>
-                        <small>2021-03-12</small>
-                      </div>
-                      <div>
-                        아가가 귀엽네여
-                      </div>
-                    </div>
-                  </td>
-                  <td class="col-1 text-end ms-5">
-                    <a href="#">삭제</a>
-                  </td>
-                </tr>
-
-              </tbody>
-            </table>
-        </div>
-
-        <div class="notice_btn d-flex justify-content-end">
-          <a href="#" type="button" class="btn btnAuthentication">선택 삭제</a>
-        </div>
-
-        </article>
-      </section>
-
+      </main>
     </div>
   </div>
 </body>

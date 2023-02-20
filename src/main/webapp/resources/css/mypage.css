@@ -323,8 +323,6 @@ background-color: rgba(0,0,0,0.6);
 
 }
 
-
-
 /* 회원 탈퇴 모달 css */
 .modal-header{
   border-bottom: none;
@@ -388,12 +386,12 @@ background-color: rgba(0,0,0,0.6);
   display: inline-block;
 }
 .myinfo_area .myphoto img {
-  box-shadow: 0 3px 6px 0 rgb(29 34 53 / 8%);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+/*   box-shadow: 0 3px 6px 0 rgb(29 34 53 / 8%); */
   border-radius: 50%;
   vertical-align: top;
   width: 100px;
   height: 100px;
-  border: 2px solid rgba(0, 0, 0, 0.07);
 }
 /* .myinfo_area .myaccount .myname {
   position: relative;

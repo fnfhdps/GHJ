@@ -50,53 +50,38 @@ a:hover{
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
+.nav-link .bi i{
+	width: 24px;
+	height: 24px;
+  margin-right: 4px;
+  color: #727272;
+}
 
-.main_content{
-  height: 100vh;
-  /* max-width: 1200px; */
-  background-color: #efefefa7;
-}
-section .main{
-  height: -webkit-fill-available;
-  max-height: 100vh;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-header{
-  width: 1200px;
-  background-color: white;
-}
-.head_content{
-  border-bottom : 1px solid #cccfd3;
-}
-.head_content .head_text{
-  margin: 0;
-  padding: 1.5rem;
-}
-.nav_content{
-  /* height: 100%; */
-}
-.member_container{
-  width: 1200px;
-
-}
-.member_size{
+/* .member_size{
   margin: 3.5rem;
-}
+} */
 .pageBody {
   position: relative;
   padding: 1.5rem;
 }
 
-.art1 img{
-  aspect-ratio: 1/1;
-  width: 100px;
-  border-radius: 50%;
-}
 .formGroup input{
   outline: none;
 }
-
+@media (max-width: 995px) {
+  .art_border{
+    box-shadow: none;
+  }
+  .pageBody{
+    padding: 0;
+  }
+}
+@media (min-width: 995px) {
+  .art_border{
+    /* background-color: white; */
+    box-shadow: 1px 1px 10px 0 rgba(12, 12, 12, 0.08);
+  }
+}
 
 /* 테이블 css */
 input.form-control, .table_content{
@@ -105,7 +90,7 @@ input.form-control, .table_content{
 .table_content{
   background-color: white;
   border: 0.0625rem solid #D7E2EB;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.5rem;
   border-radius: 0.75rem;
 }
 .table th {
@@ -120,11 +105,13 @@ input.form-control, .table_content{
 .table th, .table td{
   padding: 20px;
 }
+.tbl_caption{
+  /* flex: 1; */
+  justify-content: space-between;
+}
 
 /* 회원정보상세 css */
-.art1{
-  height: 70%;
-}
+
 .art_content{
   margin: 0;
 }
@@ -132,9 +119,7 @@ input.form-control, .table_content{
   font-weight: bold;
   margin-bottom: 2rem;
 }
-.art2_text small{
-  /* color: gray; */
-}
+
 .art1 h3, .art2_text h3{
   font-weight: bolder;
   font-size: 20px;
@@ -146,13 +131,13 @@ input.form-control, .table_content{
 .art_sub1{
   margin-bottom: 2rem;
 }
-.member_content{
-  /* margin: 0 20px; */
+.arrow-text{
+  font-weight: bold;
 }
-.art_content article{
-  background-color: white;
-  box-shadow: 1px 1px 10px 0 rgb(72 75 108 / 8%);
+i.arrow-text{
+  color: black;
 }
+
 @media (max-width: 990px) {
   .art2{
     padding: 0;
@@ -166,7 +151,7 @@ input.form-control, .table_content{
 .comment_title{
   font-weight: bold;
   /* padding-left: 20px; */
-  padding: 0 20px 10px 20px;
+  /* padding: 0 20px 10px 20px; */
   /* background-color: darkcyan; */
 }
 .btnAuthentication{
@@ -178,10 +163,16 @@ input.form-control, .table_content{
 .notice_btn a{
   margin-left: 0.25rem;
 }
-.tal1 img{
+.tal1 img, .art1 img{
   aspect-ratio: 1/1;
-  width: 50px;
   border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+}
+.tal1 img{
+  width: 50px;
+}
+.art1 img{
+  width: 100px;
 }
 .comment_tbl_text{
   padding-top: 0.1rem;
