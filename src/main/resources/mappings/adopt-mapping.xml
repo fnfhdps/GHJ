@@ -55,7 +55,7 @@
 			select username, userid, board.boardSeq, board.boardCategory, board.boardTitle,
 					board.userSeq, board.boardContent, board.boardDate, adopt.adoptImg,
 					adopt.adoptSex, adopt.adoptRescueDate, adopt.adoptAge, adopt.adoptAddr,
-					adopt.adoptWeight, adopt.adoptNeutor, adopt.adoptState, adopt.adoptKind
+					adopt.adoptWeight, adopt.adoptNeutor, adopt.adoptState, adopt.adoptKind, board.boardCnt
 			from board, adopt, users
 			where board.boardseq = adopt.boardseq
 			and board.userseq = users.userseq
@@ -97,7 +97,6 @@
    		]]>
     
     </select>
-    
 	
 	 <!-- 입양 목록 게시물 총 갯수 -->
     <select id="getAdoptTotalCount" resultType="int">
@@ -108,6 +107,15 @@
 			and boardTitle like '%'||#{keyword}||'%'
 		</if>
     </select>
+    
+    <!-- 입양 게시물 조회수 카운트 -->
+	<update id="updateBoardCnt">
+		<![CDATA[
+			update board
+			set boardcnt = boardcnt + 1
+			where boardseq = #{boardSeq}
+		]]>
+	</update>
 	
 	<!-- 입양 희망자 입력 -->
 	<insert id="insertAdoptReq" parameterType="int">

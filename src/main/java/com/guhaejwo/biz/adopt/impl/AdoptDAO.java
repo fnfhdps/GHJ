@@ -78,7 +78,12 @@ public class AdoptDAO {
 		return mybatis.selectOne("AdoptDAO.getAdoptTotalCount");
 	}
 	
-
+	// 입양 게시물 조회수 카운트
+	public void updateBoardCnt(AdoptDTO adopt) {
+		System.out.println("--> AdoptRepository.updateBoardCnt() 실행");
+		mybatis.update("AdoptDAO.updateBoardCnt", adopt);
+	}
+	
 	// 입양 희망자 입력
 	public void insertAdoptReq(AdoptReqDTO adopt) {
 		System.out.println("--> AdoptRepository.insertAdoptReq() 실행");

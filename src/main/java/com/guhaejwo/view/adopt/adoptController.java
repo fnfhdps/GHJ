@@ -66,7 +66,8 @@ public class adoptController {
 		
 		// 게시글 상세 조회
 		adopt.setBoardSeq(boardSeq);
-		model.addAttribute("adoptDetail", adoptService.getAdoptDetail(adopt));
+		AdoptDTO adoptDetail = adoptService.getAdoptDetail(adopt);
+		model.addAttribute("adoptDetail", adoptDetail);
 		
 		// 댓글 목록 조회
 		reply.setBoardCategory(category);
@@ -82,6 +83,11 @@ public class adoptController {
 	    blame.setBoardSeq(boardSeq);
 		blame.setReq_userSeq(userSeq);
 	    model.addAttribute("blame", adoptService.getBlame(blame));
+	    
+	    // 조회수 카운트
+	    int boardCnt = adoptDetail.getBoardCnt();
+	    adopt.setBoardCnt(boardCnt);
+	    adoptService.updateBoardCnt(adopt);
 		
 		return "adopt/adopt_detail";
 	}

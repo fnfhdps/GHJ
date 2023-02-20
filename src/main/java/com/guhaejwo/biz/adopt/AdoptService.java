@@ -39,6 +39,9 @@ public interface AdoptService {
 	// 입양 희망자 중복 체크
 	public AdoptReqDTO hopeCheck(AdoptReqDTO adopt);
 	
+	// 입양 관련 board 수정
+	public void updateBoardCnt(AdoptDTO adopt);
+	
 	// 입양 상태 변경
 	public void adoptStateUpdate(AdoptDTO adopt);
 	

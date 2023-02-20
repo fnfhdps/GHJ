@@ -69,6 +69,11 @@ public class AdoptServiceImpl implements AdoptService {
 	}
 	
 	@Override
+	public void updateBoardCnt(AdoptDTO adopt) {
+		adoptDAO.updateBoardCnt(adopt);
+	}
+	
+	@Override
 	public void insertAdoptReq(AdoptReqDTO adopt) {
 		adoptDAO.insertAdoptReq(adopt);
 	}
