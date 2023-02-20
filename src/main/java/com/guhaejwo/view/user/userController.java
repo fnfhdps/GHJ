@@ -32,14 +32,20 @@ public class userController {
 		this.userService = userService;
 	}
 	
-	// 내 정보 수정 이동 (마이페이지)
-	@GetMapping("/mypage/update")
-	public String update() {
+	// 내 정보 이동 (마이페이지)
+	@GetMapping("/mypage/info")
+	public String info() {
 		return "/myPage/user_update";
 	}
-
+	
+	// 내 정보 수정 이동 (마이페이지)
+	@GetMapping("/mypage/info/update")
+	public String update() {
+		return "/myPage/user_update_form";
+	}
+	
 	// 내 정보 수정 (마이페이지)
-	@PostMapping("/mypage/update")
+	@PostMapping("/mypage/info/update")
 	public String update(UserDTO user , Model model) throws Exception{
 		//System.out.println("파일업로드"+user.getUserImg());
 		// 파일 업로드 처리

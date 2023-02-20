@@ -1,0 +1,11 @@
+@media (min-width: 1024px){
+  .promoted-articles {
+  flex-direction: row;
+}
+.promoted-articles-item {
+    align-self: flex-end;
+    flex: 0 0 auto;
+    padding-right: 30px;
+    width: 33%;
+}
+}

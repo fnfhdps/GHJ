@@ -8,117 +8,65 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  .sign_li_content{
-    padding-left: 50px;
-    padding-bottom: 30px;
-  }
-  .sign_li_content img{
-    width: 120px;
-    height: 120px;
-    /* border-radius:50px 40px / 50px 70px; */
-    /* border: solid #faaf4c; */
-  }
 
-  .sign_li_content ul{
-    list-style: none;
-    font-weight: bold;
-    font-size: 12px;
-    padding-top: 10px;
-    
-  }
-  
-  .sign_li_content li{
-    margin-left: -25px;
-    padding: 5px;
-  }
-
-  .sign_content{
-    /* background-color: aquamarine; */
-    display: flex;
-    /* justify-content: space-evenly; */
-    flex-wrap: wrap;
-    position: relative;
-    left: 90px;
-    top: 10px
-  }
-
-  .content_size{
-    width: 800px;
-  }
-
-  .icon{
-    text-align: right;
-  }
-
-  .icon svg{
-    width: 20px;
-    height: 16px;
-  }
-
-</style>
-
-<title>나의관심동물</title>
+<!-- mypage css -->
+<link rel="stylesheet" href="/resources/css/mypage.css">
+<title>내관심동물</title>
 </head>
 
 <body>
-  <div class="wrap">
-  
+<div class="wrap">
   	<jsp:include page="../fix/header.jsp"></jsp:include>
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
 	
-    <h2>마이페이지</h2>
-    <div id="mypage">
-      <jsp:include page="../fix/aside.jsp"></jsp:include>
+<div class="main">
+  <div class="">
+    <div class="sideNavGap row">
+	  <!-- 마이페이지 목록 -->
+	  <jsp:include page="../fix/aside.jsp"></jsp:include>
 
-      <section class="mypage_content">
-        <article class="content_size">
-          <div class="sign_content">
-          
-          <c:choose>
-			<c:when test="${!empty myHeart}">
-				<c:forEach items="${myHeart}" var="heart">
-		            <div class="sign_li_content">
-		              <div>
-		                <a href="#">
-	                	  <input type="hidden" name="userHeartSeq" value="${heart.userHeartSeq}">
-	                 	  <img src="${heart.adoptImg}" alt="내 관심동물">
-	                 	  <i class="bi bi-heart-fill"></i>
-		                </a>
-		              </div>
-		            </div>
-	            </c:forEach>
-            </c:when>
-  			<c:otherwise>
-	   		  	관심동물이 없습니다.
-	   		</c:otherwise>        
-          </c:choose>
-          </div>
-        </article>
+      <section class="heart_container sidebarContent col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div>
+          <h1 class="pageH1">관심동물</h1>
 
-        <div aria-label="Page navigation example" class="paging">
-          <ul class="pagination justify-content-center">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-      </div>
+          <article class="pageBody">
+            <div class="heart_content css-1ltj86z e15wafbq0">
+              <div class="css-1w92ebd e1lm7yo61">
+                <div class="virtualized-list heart_row row" style="padding-top: 0px; padding-bottom: 0px; transform: translateY(0px);">
+
+		            <c:choose>
+					  <c:when test="${!empty myHeart}">
+						<c:forEach items="${myHeart}" var="heart">
+		                  <div class="col-6 col-lg-4">
+		                    <div class="css-prip86 e1lm7yo60">
+		                      <div class="css-beq49r e1vfbmcc3">
+		                      	<img class="css-1b4920d e1vfbmcc2" src="${heart.adoptImg}" alt="관심동물">
+  		                          <a class="css-1q3ntsa e1vfbmcc1">
+			                        <i class="bi bi-heart-fill"></i>
+ 		                          </a>
+		                      </div>
+		                    </div>
+		                  </div>
+			            </c:forEach>
+		              </c:when>
+		  			  <c:otherwise>
+			   		  	<p>관심동물이 없습니다.</p>
+			   		  </c:otherwise>        
+		            </c:choose>
+            
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </section>
+
     </div>
+  </div>
+</div>
     
     <jsp:include page="../fix/footer.jsp"></jsp:include>    
 </div>
-
 </body>
 </html>

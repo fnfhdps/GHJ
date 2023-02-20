@@ -25,7 +25,6 @@
 
 <!-- header&footer css -->
 <link rel="stylesheet" href="/resources/css/fix.css">
-<link rel="stylesheet" href="/resources/css/mypage.css">
 
 <title>header</title>
 </head>
@@ -67,7 +66,7 @@
 
             <div class="member">
               <span class="font_bold">${login.userName}(${login.userId})님</span>
-              <a href="/mypage/update">마이페이지</a>
+              <a href="/mypage/info">마이페이지</a>
               <span> | </span>
               <a href="/logout">로그아웃</a>
             </div>

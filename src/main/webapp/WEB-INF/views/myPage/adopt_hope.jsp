@@ -8,10 +8,14 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- mypage css -->
+<link rel="stylesheet" href="/resources/css/mypage.css">
 <title>입양 희망자 목록</title>
 </head>
 
 <body>
+<div class="wrap">
     <jsp:include page="../fix/header.jsp"></jsp:include>
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
@@ -58,6 +62,6 @@
 	</div>
     
 	<jsp:include page="../fix/footer.jsp"></jsp:include>
-	
+</div>
 </body>
 </html>

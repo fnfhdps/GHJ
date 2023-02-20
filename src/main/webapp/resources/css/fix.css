@@ -1,14 +1,8 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap'); */
 
-/* a태그 모두 공통 
-밑줄, 파란색 제거*/
-a{
-  text-decoration: none;
-  color: black;
-}
-
 /* header css */
+
 *{
   box-sizing: border-box;
   margin: 0;
@@ -19,6 +13,8 @@ a{
   border-bottom: 1px solid #f2f2f2;
   align-items: center;
   background: #fff;
+  padding: 0.5rem 0;
+
 }
 #navSize{
   width: 100%;
@@ -32,19 +28,23 @@ a{
   height: 30px;
 }
 
-/* footer css */
-#wrap {
-    min-height: 100%;
-    position: relative;
-/*     padding-bottom: 60px; */
+/* a태그 모두 공통 
+밑줄, 파란색 제거*/
+a{
+  text-decoration-line: none;
+  color: black;
+}
+a:hover{
+  color: black;
 }
 
+/* footer css */
+
 footer{
+  position: absolute;
   bottom: 0;
+  width: 100%;
   background-color: black;
-  margin-top: 100px;
-/*   position: absolute;
-  width: 100%; */
 }
 
 footer ul{
@@ -57,15 +57,14 @@ footer ul{
 }
 /* 개인정보처리방침, 이용약관 */
 footer ul a{
+  text-decoration: none;
   margin-right: 12px;
   color: white;
 }
-
 /* footer 구해줘!펫즈 */
 .footBrand{
   font-family: 'Jua', sans-serif;
-  font-size: 30px;
-  margin-bottom: 7px;
+  font-size: 35px;
+  margin-bottom: 10px;
   /* font-weight: bold; */
-  
 }
