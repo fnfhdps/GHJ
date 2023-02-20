@@ -44,20 +44,18 @@
 		align-items: center;
 	}
 	
-	.image_center{
+	.image_center, .userInfo_center {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
 	
-	.userInfo_center{
+	.action_center {
 		display: flex;
-		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
-	
 </style>
 
 <title>입양 목록 상세 조회</title>
@@ -166,14 +164,16 @@
             </div>
             <br><br>
             
-            <div>
-            <input type="submit" id="hopeCheck" value="신청하기" onclick="checkSubmit(); return false;">
-            
-            <input type="hidden" id="heartCnt" value="${heart}">
-            <a id="heart" onclick="checkHeart()"><i id="heartIcon"></i></a>
-            
-            <input type="hidden" id="blameCnt" value="${blame}">
-            <a id="blame" onclick="checkBlame()"><i class="bi bi-exclamation-triangle-fill"></i></a>
+            <div class="action_center">
+	            <input class="btn btn-secondary" type="submit" id="hopeCheck" value="신청하기" onclick="checkSubmit(); return false;">
+	            &nbsp;&nbsp;&nbsp;&nbsp;
+	            
+	            <input type="hidden" id="heartCnt" value="${heart}">
+	            <a id="heart" onclick="checkHeart()"><i id="heartIcon"></i></a>
+	            &nbsp;&nbsp;&nbsp;&nbsp;
+	            
+	            <input type="hidden" id="blameCnt" value="${blame}">
+	            <a id="blame" onclick="checkBlame()"><i class="bi bi-exclamation-triangle-fill"></i></a>
             </div>
             <hr>
         </form>
@@ -183,8 +183,8 @@
         <div class="shadow-lg p-3 mb-5 bg-body rounded">
             <div>
                 <div class="input-group mb-3">
-                <input id="insert_content" type="text" class="form-control" placeholder="댓글을 입력해주세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="replyInsert();">입력</button>
+	                <input id="insert_content" type="text" class="form-control" placeholder="댓글을 입력해주세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+	                <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="replyInsert();">입력</button>
                 </div>
                 <!-- <input id="insert_content" type="text" placeholder="내용을 입력해주세요">
                 <input type="button" value="입력" onclick="replyInsert();"> -->
