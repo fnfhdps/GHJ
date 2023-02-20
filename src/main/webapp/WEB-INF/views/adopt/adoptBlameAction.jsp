@@ -22,28 +22,29 @@
         <form action="/adopt/insert/blaContent" method="post">
         
           <!-- 신고자 유저 시퀀스 -->	
-	      <input type="text" name="req_userSeq" value="${blaSeq.req_userSeq}">
+	      <input type="hidden" name="req_userSeq" value="${blaSeq.req_userSeq}">
           <!-- 피신고자 유저 시퀀스 -->	
-	      <input type="text" name="res_userSeq" value="${blaSeq.res_userSeq}">
+	      <input type="hidden" name="res_userSeq" value="${blaSeq.res_userSeq}">
 	      <!-- 보드 시퀀스 -->
-	       <input type="text" name="boardSeq" value="${blaSeq.boardSeq}">
+	       <input type="hidden" name="boardSeq" value="${blaSeq.boardSeq}">
               
               
-          <div>
-          	 <label class="col-sm-2 col-form-label">제목</label>
-           	 <div class="col-md-5">
-              <input type="text" name="blaTitle">
-         	 </div> 
-         </div>   
-          
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">신고내용</label>
-            <div class="col-md-5">
-              <textarea name="blaContent"></textarea>
-            </div>
+          <div class="mb-3">
+		      <label for="disabledTextInput" class="form-label">제목</label>
+		      <input type="text" id="disabledTextInput" class="form-control" placeholder="신고글의 제목을 입력하세요" name="boardTitle">
+   	  	  </div>
+   	  	  
+   	  	  
+   	  	  <div class="mb-3">
+			  <label for="exampleFormControlTextarea1" class="form-label">신고내용</label>
+			  <textarea class="form-control" name="blaContent" rows="7" placeholder="신고글의 내용을 입력하세요"></textarea>
+	 	  </div> 
+           
+          <div class="btn-group">        
+         	 <input class="btn btn-dark" style="width:1000px; height:80px; align-content:center;" type="submit" value="신고하기">
+          	 <button type="button" class="btn btn-secondary" style="width:300px; height:80px;"><a style="color:white;" href="/adopt/list">목록으로</a></button>
           </div>
-          
-          <input type="submit" value="신고하기">
+        
         </form>
         </article>
     </section>
