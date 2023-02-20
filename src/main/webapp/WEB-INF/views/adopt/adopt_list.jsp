@@ -66,6 +66,13 @@
     width: 100%;
     color: var(--seed-scale-color-gray-900);
 }
+
+	.search_wrap, .pageInfo_wrap {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 </style>
 <body>
 
@@ -107,7 +114,7 @@
 	                </c:choose>
 	                
 	                    <a class="loginCheck" href="/adopt/detail/${list.boardCategory}/${list.boardSeq}/${login.userSeq}">
-	                    	<img class="card-img-top" alt="" src="http://127.0.0.1:5500/dog1.jpg">
+	                    	<img class="card-img-top" alt="" src="/resources/image/dog.jpg">
 	                    </a>
 	                    <div class="card-body p-4">
 													
@@ -202,7 +209,7 @@
 	});
 	</script>
 
-	<jsp:include page="../fix/footer.jsp"></jsp:include>
+	<%-- <jsp:include page="../fix/footer.jsp"></jsp:include> --%>
 	
 </div>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

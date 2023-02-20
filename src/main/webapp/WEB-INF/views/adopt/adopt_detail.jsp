@@ -37,6 +37,27 @@
 		align-items: center;
 	}
 	
+	.detail_top {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.image_center{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.userInfo_center{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	
 </style>
 
 <title>입양 목록 상세 조회</title>
@@ -59,23 +80,27 @@
             <input type="hidden" id="detailUserSeq" value="${adoptDetail.userSeq}">
             <input type="hidden" id="boardCategory" value="${adoptDetail.boardCategory}">
             
-            <h3>${adoptDetail.boardTitle}</h3>
-            게시일 <fmt:formatDate value="${adoptDetail.boardDate}" pattern="yyyy.MM.dd" />
-            <br><p> 조회수 : ${adoptDetail.boardCnt} </p>
-            
-            <br><br>
-            <div class="btn-group">
-                <input type="button" class="btn btn-outline-dark" id="stateupdate" value="상태변경" onclick="stateUpdate();"> 
-                <input type="button" class="btn btn-outline-dark" id="update" value="수정" onclick="adoptUpdate();">
-                <input type="button" class="btn btn-outline-dark" id="delete" value="삭제" onclick="adoptDelete();">
-            </div>
+           	 <div class="detail_top">
+           	 <br>
+	            <h3>${adoptDetail.boardTitle}</h3>
+	            	게시일 <fmt:formatDate value="${adoptDetail.boardDate}" pattern="yyyy.MM.dd" />
+	            <br><p> 조회수 : ${adoptDetail.boardCnt} </p>
+	            
+	            <br>
+	            <div class="btn-group">
+	                <input type="button" class="btn btn-outline-dark" id="stateupdate" value="상태변경" onclick="stateUpdate();"> 
+	                <input type="button" class="btn btn-outline-dark" id="update" value="수정" onclick="adoptUpdate();">
+	                <input type="button" class="btn btn-outline-dark" id="delete" value="삭제" onclick="adoptDelete();">
+	            </div>
+           	</div>
+           	<br>
             <hr>		
-            <div>
-                <img id="adopt_img" alt="" src="http://127.0.0.1:5500/dog1.jpg">
-            </div>
+	            <div class="image_center">
+	                <img id="adopt_img" src="/resources/image/dog.jpg">
+	            </div>
             <hr>
             
-            <div>
+            <div class="userInfo_center">
                 <!-- 프로필 이미지  -->
                 <svg width="5%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="url(#pattern0)"></path>
@@ -222,7 +247,7 @@
         </article>
 	</section>
 	<!-- </div> -->
-	<jsp:include page="../fix/footer.jsp"></jsp:include>
+	<%-- <jsp:include page="../fix/footer.jsp"></jsp:include> --%>
 </div>
 <!-- 입양 상세 페이지 js -->
 <script src="/resources/js/adopt_detail.js"></script>

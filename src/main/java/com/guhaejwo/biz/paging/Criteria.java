@@ -11,9 +11,9 @@ public class Criteria {
     /* 검색어 키워드 */
     private String keyword;
     
-    /* 기본 생성자 -> 기봅 세팅 : pageNum = 1, amount = 10 */
+    /* 기본 생성자 -> 기본 세팅 : pageNum = 1, amount = 12 */
     public Criteria() {
-        this(1,10);
+        this(1,12);
     }
     
     /* 생성자 => 원하는 pageNum, 원하는 amount */
