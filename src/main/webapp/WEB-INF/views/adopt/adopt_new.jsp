@@ -34,108 +34,102 @@
 	      <input type="hidden" name="adoptState" value="WAIT">
 	      <!-- 카테고리 구분 -->
           <input type="hidden" name="boardCategory" value="ADOPT">
-              
-          <div>
-          	 <label class="col-sm-2 col-form-label">이미지</label>
-           	 <div class="col-md-5">
-              <input type="text" name="adoptImg">
-         	 </div> 
-         </div>   
+      <br><br>      
+      <div>
+		  <label for="formFileLg" class="form-label">이미지 첨부</label>
+		  <input class="form-control form-control-lg" id="formFileLg" type="file" name="adoptImg" value="${adoptDetail.adoptImg}">
+	  </div>
+	  
+	  <div class="mb-3">
+	      <label for="disabledSelect" class="form-label">종류</label>
+	      <input type="hidden" id="adoptKind" value="${adoptDetail.adoptKind}">
+	      <select id="disabledSelect" class="form-select" name="adoptKind">
+	        	<option value='' selected>-- 선택 --</option>
+				<option value='DOG'>강아지</option>
+				<option value='CAT'>고양이</option>
+				<option value='ETC'>기타</option>
+	      </select>
+      </div>
+      
+       <div class="mb-3">
+	      <label for="disabledSelect" class="form-label">성별</label>
+	      <input type="hidden" id="adoptSex" value="${adoptDetail.adoptSex}">
+	      <select id="disabledSelect" class="form-select" name="adoptSex">
+        		<option value="" selected>-- 선택 --</option>
+			    <option value="F">암컷</option>
+			    <option value="M">수컷</option>
+	      </select>
+      </div>
+      
+      <div class="mb-3">
+	      <label for="disabledTextInput" class="form-label">제목</label>
+	      <input type="text" id="disabledTextInput" class="form-control" placeholder="제목" name="boardTitle" value="${adoptDetail.boardTitle}">
+   	  </div> 
           
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">종류</label>
-            <div class="col-md-5">
-            <select id="adoptKind" name="adoptKind">
-			  <option value='' selected>-- 선택 --</option>
-			  <option value='DOG'>강아지</option>
-			  <option value='CAT'>고양이</option>
-			  <option value='ETC'>기타</option>
-			</select>
+      <div class="mb-3">
+            <label class="form-label">구조일</label>
+            <div class="col-sm-2 col-form-label">
+              <input type="date" id="rescueDate" name="adoptRescueDate" class="form-control"
+              		value="<fmt:formatDate value="${adoptDetail.adoptRescueDate}" pattern="yyyy-MM-dd"/>">
             </div>
-          </div>
-          
-           <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">성별</label>
-            <div class="col-md-5">
-            <select id="adoptSex" name="adoptSex">
-			  <option value="" selected>-- 선택 --</option>
-			  <option value="F">암컷</option>
-			  <option value="M">수컷</option>
-			</select>
+   	  </div>
+   	  
+   	  <div class="mb-3 row">
+            <label class="form-label">나이</label>
+            <div class="col-sm-2 col-form-label">
+            <input class="form-control"
+             	   name="adoptAge"
+				   type="number"
+				   min="1"
+				   max="100"
+				   value="${adoptDetail.adoptAge}">
             </div>
-          </div>
+       </div>
           
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">제목</label>
-            <div class="col-md-5">
-              <input type="text" id="boardTitle" name="boardTitle">
+       <div class="mb-3 row">
+            <label class="form-label">몸무게</label>
+            <div class="col-sm-2 col-form-label">
+            <input class="form-control"
+             	   name="adoptWeight"
+				   type="number"
+				   min="1"
+				   max="100"
+				   value="${adoptDetail.adoptWeight}">
             </div>
-          </div>
+       </div>   
           
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">구조일</label>
-            <div class="col-md-5">
-              <input type="date" id="rescueDate" name="adoptRescueDate">
-            </div>
-          </div>
+       <div class="mb-3">
+	      <label for="disabledTextInput" class="form-label">구조위치</label>
+	      <input type="text" id="disabledTextInput" class="form-control" placeholder="구조위치" name="adoptAddr" value="${adoptDetail.adoptAddr}">
+   	  </div>     
           
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">나이</label>
-            <div class="col-md-5">
-             <input name="adoptAge"
-					type="number"
-					min="1"
-					max="100"
-					value="1">
-            </div>
-          </div>
-          
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">몸무게</label>
-            <div class="col-md-5">
-            <input name="adoptWeight"
-					type="number"
-					min="1"
-					max="100"
-					value="1">
-            </div>
-          </div>
-          
-          
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">구조위치</label>
-            <div class="col-md-5">
-              <input type="text" name="adoptAddr">
-            </div>
-          </div>
-          
-          
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">중성화</label>
-            <div class="col-md-5">
-             <select name="adoptNeutor">
-			  <option value="" selected>-- 선택 --</option>
-			  <option value="O">O</option>
+      <div class="mb-3">
+	      <label for="disabledSelect" class="form-label">중성화 여부</label>
+	      <input type="hidden" id="adoptNeutor" value="${adoptDetail.adoptNeutor}">
+	      <select id="disabledSelect" class="form-select" name="adoptNeutor">
+       		  <option value="" selected>-- 선택 --</option>
+		      <option value="O">O</option>
 			  <option value="X">X</option>
-			  <option value='UNKNOWN'>알수없음</option>
-			</select>
-            </div>
-          </div>
+			  <option value="IDK">알수없음</option>
+	      </select>
+      </div>    
           
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">특이사항</label>
-            <div class="col-md-5">
-              <textarea name="boardContent"></textarea>
-            </div>
-          </div>
+      <div class="mb-3">
+		  <label for="exampleFormControlTextarea1" class="form-label">특이사항</label>
+		  <textarea class="form-control" name="boardContent" rows="7">${adoptDetail.boardContent}</textarea>
+	  </div>
+	  <br>
+	  <div class="btn-group">
+	        <input class="btn btn-dark" style="width:1000px; height:80px;" type="submit" value="등록하기">
+	        <button type="button" class="btn btn-dark" style="width:300px; height:80px;"><a style="color:white;" href="/adopt/list">목록으로</a></button>
+     </div>
+     <br><br>   
           
-          <button id="adoptSbm" type="button">등록하기</button>
         </form>
-          <button type="button" class="btn btn-secondary"><a href="/adopt/list">목록으로</a></button>
         </article>
     </section>
 
-    <jsp:include page="../fix/footer.jsp"></jsp:include>
+    <%-- <jsp:include page="../fix/footer.jsp"></jsp:include> --%>
    	
 </div>
 
