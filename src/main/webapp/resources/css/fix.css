@@ -39,6 +39,20 @@ a:hover{
 }
 
 /* footer css */
+html, body {
+  height: 100%;
+}
+.wrap{
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 212px;
+}
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+}
 
 footer{
   position: absolute;

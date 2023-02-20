@@ -20,7 +20,7 @@
  -->
 	<section class="login-form">
 		<div>
-			<img class="logo" src="resources/img/logo.jpg">
+			<img class="logo" src="resources/image/logo/logo.jpg">
 			<h1>회원가입</h1>
 		</div>
 

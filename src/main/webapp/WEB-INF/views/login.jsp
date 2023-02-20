@@ -14,7 +14,7 @@
 	<div class="container">
 		<section class="login-form">
 			<div>
-				<img class="logo" src="resources/img/logo.jpg">
+				<img class="logo" src="resources/image/logo/logo.jpg">
 				<h1>로그인</h1>
 			</div>
 	
