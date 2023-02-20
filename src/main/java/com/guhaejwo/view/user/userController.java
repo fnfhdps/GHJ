@@ -102,22 +102,17 @@ public class userController {
 	public String withdraw(UserDTO user, HttpSession session) {
 		System.out.println("id, pw 확인 : "+user);
 		
-		userService.withdraw(user);
-		session.removeAttribute("login");
-		session.invalidate();
-		return "redirect: /index";
+		UserDTO findPw = new UserDTO();
+		findPw = userService.getUserByPw(user);
 		
-//		UserDTO findPw = new UserDTO();
-//		findPw = userService.getUserByPw(user);
-//		
-//		if (findPw != null) {
-//			userService.withdraw(user);
-//			session.removeAttribute("login");
-//			session.invalidate();
-//			return "redirect: /index";
-//		} else {
-//			return "redirect: test.jsp";
-//		}
+		if (findPw != null) {
+			userService.withdraw(user);
+			session.removeAttribute("login");
+			session.invalidate();
+			return "redirect: /index";
+		} else {
+			return "redirect: /test.jsp";
+		}
 	}
 	
 	// 비밀번호 변경 이동

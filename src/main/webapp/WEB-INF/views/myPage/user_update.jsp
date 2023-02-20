@@ -14,6 +14,7 @@
 </head>
 
 <body>
+<div id="wrap">
     <jsp:include page="../fix/header.jsp"></jsp:include>
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
@@ -35,7 +36,7 @@
 	          	  <input type="hidden" name="userSeq" value="${login.userSeq}">
 	          	  <input type="hidden" id="loginType" name="loginType" value="${login.loginType}">
 	          	  <input type="hidden" id="userRole" name="userRole" value="${login.userRole}">
-	          	  <input type="hidden" id="userId" value="${login.userId}">
+	          	  <%-- <input type="hidden" id="userId" value="${login.userId}"> --%>
 	            
 	              <!-- 파일 업로드 -->
 	              <div class="formGroup">
@@ -183,20 +184,8 @@
                 <button type="submit" class="col-12 btn btn-secondary" type="button">저장</button>
               </div>
 	          </form>
-	          
-	          
-<%-- 	     	 <form id="deleteForm" action="/mypage/delete" method="post">
-	     	 	<input type="hidden" id="userId" name="userId" value="${login.userId}">
-		      	<input type="hidden" id="userPw" name="userPw" value="${login.userPw}">
-		        <div>
-		          <div>
-			         	비밀번호 입력<input type="password" name="userPw">
-		            <button type="button" class="btn btn-secondary" onclick="withdraw();">회원탈퇴</button>
-		          </div>
-		        </div>
-     	 	</form>
      	 	
- --%>	          <div id="modalBtn" class="iconColor m-3"><a href="#">회원탈퇴&nbsp;<i class="bi bi-chevron-right"></i></a></div>
+	          <div id="modalBtn" class="iconColor m-3">회원탈퇴&nbsp;<i class="bi bi-chevron-right"></i></div>
 	        </div>
 	      </section>
 	
@@ -205,6 +194,7 @@
 	</div>
 
 	<jsp:include page="../fix/footer.jsp"></jsp:include>
+</div>
 
 	<input type="hidden" id="loginType" value=" ${login.loginType}">
 
@@ -233,10 +223,18 @@
         <div class="px-3">
           <label>
             <input type="checkbox" name="destroy_confirm" id="ck-destroy-account" value="1">
-            계정을 삭제하면 되돌릴 수 없으며, 삭제한 데이터를 복구할 수 없음을 이해했습니다.
+            	계정을 삭제하면 되돌릴 수 없으며, 삭제한 데이터를 복구할 수 없음을 이해했습니다.
           </label>
         </div>
-        <button id="withdrawBtn" data-dismiss="modal" class="btn btn-md btn-outline-danger" disabled>계정 삭제하기</button>
+
+        <form id="deleteForm" action="/mypage/delete" method="post">
+     	    <input type="hidden" id="userId" name="userId" value="${login.userId}">
+	      	<input type="hidden" id="userPw" name="userPw" value="${login.userPw}">
+	      	
+        	<!-- 비밀번호 입력<input type="password" name="userPw"> -->
+    		<button id="withdrawBtn" data-dismiss="modal" class="btn btn-md btn-outline-danger" onclick="withdraw(); return false;">계정 삭제하기</button>
+     	</form>
+      
       </div>
     </div>
   </div>
@@ -248,18 +246,27 @@
     $('#withdrawModal').modal("show");
   });
 
-  $("input[type='checkbox']").click(function() {
+/*   $("input[type='checkbox']").click(function() {
     if($(this).is(':checked')){
       $("#withdrawBtn").prop("disabled", false);
       // $(this).removeAttr("checked");
     }else{
       $("#withdrawBtn").prop("disabled", ture);
     }
-  });
+  }); */
+  
+  // 회원탈퇴
+  function withdraw() {
+	  if(!($('input[type="checkbox"]').is(':checked'))){
+		  alert("탈퇴 안내를 확인하고 동의해 주세요.");
+		  return;
+	  }else{
+		  $("#deleteForm").submit();
+	  }
+	}
 </script>
 
-<script type="text/javascript">
-	
+<script type="text/javascript">	
 	// 카카오 로그인시 비밀번호 숨김
 	const loginType = $("#loginType").val();
 	if(loginType == "KAKAO"){
