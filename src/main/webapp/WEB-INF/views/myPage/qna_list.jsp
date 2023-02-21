@@ -53,7 +53,7 @@
 							    <c:forEach items="${qnaList}" var="qna">
 			                      <tr>
 			                        <td class="text-center">${qna.boardSubCategory}</td>
-			                        <td class="text-center"><a href="/mypage/qna/get/${login.boardSeq}">${qna.boardTitle}</a></td>
+			                        <td class="text-center"><a href="/mypage/qna/get/${qna.boardSeq}">${qna.boardTitle}</a></td>
 			                        <td class="text-center"><fmt:formatDate value="${qna.boardDate}" pattern="yyyy-MM-dd"/></td>
 			                        <td class="text-center">답변대기</td>
 			                      </tr>
