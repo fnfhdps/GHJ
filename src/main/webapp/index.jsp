@@ -58,6 +58,7 @@ p {
     } */
 </style>
 <title>main</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/fix/header.jsp"></jsp:include>
@@ -101,34 +102,46 @@ p {
 	
 		<!-- 최근 입양글 -->
 		<h1>강아지를 구해줘!</h1>
-		<section id="latest_adopt">
+		<%-- <section id="latest_adopt">
 			<div id="adopt_list" class="row row-cols-2 row-cols-lg-3 g-2 g-lg-4">
 				<img class="img-thumbnail" alt="dog01"
 					 src="/resources/image/adopt/dog.jpg">
 				<c:forEach items="${adoptList1}" var="adopt">
-	            <article class="col-md-4">
-					<c:if test="${adopt.adoptState eq 'WAIT'}">
-						<span class="badge bg-dark">입양대기</span>
-					</c:if>
-					<c:if test="${adopt.adoptState eq 'SUCCESS'}">
-						<span class="badge bg-dark">입양완료</span>
-					</c:if>
-						<span>${adopt.adoptKind}</span>
-					</div>
-				</article>
+		            <article class="col-md-4">
+						<c:if test="${adopt.adoptState eq 'WAIT'}">
+							<span class="badge bg-dark">입양대기</span>
+						</c:if>
+						<c:if test="${adopt.adoptState eq 'SUCCESS'}">
+							<span class="badge bg-dark">입양완료</span>
+						</c:if>
+							<span>${adopt.adoptKind}</span>
+					</article>
 				</c:forEach>   
 			</div>
-				  
-			</div>
-		</section>
-		
+		</section> --%>
+		<div class="container px-4 px-lg-5 mt-5">
+	        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+	            <div class="col mb-5">
+	                <div class="card h-100">
+	                    <a class="loginCheck" href="#">
+	                    	<img class="card-img-top" alt="" src="/resources/image/adopt/dog.jpg">
+	                    </a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+		<br>
 		<!-- 광고 -->
 		<div>
 			<img alt="광고_03" class="d-block w-100" src="resources/image/adver/adver_03.png">
 		</div>
+		
+		
 	</section>
 	
-	<jsp:include page="/WEB-INF/views/fix/footer.jsp"></jsp:include>
+	
+	
+	<%-- <jsp:include page="/WEB-INF/views/fix/footer.jsp"></jsp:include> --%>
 
 <script type="text/javascript">
 /* 	alert("시잗");
@@ -150,5 +163,6 @@ p {
 	
 	// test
 </script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
