@@ -34,7 +34,7 @@
 	<update id="updateAdopt">
 		<![CDATA[
 			UPDATE adopt
-			SET adoptImg = #{adoptImg}, adoptSex = #{adoptSex}, adoptRescueDate = #{adoptRescueDate},
+			SET adoptImg = #{adoptImg}, adoptSex = #{adoptSex}, adoptRescueDate = TO_DATE(#{adoptRescueDate}, 'yyyy-mm-dd'),
 				adoptAge = #{adoptAge}, adoptAddr = #{adoptAddr}, adoptWeight = #{adoptWeight}, adoptNeutor = #{adoptNeutor}, adoptKind = #{adoptKind}
 			WHERE boardseq = #{boardSeq}
 		]]>

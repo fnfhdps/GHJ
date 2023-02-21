@@ -127,14 +127,14 @@ public class adoptController {
 	}
 	
 	// 입양 글 삭제
-	@GetMapping(value = "/delete/{seq}")
-	public String deleteAdopt(@PathVariable("seq") int boardSeq) {
-		System.out.println("잘 가져옴??"+boardSeq);
-		AdoptDTO adopt = new AdoptDTO();
-		adopt.setBoardSeq(boardSeq);
-		adoptService.deleteBoard(adopt);
-		return "redirect:/adopt/list";
-		
+	@PostMapping(value = "/delete")
+	public @ResponseBody Object deleteAdopt(@RequestBody AdoptDTO adopt) {
+		try {
+			adoptService.deleteBoard(adopt);
+			return 0;
+		} catch (Exception e) {
+			return -1;
+		}
 	}
 	
 	// 입양 희망자 신청

@@ -7,7 +7,7 @@
 	const boardSeq = $('#boardSeq').val();
 	const userSeq2 = $('#userSeq').val();
 	const detailUserSeq = $('#detailUserSeq').val();
-	
+	   
 	let successPath = "/adopt/detail/"+category+"/"+boardSeq+"/"+userSeq2;
 	
 	// ajax 사용시 이동 url, alert에 들어갈 msg
@@ -109,10 +109,10 @@
 	// 입양 삭제
 	function adoptDelete() {
 		if(window.confirm("삭제 하시겠습니까?")){
-//			data = {"boardSeq" : boardSeq};
-//			url = "/adopt/delete";
-//			msg1 = "삭제 되었습니다";
-		 	location.href = "/adopt/delete/"+boardSeq;
+			data = {"boardSeq" : boardSeq};
+			url = "/adopt/delete";
+			msg1 = "삭제 되었습니다"
+		    ajaxPost(url, data, msg1, msg2);
 		}
 	};
 
