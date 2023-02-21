@@ -116,9 +116,9 @@
               </table>
             </div>
 
-            <div class="notice_btn d-flex justify-content-end">
+<!--             <div class="notice_btn d-flex justify-content-end">
               <a href="#" type="button" class="btn btnAuthentication">선택 삭제</a>
-            </div>
+            </div> -->
           </article>
         </section>
 

@@ -72,27 +72,33 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th class=""><input type="checkbox" name="" id=""></th>
-                    <th class="">번호</th>
+                    <th class="">번호</th>                    
+                    <th class="">구분</th>
                     <th class="">제목</th>
                     <th class="">작성일</th>
                     <th class="">조회수</th>
                     <th class=""></th>
+                    
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="text-center">
-                      <input type="checkbox" name="" id="">
-                    </td>
                     <td class="text-center">5</td>
-                    <td class="text-center">sdbf1356</td>
+                    <td class="text-center">배송</td>
+                    <td class="text-center">왜케 느리냐?</td>
                     <td class="text-center">2022-12-23</td>
                     <td class="text-center">12</td>
-                    <td class="text-center">
-                      <a href="#">
-                        <i class="bi bi-box-arrow-up-right"></i>
-                      </a>
+                    <td class="text-center dropdown">
+                      <i class="bi bi-three-dots-vertical"
+                          id="dropdownMenuButton1"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                      </i>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">이동</a></li>
+                        <li><a class="dropdown-item" href="/admin/notice/update">수정</a></li>
+                        <li><a class="dropdown-item" href="#">삭제</a></li>
+                      </ul>
                     </td>
                   </tr>
                 </tbody>
@@ -100,8 +106,7 @@
             </div>
 
             <div class="notice_btn d-flex justify-content-end">
-              <a href="#" type="button" class="btn btnAuthentication">글쓰기</a>
-              <a href="#" type="button" class="btn btnAuthentication">선택 삭제</a>
+              <a href="/admin/notice/insert" type="button" class="btn btnAuthentication">글쓰기</a>
             </div>
           </article>
         </section>

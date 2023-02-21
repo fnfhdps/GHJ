@@ -38,16 +38,34 @@ public class AdminPageController {
 		return "/adminPage/notice";
 	}
 	
+	// 공지사항 등록 이동 (관리자페이지)
+	@GetMapping("/admin/notice/insert")
+	public String noticeInsert() {
+		return "/adminPage/notice_form";
+	}
+	
+	// 공지사항 수정 이동 (관리자페이지)
+	@GetMapping("/admin/notice/update")
+	public String noticeUpdate() {
+		return "/adminPage/notice_form";
+	}
+	
 	// 1:1문의 이동 (관리자페이지)
 	@GetMapping("/admin/qna")
 	public String qna() {
-		return "/adminPage/qna";
+		return "/adminPage/qna_list";
 	}
 	
 	// 후원 상품 목록 이동 (관리자페이지)
 	@GetMapping("/admin/sponsor/item")
 	public String sponsorItem() {
 		return "/adminPage/sponsor_item";
+	}
+	
+	// 후원 상품 목록 이동 (관리자페이지)
+	@GetMapping("/admin/sponsor/item/insert")
+	public String sponsorItemInsert() {
+		return "/adminPage/sponsor_item_form";
 	}
 	
 	// 후원 상품 주문 이동 (관리자페이지)

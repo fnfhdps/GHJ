@@ -15,6 +15,7 @@
       <a class="list-group-item " href="/mypage/hope/${login.userSeq}">희망자목록</a>
       <a class="list-group-item " href="/mypage/heart/${login.userSeq}">관심동물</a>
       <a class="list-group-item " href="/sponsor/mysponsor/${login.userSeq}">후원내역</a>
+	  <a class="list-group-item " href="/mypage/qna/${login.userSeq}">1:1문의</a>
     </div>
   </aside>
 </body>

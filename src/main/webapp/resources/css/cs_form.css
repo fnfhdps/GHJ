@@ -1,0 +1,210 @@
+@media (min-width: 768px){
+  .css-6vucnj {
+      padding: 0;
+  }
+  .css-1h7izmk {
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+  .css-1afs6cq {
+    font-size: 24px;
+  }
+  .css-zce699 {
+    margin-top: 15px;
+  }
+  .css-mieii2 {
+    margin: 40px 0;
+  }
+  .css-1v6bcwv {
+      width: 343px;
+  }
+  .css-1pz165y {
+      width: 343px;
+  }
+  .css-6lgku7 {
+    width: 343px;
+}
+}
+.css-6vucnj {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+.css-1h7izmk {
+    margin: 20px 0;
+}
+.css-1afs6cq {
+    font-size: 20px;
+    font-weight: 700;
+}
+.css-zce699 {
+  margin-top: 10px;
+  color: #828c94;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.css-zce699 a {
+  /* color: #35c5f0;
+  b */
+  font-weight: 700;
+}
+.css-mieii2 {
+    margin: 20px 0 70px;
+}
+.css-lkffw3 {
+  margin: 16px 0;
+}
+._3Bt8k {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+._3Bt8k ._3K8Q8 {
+  padding-right: 30px;
+}
+.css-1dwz3w6 {
+  height: 44px;
+  padding: 10px 14px 11px;
+  font-size: 16px;
+  line-height: inherit;
+  letter-spacing: inherit;
+  border: 1px solid #eaebef;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+/* .css-1xrt6sk {
+  height: 44px;
+  padding: 10px 14px 11px;
+  font-size: 16px;
+  line-height: inherit;
+  letter-spacing: inherit;
+  border: 1px solid #eaebef;
+  border-radius: 4px;
+  box-sizing: border-box;
+  overflow-y: auto!important;
+  height: 160px!important;
+  line-height: 1.4;
+} */
+._3ASDR {
+  display: inline-block;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", "Noto Sans CJK KR", "맑은 고딕", "Malgun Gothic", sans-serif;
+  font-size: 15px;
+  line-height: 21px;
+  resize: none;
+  appearance: none;
+  margin: 0px;
+  padding: 8px 15px 9px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(219, 219, 219);
+  border-image: initial;
+  border-radius: 4px;
+  transition: border-color 0.1s ease 0s, background-color 0.1s ease 0s;
+}
+.css-xu6utp {
+  display: block;
+  /* margin-top: 7px; */
+  font-size: 12px;
+  color: #828c94;
+  text-align: right;
+}
+.css-1pz165y {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    width: 100%;
+    height: 50px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 4px;
+    background: rgb(255, 187, 0);
+}
+.IgBXR {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  pointer-events: none;
+}
+.css-6lgku7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.css-h26ndt {
+  height: 44px;
+  padding: 10px 14px 11px;
+  font-size: 16px;
+  line-height: inherit;
+  letter-spacing: inherit;
+  border: 1px solid #eaebef;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-width: 0;
+  padding: 0 16px;
+  vertical-align: middle;
+}
+.css-h26ndt span {
+  overflow-x: hidden;
+  min-width: 0;
+  line-height: 2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.css-94jutt {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 120px;
+  height: 44px;
+  margin-left: 10px;
+  color: black;
+  font-size: 14px;
+  vertical-align: middle;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+
+.notice_container{
+  padding-top: 20px;
+  /* width: 50%; */
+}

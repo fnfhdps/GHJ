@@ -27,7 +27,7 @@ public class BoardController {
 		this.replyService = replyService;
 	}
 	
-	// qna 목록 조회
+	// qna 목록 조회 (마이페이지)
 	@GetMapping("/mypage/qna/{seq}")
 	public String qnaList(@PathVariable("seq") int userSeq, BoardDTO board, Model model) {
 		board.setBoardCategory("QNA");
@@ -36,7 +36,7 @@ public class BoardController {
 	return "/myPage/qna_list";
 	}
 	
-	// qna 상세 조회
+	// qna 상세 조회 (마이페이지)
 	@GetMapping("/mypage/qna/get/{seq}")
 	public String qnaDetail(@PathVariable("seq") int boardSeq, Model model) {
 		// 게시글 상세 조회
@@ -44,20 +44,20 @@ public class BoardController {
 		board.setBoardSeq(boardSeq);
 		model.addAttribute("qnaDetail", boardService.getBoard(board));
 		
-		// 댓글 목록 조회
+		// 댓글 목록 조회 (답변을 댓글 db로에 넣음)
 		ReplyDTO reply = new ReplyDTO();
 		reply.setBoardSeq(boardSeq);
 		model.addAttribute("reply", replyService.getReply(reply));
 	return "/myPage/qna_detail";
 	}
 	
-	// qna 글쓰기 이동
+	// qna 글쓰기 이동 (마이페이지)
 	@GetMapping("/mypage/qna/new")
 	public String qnaNew() {
 	return "/myPage/qna_new";
 	}
 	
-	// qna 글쓰기
+	// qna 글쓰기 (마이페이지)
 	@PostMapping("/mypage/qna/new")
 	public String qnaNew(BoardDTO board) {
 		int userSeq = board.getUserSeq();
@@ -65,14 +65,14 @@ public class BoardController {
 	return "redirect:/mypage/qna/"+ userSeq;
 	}
 	
-	// qna 수정
+	// qna 수정 (마이페이지)
 	@PostMapping("/mypage/qna/update")
 	public String qnaUpdate(BoardDTO board) {
 		boardService.updateBoard(board);
 		return "/myPage/qna_detail";
 	}
 	
-	// qna 삭제
+	// qna 삭제 (마이페이지)
 	@PostMapping("/mypage/qna/delete")
 	public @ResponseBody int qnaDelete(@RequestBody BoardDTO board) {
 		try {
@@ -83,7 +83,7 @@ public class BoardController {
 		}
 	}
 	
-	// 이전글 조회
+	// qna 이전글 조회 (마이페이지)
 	@GetMapping("/before")
 	public @ResponseBody Object getBefore(BoardDTO board) {
 		System.out.println("옴?"+board);
@@ -102,7 +102,7 @@ public class BoardController {
 		}
 	}
 	
-	// 다음글 조회
+	// 다음글 조회 (마이페이지)
 	@GetMapping("/after")
 	public @ResponseBody Object getAfter(BoardDTO board) {
 		System.out.println(board);

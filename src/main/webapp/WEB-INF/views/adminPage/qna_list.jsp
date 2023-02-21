@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>관리자: 후원상품관리</title>
+<title>관리자: 공지사항관리</title>
 </head>
 
 <!-- 관리자 role인지 확인하기 -->
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">후원상품관리</h1>
+          <h1 class="h2">1:1문의관리</h1>
         </div>
 
         <section class="member_container">
@@ -45,7 +45,7 @@
   
             <div class="d-flex comment_title tbl_caption">
               <div class="mt-2">
-                <span>상품수</span>
+                <span>게시글수</span>
                 <span>35</span>
               </div>
               
@@ -72,47 +72,33 @@
               <table class="table">
                 <thead>
                   <tr>
-                  <!--   <th class=""><input type="checkbox" name="" id=""></th> -->
                     <th class="">번호</th>
-                    <th class="">상품코드</th>
-                    <th class="">상품명</th>
-                    <th class="">가격</th>
-                    <th class="">등록일</th>
+                    <th class="">구분</th>
+                    <th class="">제목</th>
+                    <th class="">작성자</th>
+                    <th class="">작성일</th>
                     <th class="">상태</th>
-                    <th class="">수량</th>
+                    <th class=""></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-<!--                     <td class="text-center">
-                      <input type="checkbox" name="" id="">
-                    </td> -->
-                    <td class="text-center">4</td>
-                    <td class="text-center">U3ES2FA99S</td>
-                    <td class="text-center">멍멍 열쇠고리</td>
-                    <td class="text-center">15000</td>
+                    <td class="text-center">5</td>
+                    <td class="text-center">배송</td>
+                    <td class="text-center">이왜진?</td>
+                    <td class="text-center">sdfjnk12</td>
                     <td class="text-center">2022-12-23</td>
-                    <td class="text-center">판매중</td>
-                    <td class="text-center">12</td>
-                    <td class="text-center dropdown">
-                      <i class="bi bi-three-dots-vertical"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                      </i>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">수정</a></li>
-                        <li><a class="dropdown-item" href="#">삭제</a></li>
-                      </ul>
+                    <td class="text-center">답변완료</td>
+                    <td class="text-center">
+                      <a href="#">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div class="notice_btn d-flex justify-content-end">
-              <a href="/admin/sponsor/item/insert" type="button" class="btn btnAuthentication">등록</a>
-            </div>
           </article>
         </section>
 
