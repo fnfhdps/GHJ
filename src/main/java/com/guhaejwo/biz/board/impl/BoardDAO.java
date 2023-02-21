@@ -21,19 +21,19 @@ public class BoardDAO {
 	// qna 질문 입력
 	public void insertBoard(BoardDTO board) {
 		System.out.println("--> BoardRepository.insertBoard() 실행");
-		mybatis.insert("AdoptDAO.insertBoard", board);
+		mybatis.insert("BoardDAO.insertBoard", board);
 	}
 	
 	// qna 질문 수정
 	public void updateBoard(BoardDTO board) {
 		System.out.println("--> BoardRepository.updateBoard() 실행");
-		mybatis.update("AdoptDAO.updateBoard", board);
+		mybatis.update("BoardDAO.updateBoard", board);
 	}
 	
 	// qna 질문 삭제
 	public void deleteBoard(BoardDTO board) {
 		System.out.println("--> BoardRepository.deleteBoard() 실행");
-		mybatis.delete("AdoptDAO.deleteBoard", board);
+		mybatis.delete("BoardDAO.deleteBoard", board);
 	}
 	
 	// qna 상세 조회

@@ -36,7 +36,6 @@
 	          <h1 class="pageH1">1:1문의</h1>
 	
 	          <article class="pageBody">
-	            <form action="">
 	              <!-- 파일 업로드 -->
 	              <div class="formGroup">
 	                  <table class="table table-bordered">
@@ -53,8 +52,8 @@
 				       		  <c:when test="${!empty qnaList}">
 							    <c:forEach items="${qnaList}" var="qna">
 			                      <tr>
-			                        <td class="text-center">배송</td>
-			                        <td class="text-center"><a href="#">{qna.boardDate}</a></td>
+			                        <td class="text-center">${qna.boardSubCategory}</td>
+			                        <td class="text-center"><a href="/mypage/qna/get/${login.boardSeq}">${qna.boardTitle}</a></td>
 			                        <td class="text-center"><fmt:formatDate value="${qna.boardDate}" pattern="yyyy-MM-dd"/></td>
 			                        <td class="text-center">답변대기</td>
 			                      </tr>
@@ -64,7 +63,6 @@
 					   		  	<td class="text-center" colspan="4">1:1 문의 내역이 없습니다.</td>
 					   		  </c:otherwise>        
 				     	    </c:choose>
-				     	    
 	                    </tbody>
 	                  </table>
 	                  
@@ -72,7 +70,6 @@
 	                    <a class="col-auto btn btn-secondary ps-3 pe-3" type="button" href="/mypage/qna/new">글쓰기</a>
 	                  </div>
 	              </div>
-	            </form>
 	          </article>
 	        </div>
 	      </section>

@@ -7,8 +7,8 @@
 	<!-- 글 입력 -->
 	<insert id="insertBoard">
 		<![CDATA[
-			INSERT INTO board(boardSeq, boardCategory, boardTitle, userSeq, boardContent, boardDate, boardcnt)
-			values ((select nvl(max(boardseq), 0) + 1 from board), #{boardCategory}, #{boardTitle}, #{userSeq}, #{boardContent}, SYSDATE, 0)
+			INSERT INTO board(boardSeq, boardCategory, boardTitle, userSeq, boardContent, boardSubCategory)
+			values ((select nvl(max(boardseq), 0) + 1 from board), #{boardCategory}, #{boardTitle}, #{userSeq}, #{boardContent}, #{boardSubCategory})
 		]]>
 	</insert>
 	
@@ -16,7 +16,7 @@
 	<update id="updateBoard">
 		<![CDATA[
 			UPDATE board
-			SET boardTitle = #{boardTitle}, boardContent = #{boardContent}
+			SET boardSubCategory = #{boardSubCategory}, boardTitle = #{boardTitle}, boardContent = #{boardContent}
 			WHERE boardseq = #{boardSeq}
 		]]>
 	</update>
