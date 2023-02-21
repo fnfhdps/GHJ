@@ -77,11 +77,11 @@ p {
 				</div>
 				<div class="carousel-inner">
 					<div class="carousel-item active" data-bs-interval="10000">
-						<img src="resources/image/adver_01.png" class="d-block w-100"
+						<img src="resources/image/adver/adver_01.png" class="d-block w-100"
 							alt="광고_01">
 					</div>
 					<div class="carousel-item" data-bs-interval="2000">
-						<img src="resources/image/adver_02.png" class="d-block w-100"
+						<img src="resources/image/adver/adver_02.png" class="d-block w-100"
 							alt="광고_02">
 					</div>
 				</div>
@@ -103,11 +103,10 @@ p {
 		<h1>강아지를 구해줘!</h1>
 		<section id="latest_adopt">
 			<div id="adopt_list" class="row row-cols-2 row-cols-lg-3 g-2 g-lg-4">
+				<img class="img-thumbnail" alt="dog01"
+					 src="/resources/image/adopt/dog.jpg">
 				<c:forEach items="${adoptList1}" var="adopt">
 	            <article class="col-md-4">
-					<img class="img-thumbnail" alt="dog01"
-						src="${adopt.adoptImg}">
-					<div>
 					<c:if test="${adopt.adoptState eq 'WAIT'}">
 						<span class="badge bg-dark">입양대기</span>
 					</c:if>
@@ -117,13 +116,15 @@ p {
 						<span>${adopt.adoptKind}</span>
 					</div>
 				</article>
-				</c:forEach>     
+				</c:forEach>   
+			</div>
+				  
 			</div>
 		</section>
 		
 		<!-- 광고 -->
 		<div>
-			<img alt="광고_03" class="d-block w-100" src="resources/image/adver_03.png">
+			<img alt="광고_03" class="d-block w-100" src="resources/image/adver/adver_03.png">
 		</div>
 	</section>
 	
