@@ -53,10 +53,10 @@
 	                </div>
 	                
 	                <div class="css-oycm3d e18gdfbl1">
-	                  <div class="css-n5l119 etfm1it0">${login.userName}</div>
+	                  <div class="css-n5l119 etfm1it0"><c:out value="${login.userName}"/></div>
 	                  <div class="css-oycm3d e1iro1t99">
 	                    <div class="css-1uy49c8 e1iro1t98">
-	                      <span class="css-7haicw e1iro1t97">${login.userId}</span>
+	                      <span class="css-7haicw e1iro1t97"><c:out value="${login.userId}"/></span>
 	                    </div>
 	
 	                    <div class="css-0 e1iro1t94">
@@ -119,8 +119,6 @@
 	</div>
 	<jsp:include page="../fix/footer.jsp"></jsp:include>
 </div>
-
-<input type="hidden" id="loginType" value=" ${login.loginType}">
 
 </body>
 </html>

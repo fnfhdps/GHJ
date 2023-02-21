@@ -46,7 +46,8 @@ public class userController {
 	
 	// 내 정보 수정 (마이페이지)
 	@PostMapping("/mypage/info/update")
-	public String update(UserDTO user , Model model) throws Exception{
+	public String update(UserDTO user , Model model, HttpServletRequest req) throws Exception{
+		System.out.println(user);
 		//System.out.println("파일업로드"+user.getUserImg());
 		// 파일 업로드 처리
 //		MultipartFile uploadFile = user.getUserImg();
@@ -74,8 +75,20 @@ public class userController {
 //		}
 		
 		userService.update(user);
-		model.addAttribute("login", user);
+		HttpSession session = req.getSession();
 
+		// 기존 login 세션을 데이터 user2에 저장 후 비밀번호만 바꾸고 다시 세션에 저장함
+		UserDTO user2 = (UserDTO) session.getAttribute("login");
+		System.out.println();
+		user2.setUserEmail(user.getUserEmail());			
+		user2.setUserPhone(user.getUserPhone());			
+		user2.setUserImg(user.getUserImg());			
+		user2.setUserAddr1(user.getUserAddr1());			
+		user2.setUserAddr2(user.getUserAddr2());	
+		user2.setUserAddr3(user.getUserAddr3());	
+		
+		session.setAttribute("login", user2);
+		
 		return "myPage/user_update";
 	}
 	
@@ -121,22 +134,40 @@ public class userController {
 		}
 	}
 	
-	// 비밀번호 변경 이동
-	@GetMapping("/change_pw")
-	public String changePw() {
-		return "/change_pw";
-	}
+	/*
+	 * // 비밀번호 변경 이동
+	 * 
+	 * @GetMapping("/change_pw") public String changePw() { return "/change_pw"; }
+	 */
 	
 	// 비밀번호 변경
 	@PostMapping("/change_pw")
-	public String changePw(UserDTO user, HttpServletRequest req) {
+	public @ResponseBody int changePw(@RequestBody UserDTO user, HttpServletRequest req) {
+		System.out.println("비번 번경:"+user);
 		HttpSession session = req.getSession();
-		userService.changePw(user);
+		
+		try {
+			userService.changePw(user);
+			// 기존 login 세션을 데이터 user2에 저장 후 비밀번호만 바꾸고 다시 세션에 저장함
+			UserDTO user2 = (UserDTO) session.getAttribute("login");
+			user2.setUserPw(user.getUserPw());
+			session.setAttribute("login", user2);
+			
+			return 0;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return -1;
+		}
 
-		// 기존 login 세션을 데이터 user2에 저장 후 비밀번호만 바꾸고 다시 세션에 저장함
-		UserDTO user2 = (UserDTO) session.getAttribute("login");
-		user2.setUserPw(user.getUserPw());
-		session.setAttribute("login", user2);
-		return "/myPage/user_update";
 	}
+	
+	/*
+	 * @PostMapping("/change_pw") public String changePw(UserDTO user,
+	 * HttpServletRequest req) { HttpSession session = req.getSession();
+	 * userService.changePw(user);
+	 * 
+	 * // 기존 login 세션을 데이터 user2에 저장 후 비밀번호만 바꾸고 다시 세션에 저장함 UserDTO user2 =
+	 * (UserDTO) session.getAttribute("login"); user2.setUserPw(user.getUserPw());
+	 * session.setAttribute("login", user2); return "/myPage/user_update"; }
+	 */
 }

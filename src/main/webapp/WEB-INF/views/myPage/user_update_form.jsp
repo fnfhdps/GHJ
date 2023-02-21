@@ -36,9 +36,9 @@
 	          <div class="pageSubtitle">내정보수정</div>
 	
 	          <article class="pageBody">
-	            <form class="user_update_content" action="">
+	            <form class="user_update_content" action="/mypage/info/update" method="post">
 	              <!-- 시퀀스 모음 -->
-	          	  <input type="hidden" name="userSeq" value="${login.userSeq}">
+	          	  <input type="hidden" id="userSeq" name="userSeq" value="${login.userSeq}">
 	          	  <input type="hidden" id="loginType" name="loginType" value="${login.loginType}">
 	          	  <input type="hidden" id="userRole" name="userRole" value="${login.userRole}">
 	
@@ -85,15 +85,6 @@
 	              </ul>
 	              </div>
 	
-	              <div class="mb-4 formGroup">
-	                <label class="required" for="user_name">이메일</label>
-	                <input class="form-control"
-	                		type="text"
-	                		name="userEmail"
-		                	value="${login.userEmail}"
-		                	disabled>
-	              </div>
-	
 	              <div class="mb-0 formGroup">
 	                <label class="required">휴대폰번호</label>
 	                <div class="formRow">
@@ -117,7 +108,29 @@
 	                  </div>
 	                </div>
 	              </div>
-	
+
+ 	           	  <div class="mb-1 formGroup">
+	                <label class="required">이메일</label>
+	                <div class="formRow">
+	                  <div class="flex-grow-1">
+	                      <input id="user_phone" class="form-control" value="${login.userEmail}" name="userEmail">
+	                  </div>
+	                  <div class="col-auto">
+	                        <button type="button" class="btn btnAuthentication">이메일 인증</button>
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="formGroup">
+	                <div class="formRow">
+	                  <div class="flex-grow-1">
+	                      <input class="form-control">
+	                  </div>
+	                  <div class="col-auto">
+	                        <button type="button" class="btn btnAuthentication">인증하기</button>
+	                  </div>
+	                </div>
+	              </div>
+
 	              <div class="mb-0 formGroup">
 	                <label class="required">주소</label>
 	                <div class="formRow">
@@ -157,20 +170,6 @@
                 		    readonly="readonly"
                 		    placeholder="상세주소">
 	              </div>
-	
-	              <!-- <div class="mb-1 formGroup">
-	                <label class="required">이메일</label>
-	                <div class="formRow">
-	                  <div class="flex-grow-1">
-	                      <input id="user_phone" class="form-control" value="" name="user[phone]">
-	                  </div>
-	                  <div class="col-auto">
-	                        <button type="button" class="btn btnAuthentication">
-	                          이메일 인증
-	                        </button>
-	                  </div>
-	                </div>
-	              </div> -->
 	              
 	              <div class="mt-4 mb-2 formRow">
 	                <button type="submit" class="col-12 btn btn-secondary" type="button">저장</button>
@@ -180,22 +179,24 @@
 	
 	          <div class="pageSubtitle">비밀번호 변경</div>
 	          <article class="pageBody">
-	            <form class="user_update_content" action="">
-	
+	            <form id="form_pw" class="user_update_content">
+	              
 	              <div class="mt-3 mb-2">
 	                <label class="required" for="user_name">현재 비밀번호</label>
-	                <input class="form-control" type="password">
+	                <input id="current_pw" class="form-control" type="password">
+				    <span id="pwSuccess">비밀번호가 일치합니다.</span>
+	    		    <span id="pwDanger">비밀번호가 일치하지 않습니다.</span>
 	              </div>
 	              <div class="mb-2">
 	                <label class="required" for="user_name">새 비밀번호</label>
-	                <input class="form-control" type="password">
+	                <input id="change_pw" class="form-control" type="password" disabled="disabled">
 	              </div>
 	              <div class="mb-3">
 	                <label class="required" for="user_name">새 비밀번호 확인</label>
-	                <input class="form-control" type="password">
+	                <input id="check_pw" class="form-control" type="password" disabled="disabled">
 	              </div>
 	              <div class="mt-4 mb-2 formRow">
-	                <button class="col-12 btn btn-secondary" type="button">저장</button>
+	                <button id="btn_pw" class="col-12 btn btn-secondary" type="button">변경</button>
 	              </div>
 	              
 	            </form>
@@ -242,6 +243,7 @@
         </div>
 
         <form id="deleteForm" action="/mypage/delete" method="post">
+        	<!-- 유저 아이디, 비번 -->
      	    <input type="hidden" id="userId" name="userId" value="${login.userId}">
 	      	<input type="hidden" id="userPw" name="userPw" value="${login.userPw}">
 	      	
@@ -254,6 +256,7 @@
   </div>
 </div>
 
+<!-- 회원 탈퇴 모달 js -->
 <script>
   $('#modalBtn').click(function(e){
     e.preventDefault();
@@ -280,45 +283,71 @@
 	}
 </script>
 
-<script type="text/javascript">	
-	// 카카오 로그인시 비밀번호 숨김
-	const loginType = $("#loginType").val();
-	if(loginType == "KAKAO"){
-		$('.pwBox').css('display', 'none');
-	};
+<!-- 비밀번호 변경 js  -->
+<script type="text/javascript">
+
+// 현재 비밀번호 확인
+$('#pwSuccess').css('display', 'none');
+$('#pwDanger').css('display', 'none');
+
+$('#current_pw').focusout(function() {
+	let pw1 = $("#userPw").val();
+	let pw2 = $(this).val();
 	
-	// 비밀번호 확인
-	$('#pwDanger').css('display', 'none');
-	$("#pwSuccess").css('display', 'none');
+	//alert("pw1 : "+ pw1 + "pw2 : "+ pw2);
+	if((pw1 != '')&&(pw2 == '')){
+		null;
+	}else if((pw1 != '') || (pw2 != '')){
+		if(pw1 == pw2){
+			$('#pwSuccess').css('display', 'inline-block').css("color","green");
+			$('#pwDanger').css('display', 'none');
+			$("#change_pw").removeAttr("disabled");
+			$("#check_pw").removeAttr("disabled");
+		}else {
+            $("#pwSuccess").css('display', 'none');
+            $("#pwDanger").css('display', 'inline-block').css("color","red");
+        }
+	}
+});
+
+// 새 비밀번호 확인
+// submit시 비밀번호 한번더 확인
+$("#btn_pw").click(function() {
+	const userSeq = $("#userSeq").val();
+	const currentPw = $("#current_pw").val();
+	const changePw = $('#change_pw').val();
+	const pwCheck = $('#check_pw').val();
 	
-	$('input[type="password"]').focusout(function() {
-		let pw1 = $('#userPw').val();
-		let pw2 = $('#pwCheck').val();
-		
-		if((pw1 != '')&&(pw2 == '')){
-			null;
-		}else if((pw1 != '') || (pw2 != '')){
-			if(pw1 == pw2){
-				$('#pwSuccess').css('display', 'inline-block').css("color","green");
-				$('#pwDanger').css('display', 'none');
-			}else {
-                $("#pwSuccess").css('display', 'none');
-                $("#pwDanger").css('display', 'inline-block').css("color","red");
-            }
-		}
-	});
-	
-	// submit시 비밀번호 한번더 확인
-	$("#btn_update").click(function() {
-		const userPw = $('#userPw').val();
-		const pwCheck = $('#pwCheck').val();
-		
-		if(userPw != pwCheck){
-			alert("비밀번호를 확인해주세요");
-		}else{
-			$(this).submit();
-		}
-	});
+	if(changePw != pwCheck){
+		alert("비밀번호를 확인해주세요");
+	}else if(currentPw == changePw){
+		alert("이전과 동일한 비밀번호 입니다.");
+	}else{
+		let data = {
+				"userSeq" : userSeq,
+				"userPw" : changePw
+					};
+	  	$.ajax({
+	  		url : "/change_pw",
+	  		type: "post",
+			data: JSON.stringify(data),
+			dataType: "json",
+			contentType: "application/json",
+			success : function(result) {
+				//alert("성공:"+result);
+				if (result == -1) {
+					alert("통신 오류");
+				} else {
+					alert("변경 되었습니다.");
+					location.href = "/mypage/info";
+				}
+			},
+			error : function(errorThrown) {
+				alert(errorThrown.statusText);
+			}
+		});
+	}
+});
 </script>
 
 <!-- 카카오 로그인 -->
@@ -416,8 +445,8 @@ function dropKakao() {
   	Kakao.API.request({
          url: '/v1/user/unlink',
          success: function (response) {
-         	$.ajax({
-         		url : "/mypage/delete",
+     	$.ajax({
+     	url : "/mypage/delete",
 		type : "post",
 		data : {"userId" : "K"+response.id},
 		dataType : "json",
