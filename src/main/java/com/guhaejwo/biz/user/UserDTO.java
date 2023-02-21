@@ -1,5 +1,7 @@
 package com.guhaejwo.biz.user;
 
+import java.time.LocalDate;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class UserDTO {
@@ -16,6 +18,8 @@ public class UserDTO {
 	private String userAddr2;
 	private String userAddr3;
 	private LoginType loginType;
+	private LocalDate regDate;
+	private LocalDate lastDate;
 	
 	public UserDTO() {}
 
@@ -115,12 +119,28 @@ public class UserDTO {
 		this.loginType = loginType;
 	}
 
+	public LocalDate getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(LocalDate regDate) {
+		this.regDate = regDate;
+	}
+
+	public LocalDate getLastDate() {
+		return lastDate;
+	}
+
+	public void setLastDate(LocalDate lastDate) {
+		this.lastDate = lastDate;
+	}
+
 	@Override
 	public String toString() {
 		return "UserDTO [userSeq=" + userSeq + ", userId=" + userId + ", userPw=" + userPw + ", userName=" + userName
 				+ ", userEmail=" + userEmail + ", userRole=" + userRole + ", userPhone=" + userPhone + ", userImg="
 				+ userImg + ", userAddr1=" + userAddr1 + ", userAddr2=" + userAddr2 + ", userAddr3=" + userAddr3
-				+ ", loginType=" + loginType + "]";
+				+ ", loginType=" + loginType + ", regDate=" + regDate + ", lastDate=" + lastDate + "]";
 	}
 
 }

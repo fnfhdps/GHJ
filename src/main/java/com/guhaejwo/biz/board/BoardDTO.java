@@ -15,6 +15,7 @@ public class BoardDTO {
 	private String boardContent;
 	private Date boardDate;
 	private int boardCnt;
+	private String boardSubCategory;
 	
 	public BoardDTO() {}
 	
@@ -98,11 +99,20 @@ public class BoardDTO {
 		this.boardCnt = boardCnt;
 	}
 
+	public String getBoardSubCategory() {
+		return boardSubCategory;
+	}
+
+	public void setBoardSubCategory(String boardSubCategory) {
+		this.boardSubCategory = boardSubCategory;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardDTO [num=" + num + ", findSeq=" + findSeq + ", findTitle=" + findTitle + ", boardSeq=" + boardSeq
 				+ ", boardCategory=" + boardCategory + ", boardTitle=" + boardTitle + ", userSeq=" + userSeq
-				+ ", boardContent=" + boardContent + ", boardDate=" + boardDate + ", boardCnt=" + boardCnt + "]";
+				+ ", boardContent=" + boardContent + ", boardDate=" + boardDate + ", boardCnt=" + boardCnt
+				+ ", boardSubCategory=" + boardSubCategory + "]";
 	}
-	
+
 }
