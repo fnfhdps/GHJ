@@ -6,9 +6,11 @@
 	
 	<!-- 회원 정보 입력 -->
 	<insert id="insertUser">
-			INSERT INTO USERS(userseq, userid, userpw, username, useremail, userrole, userphone, useraddr1, useraddr2, useraddr3, loginType) 
-			VALUES ((select nvl(max(userseq), 0) + 1 from users), #{userId}, #{userPw, jdbcType=VARCHAR}, #{userName}, #{userEmail, jdbcType=VARCHAR}, 
-						#{userRole},#{userPhone, jdbcType=VARCHAR}, #{userAddr1, jdbcType=VARCHAR}, #{userAddr2, jdbcType=VARCHAR}, #{userAddr3, jdbcType=VARCHAR}, #{loginType})
+			INSERT INTO users(userSeq, userId, userPw, userName, userEmail, userRole,
+        					userPhone,userAddr1, userAddr2, userAddr3, loginType)
+			VALUES ((select nvl(max(userseq), 0) + 1 from users), #{userId}, #{userPw, jdbcType=VARCHAR},
+					#{userName}, #{userEmail, jdbcType=VARCHAR}, #{userRole},#{userPhone, jdbcType=VARCHAR},
+					#{userAddr1, jdbcType=VARCHAR}, #{userAddr2, jdbcType=VARCHAR}, #{userAddr3, jdbcType=VARCHAR}, #{loginType})
 	</insert>
 	
 	<!-- 회원 정보 수정 (마이페이지) -->
