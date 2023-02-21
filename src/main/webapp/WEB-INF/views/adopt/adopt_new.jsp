@@ -121,7 +121,7 @@
 	  <br>
 	  <div class="btn-group">
 	        <input class="btn btn-dark" style="width:1000px; height:80px;" type="submit" value="등록하기">
-	        <button type="button" class="btn btn-dark" style="width:300px; height:80px;"><a style="color:white;" href="/adopt/list">목록으로</a></button>
+	        <button type="button" class="btn btn-secondary" style="width:300px; height:80px;"><a style="color:white;" href="/adopt/list">목록으로</a></button>
      </div>
      <br><br>   
           
