@@ -109,10 +109,11 @@
 	// 입양 삭제
 	function adoptDelete() {
 		if(window.confirm("삭제 하시겠습니까?")){
-			data = {"boardSeq" : boardSeq};
-			url = "/adopt/delete";
-			msg1 = "삭제 되었습니다"
-		    ajaxPost(url, data, msg1, msg2);
+//			data = {"boardSeq" : boardSeq};
+//			url = "/adopt/delete";
+//			msg1 = "삭제 되었습니다"
+//		    ajaxPost(url, data, msg1, msg2);
+			location.href = '/adopt/delete/'+boardSeq;
 		}
 	};
 
