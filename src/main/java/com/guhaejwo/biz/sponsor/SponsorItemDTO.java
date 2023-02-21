@@ -6,6 +6,9 @@ public class SponsorItemDTO {
 	private String sponsorItemName ;
 	private String sponsorItemImg;
 	private String sponsorItemPrice;
+	private String sponsorItemCode;
+	private String sponsorItemDate;
+	private String sponsorItemState;
 	
 	public SponsorItemDTO() {}
 	
@@ -33,11 +36,31 @@ public class SponsorItemDTO {
 	public void setSponsorItemPrice(String sponsorItemPrice) {
 		this.sponsorItemPrice = sponsorItemPrice;
 	}
-	
+	public String getSponsorItemCode() {
+		return sponsorItemCode;
+	}
+	public void setSponsorItemCode(String sponsorItemCode) {
+		this.sponsorItemCode = sponsorItemCode;
+	}
+	public String getSponsorItemDate() {
+		return sponsorItemDate;
+	}
+	public void setSponsorItemDate(String sponsorItemDate) {
+		this.sponsorItemDate = sponsorItemDate;
+	}
+	public String getSponsorItemState() {
+		return sponsorItemState;
+	}
+	public void setSponsorItemState(String sponsorItemState) {
+		this.sponsorItemState = sponsorItemState;
+	}
+
 	@Override
 	public String toString() {
 		return "SponsorItemDTO [sponsorItemSeq=" + sponsorItemSeq + ", sponsorItemName=" + sponsorItemName
-				+ ", sponsorItemImg=" + sponsorItemImg + ", sponsorItemPrice=" + sponsorItemPrice + "]";
+				+ ", sponsorItemImg=" + sponsorItemImg + ", sponsorItemPrice=" + sponsorItemPrice + ", sponsorItemCode="
+				+ sponsorItemCode + ", sponsorItemDate=" + sponsorItemDate + ", sponsorItemState=" + sponsorItemState
+				+ "]";
 	}
-	
+
 }
