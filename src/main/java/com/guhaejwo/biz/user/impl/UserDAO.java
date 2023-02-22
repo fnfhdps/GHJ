@@ -58,14 +58,13 @@ public class UserDAO implements UserService{
 
 	@Override
 	public List<UserDTO> getUserList() {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("--> MybatisUserRepository.getUserList() 실행");
+		return mybatis.selectList("UserDAO.getUserList");
 	}
 
 	@Override
 	public void update(UserDTO user) {
 		System.out.println("---> MybatisUserRepository.user() 실행");
-		System.out.println(user);
 		mybatis.update("UserDAO.updateUser", user);
 	}
 
@@ -74,5 +73,54 @@ public class UserDAO implements UserService{
 		System.out.println("---> MybatisUserRepository.changePw() 실행");
 		mybatis.update("UserDAO.changePw", user);
 	}
+
+	@Override
+	public int userTotalCnt() {
+		System.out.println("--> MybatisUserRepository.getUserByEmail() 실행");
+		return mybatis.selectOne("UserDAO.getUserByEmail");
+	}
+
+	@Override
+	public UserDTO getUser(UserDTO user) {
+		System.out.println("--> MybatisUserRepository.getUser() 실행");
+		return mybatis.selectOne("UserDAO.getUser", user);
+	}
+
+	@Override
+	public int userAdoptCnt(UserDTO user) {
+		System.out.println("--> MybatisUserRepository.userAdoptCnt() 실행");
+		return mybatis.selectOne("UserDAO.userAdoptCnt", user);
+	}
+
+	@Override
+	public int userHeartCnt(UserDTO user) {
+		System.out.println("--> MybatisUserRepository.userHeartCnt() 실행");
+		return mybatis.selectOne("UserDAO.userHeartCnt", user);
+	}
+
+	@Override
+	public int userSponsorCnt(UserDTO user) {
+		System.out.println("--> MybatisUserRepository.userSponsorCnt() 실행");
+		return mybatis.selectOne("UserDAO.userSponsorCnt", user);
+	}
+
+	@Override
+	public int userQnaCnt(UserDTO user) {
+		System.out.println("--> MybatisUserRepository.userQnaCnt() 실행");
+		return mybatis.selectOne("UserDAO.userQnaCnt", user);
+	}
+
+	@Override
+	public int userReplyCnt(UserDTO user) {
+		System.out.println("--> MybatisUserRepository.userReplyCnt() 실행");
+		return mybatis.selectOne("UserDAO.userReplyCnt", user);
+	}
+
+	@Override
+	public int userBlameCnt(UserDTO user) {
+		System.out.println("--> MybatisUserRepository.userBlameCnt() 실행");
+		return mybatis.selectOne("UserDAO.userBlameCnt", user);
+	}
+	
 
 }
