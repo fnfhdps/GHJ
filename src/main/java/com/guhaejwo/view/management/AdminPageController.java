@@ -70,7 +70,7 @@ public class AdminPageController {
 		model.addAttribute("totalCnt", totalCnt);
 		
 		// 회원 상세
-		model.addAttribute("momber", userService.getUser(user));
+		model.addAttribute("member", userService.getUser(user));
 		
 		return "/adminPage/member_info";
 	}

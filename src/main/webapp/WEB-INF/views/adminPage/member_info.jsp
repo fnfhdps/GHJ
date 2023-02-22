@@ -52,7 +52,7 @@
                 </div>
                 <div class="my-4 d-flex flex-column">
                   <img src="../img/dog.jpg" alt="">
-                  <span>${momber.userName}</span>
+                  <span>${member.userName}</span>
                 </div>
   
                 <div class="form_info">
@@ -67,21 +67,21 @@
   
                   <div class="mb-3 formGroup">
                     <label class="mb-2">아이디</label>
-                    <input class="form-control" type="text" value="${momber.userId}">
+                    <input class="form-control" type="text" value="${member.userId}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">비밀번호</label>
-                    <input class="form-control" type="text" value="${momber.userPw}">
+                    <input class="form-control" type="text" value="${member.userPw}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">핸드폰번호</label>
-                    <input class="form-control" type="text" value="${momber.userPhone}">
+                    <input class="form-control" type="text" value="${member.userPhone}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">주소지</label>
-                    <input class="form-control mb-2" type="text" value="${momber.userAddr1}">
-                    <input class="form-control mb-2" type="text" value="${momber.userAddr2}">
-                    <input class="form-control mb-2" type="text" value="${momber.userAddr3}">
+                    <input class="form-control mb-2" type="text" value="${member.userAddr1}">
+                    <input class="form-control mb-2" type="text" value="${member.userAddr2}">
+                    <input class="form-control mb-2" type="text" value="${member.userAddr3}">
                   </div>
                 </div>
                 <div class="mt-4 formRow">
@@ -99,8 +99,7 @@
                 <div class="art2_text">
                   <div>
                     <small>가입일</small>
-                    <fmt:formatDate value="${member.regDate}" pattern="yyyy-MM-dd"/>
-                    <p class="mt-1">${member.regDate}</p>
+                    <p class="mt-1"><fmt:formatDate value="${member.regDate}" pattern="yyyy.MM.dd HH:mm:ss"/></p>
                   </div>
                   <div>
                     <small>최근접속일</small>

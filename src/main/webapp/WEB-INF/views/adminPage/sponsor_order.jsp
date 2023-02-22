@@ -92,7 +92,7 @@
 	                    <td class="text-center">${sponsor.sponsorItemName}</td>
 	                    <td class="text-center">${sponsor.sponsorAmount}</td>
 	                    <td class="text-center">${sponsor.sponsorTotalPrice}</td>
-	                    <td class="text-center"><fmt:formatDate value="${sponsor.sponsorDate}" pattern="yyyy.MM.dd HH:mm"/></td>
+	                    <td class="text-center"><fmt:formatDate value="${sponsor.sponsorDate}" pattern="yyyy.MM.dd HH:mm:ss"/></td>
 	                    <!-- 셀렉트랑 드롭다운중에 뭐할지 -->
 	                    <td class="text-center dropdown">
 	                      <span class="fw-bold"
