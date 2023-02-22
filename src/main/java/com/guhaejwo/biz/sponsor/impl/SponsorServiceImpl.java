@@ -19,25 +19,65 @@ public class SponsorServiceImpl implements SponsorService{
 	public SponsorServiceImpl(SponsorDAO sponsorRepository) {
 		this.sponsorRepository = sponsorRepository;
 	}
-	
+
 	@Override
 	public void insertSponsor(SponsorDTO sponsor) {
 		sponsorRepository.insertSponsor(sponsor);
 	}
-	
+
+	@Override
+	public void StateupdateSponsor(SponsorDTO sponsor) {
+		sponsorRepository.StateupdateSponsor(sponsor);
+	}
+
 	@Override
 	public List<SponsorMyPageDTO> getSponsorMyPage(SponsorMyPageDTO sponsor) {
 		return sponsorRepository.getSponsorMyPage(sponsor);
 	}
 
 	@Override
-	public SponsorItemDTO getSponsorItem(SponsorItemDTO sponsor) {
-		return sponsorRepository.getSponsorItem(sponsor);
+	public int sponsorTotalCnt() {
+		return sponsorRepository.sponsorTotalCnt();
 	}
 
 	@Override
-	public List<SponsorItemDTO> getSponsorItemList(SponsorItemDTO sponsor) {
-		return sponsorRepository.getSponsorItemList(sponsor);
+	public List<SponsorDTO> getSponsorList() {
+		return sponsorRepository.getSponsorList();
+	}
+
+	@Override
+	public SponsorDTO getSponsor(SponsorDTO sponsor) {
+		return sponsorRepository.getSponsor(sponsor);
+	}
+
+	@Override
+	public void insertSponsorItem(SponsorItemDTO sponsor) {
+		sponsorRepository.insertSponsorItem(sponsor);
+	}
+
+	@Override
+	public void updateSponsorItem(SponsorItemDTO sponsor) {
+		sponsorRepository.updateSponsorItem(sponsor);
+	}
+
+	@Override
+	public void deleteSponsorItem(SponsorItemDTO sponsor) {
+		sponsorRepository.deleteSponsorItem(sponsor);
+	}
+
+	@Override
+	public int sponsorItemTotalCnt() {
+		return sponsorRepository.sponsorItemTotalCnt() ;
+	}
+
+	@Override
+	public List<SponsorItemDTO> getSponsorItemList() {
+		return sponsorRepository.getSponsorItemList();
+	}
+	
+	@Override
+	public SponsorItemDTO getSponsorItem(SponsorItemDTO sponsor) {
+		return sponsorRepository.getSponsorItem(sponsor);
 	}
 
 }

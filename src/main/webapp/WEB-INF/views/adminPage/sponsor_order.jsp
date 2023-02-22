@@ -46,7 +46,7 @@
             <div class="d-flex comment_title tbl_caption">
               <div class="mt-2">
                 <span>주문수</span>
-                <span>35</span>
+                <span>${totalCnt}</span>
               </div>
               
               <nav aria-label="Page navigation example">
@@ -72,7 +72,7 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>주문번호</th>
+                    <th class="">주문번호</th>
                     <th class="">주문자</th>
                     <th class="">상품명</th>
                     <th class="">갯수</th>
@@ -81,41 +81,42 @@
                     <th class="">주문상태</th>
                   </tr>
                 </thead>
+                
                 <tbody>
-                  <tr>
-                    <td class="text-center">3</td>
-                    <td class="text-center">김지수</td>
-                    <td class="text-center">말콤!에코백</td>
-                    <td class="text-center">2</td>
-                    <td class="text-center">30000</td>
-                    <td class="text-center">2022-12-23</td>
-                    <!-- 셀렉트랑 드롭다운중에 뭐할지 -->
-                    <td class="text-center dropdown">
-                      <span class="fw-bold"
-                            id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            배송대기중
-                      </span>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">상품준비중</a></li>
-                        <li><a class="dropdown-item" href="#">배송대기중</a></li>
-                        <li><a class="dropdown-item" href="#">배송중</a></li>
-                        <li><a class="dropdown-item" href="#">배송완료</a></li>
-                      </ul>
-                    </td>
-
-                    <!-- <td class="text-center">
-                      <select class="text-center form-select" aria-label="Default select example">
-                        <option selected>상태</option>
-                        <option value="1">상품준비중</option>
-                        <option value="2">배송대기중</option>
-                        <option value="3">배송중</option>
-                        <option value="4">배송완료</option>
-                      </select>
-                    </td> -->
-                  </tr>
+	          	<c:choose>
+	       		  <c:when test="${!empty sponsorList}">
+				    <c:forEach items="${sponsorList}" var="sponsor">
+	                  <tr>
+	                    <td class="text-center">${sponsor.num}</td>
+	                    <td class="text-center">${sponsor.sponsorItemName}</td>
+	                    <td class="text-center">${sponsor.sponsorItemName}</td>
+	                    <td class="text-center">${sponsor.sponsorAmount}</td>
+	                    <td class="text-center">${sponsor.sponsorTotalPrice}</td>
+	                    <td class="text-center"><fmt:formatDate value="${sponsor.sponsorDate}" pattern="yyyy.MM.dd HH:mm"/></td>
+	                    <!-- 셀렉트랑 드롭다운중에 뭐할지 -->
+	                    <td class="text-center dropdown">
+	                      <span class="fw-bold"
+	                            id="dropdownMenuButton1"
+	                            data-bs-toggle="dropdown"
+	                            aria-expanded="false">
+	                            	${sponsor.sponsorState}
+	                      </span>
+	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+	                        <li><a class="dropdown-item" href="#">상품준비중</a></li>
+	                        <li><a class="dropdown-item" href="#">배송대기중</a></li>
+	                        <li><a class="dropdown-item" href="#">배송중</a></li>
+	                        <li><a class="dropdown-item" href="#">배송완료</a></li>
+	                      </ul>
+	                    </td>
+	                  </tr>
+				    </c:forEach>
+		          </c:when>
+			   	  <c:otherwise>
+		   		  	<td class="text-center" colspan="4">1:1 문의 내역이 없습니다.</td>
+		   		  </c:otherwise>        
+	     	    </c:choose>
                 </tbody>
+                
               </table>
             </div>
           </article>
@@ -129,19 +130,19 @@
                 <div class="css-17fh4sh eukl7io3">
                   <div class="css-k8dhob e1fwbpos2">
                     <div class="css-xlcpif e1fwbpos1">받는 사람</div>
-                    <div class="css-cqduba e1fwbpos0">홍길동</div>
+                    <div class="css-cqduba e1fwbpos0">${sponsorDetail.sponsorName}</div>
                   </div>
                   <div class="css-k8dhob e1fwbpos2">
                     <div class="css-xlcpif e1fwbpos1">연락처</div>
-                    <div class="css-cqduba e1fwbpos0">010-2222-3444</div>
+                    <div class="css-cqduba e1fwbpos0">${sponsorDetail.sponsorPhone}</div>
                   </div>
                     <div class="css-k8dhob e1fwbpos2">
                       <div class="css-xlcpif e1fwbpos1">주소</div>
-                      <div class="css-cqduba e1fwbpos0"> 제주특별자치도 서귀포 어딘가</div>
+                      <div class="css-cqduba e1fwbpos0">${sponsorDetail.sponsorShippingAddr}</div>
                     </div>
                     <div class="css-k8dhob e1fwbpos2">
                       <div class="css-xlcpif e1fwbpos1">배송메모</div>
-                      <div class="css-cqduba e1fwbpos0">부재시 문앞에 놓아주세요</div>
+                      <div class="css-cqduba e1fwbpos0">${sponsorDetail.memo}</div>
                     </div>
                   </div>
                 </div>
@@ -157,7 +158,7 @@
                 <div class="css-17fh4sh ekrx5n61">
                   <div class="css-k8dhob e1fwbpos2">
                     <div class="css-xlcpif e1fwbpos1">상품금액</div>
-                    <div class="css-17qztlv e1fwbpos0">33,900원</div>
+                    <div class="css-17qztlv e1fwbpos0">${sponsorDetail.sponsorTotalPrice}원</div>
                   </div>
                   <div class="css-k8dhob e1fwbpos2">
                     <div class="css-xlcpif e1fwbpos1">배송비</div>
@@ -165,11 +166,11 @@
                   </div>
                   <div class="css-k8dhob e1fwbpos2">
                     <div class="css-xlcpif e1fwbpos1">결제금액</div>
-                    <div class="css-17qztlv e1fwbpos0">30000원</div>
+                    <div class="css-17qztlv e1fwbpos0">${sponsorDetail.sponsorTotalPrice}원</div>
                   </div>
                   <div class="css-k8dhob e1fwbpos2">
                     <div class="css-xlcpif e1fwbpos1">결제방법</div>
-                    <div class="css-17qztlv e1fwbpos0">네이버페이</div>
+                    <div class="css-17qztlv e1fwbpos0">${sponsorDetail.payment}</div>
                   </div>
                 </div>
                 <div class="css-17fh4sh ekrx5n61">

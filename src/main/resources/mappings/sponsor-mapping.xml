@@ -14,8 +14,8 @@
 		]]>
 	</insert>
 	
-    <!-- 후원 상품 수정 (관리자페이지) -->
-	<update id="updateSponsor">
+    <!-- 주문 내역 상태 수정 (관리자페이지) -->
+	<update id="StateupdateSponsor">
 		<![CDATA[
 			UPDATE sponsor
 			SET sponsorState = #{sponsorState}
@@ -45,7 +45,10 @@
 	<!-- 전체 주문 내역 조회 (관리자페이지) -->
 	<select id="getSponsorList" resultType="sponsor">
 		<![CDATA[
-			select * from sponsor
+			select ROW_NUMBER() OVER(ORDER BY sponsor.sponsorseq) as num, sponsor.*, sponsor_item.sponsoritemname
+			from sponsor, sponsor_item
+			where sponsor_item.sponsoritemseq = sponsor.sponsoritemseq
+			order by num desc
 		]]>
 	</select>
 	
@@ -65,7 +68,7 @@
 	<insert id="insertSponsorItem">
 		<![CDATA[
 			INSERT INTO sponsor_item(sponsorItemSeq, sponsorItemName, sponsorItemImg, sponsorItemPrice, sponsorItemCode, sponsorItemState)
-			VALUES ((select nvl(max(sponsorItemSeq), 0) + 1 from sponsor_item), #{sponsorItemName}, #{sponsorItemImg}, #{sponsorItemPrice}, #{sponsorItemCode}, #{sponsorItemState});
+			VALUES ((select nvl(max(sponsorItemSeq), 0) + 1 from sponsor_item), #{sponsorItemName}, #{sponsorItemImg}, #{sponsorItemPrice}, #{sponsorItemCode}, #{sponsorItemState})
 		]]>
 	</insert>
 	
@@ -102,8 +105,9 @@
 	<!-- 후원 상품 목록 조회 (관리자페이지) -->
 	<select id="getSponsorItemList" resultType="sponsorItem">
 		<![CDATA[
-			select *
+			select ROW_NUMBER() OVER(ORDER BY sponsor_item.sponsoritemseq) as num, sponsor_item.*
 			from sponsor_item
+			order by num desc
 		]]>
 	</select>
 	
@@ -115,7 +119,5 @@
 			WHERE sponsorItemSeq = #{sponsorItemSeq}
 		]]>
 	</select>
-	
-
 	
 </mapper>

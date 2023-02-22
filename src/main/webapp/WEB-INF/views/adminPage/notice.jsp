@@ -46,7 +46,7 @@
             <div class="d-flex comment_title tbl_caption">
               <div class="mt-2">
                 <span>공지수</span>
-                <span>35</span>
+                <span>${totalCnt}</span>
               </div>
               
               <nav aria-label="Page navigation example">

@@ -1,4 +1,4 @@
-package com.guhaejwo.view.adminPage;
+package com.guhaejwo.view.management;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,25 +14,32 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.guhaejwo.biz.board.BoardDTO;
 import com.guhaejwo.biz.board.BoardService;
 import com.guhaejwo.biz.board.impl.BoardServiceImpl;
+import com.guhaejwo.biz.sponsor.SponsorDTO;
+import com.guhaejwo.biz.sponsor.SponsorItemDTO;
+import com.guhaejwo.biz.sponsor.SponsorService;
 import com.guhaejwo.biz.user.UserDTO;
 import com.guhaejwo.biz.user.impl.UserServiceImpl;
 
 import oracle.net.aso.c;
 
 @Controller
+@SessionAttributes("sponsorDetail")
 public class AdminPageController {
 
 	private final UserServiceImpl userService;
 	private final BoardService boardService;
+	private final SponsorService sponsorService;
 	
 	@Autowired
-	public AdminPageController(UserServiceImpl userService, BoardService boardService) {
+	public AdminPageController(UserServiceImpl userService, BoardService boardService, SponsorService sponsorService) {
 		this.userService = userService;
 		this.boardService = boardService;
+		this.sponsorService = sponsorService;
 	}
 	
 	// 회원정보목록 이동 (관리자페이지)
@@ -128,7 +135,7 @@ public class AdminPageController {
 	}
 	
 	// 입양글, 공지사항 삭제 (관리자페이지)
-	//카테고리 맞으면 해당 페이지 목록으로 ㄱ 아니면 이전페이지로 ㄱ
+	//카테고리 맞으면 해당 페이지 목록으로 아니면 이전페이지로
 	@PostMapping("/admin/{category}/delete")
 	public String deleteBoard(@PathVariable("category") String category, @RequestBody BoardDTO board) {
 
@@ -149,43 +156,76 @@ public class AdminPageController {
 		return "/adminPage/comment";
 	}
 	
-//	// 공지사항 이동 (관리자페이지)
-//	@GetMapping("/admin/notice")
-//	public String notice() {
-//		return "/adminPage/notice";
-//	}
-//	
-
-//	
 	// 공지사항 수정 이동 (관리자페이지)
 	@GetMapping("/admin/notice/update")
 	public String noticeUpdate() {
 		return "/adminPage/notice_form";
 	}
 	
-	// 1:1문의 이동 (관리자페이지)
-	@GetMapping("/admin/qna")
-	public String qna() {
-		return "/adminPage/qna_list";
-	}
-	
-	// 후원 상품 목록 이동 (관리자페이지)
+	// 후원 상품 목록 (관리자페이지)
 	@GetMapping("/admin/sponsor/item")
-	public String sponsorItem() {
+	public String getSponsorItemList(Model model) {
+		// 총 상품수
+		model.addAttribute("totalCnt", sponsorService.sponsorItemTotalCnt());
+		// 상품 목록
+		model.addAttribute("sponsorItemList", sponsorService.getSponsorItemList());
 		return "/adminPage/sponsor_item";
 	}
 	
-	// 후원 상품 목록 이동 (관리자페이지)
+	// 후원 상품 입력 이동 (관리자페이지)
 	@GetMapping("/admin/sponsor/item/insert")
-	public String sponsorItemInsert() {
+	public String insertSponsorItem() {
 		return "/adminPage/sponsor_item_form";
 	}
 	
-	// 후원 상품 주문 이동 (관리자페이지)
+	// 후원 상품 입력 (관리자페이지)
+	@PostMapping("/admin/sponsor/item/insert")
+	public String insertSponsorItem(SponsorItemDTO sponsor) {
+		sponsorService.insertSponsorItem(sponsor);
+		return "redirect:/admin/sponsor/item";
+	}
+	
+	// 후원 상품 수정 이동 (관리자페이지)
+	// 조회겸 수정으로 만들어 놨음 분리하려면 디자인 수정해야함
+	// 입력 폼이랑 같이 쓰게 만들었더니 form을 입력이 사용해서  수정은 아작스로하거나 새파일 만들어야할듯
+	@GetMapping("/admin/sponsor/item/update/{seq}")
+	public String updateSponsorItem(@PathVariable("seq") int sponsorItemSeq, Model model) {
+		SponsorItemDTO sponsor = new SponsorItemDTO();
+		sponsor.setSponsorItemSeq(sponsorItemSeq);
+		sponsorService.getSponsorItem(sponsor);
+		return "/adminPage/sponsor_item_form";
+	}
+
+	// 후원 상품 수정 (관리자페이지)
+	@PostMapping("/admin/sponsor/item/update")
+	public String updateSponsorItem(SponsorItemDTO sponsor) {
+		sponsorService.updateSponsorItem(sponsor);
+		return "redirect:/admin/sponsor/item";
+	}
+	
+	// 주문 목록 이동 (관리자페이지)
 	@GetMapping("/admin/sponsor/order")
-	public String sponsorOrder() {
+	public String sponsorOrderList(Model model) {
+		// 총 상품수
+		model.addAttribute("totalCnt", sponsorService.sponsorTotalCnt());
+		// 주문 목록
+		model.addAttribute("sponsorList", sponsorService.getSponsorList());
 		return "/adminPage/sponsor_order";
 	}
 	
-	
+	// 주문 상세 조회
+	@GetMapping("/admin/sponsor/order/info/{seq}")
+	public String sponsorOrder(@PathVariable("seq") int sponsorSeq, Model model) {
+		SponsorDTO sponsor = new SponsorDTO();
+		sponsor.setSponsorSeq(sponsorSeq);
+		model.addAttribute("sponsorDetail", sponsorService.getSponsor(sponsor));
+		return "redirect:/admin/sponsor/order";
+	}
+
+	// 주문 내역 상태 수정 (관리자페이지)
+	@PostMapping("/admin/sponsor/order")
+	public String sponsorOrder(SponsorDTO sponsor) {
+		sponsorService.StateupdateSponsor(sponsor);
+		return "redirect:/admin/sponsor/order";
+	}
 }

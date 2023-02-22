@@ -34,7 +34,7 @@ public class SponsorController {
 	// 후원 상품 목록 조회
 	@GetMapping(value = "/list")
 	public String getSponsorItemList(SponsorItemDTO sponsor, Model model) {
-		model.addAttribute("sponsorItemList", sponsorService.getSponsorItemList(sponsor));
+		model.addAttribute("sponsorItemList", sponsorService.getSponsorItemList());
 		return "/sponsor/sponsor_list";
 	}
 	
