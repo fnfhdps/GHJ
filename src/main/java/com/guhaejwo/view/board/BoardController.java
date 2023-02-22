@@ -32,7 +32,7 @@ public class BoardController {
 	public String qnaList(@PathVariable("seq") int userSeq, BoardDTO board, Model model) {
 		board.setBoardCategory("QNA");
 		board.setUserSeq(userSeq);
-		model.addAttribute("qnaList", boardService.getBoardList(board));
+		model.addAttribute("qnaList", boardService.getBoardListMyPage(board));
 	return "/myPage/qna_list";
 	}
 	

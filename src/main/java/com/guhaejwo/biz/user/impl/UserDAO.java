@@ -9,18 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.guhaejwo.biz.user.UserDTO;
-import com.guhaejwo.biz.user.UserRepository;
+import com.guhaejwo.biz.user.UserService;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Repository("userRepository")
-public class MybatisUserRepositoryImpl implements UserRepository{
+public class UserDAO implements UserService{
 
 	private final SqlSessionTemplate mybatis;
 	
 	@Autowired
-	public MybatisUserRepositoryImpl(SqlSessionTemplate mybatis) { 
+	public UserDAO(SqlSessionTemplate mybatis) { 
 		this.mybatis = mybatis; 
 	}
 	

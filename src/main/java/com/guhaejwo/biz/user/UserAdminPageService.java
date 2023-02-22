@@ -2,7 +2,7 @@ package com.guhaejwo.biz.user;
 
 import java.util.List;
 
-public interface UserRepository {
+public interface UserAdminPageService {
 	
 	// 회원 저장
 	public void save(UserDTO user);

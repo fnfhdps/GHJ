@@ -27,15 +27,15 @@ import org.springframework.web.util.WebUtils;
 import com.guhaejwo.biz.user.LoginType;
 import com.guhaejwo.biz.user.Role;
 import com.guhaejwo.biz.user.UserDTO;
-import com.guhaejwo.biz.user.impl.UserService;
+import com.guhaejwo.biz.user.impl.UserServiceImpl;
 
 @Controller
 public class JoinController {
 
-	private final UserService userService;
+	private final UserServiceImpl userService;
 	
 	@Autowired
-	public JoinController(UserService userService) {
+	public JoinController(UserServiceImpl userService) {
 		this.userService = userService;
 	}
 	

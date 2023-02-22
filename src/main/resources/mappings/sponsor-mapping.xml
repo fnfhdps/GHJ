@@ -4,6 +4,8 @@
 			
 <mapper namespace="SponsorDAO">
 
+<!-- 후원 sql -->
+
 	<!-- 후원 내역 입력 -->
 	<insert id="insertSponsor">
 		<![CDATA[
@@ -12,22 +14,14 @@
 		]]>
 	</insert>
 	
-	<!-- 후원 상품 목록 조회 -->
-	<select id="getSponsorItemList" resultType="sponsorItem">
+    <!-- 후원 상품 수정 (관리자페이지) -->
+	<update id="updateSponsor">
 		<![CDATA[
-			select *
-			from sponsor_item
+			UPDATE sponsor
+			SET sponsorState = #{sponsorState}
+			where sponsorSeq = #{sponsorSeq}
 		]]>
-	</select>
-	
-	<!-- 후원 상품 상세 조회 -->
-	<select id="getSponsorItem" parameterType="int" resultType="sponsorItem">
-		<![CDATA[
-			SELECT * 
-			FROM SPONSOR_ITEM
-			WHERE sponsorItemSeq = #{sponsorItemSeq}
-		]]>
-	</select>
+	</update>
 	
 	<!-- 후원 내역 조회 (마이페이지) -->
 	<select id="getSponsorMyPage" parameterType="int" resultType="sponsorMyPage">
@@ -39,5 +33,89 @@
 			order by s.sponsorseq desc
 		]]>
 	</select>
+	
+	<!-- 총 주문수 (관리자페이지) -->
+	<select id="sponsorTotalCnt" resultType="int">
+		<![CDATA[
+			select count(*) totalcnt
+			from sponsor
+		]]>
+	</select>
+
+	<!-- 전체 주문 내역 조회 (관리자페이지) -->
+	<select id="getSponsorList" resultType="sponsor">
+		<![CDATA[
+			select * from sponsor
+		]]>
+	</select>
+	
+	<!-- 주문 상세 조회 (관리자페이지) -->
+	<select id="getSponsor" resultType="sponsor">
+		<![CDATA[
+			select users.username, users.userphone, users.useremail, sponsor.*
+			from users, sponsor
+			where users.userseq = sponsor.userseq
+			and sponsorseq = #{sponsorSeq}
+		]]>
+	</select>
+
+<!-- 후원 상품 sql -->
+
+	<!-- 후원 상품 입력 (관리자페이지) -->
+	<insert id="insertSponsorItem">
+		<![CDATA[
+			INSERT INTO sponsor_item(sponsorItemSeq, sponsorItemName, sponsorItemImg, sponsorItemPrice, sponsorItemCode, sponsorItemState)
+			VALUES ((select nvl(max(sponsorItemSeq), 0) + 1 from sponsor_item), #{sponsorItemName}, #{sponsorItemImg}, #{sponsorItemPrice}, #{sponsorItemCode}, #{sponsorItemState});
+		]]>
+	</insert>
+	
+    <!-- 후원 상품 수정 (관리자페이지) -->
+	<update id="updateSponsorItem">
+		<![CDATA[
+			UPDATE sponsor_item
+			SET sponsorItemName = #{sponsorItemName},
+			    sponsorItemImg = #{sponsorItemImg},
+			    sponsorItemPrice = #{sponsorItemPrice},
+			    sponsorItemCode = #{sponsorItemCode},
+			    sponsorItemState = #{sponsorItemState}
+			where sponsorItemSeq = #{sponsorItemSeq}
+		]]>
+	</update>
+	
+	<!-- 후원 상품 삭제 (관리자페이지) -->
+	<delete id="deleteSponsorItem" parameterType="int">
+		<![CDATA[
+			DELETE
+			FROM sponsor_item
+			WHERE sponsorItemSeq = #{sponsorItemSeq}
+		]]>
+	</delete>
+	
+	<!-- 총 후원 상품수 (관리자페이지) -->
+	<select id="sponsorItemTotalCnt" resultType="int">
+		<![CDATA[
+			select count(*) totalcnt
+			from sponsor_item
+		]]>
+	</select>
+	
+	<!-- 후원 상품 목록 조회 (관리자페이지) -->
+	<select id="getSponsorItemList" resultType="sponsorItem">
+		<![CDATA[
+			select *
+			from sponsor_item
+		]]>
+	</select>
+	
+	<!-- 후원 상품 상세 조회 (관리자페이지) -->
+	<select id="getSponsorItem" parameterType="int" resultType="sponsorItem">
+		<![CDATA[
+			SELECT * 
+			FROM SPONSOR_ITEM
+			WHERE sponsorItemSeq = #{sponsorItemSeq}
+		]]>
+	</select>
+	
+
 	
 </mapper>

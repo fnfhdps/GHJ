@@ -19,16 +19,16 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
 import com.guhaejwo.biz.user.UserDTO;
-import com.guhaejwo.biz.user.impl.UserService;
+import com.guhaejwo.biz.user.impl.UserServiceImpl;
 
 @Controller
 @SessionAttributes("login")
 public class userController {
 	
-	private final UserService userService;
+	private final UserServiceImpl userService;
 	
 	@Autowired
-	public userController(UserService userService) {
+	public userController(UserServiceImpl userService) {
 		this.userService = userService;
 	}
 	

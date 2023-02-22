@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class SponsorDTO {
 	
+	private int totalCnt;
+	
 	private int sponsorSeq;
 	private int userSeq;	   	// users 테이블
 	private int sponsorItemSeq;	// sponsor_item 테이블
@@ -18,6 +20,13 @@ public class SponsorDTO {
 	private String memo;
 	
 	public SponsorDTO() {}
+
+	public int getTotalCnt() {
+		return totalCnt;
+	}
+	public void setTotalCnt(int totalCnt) {
+		this.totalCnt = totalCnt;
+	}
 
 	public int getSponsorSeq() {
 		return sponsorSeq;
@@ -94,11 +103,11 @@ public class SponsorDTO {
 
 	@Override
 	public String toString() {
-		return "SponsorDTO [sponsorSeq=" + sponsorSeq + ", userSeq=" + userSeq + ", sponsorItemSeq=" + sponsorItemSeq
-				+ ", sponsorAmount=" + sponsorAmount + ", sponsorDate=" + sponsorDate + ", sponsorTotalPrice="
-				+ sponsorTotalPrice + ", sponsorShippingAddr=" + sponsorShippingAddr + ", sponsorName=" + sponsorName
-				+ ", sponsorPhone=" + sponsorPhone + ", payment=" + payment + ", sponsorState=" + sponsorState
-				+ ", memo=" + memo + "]";
+		return "SponsorDTO [totalCnt=" + totalCnt + ", sponsorSeq=" + sponsorSeq + ", userSeq=" + userSeq
+				+ ", sponsorItemSeq=" + sponsorItemSeq + ", sponsorAmount=" + sponsorAmount + ", sponsorDate="
+				+ sponsorDate + ", sponsorTotalPrice=" + sponsorTotalPrice + ", sponsorShippingAddr="
+				+ sponsorShippingAddr + ", sponsorName=" + sponsorName + ", sponsorPhone=" + sponsorPhone + ", payment="
+				+ payment + ", sponsorState=" + sponsorState + ", memo=" + memo + "]";
 	}
 
 }

@@ -2,6 +2,8 @@ package com.guhaejwo.biz.sponsor;
 
 public class SponsorItemDTO {
 	
+	private int totalCnt;
+	
 	private int sponsorItemSeq;
 	private String sponsorItemName ;
 	private String sponsorItemImg;
@@ -12,6 +14,13 @@ public class SponsorItemDTO {
 	
 	public SponsorItemDTO() {}
 	
+	public int getTotalCnt() {
+		return totalCnt;
+	}
+	public void setTotalCnt(int totalCnt) {
+		this.totalCnt = totalCnt;
+	}
+
 	public int getSponsorItemSeq() {
 		return sponsorItemSeq;
 	}
@@ -57,10 +66,10 @@ public class SponsorItemDTO {
 
 	@Override
 	public String toString() {
-		return "SponsorItemDTO [sponsorItemSeq=" + sponsorItemSeq + ", sponsorItemName=" + sponsorItemName
-				+ ", sponsorItemImg=" + sponsorItemImg + ", sponsorItemPrice=" + sponsorItemPrice + ", sponsorItemCode="
-				+ sponsorItemCode + ", sponsorItemDate=" + sponsorItemDate + ", sponsorItemState=" + sponsorItemState
-				+ "]";
+		return "SponsorItemDTO [totalCnt=" + totalCnt + ", sponsorItemSeq=" + sponsorItemSeq + ", sponsorItemName="
+				+ sponsorItemName + ", sponsorItemImg=" + sponsorItemImg + ", sponsorItemPrice=" + sponsorItemPrice
+				+ ", sponsorItemCode=" + sponsorItemCode + ", sponsorItemDate=" + sponsorItemDate
+				+ ", sponsorItemState=" + sponsorItemState + "]";
 	}
 
 }
