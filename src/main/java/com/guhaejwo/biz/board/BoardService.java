@@ -20,7 +20,7 @@ public interface BoardService {
 	public BoardDTO getBoard(BoardDTO board);
 	
 	// qna 목록 조회
-	public List<BoardDTO> getBoardList(BoardDTO board);
+	public List<BoardDTO> getBoardListMyPage(BoardDTO board);
 	
 	// 이전글 조회
 	public BoardDTO getBefore(BoardDTO board);

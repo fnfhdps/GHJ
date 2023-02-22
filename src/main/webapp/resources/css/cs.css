@@ -2,14 +2,14 @@
   margin-bottom: 40px;
 }
 .hero {
-  /* background-image: url(//theme.zdassets.com/theme_assets/9483888/758e21b….png); */
+  /* background-image: url(//theme.zdassets.com/theme_assets/9483888/758e21b��.png); */
   background-position: center;
   background-size: cover;
   height: 300px;
   padding: 0 20px;
   text-align: center;
   width: 100%;
-  /* 임시 */
+  /* �엫�떆 */
   background-color: blanchedalmond;
 }
 .hero-inner {
@@ -135,6 +135,7 @@ h3{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  padding-left: 0;
 }
 ul {
   list-style: none;
@@ -198,8 +199,3 @@ ul {
         margin: 0 -15px;
     }
 }
-
-/* QNA css */
-/* #new-btn{
-
-} */

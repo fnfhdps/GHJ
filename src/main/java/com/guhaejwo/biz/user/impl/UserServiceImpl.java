@@ -9,18 +9,18 @@ import org.springframework.stereotype.Service;
 import com.guhaejwo.biz.user.LoginType;
 import com.guhaejwo.biz.user.Role;
 import com.guhaejwo.biz.user.UserDTO;
-import com.guhaejwo.biz.user.UserRepository;
+import com.guhaejwo.biz.user.UserService;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Service("userService")
-public class UserService {
+public class UserServiceImpl {
 	
-	private final UserRepository userRepository;
+	private final UserService userRepository;
 	
 	@Autowired
-	public UserService(UserRepository userRepository) {
+	public UserServiceImpl(UserService userRepository) {
 		this.userRepository = userRepository;
 	}
 	

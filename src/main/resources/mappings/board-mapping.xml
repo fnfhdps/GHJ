@@ -4,7 +4,7 @@
 			
 <mapper namespace="BoardDAO">
 
-	<!-- 글 입력 -->
+	<!-- 글 입력 (관리자페이지:입양, 공지사항) -->
 	<insert id="insertBoard">
 		<![CDATA[
 			INSERT INTO board(boardSeq, boardCategory, boardTitle, userSeq, boardContent, boardSubCategory)
@@ -12,7 +12,7 @@
 		]]>
 	</insert>
 	
-	<!-- 글 수정 -->
+	<!-- 글 수정 (관리자페이지:공지사항) -->
 	<update id="updateBoard">
 		<![CDATA[
 			UPDATE board
@@ -21,7 +21,7 @@
 		]]>
 	</update>
 	
-	<!-- 글 삭제 -->
+	<!-- 글 삭제 (관리자페이지:공지사항) -->
 	<delete id="deleteBoard" parameterType="int">
 		<![CDATA[
 			DELETE
@@ -39,13 +39,35 @@
 		]]>
 	</select>
 	
-	<!-- 목록 조회 -->
-	<select id="getBoardList" resultType="board">
+	<!-- 내 글 목록 조회 (마이페이지) -->
+	<select id="getBoardListMyPage" resultType="board">
 		<![CDATA[
 			select ROW_NUMBER() OVER(ORDER BY boardseq) as num, board.*
 			from board
 			where boardcategory = #{boardCategory}
 			and userseq = #{userSeq}
+			order by num desc
+		]]>
+	</select>
+
+	<!-- 입양, 공지사항, 1:1 검색 (관리자페이지) -->
+	
+	<!-- 총  입양, 공지사항, 1:1 수 (관리자페이지) -->
+	<select id="boardTotalCnt" resultType="int">
+		<![CDATA[
+			select count(*) totalcnt
+			from board
+			where 1=1
+			and boardcategory = #{boardCategory}
+		]]>
+	</select>
+	
+	<!-- 입양, 공지사항, 1:1 목록 조회 (관리자페이지) -->
+	<select id="getBoardList" resultType="board">
+		<![CDATA[
+			select ROW_NUMBER() OVER(ORDER BY board.boardseq) as num, board.*
+			from board
+			where boardCategory = #{boardCategory}
 			order by num desc
 		]]>
 	</select>
@@ -85,5 +107,5 @@
 			    )
 			where boardseq = #{boardSeq}
 	</select>
-	
+
 </mapper>

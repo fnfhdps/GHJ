@@ -2,6 +2,8 @@ package com.guhaejwo.biz.adopt;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class AdoptMyPageDTO {
 	
 	private int rownum;
@@ -19,6 +21,7 @@ public class AdoptMyPageDTO {
 	private String adoptState;
 	private String adoptKind;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date adoptReqDate;
 
 	

@@ -43,9 +43,9 @@ public class BoardDAO {
 	}
 	
 	// qna 목록 조회
-	public List<BoardDTO> getBoardList(BoardDTO board){
-		System.out.println("--> BoardRepository.getBoardList() 실행");
-		return mybatis.selectList("BoardDAO.getBoardList", board);
+	public List<BoardDTO> getBoardListMyPage(BoardDTO board){
+		System.out.println("--> BoardRepository.getBoardListMyPage() 실행");
+		return mybatis.selectList("BoardDAO.getBoardListMyPage", board);
 	}
 	
 	// qna 이전글 조회

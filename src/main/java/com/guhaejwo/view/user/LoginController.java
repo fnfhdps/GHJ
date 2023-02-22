@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.guhaejwo.biz.user.UserDTO;
-import com.guhaejwo.biz.user.impl.UserService;
+import com.guhaejwo.biz.user.impl.UserServiceImpl;
 
 @Controller
 public class LoginController {
 
-	private final UserService userService;
+	private final UserServiceImpl userService;
 	
 	@Autowired
-	public LoginController(UserService userService) {
+	public LoginController(UserServiceImpl userService) {
 		this.userService = userService;
 	}
 	

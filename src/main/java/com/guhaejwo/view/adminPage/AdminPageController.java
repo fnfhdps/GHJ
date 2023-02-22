@@ -11,6 +11,7 @@ public class AdminPageController {
 	// 회원정보목록 이동 (관리자페이지)
 	@GetMapping("/admin/member/list")
 	public String memberList() {
+		
 		return "/adminPage/member_list";
 	}
 	
