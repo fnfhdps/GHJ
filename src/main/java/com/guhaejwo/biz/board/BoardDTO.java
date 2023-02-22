@@ -18,6 +18,8 @@ public class BoardDTO {
 	private int boardCnt;
 	private String boardSubCategory;
 	
+	private String userId;
+	
 	public BoardDTO() {}
 	
 	public int getTotalCnt() {
@@ -96,13 +98,20 @@ public class BoardDTO {
 	public void setBoardSubCategory(String boardSubCategory) {
 		this.boardSubCategory = boardSubCategory;
 	}
+	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	@Override
 	public String toString() {
 		return "BoardDTO [totalCnt=" + totalCnt + ", num=" + num + ", findSeq=" + findSeq + ", findTitle=" + findTitle
 				+ ", boardSeq=" + boardSeq + ", boardCategory=" + boardCategory + ", boardTitle=" + boardTitle
 				+ ", userSeq=" + userSeq + ", boardContent=" + boardContent + ", boardDate=" + boardDate + ", boardCnt="
-				+ boardCnt + ", boardSubCategory=" + boardSubCategory + "]";
+				+ boardCnt + ", boardSubCategory=" + boardSubCategory + ", userId=" + userId + "]";
 	}
 
 }

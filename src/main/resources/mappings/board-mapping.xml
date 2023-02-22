@@ -30,7 +30,7 @@
 		]]>
 	</delete>
 	
-	<!-- 목록 상세 조회 -->
+	<!-- 글 상세 조회 -->
 	<select id="getBoard" resultType="board">
 		<![CDATA[
 			select *
@@ -39,7 +39,7 @@
 		]]>
 	</select>
 	
-	<!-- 내 글 목록 조회 (마이페이지) -->
+	<!-- 내 qna 목록 조회 (마이페이지) -->
 	<select id="getBoardListMyPage" resultType="board">
 		<![CDATA[
 			select ROW_NUMBER() OVER(ORDER BY boardseq) as num, board.*
@@ -65,9 +65,10 @@
 	<!-- 입양, 공지사항, 1:1 목록 조회 (관리자페이지) -->
 	<select id="getBoardList" resultType="board">
 		<![CDATA[
-			select ROW_NUMBER() OVER(ORDER BY board.boardseq) as num, board.*
-			from board
-			where boardCategory = #{boardCategory}
+			select ROW_NUMBER() OVER(ORDER BY board.boardseq) as num, board.*, users.userid
+			from board, users
+			where users.userseq = board.userseq
+			and boardCategory = #{boardCategory}
 			order by num desc
 		]]>
 	</select>

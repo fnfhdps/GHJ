@@ -56,4 +56,14 @@ public class BoardServiceImpl implements BoardService{
 	public BoardDTO getAfter(BoardDTO board) {
 		return boardDAO.getAfter(board);
 	}
+
+	@Override
+	public int boardTotalCnt(BoardDTO board) {
+		return boardDAO.boardTotalCnt(board);
+	}
+
+	@Override
+	public List<BoardDTO> getBoardList(BoardDTO board) {
+		return boardDAO.getBoardList(board);
+	}
 }

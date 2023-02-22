@@ -1,4 +1,4 @@
-package com.guhaejwo.view.board;
+package com.guhaejwo.view.qna;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,13 +16,13 @@ import com.guhaejwo.biz.reply.ReplyDTO;
 import com.guhaejwo.biz.reply.ReplyService;
 
 @Controller
-public class BoardController {
+public class QnaController {
 
 	private BoardService boardService;
 	private ReplyService replyService;
 	
 	@Autowired
-	public BoardController(BoardService boardService, ReplyService replyService) {
+	public QnaController(BoardService boardService, ReplyService replyService) {
 		this.boardService = boardService;
 		this.replyService = replyService;
 	}

@@ -1,7 +1,9 @@
 package com.guhaejwo.biz.user;
 
 import java.time.LocalDate;
+import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class UserDTO {
@@ -20,8 +22,10 @@ public class UserDTO {
 	private String userAddr2;
 	private String userAddr3;
 	private LoginType loginType;
-	private LocalDate regDate;
-	private LocalDate lastDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date regDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date lastDate;
 	
 	public UserDTO() {}
 
@@ -104,16 +108,16 @@ public class UserDTO {
 	public void setLoginType(LoginType loginType) {
 		this.loginType = loginType;
 	}
-	public LocalDate getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(LocalDate regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public LocalDate getLastDate() {
+	public Date getLastDate() {
 		return lastDate;
 	}
-	public void setLastDate(LocalDate lastDate) {
+	public void setLastDate(Date lastDate) {
 		this.lastDate = lastDate;
 	}
 

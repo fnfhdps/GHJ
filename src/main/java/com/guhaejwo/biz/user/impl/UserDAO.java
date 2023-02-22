@@ -76,8 +76,8 @@ public class UserDAO implements UserService{
 
 	@Override
 	public int userTotalCnt() {
-		System.out.println("--> MybatisUserRepository.getUserByEmail() 실행");
-		return mybatis.selectOne("UserDAO.getUserByEmail");
+		System.out.println("--> MybatisUserRepository.userTotalCnt() 실행");
+		return mybatis.selectOne("UserDAO.userTotalCnt");
 	}
 
 	@Override

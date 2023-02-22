@@ -12,22 +12,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.guhaejwo.biz.board.BoardDTO;
+import com.guhaejwo.biz.board.BoardService;
+import com.guhaejwo.biz.board.impl.BoardServiceImpl;
 import com.guhaejwo.biz.user.UserDTO;
 import com.guhaejwo.biz.user.impl.UserServiceImpl;
+
+import oracle.net.aso.c;
 
 @Controller
 public class AdminPageController {
 
 	private final UserServiceImpl userService;
+	private final BoardService boardService;
 	
 	@Autowired
-	public AdminPageController(UserServiceImpl userService) {
+	public AdminPageController(UserServiceImpl userService, BoardService boardService) {
 		this.userService = userService;
+		this.boardService = boardService;
 	}
 	
 	// 회원정보목록 이동 (관리자페이지)
-	@GetMapping("/admin/member/list")
+	@GetMapping("/admin/member")
 	public String memberList(Model model) {
 		// 총 회원수
 		model.addAttribute("totalCnt", userService.userTotalCnt());
@@ -60,14 +69,14 @@ public class AdminPageController {
 	}
 	
 	// 회원 수정 (관리자페이지) ***추후 파일업로드 추가***
-	@PostMapping("/admin/member/info/update")
+	@PostMapping("/admin/member/update")
 	public String update(UserDTO user) throws Exception{		
 		userService.update(user);
-		return "redirect:/admin/member/list";
+		return "redirect:/admin/member";
 	}
 	
 	// 회원 삭제 (관리자페이지) **이거 되려나**
-	@PostMapping(value = "/admin/member/info/delete")
+	@PostMapping(value = "/admin/member/delete")
 	public String withdraw(UserDTO user, HttpSession session) {
 		System.out.println("id, pw 확인 : "+user);
 		
@@ -84,13 +93,53 @@ public class AdminPageController {
 		}
 	}
 	
-	// 입양글관리 이동 (관리자페이지)
-	@GetMapping("/admin/board")
-	public String board(Model model) {
-		// 총 입양글
-		model.addAttribute("totalCnt");
+	// 입양글, 공지사항, 1:1문의 목록 이동 (관리자페이지)
+	@GetMapping("/admin/{category}")
+	public String getboardList(@PathVariable("category") String category, Model model) {
+		BoardDTO board = new BoardDTO();
+		board.setBoardCategory(category);
 		
-		return "/adminPage/board";
+		// 총 입양글
+		model.addAttribute("totalCnt", boardService.boardTotalCnt(board));
+		model.addAttribute("boardList", boardService.getBoardList(board));
+		
+		return "/adminPage/"+category.toLowerCase();
+		
+//		if(category.equals("ADOPT")) {
+//			return "/adminPage/adopt";
+//		}else if(category.equals("NOTICE")) {
+//			return "/adminPage/notice";
+//		}else {
+//			return "/adminPage/qna";
+//		}
+	}
+	
+	// 공지사항 입력 이동 (관리자페이지)
+	@GetMapping("/admin/notice/insert")
+	public String noticeInsert() {
+		return "/adminPage/notice_form";
+	}
+	
+	// 공지사항 입력 (관리자페이지)
+	@PostMapping("/admin/notice/insert")
+	public String insertBoard(BoardDTO board) {
+		boardService.insertBoard(board);
+		return "redirect:/admin/NOTICE";
+	}
+	
+	// 입양글, 공지사항 삭제 (관리자페이지)
+	//카테고리 맞으면 해당 페이지 목록으로 ㄱ 아니면 이전페이지로 ㄱ
+	@PostMapping("/admin/{category}/delete")
+	public String deleteBoard(@PathVariable("category") String category, @RequestBody BoardDTO board) {
+
+		return "redirect:/admin/"+category;
+		//		if(category.equals("ADOPT")) {
+//			return "redirect:/admin/"+category;
+//		}else if(category.equals("NOTICE")) {
+//			return "/adminPage/notice";
+//		}else {
+//			return "/adminPage/qna";
+//		}
 	}
 	
 	// 댓글관리 이동 (관리자페이지)
@@ -100,18 +149,14 @@ public class AdminPageController {
 		return "/adminPage/comment";
 	}
 	
-	// 공지사항 이동 (관리자페이지)
-	@GetMapping("/admin/notice")
-	public String notice() {
-		return "/adminPage/notice";
-	}
-	
-	// 공지사항 등록 이동 (관리자페이지)
-	@GetMapping("/admin/notice/insert")
-	public String noticeInsert() {
-		return "/adminPage/notice_form";
-	}
-	
+//	// 공지사항 이동 (관리자페이지)
+//	@GetMapping("/admin/notice")
+//	public String notice() {
+//		return "/adminPage/notice";
+//	}
+//	
+
+//	
 	// 공지사항 수정 이동 (관리자페이지)
 	@GetMapping("/admin/notice/update")
 	public String noticeUpdate() {

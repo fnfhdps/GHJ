@@ -11,11 +11,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>관리자: 게시글관리</title>
+<title>관리자: 공지사항관리</title>
 </head>
 
 <!-- 관리자 role인지 확인하기 -->
-<body>  
+<body>
   <!-- 관리자페이지 헤더 -->
   <jsp:include page="../fix/admin_header.jsp"></jsp:include>
   
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">게시글관리</h1>
+          <h1 class="h2">1:1문의관리</h1>
         </div>
 
         <section class="member_container">
@@ -45,9 +45,10 @@
   
             <div class="d-flex comment_title tbl_caption">
               <div class="mt-2">
-                <span>게시글수</span>
-                <span>35</span>
+                <span>문의수</span>
+                <span>${totalCnt}</span>
               </div>
+              
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
                   <li class="page-item">
@@ -71,49 +72,48 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th class=""><input type="checkbox" name="" id=""></th>
+                    <th class="">번호</th>
+                    <th class="">구분</th>
                     <th class="">제목</th>
                     <th class="">작성자</th>
                     <th class="">작성일</th>
-                    <th class="">조회수</th>
-                    <th class="">신고수</th>
+                    <th class="">상태</th>
                     <th class=""></th>
                   </tr>
                 </thead>
+                
                 <tbody>
-                  <tr>
-                    <td class="text-center">
-                      <input type="checkbox" name="" id="">
-                    </td>
-                    <td class="text-center">어쩌구 궁시렁</td>
-                    <td class="text-center">sdbf1356</td>
-                    <td class="text-center">2022-12-23</td>
-                    <td class="text-center">12</td>
-                    <td class="text-center">12</td>
-                    <td class="text-center dropdown">
-                      <i class="bi bi-three-dots-vertical"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                      </i>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">이동</a></li>
-                        <li><a class="dropdown-item" href="#">숨김</a></li>
-                        <li><a class="dropdown-item" href="#">삭제</a></li>
-                      </ul>
-                    </td>
-                  </tr>
+	          	<c:choose>
+	       		  <c:when test="${!empty boardList}">
+				    <c:forEach items="${boardList}" var="board">
+	                  <tr>
+	                    <td class="text-center">${board.num}</td>
+	                    <td class="text-center">${board.boardSubCategory}</td>
+	                    <td class="text-center">${board.boardTitle}</td>
+	                    <td class="text-center">${board.userId}</td>
+	                    <td class="text-center"><fmt:formatDate value="${board.boardDate}" pattern="yyyy-MM-dd"/></td>
+	                    <td class="text-center">답변완료</td>
+	                    <td class="text-center">
+	                      <a href="#">
+	                        <i class="bi bi-box-arrow-up-right"></i>
+	                      </a>
+	                    </td>
+	                  </tr>
+				    </c:forEach>
+		          </c:when>
+			   	  <c:otherwise>
+		   		  	<td class="text-center" colspan="4">1:1 문의 내역이 없습니다.</td>
+		   		  </c:otherwise>        
+	     	    </c:choose>
                 </tbody>
+                
               </table>
             </div>
 
-            <div class="notice_btn d-flex justify-content-end">
-              <a href="#" type="button" class="btn btnAuthentication">선택 삭제</a>
-            </div>
           </article>
         </section>
+
       </main>
-      
     </div>
   </div>
 </body>

@@ -4,22 +4,22 @@ import java.util.List;
 
 public interface BoardService {
 
-	// qna 질문 입력
+	// 글 입력 (관리자페이지:입양, 공지사항)
 	public void insertBoard(BoardDTO board);
 
-	// qna 질문 수정
+	// 글 수정 (관리자페이지:공지사항)
 	public void updateBoard(BoardDTO board);
 
 	// qna 상태 변경
 	public void updateState(BoardDTO board);
 	
-	// qna 질문 삭제
+	// 글 삭제 (관리자페이지:공지사항, qna 삭제)
 	public void deleteBoard(BoardDTO board);
 	
-	// qna 상세 조회
+	// 글 상세 조회
 	public BoardDTO getBoard(BoardDTO board);
 	
-	// qna 목록 조회
+	// 내 qna 목록 조회 (마이페이지)
 	public List<BoardDTO> getBoardListMyPage(BoardDTO board);
 	
 	// 이전글 조회
@@ -27,4 +27,11 @@ public interface BoardService {
 	
 	// 다음글 조회
 	public BoardDTO getAfter(BoardDTO board);
+	
+	// 총  입양, 공지사항, 1:1 수 (관리자페이지)
+	public int boardTotalCnt(BoardDTO board);
+	
+	// 입양, 공지사항, 1:1 목록 조회 (관리자페이지)
+	public List<BoardDTO> getBoardList(BoardDTO board);
+	
  }

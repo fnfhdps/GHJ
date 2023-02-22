@@ -46,7 +46,7 @@
             <div class="d-flex comment_title tbl_caption">
               <div class="mt-2">
                 <span>회원수</span>
-                <span>35</span>
+                <span>${totalCnt}</span>
               </div>
               
               <nav aria-label="Page navigation example">
@@ -75,29 +75,40 @@
                   <th class="">번호</th>
                   <th class="">아이디</th>
                   <th class="">가입일</th>
-                  <th class="">신고횟수</th>
+                  <th class="">로그인유형</th>
                   <th class=""></th>
                 </tr>
                 </thead>
+                
                 <tbody>
-                  <tr>
-                    <td class="text-center">1</td>
-                    <td class="text-center">sdbf1356</td>
-                    <td class="text-center">2022-12-23</td>
-                    <td class="text-center">12</td>
-                    <td class="text-center dropdown">
-                      <i class="bi bi-three-dots-vertical"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                      </i>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">조회</a></li>
-                        <li><a class="dropdown-item" href="#">삭제</a></li>
-                      </ul>
-                    </td>
-                  </tr>
+	          	<c:choose>
+	       		  <c:when test="${!empty memberList}">
+				    <c:forEach items="${memberList}" var="member">
+	                  <tr>
+	                    <td class="text-center">번호 추가?</td>
+	                    <td class="text-center">${member.userId}</td>
+	                    <td class="text-center"><fmt:formatDate value="${member.regDate}" pattern="yyyy-MM-dd"/></td>
+	                    <td class="text-center">${member.loginType}</td>
+	                    <td class="text-center dropdown">
+	                      <i class="bi bi-three-dots-vertical"
+	                          id="dropdownMenuButton1"
+	                          data-bs-toggle="dropdown"
+	                          aria-expanded="false">
+	                      </i>
+	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+	                        <li><a class="dropdown-item" href="#">조회</a></li>
+	                        <li><a class="dropdown-item" href="#">삭제</a></li>
+	                      </ul>
+	                    </td>
+	                  </tr>
+				    </c:forEach>
+		          </c:when>
+			   	  <c:otherwise>
+		   		  	<td class="text-center" colspan="4">1:1 문의 내역이 없습니다.</td>
+		   		  </c:otherwise>        
+	     	    </c:choose>
                 </tbody>
+                
               </table>
             </div>
           </article>
