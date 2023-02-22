@@ -47,15 +47,219 @@ p {
 #adopt_list>article>img {
 	height: 250px;
 }
-/*     #adopt_list > article {
-    	float: left;
-    	margin-left: 10px;
-    	margin-bottom: 10px;
+html {
+        font-size: 62.5%;
+        height: 100%;
     }
-    #adopt_list > article > img {
-    	display: block;
-    	width: 400px;
-    } */
+    /* 1 section start */
+    #home-main-section-top {
+    padding-top: 24px;
+    background-color: #FBF7F2;
+    }
+    #home-main-section-top #home-main-top {
+        width: 1024px;
+        height: 760px;
+        margin: 0 auto;
+        position: relative;
+        background-color: #FBF7F2;
+    }
+    #home-main-section-top .home-main-title {
+        font-size: 4.8rem;
+        line-height: 1.3;
+        padding-top: 27rem;
+        margin-bottom: 3.2rem;
+        letter-spacing: -0.4px;
+    }
+    .text-m {
+        font-size: 1.6rem !important;
+        line-height: 1.5;
+        letter-spacing: -0.3px;
+    }
+    #home-main-section-top .home-main-image-top {
+        position: absolute;
+        right: -84px;
+        bottom: 0;
+        width: 804px;
+        height: 685px;
+        background-color: #FBF7F2;
+        background-repeat: no-repeat;
+        background-size: 804px 685px;
+    }
+    #home-main-section-top .home-main-image-top {
+        position: absolute;
+        right: -84px;
+        bottom: 0;
+        width: 804px;
+        height: 685px;
+        background-color: #FBF7F2;
+        background-repeat: no-repeat;
+        background-size: 804px 685px;
+    }
+    /* 1 section end */
+
+    /* 2 section start */
+
+    .home-main-section {
+        padding: 6rem 0;
+    }
+    .home-main-section .home-main-content {
+        width: 1024px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .home-main-section .home-main-image-01 {
+        background-size: 532px 684px;
+        width: 532px;
+        height: 684px;
+    }
+    .home-main-section .home-main-image {
+        display: inline-block;
+    }
+    .home-main-section .home-main-image-01 {
+        background-size: 532px 684px;
+        width: 532px;
+        height: 684px;
+    }
+    .home-main-section .home-main-title {
+        font-size: 4rem;
+        line-height: 1.35;
+        margin-bottom: 2.4rem;
+    }
+    .text-m {
+        font-size: 1.6rem !important;
+        line-height: 1.5;
+        letter-spacing: -0.3px;
+    }
+    .home-main-section .home-buttons {
+        margin-top: 3.2rem;
+    }
+
+    .home-main-section .home-buttons .home-button {
+    background-color: #F1F3F5;
+    color: #212529;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    padding: 1.45rem 2.6rem;
+    display: inline-block;
+    }
+    .text-l {
+        font-size: 1.8rem !important;
+        line-height: 1.47;
+        letter-spacing: -0.3px;
+    }
+    .text-bold {
+        font-weight: bold;
+    }
+
+    .ml-3 {
+        margin-left: 1.6rem;
+    }
+    .text-l {
+        font-size: 1.8rem !important;
+        line-height: 1.47;
+        letter-spacing: -0.3px;
+    }
+    .text-bold {
+        font-weight: bold;
+    }
+    /* 2section end */
+
+    /* 3section start */
+    .home-main-section {
+    padding: 6rem 0;
+    }
+    .background-gray {
+        background-color: #F8F9FA;
+    }
+    .home-main-section .home-hot-content {
+        width: 1024px;
+        margin: 6rem auto 12rem auto;
+    }
+    .home-main-section .home-hot-title {
+        margin-bottom: 8rem;
+    }
+    .home-main-section .home-main-title {
+        font-size: 4rem;
+        line-height: 1.35;
+        margin-bottom: 2.4rem;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .cards-wrap {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .cards-wrap .card-top, .cards-wrap .card {
+        width: calc(25% - 44px);
+        margin-right: 44px;
+        margin-bottom: 56px;
+    }
+    .cards-wrap .card-link {
+        text-decoration: none;
+        color: #212529;
+    }
+    .cards-wrap .card-top .card-photo, .cards-wrap .card .card-photo {
+        width: 100%;
+        padding-top: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        background-color: #F8F9FA;
+        box-shadow: inset 0px 0px 0px 1px rgb(0 0 0 / 15%);
+        box-sizing: border-box;
+    }
+    .cards-wrap .card-top .card-photo img, .cards-wrap .card .card-photo img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 12px;
+        border: 1px solid transparent;
+    }
+    .cards-wrap .card-top .card-desc, .cards-wrap .card .card-desc {
+        margin-top: 12px;
+    }
+    .cards-wrap .card-top .card-desc .card-title, .cards-wrap .card .card-desc .card-title {
+        font-size: 16px;
+        letter-spacing: -0.02px;
+        color: #212529;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-bottom: 4px;
+        line-height: 1.5;
+        font-weight: normal;
+    }
+    .cards-wrap .card-top .card-desc .card-price, .cards-wrap .card .card-desc .card-price {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.5;
+        margin-bottom: 4px;
+    }
+    .cards-wrap .card-top .card-desc .card-region-name, .cards-wrap .card .card-desc .card-region-name {
+        font-size: 13px;
+        color: #212529;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-bottom: 4px;
+        line-height: 1.5;
+    }
+
+    .cards-wrap .card-top .card-desc .card-counts, .cards-wrap .card .card-desc .card-counts {
+        color: #868e96;
+        font-size: 13px;
+    }
+    /* 3section end */
 </style>
 <title>main</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -100,41 +304,255 @@ p {
 			</div>
 		</div>
 	
-		<!-- 최근 입양글 -->
-		<h1>강아지를 구해줘!</h1>
-		<%-- <section id="latest_adopt">
-			<div id="adopt_list" class="row row-cols-2 row-cols-lg-3 g-2 g-lg-4">
-				<img class="img-thumbnail" alt="dog01"
-					 src="/resources/image/adopt/dog.jpg">
-				<c:forEach items="${adoptList1}" var="adopt">
-		            <article class="col-md-4">
-						<c:if test="${adopt.adoptState eq 'WAIT'}">
-							<span class="badge bg-dark">입양대기</span>
-						</c:if>
-						<c:if test="${adopt.adoptState eq 'SUCCESS'}">
-							<span class="badge bg-dark">입양완료</span>
-						</c:if>
-							<span>${adopt.adoptKind}</span>
-					</article>
-				</c:forEach>   
-			</div>
-		</section> --%>
-		<div class="container px-4 px-lg-5 mt-5">
-	        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-	            <div class="col mb-5">
-	                <div class="card h-100">
-	                    <a class="loginCheck" href="#">
-	                    	<img class="card-img-top" alt="" src="/resources/image/adopt/dog.jpg">
-	                    </a>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-		<br>
-		<!-- 광고 -->
-		<div>
-			<img alt="광고_03" class="d-block w-100" src="resources/image/adver/adver_03.png">
-		</div>
+		<main>
+        <section id="home-main-section-top" class="background-pale-peach">
+          <div id="home-main-top">
+            <div class="home-main-desc">
+              <h1 class="home-main-title">우리 근처의<br>유기동물</h1>
+              <p class="text-m">
+                유기동물 입양에서 후원까지, 함께해요.<br>가깝고 따뜻한 당신의 가족을 만들어요.
+              </p>
+            </div>
+            <div class="home-main-image-top">
+                <img srcset="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-top-d6869a79bc4cb58ea59aa5a408decfdf4a4ba60ac639837081da12861083cdbb.webp " class="home-main-image-top" alt="중고거래, 동네생활 질문글과 동네가게" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-top-68ba12f0da7b5af9a574ed92ca8b3a9c0068db176b566dd374ee50359693358b.png">
+            </div>
+          </div>
+        </section>
+        <section class="home-main-section">
+          <div class="home-main-content">
+            <div class="home-main-image home-main-image-01">
+                <img srcset="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-1-cc678e9a217b96f5cb459f7f0684f5ba67706f9889801618b8cf879fbc2c0ea7.webp " class="home-main-image-01" alt="우리동네 중고 직거래 사진" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-1-39ac203e8922f615aa3843337871cb654b81269e872494128bf08236157c5f6a.png">
+            </div>
+            <div>
+              <h1 class="home-main-title">동네 검색 후<br>동네 유기동물 입양</h1>
+              <p class="text-m">
+                동네 주민들과 가깝고 따뜻한 마음을
+                
+                지금 나누어 보세요.
+              </p>
+              <div class="home-buttons">
+                <a class="home-button text-l text-bold" href="/hot_articles">입양하러 가기</a>
+                <a class="home-button text-l text-bold ml-3" href="/trust">후원하러 가기</a>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+       
+        <section class="home-main-section background-gray">
+          <div class="home-hot-content">
+            <h1 class="home-main-title text-center home-hot-title">
+               최근 올라온 입양글
+            </h1>
+            <div class="cards-wrap">
+              <article class="card-top ">
+                <a class="card-link " data-event-label="539014062" href="/articles/539014062">
+                    <div class="card-photo ">
+                        <img alt="인절미 입양하세요" src="/img/dog.jpg">
+                    </div>
+                    <div class="card-desc">
+                        <h2 class="card-title">인절미 입양하세요</h2>
+                        <div class="card-price ">
+                        강아지
+                        </div>
+                        <div class="card-region-name">
+                        서울 강동구 둔촌제2동
+                        </div>
+                        <div class="card-counts">
+                            <span>
+                            관심 5
+                            </span>
+                        ∙
+                        <span>
+                            채팅 41
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            <article class="card-top ">
+                <a class="card-link " data-event-label="539014062" href="/articles/539014062">
+                    <div class="card-photo ">
+                        <img alt="인절미 입양하세요" src="/img/dog.jpg">
+                    </div>
+                    <div class="card-desc">
+                        <h2 class="card-title">인절미 입양하세요</h2>
+                        <div class="card-price ">
+                        강아지
+                        </div>
+                        <div class="card-region-name">
+                        서울 강동구 둔촌제2동
+                        </div>
+                        <div class="card-counts">
+                            <span>
+                            관심 5
+                            </span>
+                        ∙
+                        <span>
+                            채팅 41
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                </article>
+                <article class="card-top ">
+                    <a class="card-link " data-event-label="539014062" href="/articles/539014062">
+                        <div class="card-photo ">
+                            <img alt="인절미 입양하세요" src="/img/dog.jpg">
+                        </div>
+                        <div class="card-desc">
+                            <h2 class="card-title">인절미 입양하세요</h2>
+                            <div class="card-price ">
+                            강아지
+                            </div>
+                            <div class="card-region-name">
+                            서울 강동구 둔촌제2동
+                            </div>
+                            <div class="card-counts">
+                                <span>
+                                관심 5
+                                </span>
+                            ∙
+                            <span>
+                                채팅 41
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <article class="card-top ">
+                    <a class="card-link " data-event-label="539014062" href="/articles/539014062">
+                        <div class="card-photo ">
+                            <img alt="인절미 입양하세요" src="/img/dog.jpg">
+                        </div>
+                        <div class="card-desc">
+                            <h2 class="card-title">인절미 입양하세요</h2>
+                            <div class="card-price ">
+                            강아지
+                            </div>
+                            <div class="card-region-name">
+                            서울 강동구 둔촌제2동
+                            </div>
+                            <div class="card-counts">
+                                <span>
+                                관심 5
+                                </span>
+                            ∙
+                            <span>
+                                채팅 41
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <article class="card-top ">
+                    <a class="card-link " data-event-label="539014062" href="/articles/539014062">
+                        <div class="card-photo ">
+                            <img alt="인절미 입양하세요" src="/img/dog.jpg">
+                        </div>
+                        <div class="card-desc">
+                            <h2 class="card-title">인절미 입양하세요</h2>
+                            <div class="card-price ">
+                            강아지
+                            </div>
+                            <div class="card-region-name">
+                            서울 강동구 둔촌제2동
+                            </div>
+                            <div class="card-counts">
+                                <span>
+                                관심 5
+                                </span>
+                            ∙
+                            <span>
+                                채팅 41
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <article class="card-top ">
+                    <a class="card-link " data-event-label="539014062" href="/articles/539014062">
+                        <div class="card-photo ">
+                            <img alt="인절미 입양하세요" src="/img/dog.jpg">
+                        </div>
+                        <div class="card-desc">
+                            <h2 class="card-title">인절미 입양하세요</h2>
+                            <div class="card-price ">
+                            강아지
+                            </div>
+                            <div class="card-region-name">
+                            서울 강동구 둔촌제2동
+                            </div>
+                            <div class="card-counts">
+                                <span>
+                                관심 5
+                                </span>
+                            ∙
+                            <span>
+                                채팅 41
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <article class="card-top ">
+                    <a class="card-link " data-event-label="539014062" href="/articles/539014062">
+                        <div class="card-photo ">
+                            <img alt="인절미 입양하세요" src="/img/dog.jpg">
+                        </div>
+                        <div class="card-desc">
+                            <h2 class="card-title">인절미 입양하세요</h2>
+                            <div class="card-price ">
+                            강아지
+                            </div>
+                            <div class="card-region-name">
+                            서울 강동구 둔촌제2동
+                            </div>
+                            <div class="card-counts">
+                                <span>
+                                관심 5
+                                </span>
+                            ∙
+                            <span>
+                                채팅 41
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <article class="card-top ">
+                    <a class="card-link " data-event-label="539014062" href="/articles/539014062">
+                        <div class="card-photo ">
+                            <img alt="인절미 입양하세요" src="/img/dog.jpg">
+                        </div>
+                        <div class="card-desc">
+                            <h2 class="card-title">인절미 입양하세요</h2>
+                            <div class="card-price ">
+                            강아지
+                            </div>
+                            <div class="card-region-name">
+                            서울 강동구 둔촌제2동
+                            </div>
+                            <div class="card-counts">
+                                <span>
+                                관심 5
+                                </span>
+                            ∙
+                            <span>
+                                채팅 41
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+      
+            </div>
+            <div class="text-center">
+              <a class="text-bold text-black text-m" id="hot-articles-more" data-url="/hot_articles"> 입양글 더 보기</a>
+            </div>
+          </div>
+        </section>
+      </main>
 		
 		
 	</section>
