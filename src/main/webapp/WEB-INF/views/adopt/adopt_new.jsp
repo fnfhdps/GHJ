@@ -37,12 +37,12 @@
       <br><br>      
       <div>
 		  <label for="formFileLg" class="form-label">이미지 첨부</label>
-		  <input class="form-control form-control-lg" id="formFileLg" type="file" name="adoptImg" value="${adoptDetail.adoptImg}">
+		  <input class="form-control form-control-lg" id="formFileLg" type="file" name="adoptImg">
 	  </div>
 	  
 	  <div class="mb-3">
 	      <label for="disabledSelect" class="form-label">종류</label>
-	      <input type="hidden" id="adoptKind" value="${adoptDetail.adoptKind}">
+	      <input type="hidden" id="adoptKind">
 	      <select id="disabledSelect" class="form-select" name="adoptKind">
 	        	<option value='' selected>-- 선택 --</option>
 				<option value='DOG'>강아지</option>
@@ -53,7 +53,7 @@
       
        <div class="mb-3">
 	      <label for="disabledSelect" class="form-label">성별</label>
-	      <input type="hidden" id="adoptSex" value="${adoptDetail.adoptSex}">
+	      <input type="hidden" id="adoptSex">
 	      <select id="disabledSelect" class="form-select" name="adoptSex">
         		<option value="" selected>-- 선택 --</option>
 			    <option value="F">암컷</option>
@@ -63,14 +63,13 @@
       
       <div class="mb-3">
 	      <label for="disabledTextInput" class="form-label">제목</label>
-	      <input type="text" id="disabledTextInput" class="form-control" placeholder="제목" name="boardTitle" value="${adoptDetail.boardTitle}">
+	      <input type="text" id="disabledTextInput" class="form-control" placeholder="제목" name="boardTitle">
    	  </div> 
           
       <div class="mb-3">
             <label class="form-label">구조일</label>
             <div class="col-sm-2 col-form-label">
-              <input type="date" id="rescueDate" name="adoptRescueDate" class="form-control"
-              		value="<fmt:formatDate value="${adoptDetail.adoptRescueDate}" pattern="yyyy-MM-dd"/>">
+              <input type="date" id="rescueDate" name="adoptRescueDate" class="form-control">
             </div>
    	  </div>
    	  
@@ -82,7 +81,7 @@
 				   type="number"
 				   min="1"
 				   max="100"
-				   value="${adoptDetail.adoptAge}">
+				   value="0">
             </div>
        </div>
           
@@ -94,18 +93,18 @@
 				   type="number"
 				   min="1"
 				   max="100"
-				   value="${adoptDetail.adoptWeight}">
+				   value="0">
             </div>
        </div>   
           
        <div class="mb-3">
 	      <label for="disabledTextInput" class="form-label">구조위치</label>
-	      <input type="text" id="disabledTextInput" class="form-control" placeholder="구조위치" name="adoptAddr" value="${adoptDetail.adoptAddr}">
+	      <input type="text" id="disabledTextInput" class="form-control" placeholder="구조위치" name="adoptAddr">
    	  </div>     
           
       <div class="mb-3">
 	      <label for="disabledSelect" class="form-label">중성화 여부</label>
-	      <input type="hidden" id="adoptNeutor" value="${adoptDetail.adoptNeutor}">
+	      <input type="hidden" id="adoptNeutor">
 	      <select id="disabledSelect" class="form-select" name="adoptNeutor">
        		  <option value="" selected>-- 선택 --</option>
 		      <option value="O">O</option>
@@ -116,7 +115,7 @@
           
       <div class="mb-3">
 		  <label for="exampleFormControlTextarea1" class="form-label">특이사항</label>
-		  <textarea class="form-control" name="boardContent" rows="7">${adoptDetail.boardContent}</textarea>
+		  <textarea class="form-control" name="boardContent" rows="7"></textarea>
 	  </div>
 	  <br>
 	  <div class="btn-group">

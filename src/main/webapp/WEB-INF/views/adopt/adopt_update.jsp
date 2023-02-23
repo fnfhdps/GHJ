@@ -43,7 +43,7 @@
       <div class="mb-3">
 	      <label for="disabledSelect" class="form-label">종류</label>
 	      <input type="hidden" id="adoptKind" value="${adoptDetail.adoptKind}">
-	      <select id="disabledSelect" class="form-select" name="adoptKind">
+	      <select id="kind_select" class="form-select" name="adoptKind">
 	        	<option value='' selected>-- 선택 --</option>
 				<option value='DOG'>강아지</option>
 				<option value='CAT'>고양이</option>

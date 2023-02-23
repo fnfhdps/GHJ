@@ -303,6 +303,7 @@ $('#current_pw').focusout(function() {
 			$('#pwDanger').css('display', 'none');
 			$("#change_pw").removeAttr("disabled");
 			$("#check_pw").removeAttr("disabled");
+			$(this).prop("disabled", true);
 		}else {
             $("#pwSuccess").css('display', 'none');
             $("#pwDanger").css('display', 'inline-block').css("color","red");
