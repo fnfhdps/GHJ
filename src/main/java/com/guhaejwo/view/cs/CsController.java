@@ -19,13 +19,7 @@ public class CsController {
 	// notice 이동
 	@GetMapping("/notice")
 	public String notice() {
-		return "/cs/faq";
-	}
-	
-	// qna 이동
-	@GetMapping("/qna")
-	public String qna() {
-		return "/cs/qna";
+		return "/cs/notice";
 	}
 	
 }

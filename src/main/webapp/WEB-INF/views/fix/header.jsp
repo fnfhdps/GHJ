@@ -47,13 +47,13 @@
               <a class="nav-link" aria-current="page" href="/map">소개</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">공지사항</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/adopt/list">입양</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/sponsor/list">후원</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/cs/faq">고객센터</a>
             </li>
           </ul>
 

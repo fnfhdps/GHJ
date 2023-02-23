@@ -44,13 +44,6 @@
 	                </a>
 	              </li>
 	
-	              <!-- <li class="blocks-item">
-	                <a href="/cs/qna" class="blocks-item-link">
-	                  <h3 class="blocks-item-title">1:1 QNA</h3>
-	                  <p class="blocks-item-description">기업 회원을 위한 FAQ</p>
-	                </a>
-	              </li> -->
-	
 	              <li class="blocks-item">
 	                <a href="/cs/notice" class="blocks-item-link">
 	                  <h3 class="blocks-item-title">Notice</h3>
@@ -62,7 +55,7 @@
 	  
 	      <!-- 세션으로 값 가져오기  -->
 	        <section class="articles">
-	          <h2 class="articles-header">자주 묻는 질문</h2>
+	          <h2 class="articles-header" style="margin-block-end: 0.9em;">자주 묻는 질문</h2>
 	          <ul class="article-list promoted-articles">
 	            
 	              <li class="promoted-articles-item">

@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="/resources/css/fix.css">
 <!-- cs css -->
 <link rel="stylesheet" href="/resources/css/cs.css">
-<link rel="stylesheet" href="/resources/css/cs_faq.css">
 <title>공지사항</title>
 </head>
 
@@ -32,7 +31,7 @@
 	      </form>
 	    </div>
 	  </section>
-	
+
 	  <div class="container">
 	    <section class="section knowledge-base">
 	      <section class="categories blocks">
@@ -43,13 +42,6 @@
 	                  <!-- <p class="blocks-item-description">회원을 위한 맞춤 상담</p> -->
 	                </a>
 	              </li>
-	
-	              <!-- <li class="blocks-item">
-	                <a href="/cs/qna" class="blocks-item-link">
-	                  <h3 class="blocks-item-title">1:1 QNA</h3>
-	                  <p class="blocks-item-description">기업 회원을 위한 FAQ</p>
-	                </a>
-	              </li> -->
 	
 	              <li class="blocks-item">
 	                <a href="/cs/notice" class="blocks-item-link">
@@ -62,7 +54,7 @@
 	  
 	      <!-- 세션으로 값 가져오기  -->
 	        <section class="articles">
-	          <h2 class="articles-header">공지사항</h2>
+	          <h2 class="articles-header" style="margin-block-end: 0.9em;">Notice 공지사항</h2>
 	          <ul class="article-list promoted-articles">
 	            
 	              <li class="promoted-articles-item">
