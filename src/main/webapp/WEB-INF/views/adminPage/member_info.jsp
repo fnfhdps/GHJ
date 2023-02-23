@@ -38,10 +38,17 @@
         </div>
 
         <section class="member_container">
-          <div class="d-flex pageBody">
-            <a href="#"><i class="bi bi-arrow-left-short arrow-text"></i></a>
-            <small class="ms-2 mt-1 text-center arrow-text">김지수</small>
-          </div>
+		  <div class="d-flex justify-content-between">
+	          <div class="d-flex pageBody">
+	            <a href="/admin/member"><i class="bi bi-arrow-left-short arrow-text"></i></a>
+	            <small class="ms-2 mt-1 text-center arrow-text">${member.userName}</small>
+	          </div>
+	          <div class="pageBody">
+	            <a onclick="memberDelete();">
+	            	<small class="arrow-text">계정삭제</small>
+	            </a>
+	          </div>		  
+		  </div>
   
           <div class="row art_content">
             <!-- 회원정보 -->
@@ -50,35 +57,35 @@
                 <div>
                   <h3>회원정보</h3>
                 </div>
-                <input type="hidden" value="1" name="userSeq">
+                <input type="hidden" id="memberSeq" value="${member.userSeq}" name="userSeq">
                 
                 <div class="my-4 d-flex flex-column">
-                  <img src="../img/dog.jpg" alt="프로필">
-                  <input type="file" value="${member.userImg}" name="userImg">
-                  <span>${member.userName}</span>
+                  <img src="${member.userImg}" alt="프로필">
+                  <input type="file" name="userImg">
+                  <span id="memberId">${member.userId}</span>
                 </div>
   
                 <div class="form_info">  
                   <div class="mb-3 formGroup">
                     <label class="mb-2">권한</label>
                     <select class="form-select" name="userRole">
-                      <option value="1">회원</option>
-                      <option value="2">관리자</option>
-                      <option value="3">정지</option>
+                      <option value="USER">회원</option>
+                      <option value="ADMIN">관리자</option>
+                      <option value="ALERTER">정지</option>
                     </select>
                   </div>
   
                   <div class="mb-3 formGroup">
-                    <label class="mb-2">아이디</label>
-                    <input class="form-control" type="text" name="userId" value="${member.userId}">
-                  </div>
-                  <div class="mb-3 formGroup">
                     <label class="mb-2">비밀번호</label>
-                    <input class="form-control" type="text" name="userPw" value="${member.userPw}">
+                    <input class="form-control" type="text" value="${member.userPw}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">핸드폰번호</label>
                     <input class="form-control" type="text" name="userPhone" value="${member.userPhone}">
+                  </div>
+                  <div class="mb-3 formGroup">
+                    <label class="mb-2">이메일</label>
+                    <input class="form-control" type="text" value="${member.userEmail}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">주소지</label>
@@ -114,23 +121,23 @@
                     <table class="mt-1">
                       <tr>
                         <td>게시글</td>
-                        <td class="ps-4">${totalCnt.adopt} 개</td>
+                        <td class="ps-4">${totalCnt.adopt}개</td>
                       </tr>
                       <tr>
                         <td>댓글</td>
-                        <td class="ps-4">${totalCnt.reply} 개</td>
+                        <td class="ps-4">${totalCnt.reply}개</td>
                       </tr>
                       <tr>
                         <td>후원</td>
-                        <td class="ps-4">${totalCnt.sponsor} 개</td>
+                        <td class="ps-4">${totalCnt.sponsor}개</td>
                       </tr>
                       <tr>
                         <td>문의</td>
-                        <td class="ps-4">${totalCnt.qna} 개</td>
+                        <td class="ps-4">${totalCnt.qna}개</td>
                       </tr>
                       <tr>
                         <td>신고</td>
-                        <td class="ps-4">${totalCnt.blame} 개</td>
+                        <td class="ps-4">${totalCnt.blame}개</td>
                       </tr>
                     </table>
                   </div>
@@ -184,5 +191,48 @@
       </main>
     </div>
   </div>
+  
+<script type="text/javascript">
+	const memberSeq = $("#memberSeq").val();
+	const memberId = $("#memberId").text();
+	
+	let url = "";
+	let data = "";
+	let msg1 = "";
+	let msg2 = "실패";
+	
+	alert(memberSeq+memberId);
+	
+	function memberDelete() {
+		if(window.confirm("삭제 하시겠습니까?")){
+			url = "/admin/member/delete";
+			data = {"userId" : memberId}
+			ms1 = "삭제완료";
+	        $.ajax({
+	            url : url,
+	            type :'post',
+	            data : JSON.stringify(data),
+	            dataType : "json",
+	            contentType : "application/json",
+	            async : true,
+	            success : function(result){
+	                if(result == 0){
+	                	if(msg1 != ""){
+	                		alert(msg1);                		
+	                	}
+		                window.location.href = "/admin/member";
+	                } else {
+	                	alert(msg2);
+	                	return;
+	                }
+	            },
+	            error : function(errorThrown){
+	             alert(errorThrown.statusText);
+	          }
+	         });
+		}
+	}
+
+</script> 
 </body>
 </html>
