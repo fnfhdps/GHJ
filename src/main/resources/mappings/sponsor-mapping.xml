@@ -77,9 +77,9 @@
 		<![CDATA[
 			UPDATE sponsor_item
 			SET sponsorItemName = #{sponsorItemName},
-			    sponsorItemImg = #{sponsorItemImg},
-			    sponsorItemPrice = #{sponsorItemPrice},
-			    sponsorItemCode = #{sponsorItemCode},
+			    sponsorItemImg = #{sponsorItemImg, jdbcType=VARCHAR},
+			    sponsorItemPrice = #{sponsorItemPrice, jdbcType=VARCHAR},
+			    sponsorItemCode = #{sponsorItemCode, jdbcType=VARCHAR},
 			    sponsorItemState = #{sponsorItemState}
 			where sponsorItemSeq = #{sponsorItemSeq}
 		]]>

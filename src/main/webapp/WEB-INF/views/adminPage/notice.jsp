@@ -100,8 +100,8 @@
 	                      </i>
 	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 	                        <li><a class="dropdown-item" href="#">이동</a></li>
-	                        <li><a class="dropdown-item" href="/admin/notice/update">수정</a></li>
-	                        <li><a class="dropdown-item" href="#">삭제</a></li>
+	                        <li><a class="dropdown-item" href="/admin/notice/update/${board.boardSeq}">수정</a></li>
+	                        <li><a class="dropdown-item" onclick="noticeDelete(${board.boardSeq});">삭제</a></li>
 	                      </ul>
 	                    </td>
 	                  </tr>
@@ -125,5 +125,33 @@
       </main>
     </div>
   </div>
+  
+<script type="text/javascript">
+function noticeDelete(seq) {;
+	const data = { "boardSeq" : seq};
+	alert(seq);
+	if(window.confirm("글을 삭제 하시겠습니까?")){
+		$.ajax({
+		    url : "/admin/notice/delete",
+		    type :'post',
+		    data : JSON.stringify(data),
+		    dataType : "json",
+		    contentType : "application/json",
+		    async : true,
+		    success : function(result){
+		        if(result == 0){
+		            window.location.href = "/admin/notice";
+		        } else {
+		        	alert("실패");
+		        	return;
+		        }
+		    },
+		    error : function(errorThrown){
+		     alert(errorThrown.statusText);
+		  }
+		 });
+	}
+}
+</script>
 </body>
 </html>

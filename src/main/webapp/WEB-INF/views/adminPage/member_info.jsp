@@ -60,8 +60,7 @@
                 <input type="hidden" id="memberSeq" value="${member.userSeq}" name="userSeq">
                 
                 <div class="my-4 d-flex flex-column">
-                  <img src="${member.userImg}" alt="프로필">
-                  <input type="file" name="userImg">
+                  <input type="file" accept="image/*" name="userImg">
                   <span id="memberId">${member.userId}</span>
                 </div>
   

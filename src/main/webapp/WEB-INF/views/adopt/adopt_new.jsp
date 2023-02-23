@@ -26,7 +26,7 @@
       <h2>입양글 작성</h2>
  
       <article class="mypage_content">
-        <form id="adoptForm" action="/adopt/new" method="post">
+        <form id="adoptForm" action="/adopt/new" method="post" enctype="multipart/form-data">
         
           <!-- 유저 시퀀스 -->	
 	      <input type="hidden" name="userSeq" value="${login.userSeq}">
@@ -37,7 +37,7 @@
       <br><br>      
       <div>
 		  <label for="formFileLg" class="form-label">이미지 첨부</label>
-		  <input class="form-control form-control-lg" id="formFileLg" type="file" name="adoptImg">
+		  <input class="form-control form-control-lg" id="formFileLg" type="file" name="adoptFile">
 	  </div>
 	  
 	  <div class="mb-3">
@@ -63,7 +63,7 @@
       
       <div class="mb-3">
 	      <label for="disabledTextInput" class="form-label">제목</label>
-	      <input type="text" id="disabledTextInput" class="form-control" placeholder="제목" name="boardTitle">
+	      <input type="text" id="disabledTextInput" class="form-control" placeholder="제목" name="boardTitle" value="임시 제목ㅇㅇㅇㅇㅇㅇㅇㅇㅇ">
    	  </div> 
           
       <div class="mb-3">
@@ -81,7 +81,7 @@
 				   type="number"
 				   min="1"
 				   max="100"
-				   value="0">
+				   value="1">
             </div>
        </div>
           
@@ -93,19 +93,19 @@
 				   type="number"
 				   min="1"
 				   max="100"
-				   value="0">
+				   value="1">
             </div>
        </div>   
           
        <div class="mb-3">
 	      <label for="disabledTextInput" class="form-label">구조위치</label>
-	      <input type="text" id="disabledTextInput" class="form-control" placeholder="구조위치" name="adoptAddr">
+	      <input type="text" id="disabledTextInput" class="form-control" placeholder="구조위치" name="adoptAddr" value="임시 제목ㅇㅇㅇㅇㅇㅇㅇㅇㅇ">
    	  </div>     
           
       <div class="mb-3">
 	      <label for="disabledSelect" class="form-label">중성화 여부</label>
 	      <input type="hidden" id="adoptNeutor">
-	      <select id="disabledSelect" class="form-select" name="adoptNeutor">
+	      <select id="disabledSelect" class="form-select" name="adoptNeutor" value="O">
        		  <option value="" selected>-- 선택 --</option>
 		      <option value="O">O</option>
 			  <option value="X">X</option>
@@ -115,7 +115,7 @@
           
       <div class="mb-3">
 		  <label for="exampleFormControlTextarea1" class="form-label">특이사항</label>
-		  <textarea class="form-control" name="boardContent" rows="7"></textarea>
+		  <textarea class="form-control" name="boardContent" rows="7">value="임시 제목ㅇㅇㅇㅇㅇㅇㅇㅇㅇ"</textarea>
 	  </div>
 	  <br>
 	  <div class="btn-group">
