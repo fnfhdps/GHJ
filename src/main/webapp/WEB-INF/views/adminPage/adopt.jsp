@@ -103,7 +103,7 @@
 	                          aria-expanded="false">
 	                      </i>
 	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-	                        <li><a class="dropdown-item" href="#">이동</a></li>
+	                        <li><a class="dropdown-item" href="/adopt/detail/${board.boardCategory}/${board.boardSeq}/${board.userSeq}">이동</a></li>
 	                        <li><a class="dropdown-item" href="#">숨김</a></li>
 	                        <li><a class="dropdown-item" href="#">삭제</a></li>
 	                      </ul>

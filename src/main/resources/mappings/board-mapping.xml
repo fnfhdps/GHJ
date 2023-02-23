@@ -8,7 +8,7 @@
 	<insert id="insertBoard">
 		<![CDATA[
 			INSERT INTO board(boardSeq, boardCategory, boardTitle, userSeq, boardContent, boardSubCategory)
-			values ((select nvl(max(boardseq), 0) + 1 from board), #{boardCategory}, #{boardTitle}, #{userSeq}, #{boardContent}, #{boardSubCategory})
+			values ((select nvl(max(boardseq), 0) + 1 from board), #{boardCategory}, #{boardTitle}, #{userSeq}, #{boardContent}, #{boardSubCategory, jdbcType=VARCHAR})
 		]]>
 	</insert>
 	
@@ -16,7 +16,7 @@
 	<update id="updateBoard">
 		<![CDATA[
 			UPDATE board
-			SET boardSubCategory = #{boardSubCategory}, boardTitle = #{boardTitle}, boardContent = #{boardContent}
+			SET boardSubCategory = #{boardSubCategory, jdbcType=VARCHAR}, boardTitle = #{boardTitle}, boardContent = #{boardContent}
 			WHERE boardseq = #{boardSeq}
 		]]>
 	</update>

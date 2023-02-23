@@ -82,10 +82,9 @@ public class AdminPageController {
 		return "redirect: /admin/member";
 	}
 	
-	// 회원 삭제 (관리자페이지) !!!!관리자에서도 세션 해제 해야함?
+	// 회원 삭제 (관리자페이지)
 	@PostMapping(value = "/admin/member/delete")
 	public @ResponseBody int withdraw(@RequestBody UserDTO user, HttpSession session) {
-		System.out.println("id, pw 확인 : "+user);
 		
 		try {
 			userService.withdraw(user);
@@ -96,25 +95,26 @@ public class AdminPageController {
 		}
 	}
 	
+// ---------------------------------------------------------	
+	
 	// 입양글, 공지사항, 1:1문의 목록 이동 (관리자페이지)
 	@GetMapping("/admin/{category}")
 	public String getboardList(@PathVariable("category") String category, Model model) {
-		BoardDTO board = new BoardDTO();
-		board.setBoardCategory(category);
 		
-		// 총 입양글
-		model.addAttribute("totalCnt", boardService.boardTotalCnt(board));
-		model.addAttribute("boardList", boardService.getBoardList(board));
-		
-		return "/adminPage/"+category.toLowerCase();
-		
-//		if(category.equals("ADOPT")) {
-//			return "/adminPage/adopt";
-//		}else if(category.equals("NOTICE")) {
-//			return "/adminPage/notice";
-//		}else {
-//			return "/adminPage/qna";
-//		}
+		try {
+			if(category.equals("adopt") || category.equals("notice") || category.equals("qna")) {
+				BoardDTO board = new BoardDTO();
+				board.setBoardCategory(category.toUpperCase());
+				
+				// 총 입양글
+				model.addAttribute("totalCnt", boardService.boardTotalCnt(board));
+				model.addAttribute("boardList", boardService.getBoardList(board));
+				return "/adminPage/"+category;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return "test"; //에러페이지
 	}
 	
 	// 공지사항 입력 이동 (관리자페이지)
@@ -127,36 +127,50 @@ public class AdminPageController {
 	@PostMapping("/admin/notice/insert")
 	public String insertBoard(BoardDTO board) {
 		boardService.insertBoard(board);
-		return "redirect:/admin/NOTICE";
+		return "redirect:/admin/notice";
+	}
+	
+	// 공지사항 수정 이동 (관리자페이지)
+	@GetMapping("/admin/notice/update/{seq}")
+	public String noticeUpdate(@PathVariable("seq") int boardSeq, Model model) {
+		BoardDTO board = new BoardDTO();
+		board.setBoardSeq(boardSeq);
+		
+		model.addAttribute("notice", boardService.getBoard(board));
+		return "/adminPage/notice_update";
+	}
+	
+	// 공지사항 입력 (관리자페이지)
+	@PostMapping("/admin/notice/update")
+	public String updateBoard(BoardDTO board) {
+		boardService.updateBoard(board);
+		return "redirect:/admin/notice";
 	}
 	
 	// 입양글, 공지사항 삭제 (관리자페이지)
-	//카테고리 맞으면 해당 페이지 목록으로 아니면 이전페이지로
+	//카테고리 맞으면 해당 페이지로
 	@PostMapping("/admin/{category}/delete")
-	public String deleteBoard(@PathVariable("category") String category, @RequestBody BoardDTO board) {
-
-		return "redirect:/admin/"+category;
-		//		if(category.equals("ADOPT")) {
-//			return "redirect:/admin/"+category;
-//		}else if(category.equals("NOTICE")) {
-//			return "/adminPage/notice";
-//		}else {
-//			return "/adminPage/qna";
-//		}
+	public @ResponseBody int deleteBoard(@PathVariable("category") String category, @RequestBody BoardDTO board) {
+		System.out.println(board);
+		if(category.equals("adopt") || category.equals("notice")) {
+			boardService.deleteBoard(board);
+			return 0;
+		}else {
+			return -1;
+		}
 	}
+
+// ---------------------------------------------------------
 	
 	// 댓글관리 이동 (관리자페이지)
 	@GetMapping("/admin/comment")
 	public String comment() {
-		
 		return "/adminPage/comment";
 	}
 	
-	// 공지사항 수정 이동 (관리자페이지)
-	@GetMapping("/admin/notice/update")
-	public String noticeUpdate() {
-		return "/adminPage/notice_form";
-	}
+
+
+// ---------------------------------------------------------
 	
 	// 후원 상품 목록 (관리자페이지)
 	@GetMapping("/admin/sponsor/item")
@@ -182,14 +196,13 @@ public class AdminPageController {
 	}
 	
 	// 후원 상품 수정 이동 (관리자페이지)
-	// 조회겸 수정으로 만들어 놨음 분리하려면 디자인 수정해야함
-	// 입력 폼이랑 같이 쓰게 만들었더니 form을 입력이 사용해서  수정은 아작스로하거나 새파일 만들어야할듯
 	@GetMapping("/admin/sponsor/item/update/{seq}")
 	public String updateSponsorItem(@PathVariable("seq") int sponsorItemSeq, Model model) {
 		SponsorItemDTO sponsor = new SponsorItemDTO();
+		
 		sponsor.setSponsorItemSeq(sponsorItemSeq);
-		sponsorService.getSponsorItem(sponsor);
-		return "/adminPage/sponsor_item_form";
+		model.addAttribute("sponsorItem", sponsorService.getSponsorItem(sponsor));
+		return "/adminPage/sponsor_item_update";
 	}
 
 	// 후원 상품 수정 (관리자페이지)
@@ -199,6 +212,20 @@ public class AdminPageController {
 		return "redirect:/admin/sponsor/item";
 	}
 	
+	//후원 상품 삭제 (관리자페이지)
+	@PostMapping("/admin/sponsor/item/delete")
+	public @ResponseBody int deleteSponsorItem(@RequestBody SponsorItemDTO sponsor) {
+		try {
+			sponsorService.deleteSponsorItem(sponsor);
+			return 0;
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			return -1;
+		}
+	}
+
+// ---------------------------------------------------------
+
 	// 주문 목록 이동 (관리자페이지)
 	@GetMapping("/admin/sponsor/order")
 	public String sponsorOrderList(Model model) {

@@ -100,16 +100,13 @@
 	                          aria-expanded="false">
 	                      </i>
 	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-	                        <li><a class="dropdown-item" href="#">수정</a></li>
-	                        <li><a class="dropdown-item" href="#">삭제</a></li>
+	                        <li><a class="dropdown-item" href="/admin/sponsor/item/update/${sponsor.sponsorItemSeq}">수정</a></li>
+	                        <li><a class="dropdown-item" onclick="itemDelete(${sponsor.sponsorItemSeq});">삭제</a></li>
 	                      </ul>
 	                    </td>
 	                  </tr>
 				    </c:forEach>
-		          </c:when>
-			   	  <c:otherwise>
-		   		  	<td class="text-center" colspan="4">1:1 문의 내역이 없습니다.</td>
-		   		  </c:otherwise>        
+		          </c:when>    
 	     	    </c:choose>
                 </tbody>
                 
@@ -125,5 +122,33 @@
       </main>
     </div>
   </div>
+  
+<script type="text/javascript">
+function itemDelete(seq) {;
+	const data = { "sponsorItemSeq" : seq};
+	//alert(seq);
+	if(window.confirm("상품을 삭제 하시겠습니까?")){
+		$.ajax({
+		    url : "/admin/sponsor/item/delete",
+		    type :'post',
+		    data : JSON.stringify(data),
+		    dataType : "json",
+		    contentType : "application/json",
+		    async : true,
+		    success : function(result){
+		        if(result == 0){
+		            window.location.href = "/admin/sponsor/item";
+		        } else {
+		        	alert("실패");
+		        	return;
+		        }
+		    },
+		    error : function(errorThrown){
+		     alert(errorThrown.statusText);
+		  }
+		 });
+	}
+}
+</script>
 </body>
 </html>
