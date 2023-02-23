@@ -94,7 +94,7 @@
            	<br>
             <hr>		
 	            <div class="image_center">
-	                <img id="adopt_img" src="/resources/image/dog.jpg">
+	                <img id="adopt_img" src="/resources/image/adopt/${adoptDetail.adoptImg}">
 	            </div>
             <hr>
             
