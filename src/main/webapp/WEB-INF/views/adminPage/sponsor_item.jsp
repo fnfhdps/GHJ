@@ -46,7 +46,7 @@
             <div class="d-flex comment_title tbl_caption">
               <div class="mt-2">
                 <span>상품수</span>
-                <span>35</span>
+                <span>${totalCnt}</span>
               </div>
               
               <nav aria-label="Page navigation example">
@@ -79,34 +79,40 @@
                     <th class="">가격</th>
                     <th class="">등록일</th>
                     <th class="">상태</th>
-                    <th class="">수량</th>
                   </tr>
                 </thead>
+                
                 <tbody>
-                  <tr>
-<!--                     <td class="text-center">
-                      <input type="checkbox" name="" id="">
-                    </td> -->
-                    <td class="text-center">4</td>
-                    <td class="text-center">U3ES2FA99S</td>
-                    <td class="text-center">멍멍 열쇠고리</td>
-                    <td class="text-center">15000</td>
-                    <td class="text-center">2022-12-23</td>
-                    <td class="text-center">판매중</td>
-                    <td class="text-center">12</td>
-                    <td class="text-center dropdown">
-                      <i class="bi bi-three-dots-vertical"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                      </i>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">수정</a></li>
-                        <li><a class="dropdown-item" href="#">삭제</a></li>
-                      </ul>
-                    </td>
-                  </tr>
+	          	<c:choose>
+	       		  <c:when test="${!empty sponsorItemList}">
+				    <c:forEach items="${sponsorItemList}" var="sponsor">
+	                  <tr>
+	                    <td class="text-center">${sponsor.num}</td>
+	                    <td class="text-center">${sponsor.sponsorItemCode}</td>
+	                    <td class="text-center">${sponsor.sponsorItemName}</td>
+	                    <td class="text-center">${sponsor.sponsorItemPrice}</td>
+	                    <td class="text-center"><fmt:formatDate value="${sponsor.sponsorItemDate}" pattern="yyyy-MM-dd"/></td>
+	                    <td class="text-center">${sponsor.sponsorItemState}</td>
+	                    <td class="text-center dropdown">
+	                      <i class="bi bi-three-dots-vertical"
+	                          id="dropdownMenuButton1"
+	                          data-bs-toggle="dropdown"
+	                          aria-expanded="false">
+	                      </i>
+	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+	                        <li><a class="dropdown-item" href="#">수정</a></li>
+	                        <li><a class="dropdown-item" href="#">삭제</a></li>
+	                      </ul>
+	                    </td>
+	                  </tr>
+				    </c:forEach>
+		          </c:when>
+			   	  <c:otherwise>
+		   		  	<td class="text-center" colspan="4">1:1 문의 내역이 없습니다.</td>
+		   		  </c:otherwise>        
+	     	    </c:choose>
                 </tbody>
+                
               </table>
             </div>
 

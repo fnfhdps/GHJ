@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class ReplyDTO {
 	
+	private int totalCnt;
+	
 	private int replySeq;
 	private int boardSeq;
 	private int userSeq;
@@ -18,6 +20,13 @@ public class ReplyDTO {
 	
 	public ReplyDTO() {}
 	
+	public int getTotalCnt() {
+		return totalCnt;
+	}
+	public void setTotalCnt(int totalCnt) {
+		this.totalCnt = totalCnt;
+	}
+
 	public int getReplySeq() {
 		return replySeq;
 	}
@@ -49,7 +58,6 @@ public class ReplyDTO {
 		this.replyDate = replyDate;
 	}
 
-
 	public String getBoardCategory() {
 		return boardCategory;
 	}
@@ -78,9 +86,9 @@ public class ReplyDTO {
 
 	@Override
 	public String toString() {
-		return "ReplyDTO [replySeq=" + replySeq + ", boardSeq=" + boardSeq + ", userSeq=" + userSeq + ", replyContent="
-				+ replyContent + ", replyDate=" + replyDate + ", boardCategory=" + boardCategory + ", userImg="
-				+ userImg + ", userId=" + userId + ", userName=" + userName + "]";
+		return "ReplyDTO [totalCnt=" + totalCnt + ", replySeq=" + replySeq + ", boardSeq=" + boardSeq + ", userSeq="
+				+ userSeq + ", replyContent=" + replyContent + ", replyDate=" + replyDate + ", boardCategory="
+				+ boardCategory + ", userImg=" + userImg + ", userId=" + userId + ", userName=" + userName + "]";
 	}
 
 }

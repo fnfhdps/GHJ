@@ -40,12 +40,19 @@
         </div>
 
         <section class="member_container notice_container">
+        
+        
           <div class="css-mieii2 e1yarwt10">
-            <form>
+            <form action="/admin/notice/insert" method="post">
+            <input type="hidden" name="boardCategory" value="NOTICE">
+            <!-- 테스트 시퀀스!!! 나중에 login.userSeq로 바꾸기 -->
+            <input type="hidden" name="userSeq" value="11">
+            
+            
               <div class="css-lkffw3 e1yarwt9">
                 <div width="343" class="css-1v6bcwv e1yarwt7">
                   <div class="_3Bt8k">
-                    <select class="_3ASDR _1qwAY _3K8Q8 css-1dwz3w6 e3x1g180" name="type">
+                    <select class="_3ASDR _1qwAY _3K8Q8 css-1dwz3w6 e3x1g180" name="boardSubCategory">
                       <option selected="" value="" disabled="">선택</option>
                       <option value="0">알림</option>
                       <option value="1">주문/결제 관련 문의</option>
@@ -69,7 +76,7 @@
                 </div>
               </div>
               <div class="css-lkffw3 e1yarwt9">
-                <textarea class="_3ASDR _1qwAY css-1xrt6sk e1rxfajn1" name="message" maxlength="500" placeholder="내용" rows="1" style="overflow: hidden; overflow-wrap: break-word; height: 300px;">
+                <textarea class="_3ASDR _1qwAY css-1xrt6sk e1rxfajn1" name="boardContent" maxlength="500" placeholder="내용" rows="1" style="overflow: hidden; overflow-wrap: break-word; height: 300px;">
                 </textarea>
               </div>
               <!-- <div class="css-lkffw3 e1yarwt9">
@@ -82,7 +89,7 @@
                 </label>
               </div> -->
               <div class="css-1bkpu5b e1yarwt5">
-                <button class="_1eWD8 _3SroY _27do9 css-1pz165y e1yarwt0" type="button">제출하기</button>
+                <button class="_1eWD8 _3SroY _27do9 css-1pz165y e1yarwt0" type="submit">제출하기</button>
               </div>
             </form>
           </div>

@@ -41,23 +41,28 @@
 
         <section class="member_container notice_container">
           <div class="css-mieii2 e1yarwt10">
-            <form>
+            <form action="/admin/sponsor/item/insert" method="post">
               <div class="css-lkffw3 e1yarwt9">
                 <div width="343" class="css-1v6bcwv e1yarwt7"></div>
               </div>
               <div class="css-lkffw3 e1yarwt9">
                 <div width="343" class="css-1v6bcwv e1yarwt7">
-                  <input class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" value="" name="boardTitle" placeholder="상품코드">
+                  <input class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" value="" name="sponsorItemCode" placeholder="상품코드">
                 </div>
               </div>
               <div class="css-lkffw3 e1yarwt9">
                 <div width="343" class="css-1v6bcwv e1yarwt7">
-                  <input class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" value="" name="boardTitle" placeholder="상품명">
+                  <input class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" value="" name="sponsorItemName" placeholder="상품명">
                 </div>
               </div>
               <div class="css-lkffw3 e1yarwt9">
                 <div width="343" class="css-1v6bcwv e1yarwt7">
-                  <input type="number" class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" value="" name="boardTitle" placeholder="가격">
+                  <input type="number" class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" value="" name="sponsorItemPrice" placeholder="가격">
+                </div>
+              </div>
+              <div class="css-lkffw3 e1yarwt9">
+                <div width="343" class="css-1v6bcwv e1yarwt7">
+                  <input type="text" class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" value="" name="sponsorItemState" placeholder="상태">
                 </div>
               </div>
 
@@ -67,12 +72,12 @@
                     <span></span>
                   </span>
                   <span class="css-94jutt e12vmj860">첨부파일</span>
-                  <input type="file" name="file" hidden="">
+                  <input type="file" name="sponsorItemImg" hidden="">
                 </label>
               </div>
               
               <div class="css-1bkpu5b e1yarwt5">
-                <button class="_1eWD8 _3SroY _27do9 css-1pz165y e1yarwt0" type="button">제출하기</button>
+                <button class="_1eWD8 _3SroY _27do9 css-1pz165y e1yarwt0" type="submit">제출하기</button>
               </div>
             </form>
           </div>

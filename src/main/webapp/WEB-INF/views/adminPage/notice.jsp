@@ -45,8 +45,8 @@
   
             <div class="d-flex comment_title tbl_caption">
               <div class="mt-2">
-                <span>게시글수</span>
-                <span>35</span>
+                <span>공지수</span>
+                <span>${totalCnt}</span>
               </div>
               
               <nav aria-label="Page navigation example">
@@ -81,27 +81,38 @@
                     
                   </tr>
                 </thead>
+                
                 <tbody>
-                  <tr>
-                    <td class="text-center">5</td>
-                    <td class="text-center">배송</td>
-                    <td class="text-center">왜케 느리냐?</td>
-                    <td class="text-center">2022-12-23</td>
-                    <td class="text-center">12</td>
-                    <td class="text-center dropdown">
-                      <i class="bi bi-three-dots-vertical"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                      </i>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">이동</a></li>
-                        <li><a class="dropdown-item" href="/admin/notice/update">수정</a></li>
-                        <li><a class="dropdown-item" href="#">삭제</a></li>
-                      </ul>
-                    </td>
-                  </tr>
+	          	<c:choose>
+	       		  <c:when test="${!empty boardList}">
+				    <c:forEach items="${boardList}" var="board">
+	                  <tr>
+	                    <td class="text-center">${board.num}</td>
+	                    <td class="text-center">${board.boardSubCategory}</td>
+	                    <td class="text-center">${board.boardTitle}</td>
+	                    <td class="text-center"><fmt:formatDate value="${board.boardDate}" pattern="yyyy-MM-dd"/></td>
+	                    <td class="text-center">${board.num}</td>
+	                    <td class="text-center dropdown">
+	                      <i class="bi bi-three-dots-vertical"
+	                          id="dropdownMenuButton1"
+	                          data-bs-toggle="dropdown"
+	                          aria-expanded="false">
+	                      </i>
+	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+	                        <li><a class="dropdown-item" href="#">이동</a></li>
+	                        <li><a class="dropdown-item" href="/admin/notice/update">수정</a></li>
+	                        <li><a class="dropdown-item" href="#">삭제</a></li>
+	                      </ul>
+	                    </td>
+	                  </tr>
+				    </c:forEach>
+		          </c:when>
+			   	  <c:otherwise>
+		   		  	<td class="text-center" colspan="5">1:1 문의 내역이 없습니다.</td>
+		   		  </c:otherwise>        
+	     	    </c:choose>
                 </tbody>
+                
               </table>
             </div>
 

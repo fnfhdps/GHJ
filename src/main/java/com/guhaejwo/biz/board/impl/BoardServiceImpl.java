@@ -43,8 +43,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardDTO> getBoardList(BoardDTO board) {
-		return boardDAO.getBoardList(board);
+	public List<BoardDTO> getBoardListMyPage(BoardDTO board) {
+		return boardDAO.getBoardListMyPage(board);
 	}
 
 	@Override
@@ -55,5 +55,15 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public BoardDTO getAfter(BoardDTO board) {
 		return boardDAO.getAfter(board);
+	}
+
+	@Override
+	public int boardTotalCnt(BoardDTO board) {
+		return boardDAO.boardTotalCnt(board);
+	}
+
+	@Override
+	public List<BoardDTO> getBoardList(BoardDTO board) {
+		return boardDAO.getBoardList(board);
 	}
 }

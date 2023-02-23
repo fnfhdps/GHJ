@@ -3,6 +3,9 @@ package com.guhaejwo.biz.adopt;
 import java.util.Date;
 
 public class AdoptBlameDTO {
+	
+	private int totalCnt;
+	
 	private int blaSeq;
 	private int boardSeq;
 	private int req_userSeq;	// 신고자
@@ -13,10 +16,15 @@ public class AdoptBlameDTO {
 	
 	public AdoptBlameDTO() {}
 
+	public int getTotalCnt() {
+		return totalCnt;
+	}
+	public void setTotalCnt(int totalCnt) {
+		this.totalCnt = totalCnt;
+	}
 	public int getBlaSeq() {
 		return blaSeq;
 	}
-
 	public void setBlaSeq(int blaSeq) {
 		this.blaSeq = blaSeq;
 	}
@@ -71,11 +79,9 @@ public class AdoptBlameDTO {
 
 	@Override
 	public String toString() {
-		return "AdoptBlameDTO [blaSeq=" + blaSeq + ", boardSeq=" + boardSeq + ", req_userSeq=" + req_userSeq
-				+ ", res_userSeq=" + res_userSeq + ", blaDate=" + blaDate + ", blaTitle=" + blaTitle + ", blaContent="
-				+ blaContent + "]";
+		return "AdoptBlameDTO [totalCnt=" + totalCnt + ", blaSeq=" + blaSeq + ", boardSeq=" + boardSeq
+				+ ", req_userSeq=" + req_userSeq + ", res_userSeq=" + res_userSeq + ", blaDate=" + blaDate
+				+ ", blaTitle=" + blaTitle + ", blaContent=" + blaContent + "]";
 	}
-	
-	
-	
+
 }

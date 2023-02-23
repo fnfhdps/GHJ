@@ -1,6 +1,7 @@
 package com.guhaejwo.biz.user.impl;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,22 +10,22 @@ import org.springframework.stereotype.Service;
 import com.guhaejwo.biz.user.LoginType;
 import com.guhaejwo.biz.user.Role;
 import com.guhaejwo.biz.user.UserDTO;
-import com.guhaejwo.biz.user.UserRepository;
+import com.guhaejwo.biz.user.UserService;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Service("userService")
-public class UserService {
+public class UserServiceImpl {
 	
-	private final UserRepository userRepository;
+	private final UserService userRepository;
 	
 	@Autowired
-	public UserService(UserRepository userRepository) {
+	public UserServiceImpl(UserService userRepository) {
 		this.userRepository = userRepository;
 	}
 	
-	// 일반 회원가입
+	// 회원 저장(일반)
 	public String join(UserDTO user) {
 		user.setLoginType(LoginType.BASIC);
 		user.setUserRole(Role.USER);
@@ -33,7 +34,7 @@ public class UserService {
 		return user.getUserId();
 	}
 	
-	// 카카오 회원가입
+	// 회원 저장(카카오)
 	public String join_kakao(UserDTO user) {
 		user.setLoginType(LoginType.KAKAO);
 		user.setUserRole(Role.USER);
@@ -47,22 +48,22 @@ public class UserService {
 		return userRepository.getUserByPw(user);
 	}
 	
-	// 일반 회원 탈퇴
+	// 회원 삭제 (마이페이지, 관리자페이지)
 	public void withdraw(UserDTO user) {
 		userRepository.delete(user);
 	}
 	
-	// 회원 검색(ID)
+	// 아이디 중복 체크 조회
 	public UserDTO findById(UserDTO user) {
 		return userRepository.getUserById(user);
 	}
 	
-	// 회원 검색(ID & Email)
+	// 이메일 중복 체크 조회 (마이페이지)
 	public UserDTO findByEmail(UserDTO user) {
 		return userRepository.getUserByEmail(user);
 	}
 
-	// 회원 정보 수정(마이페이지)
+	// 회원 수정(마이페이지, 관리자페이지)
 	public void update(UserDTO user) {
 		userRepository.update(user);
 	}
@@ -94,4 +95,51 @@ public class UserService {
 	public void changePw(UserDTO user) {
 		userRepository.changePw(user);
 	}
+	
+	// 회원 목록 조회 (관리자페이지)
+	public List<UserDTO> getUserList(){
+		return userRepository.getUserList();
+	}
+
+	// 총 회원수 (관리자페이지)
+	public int userTotalCnt() {
+		return userRepository.userTotalCnt();
+	}
+	
+	// 회원 정보 상세 조회 (관리자페이지)
+	public UserDTO getUser(UserDTO user) {
+		return userRepository.getUser(user);
+	}
+	
+	// 회원 총 게시글 수 (마이페이지, 관리자페이지)
+	public int userAdoptCnt(UserDTO user) {
+		return userRepository.userAdoptCnt(user);
+	}
+	
+	// 회원 총 좋아요 수 (마이페이지, 관리자페이지)
+	public int userHeartCnt(UserDTO user) {
+		return userRepository.userHeartCnt(user);
+	}
+	
+	// 회원 총 후원수 (마이페이지, 관리자페이지)
+	public int userSponsorCnt(UserDTO user) {
+		return userRepository.userSponsorCnt(user);
+	}
+	
+	// 회원 총 문의수 (관리자페이지)
+	public int userQnaCnt(UserDTO user) {
+		return userRepository.userQnaCnt(user);
+	}
+	
+	// 회원 총 댓글수 (관리자페이지)
+	public int userReplyCnt(UserDTO user) {
+		return userRepository.userReplyCnt(user);
+	}
+	
+	// 회원 총 신고받은수 (관리자페이지)
+	public int userBlameCnt(UserDTO user) {
+		return userRepository.userBlameCnt(user);
+	}
+	
+	
 }

@@ -52,7 +52,7 @@
                 </div>
                 <div class="my-4 d-flex flex-column">
                   <img src="../img/dog.jpg" alt="">
-                  <span>김지수</span>
+                  <span>${member.userName}</span>
                 </div>
   
                 <div class="form_info">
@@ -66,20 +66,22 @@
                   </div>
   
                   <div class="mb-3 formGroup">
-                    <label class="mb-2">계정</label>
-                    <input class="form-control" type="password" placeholder="이메일">
+                    <label class="mb-2">아이디</label>
+                    <input class="form-control" type="text" value="${member.userId}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">비밀번호</label>
-                    <input class="form-control" type="password" placeholder="이메일">
+                    <input class="form-control" type="text" value="${member.userPw}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">핸드폰번호</label>
-                    <input class="form-control" type="password" placeholder="이메일">
+                    <input class="form-control" type="text" value="${member.userPhone}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">주소지</label>
-                    <input class="form-control" type="password" placeholder="이메일">
+                    <input class="form-control mb-2" type="text" value="${member.userAddr1}">
+                    <input class="form-control mb-2" type="text" value="${member.userAddr2}">
+                    <input class="form-control mb-2" type="text" value="${member.userAddr3}">
                   </div>
                 </div>
                 <div class="mt-4 formRow">
@@ -97,7 +99,7 @@
                 <div class="art2_text">
                   <div>
                     <small>가입일</small>
-                    <p class="mt-1">2021-03-24 14:23:02</p>
+                    <p class="mt-1"><fmt:formatDate value="${member.regDate}" pattern="yyyy.MM.dd HH:mm:ss"/></p>
                   </div>
                   <div>
                     <small>최근접속일</small>
@@ -109,23 +111,23 @@
                     <table class="mt-1">
                       <tr>
                         <td>게시글</td>
-                        <td class="ps-4">0개</td>
+                        <td class="ps-4">${totalCnt.adopt} 개</td>
                       </tr>
                       <tr>
                         <td>댓글</td>
-                        <td class="ps-4">4개</td>
+                        <td class="ps-4">${totalCnt.reply} 개</td>
                       </tr>
                       <tr>
                         <td>후원</td>
-                        <td class="ps-4">3개</td>
+                        <td class="ps-4">${totalCnt.sponsor} 개</td>
                       </tr>
                       <tr>
                         <td>문의</td>
-                        <td class="ps-4">2개</td>
+                        <td class="ps-4">${totalCnt.qna} 개</td>
                       </tr>
                       <tr>
                         <td>신고</td>
-                        <td class="ps-4">0개</td>
+                        <td class="ps-4">${totalCnt.blame} 개</td>
                       </tr>
                     </table>
                   </div>

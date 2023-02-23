@@ -1,17 +1,36 @@
 package com.guhaejwo.biz.sponsor;
 
+import java.util.Date;
+
 public class SponsorItemDTO {
+	
+	private int totalCnt;
+	private int num;
 	
 	private int sponsorItemSeq;
 	private String sponsorItemName ;
 	private String sponsorItemImg;
 	private String sponsorItemPrice;
 	private String sponsorItemCode;
-	private String sponsorItemDate;
+	private Date sponsorItemDate;
 	private String sponsorItemState;
 	
 	public SponsorItemDTO() {}
 	
+	public int getTotalCnt() {
+		return totalCnt;
+	}
+	public void setTotalCnt(int totalCnt) {
+		this.totalCnt = totalCnt;
+	}
+
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+
 	public int getSponsorItemSeq() {
 		return sponsorItemSeq;
 	}
@@ -42,10 +61,10 @@ public class SponsorItemDTO {
 	public void setSponsorItemCode(String sponsorItemCode) {
 		this.sponsorItemCode = sponsorItemCode;
 	}
-	public String getSponsorItemDate() {
+	public Date getSponsorItemDate() {
 		return sponsorItemDate;
 	}
-	public void setSponsorItemDate(String sponsorItemDate) {
+	public void setSponsorItemDate(Date sponsorItemDate) {
 		this.sponsorItemDate = sponsorItemDate;
 	}
 	public String getSponsorItemState() {
@@ -57,10 +76,10 @@ public class SponsorItemDTO {
 
 	@Override
 	public String toString() {
-		return "SponsorItemDTO [sponsorItemSeq=" + sponsorItemSeq + ", sponsorItemName=" + sponsorItemName
-				+ ", sponsorItemImg=" + sponsorItemImg + ", sponsorItemPrice=" + sponsorItemPrice + ", sponsorItemCode="
-				+ sponsorItemCode + ", sponsorItemDate=" + sponsorItemDate + ", sponsorItemState=" + sponsorItemState
-				+ "]";
+		return "SponsorItemDTO [totalCnt=" + totalCnt + ", num=" + num + ", sponsorItemSeq=" + sponsorItemSeq
+				+ ", sponsorItemName=" + sponsorItemName + ", sponsorItemImg=" + sponsorItemImg + ", sponsorItemPrice="
+				+ sponsorItemPrice + ", sponsorItemCode=" + sponsorItemCode + ", sponsorItemDate=" + sponsorItemDate
+				+ ", sponsorItemState=" + sponsorItemState + "]";
 	}
 
 }

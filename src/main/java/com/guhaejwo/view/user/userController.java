@@ -19,16 +19,16 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
 import com.guhaejwo.biz.user.UserDTO;
-import com.guhaejwo.biz.user.impl.UserService;
+import com.guhaejwo.biz.user.impl.UserServiceImpl;
 
 @Controller
 @SessionAttributes("login")
 public class userController {
 	
-	private final UserService userService;
+	private final UserServiceImpl userService;
 	
 	@Autowired
-	public userController(UserService userService) {
+	public userController(UserServiceImpl userService) {
 		this.userService = userService;
 	}
 	
@@ -134,12 +134,6 @@ public class userController {
 		}
 	}
 	
-	/*
-	 * // 비밀번호 변경 이동
-	 * 
-	 * @GetMapping("/change_pw") public String changePw() { return "/change_pw"; }
-	 */
-	
 	// 비밀번호 변경
 	@PostMapping("/change_pw")
 	public @ResponseBody int changePw(@RequestBody UserDTO user, HttpServletRequest req) {
@@ -158,16 +152,6 @@ public class userController {
 			System.out.println(e.getMessage());
 			return -1;
 		}
-
 	}
 	
-	/*
-	 * @PostMapping("/change_pw") public String changePw(UserDTO user,
-	 * HttpServletRequest req) { HttpSession session = req.getSession();
-	 * userService.changePw(user);
-	 * 
-	 * // 기존 login 세션을 데이터 user2에 저장 후 비밀번호만 바꾸고 다시 세션에 저장함 UserDTO user2 =
-	 * (UserDTO) session.getAttribute("login"); user2.setUserPw(user.getUserPw());
-	 * session.setAttribute("login", user2); return "/myPage/user_update"; }
-	 */
 }

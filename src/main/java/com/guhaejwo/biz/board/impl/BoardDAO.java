@@ -18,34 +18,34 @@ public class BoardDAO {
 		this.mybatis = mybatis;
 	}
 	
-	// qna 질문 입력
+	// 글 입력 (관리자페이지:입양, 공지사항)
 	public void insertBoard(BoardDTO board) {
 		System.out.println("--> BoardRepository.insertBoard() 실행");
 		mybatis.insert("BoardDAO.insertBoard", board);
 	}
 	
-	// qna 질문 수정
+	// 글 수정 (관리자페이지:공지사항)	
 	public void updateBoard(BoardDTO board) {
 		System.out.println("--> BoardRepository.updateBoard() 실행");
 		mybatis.update("BoardDAO.updateBoard", board);
 	}
 	
-	// qna 질문 삭제
+	// 글 삭제 (관리자페이지:공지사항, qna 삭제)
 	public void deleteBoard(BoardDTO board) {
 		System.out.println("--> BoardRepository.deleteBoard() 실행");
 		mybatis.delete("BoardDAO.deleteBoard", board);
 	}
 	
-	// qna 상세 조회
+	// 글 상세 조회
 	public BoardDTO getBoard(BoardDTO board) {
 		System.out.println("--> BoardRepository.getBoard() 실행");
 		return mybatis.selectOne("BoardDAO.getBoard", board);
 	}
 	
-	// qna 목록 조회
-	public List<BoardDTO> getBoardList(BoardDTO board){
-		System.out.println("--> BoardRepository.getBoardList() 실행");
-		return mybatis.selectList("BoardDAO.getBoardList", board);
+	// 내 qna 목록 조회 (마이페이지)
+	public List<BoardDTO> getBoardListMyPage(BoardDTO board){
+		System.out.println("--> BoardRepository.getBoardListMyPage() 실행");
+		return mybatis.selectList("BoardDAO.getBoardListMyPage", board);
 	}
 	
 	// qna 이전글 조회
@@ -58,5 +58,17 @@ public class BoardDAO {
 	public BoardDTO getAfter(BoardDTO board) {
 		System.out.println("--> BoardRepository.getAfter() 실행");
 		return mybatis.selectOne("BoardDAO.getAfter", board);
+	}
+	
+	// 총  입양, 공지사항, 1:1 수 (관리자페이지)
+	public int boardTotalCnt(BoardDTO board) {
+		System.out.println("--> BoardRepository.boardTotalCnt() 실행");
+		return mybatis.selectOne("BoardDAO.boardTotalCnt", board);
+	}
+	
+	// 입양, 공지사항, 1:1 목록 조회 (관리자페이지)
+	public List<BoardDTO> getBoardList(BoardDTO board){
+		System.out.println("--> BoardRepository.getBoardList() 실행");
+		return mybatis.selectList("BoardDAO.getBoardList", board);
 	}
 }

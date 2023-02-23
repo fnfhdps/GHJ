@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class AdoptDTO {
 	
+	private int totalCnt;
 	private int rownum;
 	
 	// adopt 테이블
@@ -34,6 +35,15 @@ public class AdoptDTO {
 	private String userId;
 	
 	public AdoptDTO() {}
+	
+	
+	// totalCnt
+	public int getTotalCnt() {
+		return totalCnt;
+	}	
+	public void setTotalCnt(int totalCnt) {
+		this.totalCnt = totalCnt;
+	}
 	
 	// rownum
 	public int getRownum() {
@@ -159,12 +169,13 @@ public class AdoptDTO {
 
 	@Override
 	public String toString() {
-		return "AdoptDTO [rownum=" + rownum + ", boardSeq=" + boardSeq + ", adoptImg=" + adoptImg + ", adoptSex="
-				+ adoptSex + ", adoptRescueDate=" + adoptRescueDate + ", adoptAge=" + adoptAge + ", adoptAddr="
-				+ adoptAddr + ", adoptWeight=" + adoptWeight + ", adoptNeutor=" + adoptNeutor + ", adoptState="
-				+ adoptState + ", adoptKind=" + adoptKind + ", boardCategory=" + boardCategory + ", boardTitle="
-				+ boardTitle + ", userSeq=" + userSeq + ", boardContent=" + boardContent + ", boardDate=" + boardDate
-				+ ", boardCnt=" + boardCnt + ", userName=" + userName + ", userId=" + userId + "]";
+		return "AdoptDTO [totalCnt=" + totalCnt + ", rownum=" + rownum + ", boardSeq=" + boardSeq + ", adoptImg="
+				+ adoptImg + ", adoptSex=" + adoptSex + ", adoptRescueDate=" + adoptRescueDate + ", adoptAge="
+				+ adoptAge + ", adoptAddr=" + adoptAddr + ", adoptWeight=" + adoptWeight + ", adoptNeutor="
+				+ adoptNeutor + ", adoptState=" + adoptState + ", adoptKind=" + adoptKind + ", boardCategory="
+				+ boardCategory + ", boardTitle=" + boardTitle + ", userSeq=" + userSeq + ", boardContent="
+				+ boardContent + ", boardDate=" + boardDate + ", boardCnt=" + boardCnt + ", userName=" + userName
+				+ ", userId=" + userId + "]";
 	}
 
 }
