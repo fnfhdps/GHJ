@@ -112,64 +112,69 @@ public class adoptController {
 	
 	// 입양 글 입력
 	@PostMapping(value = "/new")
-	public String insertAdopt(@RequestParam MultipartFile adoptFile, AdoptDTO adopt) throws IllegalStateException, IOException{
+	public String insertAdopt(@RequestParam MultipartFile[] adoptFiles, AdoptDTO adopt) throws IllegalStateException, IOException{
 		
 		// 파일 업로드 
-//		String fileName = FilenameUtils.getBaseName(adoptFile.getOriginalFilename()); // 파일이름(확장자명 제외)
-		String fileName = adoptFile.getOriginalFilename();	// 파일 이름(확장자명 포함)
-		long fileSize = adoptFile.getSize();				// 파일 용량
-	
-		//서버에 저장할 파일이름의 확장자 명을 구함 (.png 등)
-		String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
 		
-		// fileName + fileExtension = 파일명.확장자명
+		for (MultipartFile adoptFile : adoptFiles) {
+			
+//			String fileName = FilenameUtils.getBaseName(adoptFile.getOriginalFilename()); // 파일이름(확장자명 제외)
+			String fileName = adoptFile.getOriginalFilename();	// 파일 이름(확장자명 포함)
+			long fileSize = adoptFile.getSize();				// 파일 용량
 		
-		String webPath ="/resources/upload";
-		String realPath = "C:\\DevSpace\\GitSpace\\GHJ\\src\\main\\webapp\\resources\\image\\adopt";
-		System.out.println("realPath : " + realPath);
-		
-		/*
-		  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
-		  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
-		  타언어를 지원하지 않는 환경에서는 정상 동작이 되지 않습니다.(리눅스가 대표적인 예시)
-		  고유한 랜덤 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
-		 */
-		
-		UUID uuid = UUID.randomUUID();
-		System.out.println(uuid.toString());
-		String[] uuids = uuid.toString().split("-");
-		
-		String uniqueName = uuids[0];
-		System.out.println("생성된 고유문자열" + uniqueName);
-		System.out.println("확장자명" + fileExtension);
-		
-		
-		String realSaveFileName = uniqueName + fileName;
-		
-		File savePath = new File(realPath);		// 파일명이 포함되지 않은 경로
-		// 업로드하기 위한 경로가 없을 경우
-		if(!savePath.exists())	// savePath의 경로가 존재하는지 존재하지 않는지 boolean 체크
-			savePath.mkdirs();	// make Directory : 경로 만들어줌
-		
-		realPath += File.separator + realSaveFileName;	// File.separator : 구분자 ("\" 또는 "/" 자동으로 지정해서 경로 뒤에 붙여준다.)
-		File saveFile = new File(realPath);		// 파일명이 포함된 경로
-		
-		 try {
-			 adoptFile.transferTo(saveFile);
-			 
-		    } catch (IOException e) {
-		        e.printStackTrace();
-		        System.out.println(e.getMessage());
-		    }
-		        
-		        
-		
-		System.out.println("saveFile : " + saveFile);
-		System.out.println("고유 fileName : " + realSaveFileName); // 고유 이름
-		System.out.println("저장 경로 + fileName : " + realPath);
-		System.out.println("fileSize : " + fileSize);	
-		
-		adopt.setAdoptImg(realSaveFileName);	// 파일 이름으로 adoptImg set
+			//서버에 저장할 파일이름의 확장자 명을 구함 (.png 등)
+			String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
+			
+			// fileName + fileExtension = 파일명.확장자명
+			
+			String webPath ="/resources/upload";
+			String realPath = "C:\\DevSpace\\GitSpace\\GHJ\\src\\main\\webapp\\resources\\image\\adopt";
+			System.out.println("realPath : " + realPath);
+			
+			/*
+			  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
+			  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
+			  타언어를 지원하지 않는 환경에서는 정상 동작이 되지 않습니다.(리눅스가 대표적인 예시)
+			  고유한 랜덤 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
+			 */
+			
+			UUID uuid = UUID.randomUUID();
+			System.out.println(uuid.toString());
+			String[] uuids = uuid.toString().split("-");
+			
+			String uniqueName = uuids[0];
+			System.out.println("생성된 고유문자열" + uniqueName);
+			System.out.println("확장자명" + fileExtension);
+			
+			
+			String realSaveFileName = uniqueName + fileName;
+			
+			File savePath = new File(realPath);		// 파일명이 포함되지 않은 경로
+			// 업로드하기 위한 경로가 없을 경우
+			if(!savePath.exists())	// savePath의 경로가 존재하는지 존재하지 않는지 boolean 체크
+				savePath.mkdirs();	// make Directory : 경로 만들어줌
+			
+			realPath += File.separator + realSaveFileName;	// File.separator : 구분자 ("\" 또는 "/" 자동으로 지정해서 경로 뒤에 붙여준다.)
+			File saveFile = new File(realPath);		// 파일명이 포함된 경로
+			
+			 try {
+				 adoptFile.transferTo(saveFile);
+				 
+			    } catch (IOException e) {
+			        e.printStackTrace();
+			        System.out.println(e.getMessage());
+			    }
+			        
+			        
+			
+			System.out.println("saveFile : " + saveFile);
+			System.out.println("고유 fileName : " + realSaveFileName); // 고유 이름
+			System.out.println("저장 경로 + fileName : " + realPath);
+			System.out.println("fileSize : " + fileSize);	
+			
+			adopt.setAdoptImg(realSaveFileName);	// 파일 이름으로 adoptImg set
+		}
+
 		
 //		String fileName = adoptFile.getOriginalFilename();
 //		System.out.println("fileName : " + fileName);
