@@ -89,23 +89,14 @@
 	                    <td class="text-center">${member.userId}</td>
 	                    <td class="text-center"><fmt:formatDate value="${member.regDate}" pattern="yyyy-MM-dd"/></td>
 	                    <td class="text-center">${member.loginType}</td>
-	                    <td class="text-center dropdown">
-	                      <i class="bi bi-three-dots-vertical"
-	                          id="dropdownMenuButton1"
-	                          data-bs-toggle="dropdown"
-	                          aria-expanded="false">
-	                      </i>
-	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-	                        <li><a class="dropdown-item" href="#">조회</a></li>
-	                        <li><a class="dropdown-item" href="#">삭제</a></li>
-	                      </ul>
+	                    <td class="text-center">
+	                      <a href="/admin/member/info/${member.userSeq}">
+	                        <i class="bi bi-box-arrow-up-right"></i>
+	                      </a>
 	                    </td>
 	                  </tr>
 				    </c:forEach>
-		          </c:when>
-			   	  <c:otherwise>
-		   		  	<td class="text-center" colspan="4">1:1 문의 내역이 없습니다.</td>
-		   		  </c:otherwise>        
+		          </c:when>       
 	     	    </c:choose>
                 </tbody>
                 

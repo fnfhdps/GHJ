@@ -79,24 +79,20 @@ public class AdminPageController {
 	@PostMapping("/admin/member/update")
 	public String update(UserDTO user) throws Exception{		
 		userService.update(user);
-		return "redirect:/admin/member";
+		return "redirect: /admin/member";
 	}
 	
-	// 회원 삭제 (관리자페이지) **이거 되려나**
+	// 회원 삭제 (관리자페이지) !!!!관리자에서도 세션 해제 해야함?
 	@PostMapping(value = "/admin/member/delete")
-	public String withdraw(UserDTO user, HttpSession session) {
+	public @ResponseBody int withdraw(@RequestBody UserDTO user, HttpSession session) {
 		System.out.println("id, pw 확인 : "+user);
 		
-		UserDTO findPw = new UserDTO();
-		findPw = userService.getUserByPw(user);
-		
-		if (findPw != null) {
+		try {
 			userService.withdraw(user);
-			session.removeAttribute("login");
-			session.invalidate();
-			return "redirect: /index";
-		} else {
-			return "redirect: /test.jsp";
+			return 0;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return -1;
 		}
 	}
 	
