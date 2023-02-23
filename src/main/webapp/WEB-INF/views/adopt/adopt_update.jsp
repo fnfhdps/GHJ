@@ -54,7 +54,7 @@
       <div class="mb-3">
 	      <label for="disabledSelect" class="form-label">성별</label>
 	      <input type="hidden" id="adoptSex" value="${adoptDetail.adoptSex}">
-	      <select id="disabledSelect" class="form-select" name="adoptSex">
+	      <select id="sex_select" class="form-select" name="adoptSex">
         		<option value="" selected>-- 선택 --</option>
 			    <option value="F">암컷</option>
 			    <option value="M">수컷</option>
@@ -106,7 +106,7 @@
    	  <div class="mb-3">
 	      <label for="disabledSelect" class="form-label">중성화 여부</label>
 	      <input type="hidden" id="adoptNeutor" value="${adoptDetail.adoptNeutor}">
-	      <select id="disabledSelect" class="form-select" name="adoptNeutor">
+	      <select id="neutor_select" class="form-select" name="adoptNeutor">
        		  <option value="" selected>-- 선택 --</option>
 		      <option value="O">O</option>
 			  <option value="X">X</option>
