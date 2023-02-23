@@ -46,19 +46,22 @@
           <div class="row art_content">
             <!-- 회원정보 -->
             <article class="art1 col-lg-6 member_content member_mg">
-              <form class="pageBody art_border">
+              <form class="pageBody art_border" action="/admin/member/update" method="post">
                 <div>
                   <h3>회원정보</h3>
                 </div>
+                <input type="hidden" value="1" name="userSeq">
+                
                 <div class="my-4 d-flex flex-column">
-                  <img src="../img/dog.jpg" alt="">
+                  <img src="../img/dog.jpg" alt="프로필">
+                  <input type="file" value="${member.userImg}" name="userImg">
                   <span>${member.userName}</span>
                 </div>
   
-                <div class="form_info">
+                <div class="form_info">  
                   <div class="mb-3 formGroup">
                     <label class="mb-2">권한</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" name="userRole">
                       <option value="1">회원</option>
                       <option value="2">관리자</option>
                       <option value="3">정지</option>
@@ -67,25 +70,25 @@
   
                   <div class="mb-3 formGroup">
                     <label class="mb-2">아이디</label>
-                    <input class="form-control" type="text" value="${member.userId}">
+                    <input class="form-control" type="text" name="userId" value="${member.userId}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">비밀번호</label>
-                    <input class="form-control" type="text" value="${member.userPw}">
+                    <input class="form-control" type="text" name="userPw" value="${member.userPw}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">핸드폰번호</label>
-                    <input class="form-control" type="text" value="${member.userPhone}">
+                    <input class="form-control" type="text" name="userPhone" value="${member.userPhone}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">주소지</label>
-                    <input class="form-control mb-2" type="text" value="${member.userAddr1}">
-                    <input class="form-control mb-2" type="text" value="${member.userAddr2}">
-                    <input class="form-control mb-2" type="text" value="${member.userAddr3}">
+                    <input class="form-control mb-2" type="text" name="userAddr1" value="${member.userAddr1}">
+                    <input class="form-control mb-2" type="text" name="userAddr2" value="${member.userAddr2}">
+                    <input class="form-control mb-2" type="text" name="userAddr3" value="${member.userAddr3}">
                   </div>
                 </div>
                 <div class="mt-4 formRow">
-                  <button class="col-12 btn btn-secondary" type="button">저장</button>
+                  <button class="col-12 btn btn-secondary" type="submit">저장</button>
                 </div>
               </form>
               <div class="pageBody"></div>
@@ -177,38 +180,6 @@
             </div>
           </div>
         </section>
-
-        <!-- 임시
-        <h2>Section title</h2>
-        <div class="table-responsive">
-          <table class="table table-striped table-sm">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1,001</td>
-                <td>random</td>
-                <td>data</td>
-                <td>placeholder</td>
-                <td>text</td>
-              </tr>
-              <tr>
-                <td>1,002</td>
-                <td>placeholder</td>
-                <td>irrelevant</td>
-                <td>visual</td>
-                <td>layout</td>
-              </tr>
-            </tbody>
-          </table>
-        </div> -->
 
       </main>
     </div>
