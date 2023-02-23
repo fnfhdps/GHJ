@@ -114,7 +114,7 @@
 	                </c:choose>
 	                
 	                    <a class="loginCheck" href="/adopt/detail/${list.boardCategory}/${list.boardSeq}/${login.userSeq}">
-	                    	<img class="card-img-top" alt="" src="/resources/image/dog.jpg">
+	                    	<img class="card-img-top" alt="" src="/resources/image/adopt/${list.adoptImg}">
 	                    </a>
 	                    <div class="card-body p-4">
 													
