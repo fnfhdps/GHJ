@@ -36,12 +36,10 @@ import com.guhaejwo.biz.user.impl.UserServiceImpl;
 public class JoinController {
 
 	private final UserServiceImpl userService;
-	private JavaMailSenderImpl mailSender;
 	
 	@Autowired
-	public JoinController(UserServiceImpl userService, JavaMailSenderImpl mailSender) {
+	public JoinController(UserServiceImpl userService) {
 		this.userService = userService;
-		this.mailSender = mailSender;
 	}
 	
 	// 회원 가입 이동
