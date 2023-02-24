@@ -60,8 +60,9 @@
                 <input type="hidden" id="memberSeq" value="${member.userSeq}" name="userSeq">
                 
                 <div class="my-4 d-flex flex-column">
+                  <img alt="" src="${member.userImg}">
                   <input type="file" accept="image/*" name="userImg">
-                  <span id="memberId">${member.userId}</span>
+                  <%-- <span id="memberId">${member.userId}</span> --%>
                 </div>
   
                 <div class="form_info">  
@@ -73,7 +74,11 @@
                       <option value="ALERTER">정지</option>
                     </select>
                   </div>
-  
+                  
+                   <div class="mb-3 formGroup">
+                    <label class="mb-2">아아디</label>
+                    <input class="form-control" type="text" value="${member.userId}" disabled="disabled">
+                  </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">비밀번호</label>
                     <input class="form-control" type="text" value="${member.userPw}">
@@ -144,7 +149,7 @@
               </article>
   
               <!-- 해당 회원의 작성글?정보? 뭐써야하지 -->
-              <article class="art_sub2 member_content pageBody art_border">
+<!--               <article class="art_sub2 member_content pageBody art_border">
                 <div class="art2_text">
                   <h3>작성게시글</h3>
                 </div>
@@ -182,7 +187,7 @@
                   </table>
               </div>
   
-              </article>
+              </article> -->
             </div>
           </div>
         </section>

@@ -122,7 +122,7 @@
 									<h5 class="fw-bolder">${list.boardTitle}</h5>
 									<p>${list.adoptKind}</p>
 									<p>${list.adoptAddr}</p>
-									<a href="#" class="btn btn-outline-dark">입양하기</a>
+<!-- 									<a href="#" class="btn btn-outline-dark">입양하기</a> -->
 								</div>
 						</div>
 	                    

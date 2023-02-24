@@ -64,7 +64,7 @@
 							    </c:forEach>
 					          </c:when>
 						   	  <c:otherwise>
-					   		  	<td colspan="4" class="text-center">작성된 게시글이 없습니다.</td>
+					   		  	<td colspan="5" class="text-center">작성된 게시글이 없습니다.</td>
 					   		  </c:otherwise>        
 				     	    </c:choose>
 	                    </tbody>
