@@ -76,6 +76,7 @@
                   <th class="">아이디</th>
                   <th class="">가입일</th>
                   <th class="">로그인유형</th>
+                  <th class="">권한</th>
                   <th class=""></th>
                 </tr>
                 </thead>
@@ -88,6 +89,7 @@
 	                  <!--   <td class="text-center">번호 추가?</td> -->
 	                    <td class="text-center">${member.userId}</td>
 	                    <td class="text-center"><fmt:formatDate value="${member.regDate}" pattern="yyyy-MM-dd"/></td>
+	                    <td class="text-center">${member.userRole}</td>
 	                    <td class="text-center">${member.loginType}</td>
 	                    <td class="text-center">
 	                      <a href="/admin/member/info/${member.userSeq}">

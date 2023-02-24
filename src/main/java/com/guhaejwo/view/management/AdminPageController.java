@@ -241,10 +241,17 @@ public class AdminPageController {
 		return "redirect:/admin/sponsor/order";
 	}
 
-	// 주문 내역 상태 수정 (관리자페이지)
-	@PostMapping("/admin/sponsor/order")
-	public String sponsorOrder(SponsorDTO sponsor) {
-		sponsorService.StateupdateSponsor(sponsor);
-		return "redirect:/admin/sponsor/order";
+	// 주문 상태 수정 (관리자페이지)
+	@PostMapping("/admin/sponsor/order/state")
+	public @ResponseBody int sponsorOrder(@RequestBody SponsorDTO sponsor) {
+		System.out.println(sponsor);
+		try {
+			sponsorService.StateupdateSponsor(sponsor);
+			return 0;			
+		} catch (Exception e) {
+			e.getStackTrace();
+			System.out.println(e.getMessage());
+			return -1;
+		}
 	}
 }

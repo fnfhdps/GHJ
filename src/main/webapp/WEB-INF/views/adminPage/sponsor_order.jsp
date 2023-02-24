@@ -88,7 +88,7 @@
 				    <c:forEach items="${sponsorList}" var="sponsor">
 	                  <tr>
 	                    <td class="text-center">${sponsor.num}</td>
-	                    <td class="text-center">${sponsor.sponsorItemName}</td>
+	                    <td class="text-center"><a href="/admin/sponsor/order/info/${sponsor.sponsorSeq}">${sponsor.sponsorItemName}</a></td>
 	                    <td class="text-center">${sponsor.sponsorItemName}</td>
 	                    <td class="text-center">${sponsor.sponsorAmount}</td>
 	                    <td class="text-center">${sponsor.sponsorTotalPrice}</td>
@@ -102,18 +102,17 @@
 	                            	${sponsor.sponsorState}
 	                      </span>
 	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-	                        <li><a class="dropdown-item" href="#">상품준비중</a></li>
-	                        <li><a class="dropdown-item" href="#">배송대기중</a></li>
-	                        <li><a class="dropdown-item" href="#">배송중</a></li>
-	                        <li><a class="dropdown-item" href="#">배송완료</a></li>
+	                        <li><a class="dropdown-item state">상품준비중</a></li>
+	                        <li><a class="dropdown-item state" onclick="sponsorState(${sponsor.sponsorSeq}, '배송대기중')">배송대기중</a></li>
+	                        <li><a class="dropdown-item state" onclick="sponsorState(${sponsor.sponsorSeq}, '배송중')">배송중</a></li>
+	                        <li><a class="dropdown-item state" onclick="sponsorState(${sponsor.sponsorSeq}, '배송완료')">배송완료</a></li>
 	                      </ul>
+	                      <input type="hidden" value="${sponsor.sponsorSeq}">
+	                      
 	                    </td>
 	                  </tr>
 				    </c:forEach>
-		          </c:when>
-			   	  <c:otherwise>
-		   		  	<td class="text-center" colspan="4">1:1 문의 내역이 없습니다.</td>
-		   		  </c:otherwise>        
+		          </c:when>       
 	     	    </c:choose>
                 </tbody>
                 
@@ -121,6 +120,7 @@
             </div>
           </article>
 
+        <c:if test="${!empty sponsorDetail}">
           <article class="sponsor_art member_content member_size pageBody css-y8viq9 ezu2kv83">
             <div class="css-py8xgp ezu2kv82">
               <div>배송지 정보</div>
@@ -176,25 +176,61 @@
                 <div class="css-17fh4sh ekrx5n61">
                   <div class="css-k8dhob e1fwbpos2">
                     <div class="css-xlcpif e1fwbpos1">주문자</div>
-                    <div class="css-17qztlv e1fwbpos0">김지수</div>
+                    <div class="css-17qztlv e1fwbpos0">${sponsorDetail.userName}</div>
                   </div>
                   <div class="css-k8dhob e1fwbpos2">
                     <div class="css-xlcpif e1fwbpos1">연락처</div>
-                    <div class="css-17qztlv e1fwbpos0">010-1111-2222</div>
+                    <div class="css-17qztlv e1fwbpos0">${sponsorDetail.userPhone}</div>
                   </div>
                   <div class="css-k8dhob e1fwbpos2">
                     <div class="css-xlcpif e1fwbpos1">이메일</div>
-                    <div class="css-17qztlv e1fwbpos0">sffdg12@naver.com</div>
+                    <div class="css-17qztlv e1fwbpos0">${sponsorDetail.userEmail}</div>
                   </div>
                 </div>
               </div>
             </div>
           </article>
-
+		</c:if>
         </section>
 
       </main>
     </div>
   </div>
+
+<script type="text/javascript">
+	$(".state").click(function () {
+		const state = $(this).text();
+		const ul = $(this).parent().parent();
+		const seq = ul.next('input').val();
+		
+		const data = {
+				"sponsorSeq" : seq,
+				"sponsorState" : state
+				};
+		
+        $.ajax({
+            url : "/admin/sponsor/order/state",
+            type :'post',
+            data : JSON.stringify(data),
+            dataType : "json",
+            contentType : "application/json",
+            async : true,
+            success : function(result){
+                if(result == 0){  
+                	//alert("이전 상태: "+(ul.prev("span").text()));
+                	ul.prev("span").text(state);
+                	//window.location.href = "/admin/sponsor/order";
+                } else {
+                	alert("실패");
+                	return;
+                }
+            },
+            error : function(errorThrown){
+             alert(errorThrown.statusText);
+          }
+         });
+	})
+
+</script>
 </body>
 </html>

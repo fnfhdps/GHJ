@@ -7,8 +7,6 @@ public class SponsorDTO {
 	private int totalCnt;
 	private int num;
 	
-	private String sponsorItemName;
-	
 	private int sponsorSeq;
 	private int userSeq;	   	// users 테이블
 	private int sponsorItemSeq;	// sponsor_item 테이블
@@ -21,6 +19,13 @@ public class SponsorDTO {
 	private String payment;
 	private String sponsorState;
 	private String memo;
+	
+	private String sponsorItemName;
+	
+	private int userId;
+	private String userName;
+	private String userPhone;
+	private String userEmail;
 	
 	public SponsorDTO() {}
 
@@ -36,13 +41,6 @@ public class SponsorDTO {
 	}
 	public void setNum(int num) {
 		this.num = num;
-	}
-
-	public String getSponsorItemName() {
-		return sponsorItemName;
-	}
-	public void setSponsorItemName(String sponsorItemName) {
-		this.sponsorItemName = sponsorItemName;
 	}
 
 	public int getSponsorSeq() {
@@ -118,14 +116,47 @@ public class SponsorDTO {
 		this.memo = memo;
 	}
 
+	public String getSponsorItemName() {
+		return sponsorItemName;
+	}
+	public void setSponsorItemName(String sponsorItemName) {
+		this.sponsorItemName = sponsorItemName;
+	}
+	
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserPhone() {
+		return userPhone;
+	}
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
 	@Override
 	public String toString() {
-		return "SponsorDTO [totalCnt=" + totalCnt + ", num=" + num + ", sponsorItemName=" + sponsorItemName
-				+ ", sponsorSeq=" + sponsorSeq + ", userSeq=" + userSeq + ", sponsorItemSeq=" + sponsorItemSeq
-				+ ", sponsorAmount=" + sponsorAmount + ", sponsorDate=" + sponsorDate + ", sponsorTotalPrice="
-				+ sponsorTotalPrice + ", sponsorShippingAddr=" + sponsorShippingAddr + ", sponsorName=" + sponsorName
-				+ ", sponsorPhone=" + sponsorPhone + ", payment=" + payment + ", sponsorState=" + sponsorState
-				+ ", memo=" + memo + "]";
+		return "SponsorDTO [totalCnt=" + totalCnt + ", num=" + num + ", sponsorSeq=" + sponsorSeq + ", userSeq="
+				+ userSeq + ", sponsorItemSeq=" + sponsorItemSeq + ", sponsorAmount=" + sponsorAmount + ", sponsorDate="
+				+ sponsorDate + ", sponsorTotalPrice=" + sponsorTotalPrice + ", sponsorShippingAddr="
+				+ sponsorShippingAddr + ", sponsorName=" + sponsorName + ", sponsorPhone=" + sponsorPhone + ", payment="
+				+ payment + ", sponsorState=" + sponsorState + ", memo=" + memo + ", sponsorItemName=" + sponsorItemName
+				+ ", userId=" + userId + ", userName=" + userName + ", userPhone=" + userPhone + ", userEmail="
+				+ userEmail + "]";
 	}
 
 }
