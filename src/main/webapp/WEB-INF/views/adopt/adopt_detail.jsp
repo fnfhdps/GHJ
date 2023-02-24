@@ -94,7 +94,8 @@
            	<br>
             <hr>		
 	            <div class="image_center">
-	                <img id="adopt_img" src="/resources/image/adopt/${adoptDetail.adoptImg}">
+	            폴더명 ${adoptDetail.adoptImg}
+	                <img id="adopt_img" src="${adoptDetail.adoptImg}">
 	            </div>
             <hr>
             

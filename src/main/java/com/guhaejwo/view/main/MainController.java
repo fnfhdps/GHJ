@@ -1,5 +1,8 @@
 package com.guhaejwo.view.main;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -40,7 +43,7 @@ public class MainController {
 //	}
 //	
 	@GetMapping("/index")
-	public String getMainPage() {
+	public String getMainPage(HttpSession session) {
 		return "redirect: index.jsp";
 	}
 }

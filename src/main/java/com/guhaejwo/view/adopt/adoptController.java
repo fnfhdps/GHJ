@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -73,12 +74,28 @@ public class adoptController {
 	// 입양 목록 상세 조회
 	@GetMapping(value = "/detail/{boardCategory}/{boardSeq}/{userSeq}")
 	public String getAdoptDetail(@PathVariable("boardCategory") String category, @PathVariable("boardSeq") int boardSeq,
-		@PathVariable("userSeq") int userSeq, AdoptDTO adopt, ReplyDTO reply, AdoptHeartDTO heart, AdoptBlameDTO blame,  Model model) {
+		@PathVariable("userSeq") int userSeq, AdoptDTO adopt, ReplyDTO reply, AdoptHeartDTO heart, AdoptBlameDTO blame,  Model model,
+		HttpServletRequest req) {
 		
 		
 		// 게시글 상세 조회
 		adopt.setBoardSeq(boardSeq);
 		AdoptDTO adoptDetail = adoptService.getAdoptDetail(adopt);
+		
+		String saveFolder = adoptDetail.getAdoptImg();
+//		String requestFolder = req.getContextPath() + "/" + saveFolder;
+//		System.out.println("saveFolder: "+saveFolder);
+//		System.out.println("requestFolder: "+requestFolder);
+		
+		String webPath ="/resources/image/test/";
+		String realPath = ctx.getRealPath(webPath);
+		System.out.println(realPath+saveFolder);
+		
+		adoptDetail.setAdoptImg(realPath+saveFolder);
+//		String webPath ="/resources/image/";
+//		System.out.println("불러올 파일 경로 :"+webPath+requestFolder);
+
+		
 		model.addAttribute("adoptDetail", adoptDetail);
 		
 		// 댓글 목록 조회
@@ -112,7 +129,7 @@ public class adoptController {
 	
 	// 입양 글 입력
 	@PostMapping(value = "/new")
-	public String insertAdopt(@RequestParam MultipartFile[] adoptFiles, AdoptDTO adopt) throws IllegalStateException, IOException{
+	public String insertAdopt(@RequestParam MultipartFile[] adoptFiles, AdoptDTO adopt, HttpServletRequest req) throws IllegalStateException, IOException, Exception{
 		
 		// 파일 업로드 
 		
@@ -127,16 +144,10 @@ public class adoptController {
 			
 			// fileName + fileExtension = 파일명.확장자명
 			
-			String webPath ="/resources/upload";
-			String realPath = "C:\\DevSpace\\GitSpace\\GHJ\\src\\main\\webapp\\resources\\image\\adopt";
+			String webPath ="/resources/image/";
+			String realPath = req.getServletContext().getRealPath("/resources/image/profile/");
+//			String realPath = ctx.getRealPath(webPath);
 			System.out.println("realPath : " + realPath);
-			
-			/*
-			  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
-			  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
-			  타언어를 지원하지 않는 환경에서는 정상 동작이 되지 않습니다.(리눅스가 대표적인 예시)
-			  고유한 랜덤 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
-			 */
 			
 			UUID uuid = UUID.randomUUID();
 			System.out.println(uuid.toString());
@@ -146,8 +157,8 @@ public class adoptController {
 			System.out.println("생성된 고유문자열" + uniqueName);
 			System.out.println("확장자명" + fileExtension);
 			
-			
 			String realSaveFileName = uniqueName + fileName;
+			System.out.println("realSaveFileName:"+realSaveFileName);
 			
 			File savePath = new File(realPath);		// 파일명이 포함되지 않은 경로
 			// 업로드하기 위한 경로가 없을 경우
@@ -158,22 +169,20 @@ public class adoptController {
 			File saveFile = new File(realPath);		// 파일명이 포함된 경로
 			
 			 try {
-				 adoptFile.transferTo(saveFile);
+				adoptFile.transferTo(saveFile);
 				 
-			    } catch (IOException e) {
-			        e.printStackTrace();
-			        System.out.println(e.getMessage());
-			    }
+		    } catch (IOException e) {
+		    	e.printStackTrace();
+		        System.out.println(e.getMessage());
+		    }
 			        
-			        
-			
 			System.out.println("saveFile : " + saveFile);
 			System.out.println("고유 fileName : " + realSaveFileName); // 고유 이름
 			System.out.println("저장 경로 + fileName : " + realPath);
 			System.out.println("fileSize : " + fileSize);	
 			
 			adopt.setAdoptImg(realSaveFileName);	// 파일 이름으로 adoptImg set
-		}
+			}
 
 		
 //		String fileName = adoptFile.getOriginalFilename();
