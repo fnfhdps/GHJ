@@ -91,7 +91,7 @@
 	                    <td class="text-center">${board.boardSubCategory}</td>
 	                    <td class="text-center">${board.boardTitle}</td>
 	                    <td class="text-center"><fmt:formatDate value="${board.boardDate}" pattern="yyyy-MM-dd"/></td>
-	                    <td class="text-center">${board.num}</td>
+	                    <td class="text-center">${board.boardCnt}</td>
 	                    <td class="text-center dropdown">
 	                      <i class="bi bi-three-dots-vertical"
 	                          id="dropdownMenuButton1"
