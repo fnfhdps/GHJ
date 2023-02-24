@@ -40,9 +40,13 @@ public class LoginController {
 			loginUser = userService.findById(user);
 			if(loginUser != null && (loginUser.getUserPw()).equals(user.getUserPw())) {	// 성공
 				session.setAttribute("login", loginUser);
-				return loginUser;
+				if(loginUser.getUserRole().equals("USER")) { // 유저
+					return 1;
+				}else {										// 관리자
+					return 2;
+				}
 			} else {
-				return 0; // 없을 때
+				return -1; // 없을 때
 			}
 		} catch (Exception e) { // 통신오류
 			return 9;

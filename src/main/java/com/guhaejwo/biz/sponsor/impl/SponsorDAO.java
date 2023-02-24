@@ -29,8 +29,8 @@ public class SponsorDAO {
 	
 	// 후원 내역 상태 수정 (관리자페이지)
 	public void StateupdateSponsor(SponsorDTO sponsor) {
-		System.out.println("--> SponsorRepository.updateSponsor() 실행");
-		mybatis.update("SponsorDAO.updateSponsor", sponsor);
+		System.out.println("--> SponsorRepository.StateupdateSponsor() 실행");
+		mybatis.update("SponsorDAO.StateupdateSponsor", sponsor);
 	}
 	
 	// 후원 내역 조회 (마이페이지)

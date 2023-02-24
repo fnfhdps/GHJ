@@ -79,6 +79,7 @@
                     <th class="">가격</th>
                     <th class="">등록일</th>
                     <th class="">상태</th>
+                    <th class=""></th>
                   </tr>
                 </thead>
                 

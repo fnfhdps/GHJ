@@ -90,14 +90,15 @@ $(function(){
 			dataType : "json",
 			contentType : "application/json",
 			success : function(result) {
-				if (result == 0) {
+				if (result == -1) {
 					alert("아이디와 비밀번호를 다시 확인해주세요");
 					return;
-				} else if (result == 9) {
-					alert("통신 오류");
-					return;
-				} else {
+				} else if(result == 1) {
 					window.location.href = "/index";
+				} else if(result == 2){
+					window.location.href = "/admin/member";					
+				} else{
+					alert("통신오류");
 				}
 			},
 			error : function(errorThrown) {

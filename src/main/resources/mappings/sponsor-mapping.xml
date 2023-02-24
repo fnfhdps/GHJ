@@ -42,7 +42,7 @@
 		]]>
 	</select>
 
-	<!-- 전체 주문 내역 조회 (관리자페이지) -->
+	<!-- 주문 내역 조회 (관리자페이지) -->
 	<select id="getSponsorList" resultType="sponsor">
 		<![CDATA[
 			select ROW_NUMBER() OVER(ORDER BY sponsor.sponsorseq) as num, sponsor.*, sponsor_item.sponsoritemname
@@ -55,7 +55,7 @@
 	<!-- 주문 상세 조회 (관리자페이지) -->
 	<select id="getSponsor" resultType="sponsor">
 		<![CDATA[
-			select users.username, users.userphone, users.useremail, sponsor.*
+			select users.userId, users.username, users.userphone, users.useremail, sponsor.*
 			from users, sponsor
 			where users.userseq = sponsor.userseq
 			and sponsorseq = #{sponsorSeq}

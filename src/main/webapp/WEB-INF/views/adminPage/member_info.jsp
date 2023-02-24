@@ -197,23 +197,15 @@
   </div>
   
 <script type="text/javascript">
-	const memberSeq = $("#memberSeq").val();
+	//const memberSeq = $("#memberSeq").val();
 	const memberId = $("#memberId").text();
 	
-	let url = "";
-	let data = "";
-	let msg1 = "";
-	let msg2 = "실패";
-	
-	alert(memberSeq+memberId);
-	
 	function memberDelete() {
+		const data = {"userId" : memberId}
+		
 		if(window.confirm("삭제 하시겠습니까?")){
-			url = "/admin/member/delete";
-			data = {"userId" : memberId}
-			ms1 = "삭제완료";
 	        $.ajax({
-	            url : url,
+	            url : "/admin/member/delete",
 	            type :'post',
 	            data : JSON.stringify(data),
 	            dataType : "json",
@@ -221,12 +213,9 @@
 	            async : true,
 	            success : function(result){
 	                if(result == 0){
-	                	if(msg1 != ""){
-	                		alert(msg1);                		
-	                	}
 		                window.location.href = "/admin/member";
 	                } else {
-	                	alert(msg2);
+	                	alert("실패");
 	                	return;
 	                }
 	            },
