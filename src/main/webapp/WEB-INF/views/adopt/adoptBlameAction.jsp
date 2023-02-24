@@ -30,13 +30,13 @@
               
               
           <div class="mb-3">
-		      <label for="disabledTextInput" class="form-label">제목</label>
-		      <input type="text" id="disabledTextInput" class="form-control" placeholder="신고글의 제목을 입력하세요" name="boardTitle">
+		      <label class="form-label">제목</label>
+		      <input type="text" class="form-control" placeholder="신고글의 제목을 입력하세요" name="blaTitle">
    	  	  </div>
    	  	  
    	  	  
    	  	  <div class="mb-3">
-			  <label for="exampleFormControlTextarea1" class="form-label">신고내용</label>
+			  <label class="form-label">신고내용</label>
 			  <textarea class="form-control" name="blaContent" rows="7" placeholder="신고글의 내용을 입력하세요"></textarea>
 	 	  </div> 
            
