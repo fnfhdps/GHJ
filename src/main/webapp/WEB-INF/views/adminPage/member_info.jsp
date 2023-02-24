@@ -57,12 +57,11 @@
                 <div>
                   <h3>회원정보</h3>
                 </div>
-                <input type="hidden" id="memberSeq" value="${member.userSeq}" name="userSeq">
+                <input type="hidden" value="${member.userSeq}" name="userSeq">
                 
                 <div class="my-4 d-flex flex-column">
                   <img alt="" src="${member.userImg}">
                   <input type="file" accept="image/*" name="userImg">
-                  <%-- <span id="memberId">${member.userId}</span> --%>
                 </div>
   
                 <div class="form_info">  
@@ -77,7 +76,7 @@
                   
                    <div class="mb-3 formGroup">
                     <label class="mb-2">아아디</label>
-                    <input class="form-control" type="text" value="${member.userId}" disabled="disabled">
+                    <input class="form-control" id="memberId" type="text" value="${member.userId}" disabled="disabled">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">비밀번호</label>
@@ -89,7 +88,7 @@
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">이메일</label>
-                    <input class="form-control" type="text" value="${member.userEmail}">
+                    <input class="form-control" type="text" name="userEmail" value="${member.userEmail}">
                   </div>
                   <div class="mb-3 formGroup">
                     <label class="mb-2">주소지</label>
@@ -197,9 +196,8 @@
   </div>
   
 <script type="text/javascript">
-	//const memberSeq = $("#memberSeq").val();
-	const memberId = $("#memberId").text();
-	
+	const memberId = $("#memberId").val();
+
 	function memberDelete() {
 		const data = {"userId" : memberId}
 		

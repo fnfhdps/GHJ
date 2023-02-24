@@ -29,6 +29,20 @@
 <title>관리자 header</title>
 </head>
 <body>
+  <input id="adminSeq" type="hidden" value="${login.userSeq}">
+  <input id="adminRole" type="hidden" value="${login.userRole}">
+  
+	<!-- 로그인 및 관리자 권한 유무 확인  -->
+	<script type="text/javascript">
+		const adminSeq = $("#adminSeq").val();
+		const adminRole = $("#adminRole").val();
+		
+		if (adminRole != 'ADMIN') {
+			alert("접근 권한이 없습니다.");
+			window.location.href = "/index";
+		}
+	</script>
+
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a id="nav_a" class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/index">구해줘!펫즈</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">

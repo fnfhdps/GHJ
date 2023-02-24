@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.guhaejwo.biz.user.Role;
 import com.guhaejwo.biz.user.UserDTO;
 import com.guhaejwo.biz.user.impl.UserServiceImpl;
 
@@ -40,7 +41,7 @@ public class LoginController {
 			loginUser = userService.findById(user);
 			if(loginUser != null && (loginUser.getUserPw()).equals(user.getUserPw())) {	// 성공
 				session.setAttribute("login", loginUser);
-				if(loginUser.getUserRole().equals("USER")) { // 유저
+				if((loginUser.getUserRole()).equals(Role.USER)) { // 유저
 					return 1;
 				}else {										// 관리자
 					return 2;

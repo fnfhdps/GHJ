@@ -23,7 +23,7 @@
     <div class="row">
     <!-- 관리자페이지 목록 -->
     <jsp:include page="../fix/admin_nav.jsp"></jsp:include>
-  
+  	
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-5 mt-4">
         <div class="chartjs-size-monitor">
           <div class="chartjs-size-monitor-expand">
