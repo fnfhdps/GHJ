@@ -82,20 +82,6 @@ public class adoptController {
 		adopt.setBoardSeq(boardSeq);
 		AdoptDTO adoptDetail = adoptService.getAdoptDetail(adopt);
 		
-		String saveFolder = adoptDetail.getAdoptImg();
-//		String requestFolder = req.getContextPath() + "/" + saveFolder;
-//		System.out.println("saveFolder: "+saveFolder);
-//		System.out.println("requestFolder: "+requestFolder);
-		
-		String webPath ="/resources/image/test/";
-		String realPath = ctx.getRealPath(webPath);
-		System.out.println(realPath+saveFolder);
-		
-		adoptDetail.setAdoptImg(realPath+saveFolder);
-//		String webPath ="/resources/image/";
-//		System.out.println("불러올 파일 경로 :"+webPath+requestFolder);
-
-		
 		model.addAttribute("adoptDetail", adoptDetail);
 		
 		// 댓글 목록 조회
@@ -144,9 +130,8 @@ public class adoptController {
 			
 			// fileName + fileExtension = 파일명.확장자명
 			
-			String webPath ="/resources/image/";
-			String realPath = ((HttpSession) req).getServletContext().getRealPath("/resources/image/profile/");
-//			String realPath = ctx.getRealPath(webPath);
+			String webPath ="/resources/image/adopt";
+			String realPath = ctx.getRealPath(webPath);
 			System.out.println("realPath : " + realPath);
 			
 			UUID uuid = UUID.randomUUID();

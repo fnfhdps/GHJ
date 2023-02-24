@@ -33,10 +33,18 @@
 	
 	
 	$(".update_content").css("display", "none");
-	$(".update_btn").click(function() {
-		$("#show_content").css("display", "none");
-		$(".update_content").css("display", "block");		
-	});
+	function updateBtn(seq){
+		//alert(seq);
+		const reply = $("#show_content_"+seq);
+		reply.css("display", "none");
+		const replyUpdate = reply.next().next("div").find(".update_content");
+		replyUpdate.css("display", "block");
+	}
+	
+//	$(".update_btn").click(function() {
+//		$("#show_content").css("display", "none");
+//		$(".update_content").css("display", "block");
+//	});
 
 	// 댓글 수정
 	function replyUpdate(replySeq, contentId) {

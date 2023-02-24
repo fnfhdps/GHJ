@@ -81,13 +81,7 @@
 
 	<jsp:include page="../fix/header.jsp"></jsp:include>
 	
-	
-	
-	
-	
 	<section class="py-5">
-		
-	
 		<hr>
 		<div class="search_wrap adopt_list_interface" style="vertical-align:middle; text-align:middle;">
 	       	<div class="search_area">
@@ -98,45 +92,37 @@
 	
 	    <div class="container px-4 px-lg-5 mt-5">
 	        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-	        
-	        
 	            
 	            <c:forEach items="${list}" var="list">
 	            <div class="col mb-5">
 	                <div class="card h-100">
-	                <c:choose>
-	                  <c:when test="${list.adoptState eq 'WAIT'}">
-		                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">입양대기</div>
-	                  </c:when>
-	                  <c:otherwise>
-	                  	<div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">입양완료</div>
-	                  </c:otherwise>
-	                </c:choose>
-	                
+		                <c:choose>
+		                  <c:when test="${list.adoptState eq 'WAIT'}">
+			                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">입양대기</div>
+		                  </c:when>
+		                  <c:otherwise>
+		                  	<div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">입양완료</div>
+		                  </c:otherwise>
+		                </c:choose>
 	                    <a class="loginCheck" href="/adopt/detail/${list.boardCategory}/${list.boardSeq}/${login.userSeq}">
 	                    	<img class="card-img-top" alt="" src="/resources/image/adopt/${list.adoptImg}">
 	                    </a>
-	                    <div class="card-body p-4">
-													
-								<div class="text-center">
-									<h5 class="fw-bolder">${list.boardTitle}</h5>
-									<p>${list.adoptKind}</p>
-									<p>${list.adoptAddr}</p>
-<!-- 									<a href="#" class="btn btn-outline-dark">입양하기</a> -->
-								</div>
+	                    <div class="card-body p-3">
+							<div class="text-center">
+								<h5 class="fw-bolder">${list.boardTitle}</h5>
+								<p>${list.adoptKind}</p>
+								<p>${list.adoptAddr}</p>
+							</div>
 						</div>
-	                    
 	                </div>
 	            </div>
 	            </c:forEach>
-
 	        </div>
-	        
 	    </div>
-	    <div>
 	    
+	    <div>
 		    <div class="text-center">
-				<button type="button" style="width:200px; height:50px;" class="btn btn-secondary"><a href="/adopt/new" style="color:white;">글쓰기</a></button>
+				<a href="/adopt/new" style="width:200px; height:50px; color:white;" class="btn btn-secondary">글쓰기</a>
 			</div>
 		     
 		    <div class="pageInfo_wrap" >
