@@ -145,8 +145,8 @@ public class adoptController {
 			// fileName + fileExtension = 파일명.확장자명
 			
 			String webPath ="/resources/image/";
-//			String realPath = req.getServletContext().getRealPath("/resources/image/profile/");
-			String realPath = ctx.getRealPath(webPath);
+			String realPath = ((HttpSession) req).getServletContext().getRealPath("/resources/image/profile/");
+//			String realPath = ctx.getRealPath(webPath);
 			System.out.println("realPath : " + realPath);
 			
 			UUID uuid = UUID.randomUUID();
