@@ -85,22 +85,30 @@
 			</div>
 
 			<div class="int-area">
-				<input type="text" name="userEmail" id="userEmail" autocomplete="off">
+				<input type="text" name="userEmail" id="userEmail" autocomplete="off" title="이메일 주소를 입력해주세요." required>
 				<label>이메일(선택)</label>
 			</div>
 			
-			<div class="int-area">
-				<input type="text" name="userEmailChk">
-				<label>이메일 인증번호</label>
-			</div>
-			
 			<div class="col-xs-4 col-sm-6">
-				<input class="btn btn-primary"
+				<input id="emailChk" class="btn btn-primary"
 						type="button"
 						value="인증번호 보내기"
 						onclick="">
 			</div>
 			
+			<div class="int-area">
+				<input type="text" name="userEmail2">
+				<label>이메일 인증번호</label>
+			</div>
+			<span id="emailChk2" class="emailDoubleChk">이메일인증</span>
+			<span class="point successEmailChk">이메일 입력후 인증번호 보내기를 해주십시오.</span>
+			 
+			<!-- 이메일 인증 유효성 검사 -->
+			<input type="hidden" id="emailDoubleChk"/>
+			<p class="tip">
+				아이디 비밀번호 분실시 필요한 정보이므로, 정확하게 기입해 주십시오.
+			</p>
+				
 			<div class="caption">
 				<div>
 					<input id="member"class="remember" type="checkbox">
