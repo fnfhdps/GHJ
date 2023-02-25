@@ -43,6 +43,8 @@
 			<param-value>/WEB-INF/spring/appServlet/presentation-layer.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<!-- 웹소켓 사용을 위한 비동기 처리 -->
+		<async-supported>true</async-supported>
 	</servlet>
 
 	<servlet-mapping>

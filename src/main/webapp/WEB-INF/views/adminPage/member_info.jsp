@@ -116,7 +116,7 @@
                   </div>
                   <div>
                     <small>최근접속일</small>
-                    <p class="mt-1">2021-03-24 14:23:02</p>
+                    <p class="mt-1">${member.lastDate}</p>
                   </div>
   
                   <div>

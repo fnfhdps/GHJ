@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="/chat">후원상품주문</a>
+
 <a href="/admin/member">회원정보목록</a>
 <a href="/admin/member/info">회원상세조회</a>
 <a href="/admin/ADOPT">게시글관리</a>

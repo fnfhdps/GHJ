@@ -64,7 +64,8 @@ public class UserDAO implements UserService{
 
 	@Override
 	public void update(UserDTO user) {
-		System.out.println("---> MybatisUserRepository.user() 실행");
+		System.out.println("---> MybatisUserRepository.updateUser() 실행");
+		System.out.println(user);
 		mybatis.update("UserDAO.updateUser", user);
 	}
 

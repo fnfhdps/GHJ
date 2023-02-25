@@ -1,10 +1,8 @@
 package com.guhaejwo.biz.user;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.multipart.MultipartFile;
 
 public class UserDTO {
 	
@@ -24,8 +22,7 @@ public class UserDTO {
 	private LoginType loginType;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date regDate;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date lastDate;
+	private String lastDate;
 	
 	public UserDTO() {}
 
@@ -114,10 +111,10 @@ public class UserDTO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public Date getLastDate() {
+	public String getLastDate() {
 		return lastDate;
 	}
-	public void setLastDate(Date lastDate) {
+	public void setLastDate(String lastDate) {
 		this.lastDate = lastDate;
 	}
 
