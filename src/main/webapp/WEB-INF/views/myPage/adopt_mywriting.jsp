@@ -42,7 +42,7 @@
 	                  <table class="table table-bordered">
 	                    <thead>
 	                    <tr>
-	                      <th class="good">번호</th>
+	                      <th class="">번호</th>
 	                      <th class="date">등록일</th>
 	                      <!-- 제목 일정글자 넘으면 어쩌고...라고 뜨게하기 -->
 	                      <th class="amount">제목</th>
@@ -54,10 +54,15 @@
 				       		  <c:when test="${!empty myAdopt}">
 							    <c:forEach items="${myAdopt}" var="myAdopt">
 							      <tr>
-							        <th scope="row">${myAdopt.rownum}</th>
+							        <td class="text-center">${myAdopt.rownum}</td>
 							        <td class="text-center"><fmt:formatDate value="${myAdopt.boardDate}" pattern="yyyy-MM-dd"/></td>
 							        <td class="text-center"><a href="/adopt/detail/ADOPT/${myAdopt.boardSeq}/${login.userSeq}">${myAdopt.boardTitle}</a></td>
-							        <td class="text-center">${myAdopt.adoptState}</td>
+							        <c:if test="${myAdopt.adoptState eq 'WAIT'}">
+								        <td class="text-center">입양대기</td>
+							        </c:if>
+							        <c:if test="${myAdopt.adoptState eq 'SUCCESS'}">
+								        <td class="text-center">입양완료</td>
+							        </c:if>
 							      </tr>
 							    </c:forEach>
 					          </c:when>

@@ -68,7 +68,6 @@ public class AdminPageController {
 		totalCnt.put("blame", userService.userBlameCnt(user));
 		
 		model.addAttribute("totalCnt", totalCnt);
-		
 		// 회원 상세
 		model.addAttribute("member", userService.getUser(user));
 		

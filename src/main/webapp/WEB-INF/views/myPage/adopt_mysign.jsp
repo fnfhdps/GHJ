@@ -58,7 +58,7 @@
 							        <td class="text-center">${mysign.rownum}</td>
 							        <td class="text-center"><fmt:formatDate value="${mysign.adoptReqDate}" pattern="yyyy-MM-dd"/></td>
 							        <td class="text-center"><a href="/adopt/detail/ADOPT/${mysign.boardSeq}/${login.userSeq}">${mysign.boardTitle}</a></td>							        
-							        <td class="text-center">${mysign.userName}(${mysign.userId})</td>
+							        <td class="text-center">${mysign.userId}</td>
 							        <td class="text-center">${mysign.adoptState}</td>
 							      </tr>
 							    </c:forEach>

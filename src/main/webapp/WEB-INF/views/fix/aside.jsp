@@ -9,7 +9,7 @@
 <body>
   <aside class="sidebarNav col-lg-3 col-md-3 col-sm-12 col-xs-12">
     <div class="list-group sidebar">
-      <a class="list-group-item current" href="/mypage/info">내정보</a>
+      <a class="list-group-item current" href="/mypage/info/${login.userSeq}">내정보</a>
       <a class="list-group-item " href="/mypage/mywriting/${login.userSeq}">내입양글</a>
       <a class="list-group-item " href="/mypage/mysign/${login.userSeq}">신청목록</a>
       <a class="list-group-item " href="/mypage/hope/${login.userSeq}">희망자목록</a>

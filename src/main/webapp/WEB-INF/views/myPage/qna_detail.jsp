@@ -86,5 +86,104 @@
     
     <jsp:include page="../fix/footer.jsp"></jsp:include>
 </div>
+
+<input type="hidden" id="boardSeq" value="${qnaDetail.boardSeq}">
+<input type="hidden" id="boardCategory" value="${qnaDetail.boardCategory}">
+<input type="hidden" id="userSeq" value="${login.userSeq}">
+
+<script type="text/javascript">
+	const boardSeq = $("#boardSeq").val();
+	const boardCategory = $("#boardCategory").val();
+	const userSeq = $("#userSeq").val();
+	
+	let data = null;
+	
+	function qnaDelete() {
+		data = {"boardSeq":boardSeq};
+		
+		if(window.confirm("삭제 하시겠습니까?")){
+			$.ajax({
+				url: "/mypage/qna/delete",
+				type: "post",
+				data: JSON.stringify(data),
+				dataType: "json",
+				contentType: "application/json",
+				async: true,
+				success: function(result){
+					if(result == 0) {
+						alert("삭제 완료");
+						window.location.href = "/mypage/qna/"+userSeq;
+					} else {
+						alert("통신 오류");
+						return;
+					}
+				},
+				error : function(errorThrown){
+					alert(errorThrown.statusText);
+				}
+			});
+		}
+	}
+	
+// --------------------------------------
+	data = {
+			boardSeq : boardSeq,
+			boardCategory : boardCategory,
+			userSeq : userSeq
+	};
+//	alert("boardSeq:"+boardSeq+"boardCategory:"+boardCategory+"userSeq: "+userSeq);
+	
+	// 이전글
+	$.ajax({
+		url: "/before",
+		type: "get",
+		data: data,
+		dataType: "text",
+		async: true,
+		success: function(result){
+			if(result.findSeq == 0) {
+				$("#before").text("글이 없습니다").css("color", "gray");
+			} else if(result == -1) {
+				alert("통신 오류");
+				return;
+			} else {
+				let beforeSeq = result.findSeq;
+				let beforeTitle = result.findTitle;
+				$("#before").attr("href", "/mypage/qna/get/"+beforeSeq);
+				$("#before").text(beforeTitle);
+				};
+		},
+		error : function(errorThrown){
+			alert(errorThrown.statusText);
+		},
+		dataType: "json"
+	});
+	
+	// 다음글 조회
+	$.ajax({
+		url: "/after",
+		type: "get",
+		data: data,
+		dataType: "text",
+		async: true,
+		success: function(result){
+			if(result.findSeq == 0) {
+				$("#after").text("글이 없습니다").css("color", "gray");
+			} else if(result == -1) {
+				alert("통신 오류");
+				return;
+			} else {
+				let afterSeq = result.findSeq;
+				let afterTitle = result.findTitle;
+				$("#after").attr("href", "/mypage/qna/get/"+afterSeq);
+				$("#after").text(afterTitle);
+			}
+		},
+		error : function(errorThrown){
+			alert(errorThrown.statusText);
+		},
+		dataType: "json"
+	});
+</script>
 </body>
 </html>

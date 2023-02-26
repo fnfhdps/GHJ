@@ -53,13 +53,6 @@
          });
 	}
     
-	// 신고 하기
-	/* 		function checkBlame() {
-	    let popOption = "width=650px, height=550px, top-300px, left=300px, scrollbars=yes";
-	        blaContentUrl = "/adopt/insert/blaContent/"+boardSeq+"/"+userSeq2;
-	    	window.open(blaContentUrl, 'insertBlame', popOption);
-	    	};
-	 */
     // 신고 조회
 	function checkBlame() {
 	    // 신고가 있는지 확인한 값을 blameval에 저장
@@ -67,13 +60,8 @@
 	    const blameCnt = $('#blameCnt').val();
 	    
 	    //alert(blameval + blameCnt);
-	    
-	    /* data = {"boardSeq" : boardSeq , "res_userSeq" : detailUserSeq}; */
-	    
 	    if(blameCnt == 0) {
-	    	
 	        window.location.href = "/adopt/insert/blaContent/"+boardSeq+"/"+detailUserSeq+"/"+userSeq2;
-			
 	    } else {
 	    	alert("이미 신고 하였습니다");
 	    }

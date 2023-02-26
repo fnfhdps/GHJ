@@ -89,7 +89,7 @@
   				$(".successPhoneChk").css("color","red");
   				$("#phone").attr("autofocus",true);
           	}else{	        		
-          		$("#phone2").attr("disabled",false);
+          		$("#phone2").attr("readonly",false);
           		$("#phoneChk2").css("display","inline-block");
           		$(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오.");
           		$(".successPhoneChk").css("color","green");

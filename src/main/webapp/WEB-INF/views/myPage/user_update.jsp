@@ -68,46 +68,59 @@
 	
 	              <div class="css-1049nre epl9oik0">
 	                <div class="css-134c4us ekeuxnk0">
-	                  <a class="css-1p9dybm e1q26atk3">
+	                  <div class="css-1p9dybm e1q26atk3">
 	                    <div class="css-zpotx6 e1q26atk2">
-	                      <!-- <i class="bi bi-pencil-square"></i> -->
 	                      <i class="bi bi-vector-pen"></i>
 	                    </div>
 	                    <div class="css-10ewlqi e1q26atk1">내게시글</div>
-	                    <div class="css-2rwq1u e1q26atk0">3</div>
-	                  </a>
-	                  <a class="css-1p9dybm e1q26atk3">
+	                    <div class="css-2rwq1u e1q26atk0">${totalCnt.adopt}</div>
+	                  </div>
+	                  <div class="css-1p9dybm e1q26atk3">
 	                    <div class="css-zpotx6 e1q26atk2">
 	                      <i class="bi bi-heart"></i>
 	                    </div>
 	                    <div class="css-10ewlqi e1q26atk1">좋아요</div>
-	                    <div class="css-2rwq1u e1q26atk0">4</div>
-	                  </a>
-	                  <a class="css-1p9dybm e1q26atk3">
+	                    <div class="css-2rwq1u e1q26atk0">${totalCnt.heart}</div>
+	                  </div>
+	                  <div class="css-1p9dybm e1q26atk3">
 	                    <div class="css-zpotx6 e1q26atk2">
 	                      <i class="bi bi-truck"></i>
 	                    </div>
 	                    <div class="css-10ewlqi e1q26atk1">후원</div>
-	                    <div class="css-2rwq1u e1q26atk0">0</div>
-	                  </a>
+	                    <div class="css-2rwq1u e1q26atk0">${totalCnt.sponsor}</div>
+	                  </div>
 	                </div>
 	              </div>
-	            
 	            </div>
 	          </article>
 	
 	          <article class="pageBody">
+
 	              <div class="formGroup info">
-	                    <i class="bi bi-envelope"></i>
-	                    <p>${login.userEmail}</p>
+                      <i class="bi bi-envelope"></i>
+			          <c:choose>
+				          <c:when test="${!empty login.userEmail}">
+		                      <p>${login.userEmail}</p>
+				          </c:when>
+				          <c:otherwise>
+					          <p>정보가 없습니다.</p>
+				          </c:otherwise>
+			          </c:choose>
 	              </div>
 	              <div class="formGroup info">
-	                <i class="bi bi-phone"></i>
-	                    <p>${login.userPhone}</p>
+	                  <i class="bi bi-phone"></i>
+	                      <p>${login.userPhone}</p>
 	              </div>
 	              <div class="formGroup info">
-	                <i class="bi bi-truck"></i>
-	                <p>(${login.userAddr1})&nbsp;&nbsp;${login.userAddr2}&nbsp;&nbsp;${login.userAddr3}&nbsp;&nbsp;</p>
+	                  <i class="bi bi-truck"></i>
+			          <c:choose>
+				          <c:when test="${!empty login.userAddr1}">
+			                  <p>(${login.userAddr1})&nbsp;&nbsp;${login.userAddr2}&nbsp;&nbsp;${login.userAddr3}&nbsp;&nbsp;</p>
+				          </c:when>
+				          <c:otherwise>
+					          <p>정보가 없습니다.</p>
+				          </c:otherwise>
+			          </c:choose>
 	              </div>
 	          </article>
 	

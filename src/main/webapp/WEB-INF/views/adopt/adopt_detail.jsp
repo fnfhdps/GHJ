@@ -107,12 +107,10 @@
             <br><br>
                 <table class="adopt_detail_content">
                     <tbody>
-                        
                         <tr>
                             <th>구조위치</th>
                             <td>${adoptDetail.adoptAddr}</td>
                         </tr>
-        
                         <tr>
                             <th>구조일</th>
                             <td>
@@ -174,8 +172,6 @@
 	                <input id="insert_content" type="text" class="form-control" placeholder="댓글을 입력해주세요" aria-label="Recipient's username" aria-describedby="button-addon2">
 	                <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="replyInsert();">입력</button>
                 </div>
-                <!-- <input id="insert_content" type="text" placeholder="내용을 입력해주세요">
-                <input type="button" value="입력" onclick="replyInsert();"> -->
                 <hr>
             </div>
         <c:forEach items="${replyList}" var="reply">
@@ -233,8 +229,8 @@
             </div>
         </article>
 	</section>
-	<!-- </div> -->
-	<%-- <jsp:include page="../fix/footer.jsp"></jsp:include> --%>
+	
+    <jsp:include page="../fix/footer.jsp"></jsp:include>
 </div>
 <!-- 입양 상세 페이지 js -->
 <script src="/resources/js/adopt_detail.js"></script>

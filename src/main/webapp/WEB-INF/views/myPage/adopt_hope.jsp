@@ -40,8 +40,8 @@
 					<c:forEach items="${hopeList}" var="hope">
 		              <li class="list-item">
 		                <div class="media">
-		                  <img src="/resources/image/dog.jpg">
-		                  <span class="">${hope.userName}(${hope.userId})</span>
+		                  <img src="/resources/image/adopt/${hope.adoptImg}">
+		                  <span class="">${hope.userId}</span>
 		                  <small>5일 전</small>
 		                </div>
 		                <h6>${hope.boardTitle}</h6>

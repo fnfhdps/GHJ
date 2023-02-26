@@ -67,7 +67,7 @@
 
             <div class="member">
               <span class="font_bold">${login.userName}(${login.userId})님</span>
-              <a href="/mypage/info">마이페이지</a>
+              <a href="/mypage/info/${login.userSeq}">마이페이지</a>
               <span> | </span>
               <a href="/logout">로그아웃</a>
             </div>

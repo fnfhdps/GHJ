@@ -113,7 +113,6 @@
 	                      		type="text"
 	                      		id="phone2"
 	                      		name="userPhone2"
-	                      		title="인증번호 입력"
 	                      		readonly="readonly"
 	                      		required>
 	                  </div>

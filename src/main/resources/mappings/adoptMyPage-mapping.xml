@@ -15,35 +15,48 @@
 		]]>
 	</select>
 	
-	<!-- 입양 희망자 목록 조회 (마이페이지) 
-	-->
+	<!-- 입양 희망자 목록 조회 (마이페이지) -->
 	<select id="getAdoptHopeList" parameterType="int" resultType="adoptMyPage">
 		<![CDATA[
 			select rownum, a.*
 			from (  select adopt_req.adoptreqseq,
-			                board.boardseq,
-			                board.boardtitle,
-			                adopt_req.userseq,
-			                users.userid, users.username,
-			                adopt_req.adoptreqdate
-			        from users, board, adopt_req
+			        board.boardseq,
+			        board.boardtitle,
+			        adopt.adoptimg,
+			        adopt_req.userseq,
+			        adopt_req.adoptreqdate,
+			        users.userid,
+			        users.username
+			        from users, board, adopt, adopt_req
 			        where board.boardseq = adopt_req.boardseq
+			        and board.boardseq = adopt.boardseq
 			        and users.userseq = adopt_req.userseq
 			        and board.userseq = #{userSeq}
 			        order by adopt_req.adoptreqseq) a
-			order by rownum desc
+			        order by rownum desc
 		]]>
 	</select>
 	
 	<!-- 내 입양 신청 목록 조회 (마이페이지)-->
 	<select id="getAdoptReqList" parameterType="int" resultType="adoptMyPage">
 		<![CDATA[
-			select rownum, board.boardseq, board.userseq, board.boardtitle ,adopt.adoptimg, adopt.adoptkind, adopt.adoptstate, adopt_req.adoptreqdate, users.username, users.userid
-			from adopt, board, users, adopt_req
-			where board.boardseq = adopt.boardseq
-			and board.boardseq = adopt_req.boardseq
-			and board.userseq= users.userseq
-			and adopt_req.userseq = #{userSeq}
+			select rownum, a.*
+			from(   select board.boardseq,
+						   board.userseq,
+						   board.boardtitle,
+						   adopt.adoptimg,
+						   adopt.adoptkind,
+						   adopt.adoptstate,
+						   adopt_req.adoptreqdate,
+						   users.username,
+						   users.userid
+			        from adopt, board, users, adopt_req
+			        where board.boardseq = adopt.boardseq
+			        and board.boardseq = adopt_req.boardseq
+			        and board.userseq= users.userseq
+			        and adopt_req.userseq = #{userSeq}
+			        order by adopt_req.adoptreqseq)a
+			order by rownum desc
 		]]>
 	</select>
 
@@ -54,6 +67,7 @@
 			from user_heart, adopt
 			where user_heart.boardseq = adopt.boardseq
 			and user_heart.userseq = #{userSeq}
+			order by user_heart.userheartseq desc
 		]]>
 	</select>
 

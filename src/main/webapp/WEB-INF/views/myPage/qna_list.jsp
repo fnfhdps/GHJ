@@ -42,8 +42,8 @@
 	                    <thead>
 	                      <tr>
 	                        <th class="good">문의 유형</th>
-	                        <th class="amount">제목</th>
 	                        <th class="date">등록일</th>
+	                        <th class="amount">제목</th>
 	                        <th class="status">처리상태</th>
 	                      </tr>
 	                    </thead>
@@ -53,8 +53,8 @@
 							    <c:forEach items="${qnaList}" var="qna">
 			                      <tr>
 			                        <td class="text-center">${qna.boardSubCategory}</td>
-			                        <td class="text-center"><a href="/mypage/qna/get/${qna.boardSeq}">${qna.boardTitle}</a></td>
 			                        <td class="text-center"><fmt:formatDate value="${qna.boardDate}" pattern="yyyy-MM-dd"/></td>
+			                        <td class="text-center"><a href="/mypage/qna/get/${qna.boardSeq}">${qna.boardTitle}</a></td>
 			                        <td class="text-center">답변대기</td>
 			                      </tr>
 							    </c:forEach>

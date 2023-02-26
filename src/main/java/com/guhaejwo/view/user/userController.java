@@ -2,6 +2,8 @@ package com.guhaejwo.view.user;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,8 +36,18 @@ public class userController {
 	}
 	
 	// 내 정보 이동 (마이페이지)
-	@GetMapping("/mypage/info")
-	public String info() {
+	@GetMapping("/mypage/info/{seq}")
+	public String info(@PathVariable("seq") int userSeq, Model model) {
+		UserDTO user = new UserDTO();
+		user.setUserSeq(userSeq);
+		
+		// 각 컨텐츠별 회원의 총 갯수
+		Map<String, Integer> totalCnt = new HashMap<String, Integer>();
+		totalCnt.put("adopt", userService.userAdoptCnt(user));
+		totalCnt.put("sponsor", userService.userSponsorCnt(user));
+		totalCnt.put("heart", userService.userHeartCnt(user));
+		
+		model.addAttribute("totalCnt", totalCnt);
 		return "/myPage/user_update";
 	}
 	
@@ -104,5 +117,6 @@ public class userController {
 			return -1;
 		}
 	}
+	
 	
 }
