@@ -13,13 +13,13 @@
 </head>
 <body>
 <!-- 디자인 전부 임시 -->
-<div class="wrap container">
+<div class="wrap">
 
     <jsp:include page="../fix/header.jsp"></jsp:include>
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
     
-    <section>
+    <section class="container">
       <h2>입양글 작성</h2>
  
       <article class="mypage_content">
@@ -60,7 +60,7 @@
       
       <div class="mb-3">
 	      <label for="disabledTextInput" class="form-label">제목</label>
-	      <input type="text" id="disabledTextInput" class="form-control" placeholder="제목" name="boardTitle" value="임시 제목ㅇㅇㅇㅇㅇㅇㅇㅇㅇ">
+	      <input type="text" id="disabledTextInput" class="form-control" placeholder="제목" name="boardTitle" value="임시 제목">
    	  </div> 
           
       <div class="mb-3">
@@ -95,12 +95,14 @@
        </div>   
           
        <div class="mb-3">
-	      <label for="disabledTextInput" class="form-label">구조위치</label>
-	      <input type="text" id="disabledTextInput" class="form-control" placeholder="구조위치" name="adoptAddr" value="임시 제목ㅇㅇㅇㅇㅇㅇㅇㅇㅇ">
+	      	<label class="form-label">구조위치</label>
+		    <select class="form-control" name="adoptAddr" id="adoptAddr"></select>
+		    <select class="form-control" name="addressDo" id="addressDo2"></select>
+		    <select class="form-control" name="addressSiGunGu" id="addressSiGunGu2"></select>
    	  </div>     
           
       <div class="mb-3">
-	      <label for="disabledSelect" class="form-label">중성화 여부</label>
+	      <label class="form-label">중성화 여부</label>
 	      <input type="hidden" id="adoptNeutor">
 	      <select id="disabledSelect" class="form-select" name="adoptNeutor" value="O">
        		  <option value="" selected>-- 선택 --</option>
@@ -111,13 +113,13 @@
       </div>    
           
       <div class="mb-3">
-		  <label for="exampleFormControlTextarea1" class="form-label">특이사항</label>
-		  <textarea class="form-control" name="boardContent" rows="7">value="임시 제목ㅇㅇㅇㅇㅇㅇㅇㅇㅇ"</textarea>
+	  	<label class="form-label">특이사항</label>
+		<textarea class="form-control" name="boardContent" rows="7">임시 특이사항</textarea>
 	  </div>
 	  <br>
 	  <div class="btn-group">
-	        <input class="btn btn-dark" style="width:1000px; height:80px;" type="submit" value="등록하기">
-	        <button type="button" class="btn btn-secondary" style="width:300px; height:80px;"><a style="color:white;" href="/adopt/list">목록으로</a></button>
+		<input class="btn btn-dark" style="width:1000px; height:80px;" type="submit" value="등록하기">
+		<a type="button" class="btn btn-secondary" style="width:300px; height:80px; color:white;" href="/adopt/list">목록으로</a>
      </div>
      <br><br>   
           
@@ -125,8 +127,7 @@
         </article>
     </section>
 
-    <%-- <jsp:include page="../fix/footer.jsp"></jsp:include> --%>
-   	
+    <jsp:include page="../fix/footer.jsp"></jsp:include>
 </div>
 
 <script type="text/javascript">
@@ -170,8 +171,8 @@
 			$("#adoptForm").submit();
 		}
 	});
-
 </script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<!-- 구조 위치 js -->
+<script src="/resources/js/adopt_addr.js"></script>
 </body>
 </html>

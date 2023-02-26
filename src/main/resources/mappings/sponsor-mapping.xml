@@ -11,10 +11,10 @@
 		<![CDATA[
 			INSERT INTO
 			SPONSOR(sponsorSeq, userSeq, sponsorItemSeq, sponsorAmount, sponsorTotalPrice,
-			sponsorShippingAddr, sponsorName, sponsorPhone, payment, sponsorState, memo)
+			sponsorShippingAddr, sponsorName, sponsorPhone, payment, memo)
 			VALUES ((SELECT NVL(max(sponsorSeq), 0) + 1 FROM SPONSOR), #{userSeq},
 			#{sponsorItemSeq}, #{sponsorAmount}, #{sponsorTotalPrice}, #{sponsorShippingAddr},
-			#{sponsorName}, #{sponsorPhone}, #{payment}, #{sponsorState}, #{memo, jdbcType=VARCHAR})
+			#{sponsorName}, #{sponsorPhone}, #{payment}, #{memo, jdbcType=VARCHAR})
 		]]>
 	</insert>
 	

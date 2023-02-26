@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.guhaejwo.biz.sponsor.SponsorDTO;
@@ -51,10 +53,22 @@ public class SponsorController {
 	
 	// 후원 내역 입력
 	@PostMapping(value = "/insert")
-	public String insertSponsor(SponsorDTO sponsor) {
-		sponsorService.insertSponsor(sponsor);
-		return "redirect: /sponsor/list";
+	@ResponseBody
+	public int insertSponsor(@RequestBody SponsorDTO sponsor) {
+		System.out.println("");
+		try {
+			sponsorService.insertSponsor(sponsor);
+			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
+//	@PostMapping(value = "/insert")
+//	public String insertSponsor(SponsorDTO sponsor) {
+//		sponsorService.insertSponsor(sponsor);
+//		return "redirect: /sponsor/list";
+//	}
 	
 	// 후원 내역 조회 (마이페이지)
 	@GetMapping(value = "/mysponsor/{seq}")

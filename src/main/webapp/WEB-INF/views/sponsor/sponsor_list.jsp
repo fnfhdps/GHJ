@@ -8,8 +8,6 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- header&footer css -->
-<link rel="stylesheet" href="/resources/css/fix.css">
 <title>후원 상품 목록</title>
 </head>
 <body>

@@ -12,6 +12,7 @@
 	
 	// ajax 사용시 이동 url, alert에 들어갈 msg
 	let url = "";
+	let type = "post";
 	let msg1 = "";
 	let msg2 = "통신오류";
 	let data = "";
@@ -28,10 +29,10 @@
 	}
 	
 	// 중복 ajax 함수로 만듦
-    function ajaxPost(url, data, msg1, msg2) {
+    function ajaxFn(url, type, data, msg1, msg2) {
         $.ajax({
             url : url,
-            type :'post',
+            type : type,
             data : JSON.stringify(data),
             dataType : "json",
             contentType : "application/json",
@@ -41,7 +42,9 @@
                 	if(msg1 != ""){
                 		alert(msg1);                		
                 	}
-	                window.location.href = successPath;
+                	if(successPath != ""){
+                		window.location.href = successPath;
+                	}
                 } else {
                 	alert(msg2);
                 	return;
@@ -66,27 +69,71 @@
 	    	alert("이미 신고 하였습니다");
 	    }
 	};
-
-	// 좋아요 아이콘
-	const heartCnt = $('#heartCnt').val();
-	if(heartCnt == 1){
-		$("#heartIcon").attr("class", "bi-heart-fill").css( "color", "red" );
-	}else{
-		$("#heartIcon").attr("class", "bi bi-heart");
-	}
 	
-	// 좋아요 중복 체크
+	// 페이지 로드 후 좋아요 조회
+	$(function() {
+	    data = {"userSeq" : userSeq2, "boardSeq" : boardSeq};
+		$.ajax({
+            url : "/adopt/heart",
+            type : 'GET',
+            data : data,
+            dataType : 'json',
+            contentType : "application/json",
+            success : function(result){
+            	//alert(JSON.stringify(result));
+                if(result == 1){
+            		$("#heartCnt").val(result);
+            		$("#heartIcon").attr("class", "bi-heart-fill").css( "color", "red" );
+                } else if (result == 0){
+            		$("#heartCnt").val(result);
+                	$("#heartIcon").attr("class", "bi bi-heart");
+                } else {
+                	alert("실패");
+                	return;
+                }
+            },
+            error : function(errorThrown){
+             alert(errorThrown.statusText);
+          },
+          
+         });
+	});
+	
+	// 좋아요 입력, 삭제
 	function checkHeart() {
-	    // 좋아요가 있는지 확인한 값을 heartval에 저장
+		let heartCnt = $('#heartCnt').val();
 	    data = {"userSeq" : userSeq2, "boardSeq" : boardSeq};
 	    
 	    // heartval이 1이면 좋아요가 이미 되있는것이므로 deleteHeart 출력하는 코드
 	    if(heartCnt == 1) {
+	    	heartCnt = 0;
+	    	heartIcon = $("#heartIcon").attr("class", "bi bi-heart");
 	    	url = "/adopt/delete/heart";
 	    } else {
+	    	heartCnt = 1;
+	    	heartIcon = $("#heartIcon").attr("class", "bi-heart-fill").css( "color", "red" );
 	    	url = "/adopt/insert/heart";
 	    }
-	    ajaxPost(url, data, msg1, msg2);
+        $.ajax({
+            url : url,
+            type : type,
+            data : JSON.stringify(data),
+            dataType : "json",
+            contentType : "application/json",
+            async : true,
+            success : function(result){
+                if(result == 0){
+            		$("#heartCnt").val(heartCnt);
+            		heartIcon;
+                } else {
+                	alert("실패");
+                	return;
+                }
+            },
+            error : function(errorThrown){
+             alert(errorThrown.statusText);
+          }
+         });
 	};
 
 	// 입양 수정 페이지 이동
@@ -97,10 +144,6 @@
 	// 입양 삭제
 	function adoptDelete() {
 		if(window.confirm("삭제 하시겠습니까?")){
-//			data = {"boardSeq" : boardSeq};
-//			url = "/adopt/delete";
-//			msg1 = "삭제 되었습니다"
-//		    ajaxPost(url, data, msg1, msg2);
 			location.href = '/adopt/delete/'+boardSeq;
 		}
 	};
@@ -135,33 +178,66 @@
 		});
 	};
 
+// ---------------------------------------------	
+	
+	let beforeState = $('#state').val();
+	// 로드 후 입양 상태 값
+	if(beforeState == 'WAIT'){
+		$("#stateupdate").val("입양대기");
+	} else if (beforeState == 'SUCCESS') {
+		$("#stateupdate").val("입양완료");
+	}
+	
 	// 입양 상태 변경
-	function stateUpdate(){
-		const beforeState = $('#state').text();
-		let num = 0;
-		
-		//alert(beforeState + boardSeq);
-		
-		if (beforeState == 'WAIT') {
-			num = 1;
+	function stateUpdate(){	
+		let num = -1;
+		beforeState = $('#state').val();
+		if(beforeState == 'WAIT'){
+			//$("#stateupdate").val("입양대기");
+			num = 0;
 		} else if (beforeState == 'SUCCESS') {
-			num = 2;
+			//$("#stateupdate").val("입양완료");
+			num = 1;
 		}
 		
 		data = {"boardSeq" : boardSeq};
 		url = "/adopt/detail/state/"+num;
-		msg1 = "상태 변경 완료";
-		
-		ajaxPost(url, data, msg1, msg2);
+        $.ajax({
+            url : url,
+            type : type,
+            data : JSON.stringify(data),
+            dataType : "json",
+            contentType : "application/json",
+            async : true,
+            success : function(result){
+            	if(result == -1) {
+                	alert("실패");
+                	return;
+                }
+            	else {
+                	if(result == 0){
+                		$("#state").val("SUCCESS");
+                		$("#stateupdate").val("입양완료");
+                	} else {
+                		$("#state").val("WAIT");
+                		$("#stateupdate").val("입양대기");
+                	}
+                } 
+            },
+            error : function(errorThrown){
+             alert(errorThrown.statusText);
+          }
+         });
 	};
 	
-	  //이전글, 다음글
+// ----------------------------------
+	
+	//이전글, 다음글
 	data = {
 			"boardSeq" : boardSeq,
 			"boardCategory" : category,
 			"userSeq" : userSeq2
 	};
-	//alert("boardSeq:"+boardSeq+"boardCategory:"+category+"userSeq: "+userSeq2);
 	
 	// 이전글
 	$.ajax({

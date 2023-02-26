@@ -279,6 +279,8 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <!-- 주소 api -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- 주소 js -->
+<script src="/resources/js/addr.js"></script>
 <!-- 회원 정보 수정 js -->
 <script src="/resources/js/user_update_form.js"></script>
 <!-- 회원 탈퇴 js -->

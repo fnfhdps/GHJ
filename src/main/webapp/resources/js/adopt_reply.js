@@ -10,9 +10,8 @@
 	function replyInsert() {
 		replyContent = $("#insert_content").val();
 		if(replyContent == 0){
-			alert("댓글을 입력해 주세요");
+			alert("내용을 입력해 주세요.");
 		}else{
-			//alert("reply_insert시작 replyContent : " + replyContent);
 			
 			data = {
 					"userSeq" : userSeq2,
@@ -20,17 +19,34 @@
 					"replyContent" : replyContent
 					};
 			url = "/reply/insert";
-			//msg1 = "댓글 입력 완료";
 			
-			ajaxPost(url, data, msg1, msg2);	
+//	        $.ajax({
+//	            url : url,
+//	            type : type,
+//	            data : JSON.stringify(data),
+//	            dataType : "json",
+//	            contentType : "application/json",
+//	            async : true,
+//	            success : function(result){
+//	                if(result == 0){
+//	                	if(msg1 != ""){
+//	                		alert(msg1);                		
+//	                	}
+//	                	if(successPath != ""){
+//	                		window.location.href = successPath;
+//	                	}
+//	                } else {
+//	                	alert(msg2);
+//	                	return;
+//	                }
+//	            },
+//	            error : function(errorThrown){
+//	             alert(errorThrown.statusText);
+//	          }
+//	         });
+			ajaxFn(url, type, data, msg1, msg2);
 		}
 	};
-	
-	// 테스트용
-	function test(replySeq, content) {
-		alert("seq: "+ replySeq + "content: "+ content);
-	}
-	
 	
 	$(".update_content").css("display", "none");
 	function updateBtn(seq){

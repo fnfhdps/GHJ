@@ -86,7 +86,8 @@
 	            
 	            <br>
 	            <div class="btn-group">
-	                <input type="button" class="btn btn-outline-dark" id="stateupdate" value="상태변경" onclick="stateUpdate();"> 
+	            	<input type="hidden" id="state" value="${adoptDetail.adoptState}">
+	                <input type="button" class="btn btn-outline-dark" id="stateupdate" onclick="stateUpdate();"> 
 	                <input type="button" class="btn btn-outline-dark" id="update" value="수정" onclick="adoptUpdate();">
 	                <input type="button" class="btn btn-outline-dark" id="delete" value="삭제" onclick="adoptDelete();">
 	            </div>
@@ -141,10 +142,10 @@
                             <th>특이사항</th>
                             <td>${adoptDetail.boardContent}</td>
                         </tr>
-                        <tr>
+                     <%--    <tr>
                             <th>현재상황</th>
                             <td id="state">${adoptDetail.adoptState}</td>
-                        </tr>
+                        </tr> --%>
                     </tbody>
                 </table>
             </div>
@@ -154,7 +155,7 @@
 	            <input class="btn btn-secondary" type="submit" id="hopeCheck" value="신청하기" onclick="checkSubmit(); return false;">
 	            &nbsp;&nbsp;&nbsp;&nbsp;
 	            
-	            <input type="hidden" id="heartCnt" value="${heart}">
+	            <input type="hidden" id="heartCnt">
 	            <a id="heart" onclick="checkHeart()"><i id="heartIcon"></i></a>
 	            &nbsp;&nbsp;&nbsp;&nbsp;
 	            

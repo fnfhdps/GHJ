@@ -2,6 +2,8 @@ package com.guhaejwo.view.adopt;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -32,6 +34,8 @@ import com.guhaejwo.biz.paging.Criteria;
 import com.guhaejwo.biz.paging.PageMakerDTO;
 import com.guhaejwo.biz.reply.ReplyDTO;
 import com.guhaejwo.biz.reply.ReplyService;
+
+import oracle.net.aso.h;
 
 @Controller
 @RequestMapping("/adopt")
@@ -90,9 +94,9 @@ public class adoptController {
 		model.addAttribute("replyList", replyService.getReplyList(reply));
 
 		// 좋아요 조회
-		heart.setBoardSeq(boardSeq);
-		heart.setUserSeq(userSeq);
-		model.addAttribute("heart", adoptService.getHeart(heart));
+//		heart.setBoardSeq(boardSeq);
+//		heart.setUserSeq(userSeq);
+//		model.addAttribute("heart", adoptService.getHeart(heart));
 		
 	    // 신고 조회
 	    blame.setBoardSeq(boardSeq);
@@ -118,7 +122,6 @@ public class adoptController {
 	public String insertAdopt(@RequestParam MultipartFile[] adoptFiles, AdoptDTO adopt, HttpServletRequest req) throws IllegalStateException, IOException, Exception{
 		
 		// 파일 업로드 
-		
 		for (MultipartFile adoptFile : adoptFiles) {
 			
 //			String fileName = FilenameUtils.getBaseName(adoptFile.getOriginalFilename()); // 파일이름(확장자명 제외)
@@ -169,27 +172,6 @@ public class adoptController {
 			adopt.setAdoptImg(realSaveFileName);	// 파일 이름으로 adoptImg set
 			}
 
-		
-//		String fileName = adoptFile.getOriginalFilename();
-//		System.out.println("fileName : " + fileName);
-//		
-//		String webPath = "/resources/upload";
-//		String realPath = ctx.getRealPath(webPath);
-//		System.out.println("realPath : " + realPath);
-//		
-//		File savePath = new File(realPath);
-//		realPath += File.separator + fileName;
-//		File saveFile = new File(realPath);
-//		
-//		if (!savePath.exists())
-//			savePath.mkdirs();
-//		
-//		System.out.println("saveFile : " + saveFile);
-//		
-//		adoptFile.transferTo(saveFile);
-//		
-//		adopt.setAdoptImg(fileName);
-		
 		adoptService.insertBoard(adopt);
 		adoptService.insertAdopt(adopt);
 		
@@ -216,16 +198,6 @@ public class adoptController {
 	}
 	
 	// 입양 글 삭제
-//	@PostMapping(value = "/delete")
-//	public @ResponseBody Object deleteAdopt(@RequestBody AdoptDTO adopt) {
-//		try {
-//			adoptService.deleteBoard(adopt);
-//			return 0;
-//		} catch (Exception e) {3
-//			return -1;
-//		}
-//	}
-	
 	@GetMapping(value = "/delete/{seq}")
 	public String deleteAdopt(@PathVariable("seq") int boardSeq) {
 		System.out.println("잘 가져옴??"+boardSeq);
@@ -264,30 +236,41 @@ public class adoptController {
 	// 입양 상태 변경
 	@PostMapping(value = "/detail/state/{num}")
 	public @ResponseBody Object adoptStateUpdate(@PathVariable("num") int num, @RequestBody AdoptDTO adopt) {
-		System.out.println(adopt);
-		System.out.println(num);
-		
 		String state = null;
-		// num이 1이면 wait -> success, 아니면 success -> wait
+
+		// num이 0이면 wait -> success, 1이면 success -> wait
 		try {
 			if(num == 1) {
-				state = "SUCCESS";
-			}
-			else {
 				state = "WAIT";
+			}
+			else if(num == 0){
+				state = "SUCCESS";
 			}
 			adopt.setAdoptState(state);		
 			adoptService.adoptStateUpdate(adopt);
-			return 0;
+			return num;
 		} catch (Exception e){
 			return -1;
 		}
 	}
 	
+	// 좋아요 조회
+	@GetMapping("/heart")
+	public @ResponseBody int heart(AdoptHeartDTO heart, Model model) {
+		int heartCnt = -1;
+		
+		try {
+			heartCnt = adoptService.getHeart(heart);
+			System.out.println("하트 카운드 : "+heartCnt);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return heartCnt;
+	}
+	
 	// 좋아요 누름
 	@PostMapping("/insert/heart")
 	public @ResponseBody int insertHeart(@RequestBody AdoptHeartDTO heart) {
-		System.out.println(heart);
 		try {
 	         adoptService.insertHeart(heart);
 	         return 0;
@@ -299,8 +282,6 @@ public class adoptController {
 	// 좋아요 취소
 	@PostMapping("/delete/heart")
 	public @ResponseBody int deleteHeart(@RequestBody AdoptHeartDTO heart) {
-		System.out.println("좋아요 취소");
-      
 		try {
 			adoptService.deleteHeart(heart);
 			return 0;
@@ -310,29 +291,29 @@ public class adoptController {
 	}
 	   
 	// 신고 내용 작성 창으로 이동
-		@GetMapping(value = "/insert/blaContent/{boardSeq}/{res_userSeq}/{req_userSeq}")
-		public String newBlame(@PathVariable("boardSeq") int boardSeq, @PathVariable("res_userSeq") int res_userSeq, @PathVariable("req_userSeq") int req_userSeq, Model model) {
+	@GetMapping(value = "/insert/blaContent/{boardSeq}/{res_userSeq}/{req_userSeq}")
+	public String newBlame(@PathVariable("boardSeq") int boardSeq, @PathVariable("res_userSeq") int res_userSeq, @PathVariable("req_userSeq") int req_userSeq, Model model) {
 
-			AdoptBlameDTO blame = new AdoptBlameDTO();
+		AdoptBlameDTO blame = new AdoptBlameDTO();
 
-			blame.setBoardSeq(boardSeq);
-			blame.setRes_userSeq(res_userSeq);
-			blame.setReq_userSeq(req_userSeq);
-			model.addAttribute("blaSeq", blame);
-			return "/adopt/adoptBlameAction";
+		blame.setBoardSeq(boardSeq);
+		blame.setRes_userSeq(res_userSeq);
+		blame.setReq_userSeq(req_userSeq);
+		model.addAttribute("blaSeq", blame);
+		return "/adopt/adoptBlameAction";
 
-		}
+	}
 
-		// 신고 글 입력
-		@PostMapping("/insert/blaContent")
-		public String insertBlaContent(AdoptBlameDTO blame) {
-			adoptService.insertBlame(blame);
+	// 신고 글 입력
+	@PostMapping("/insert/blaContent")
+	public String insertBlaContent(AdoptBlameDTO blame) {
+		adoptService.insertBlame(blame);
 
-			int boardSeq = blame.getBoardSeq();
-			int userSeq = blame.getReq_userSeq();
+		int boardSeq = blame.getBoardSeq();
+		int userSeq = blame.getReq_userSeq();
 
-			return "redirect:/adopt/detail/ADOPT/" + boardSeq + "/" + userSeq;
-		}
+		return "redirect:/adopt/detail/ADOPT/" + boardSeq + "/" + userSeq;
+	}
 
 	// 신고 삭제 (관리자 페이지)
 	@PostMapping("/delete/blame")
@@ -346,23 +327,5 @@ public class adoptController {
 			return -1;
 		}
 	}
-	  
-//		// 좋아요 조회
-//		@GetMapping(value = "/getHeart/{seq1}/{seq2}")
-//		public String getHeart(@PathVariable("seq1") int boardSeq, @PathVariable("seq2") int userSeq, AdoptHeartDTO heart, Model model) {
-//			System.out.println("boardSeq : " + boardSeq + "userSeq : " + userSeq);
-//				
-//			heart.setBoardSeq(boardSeq);
-//			heart.setUserSeq(userSeq);
-////			model.addAttribute("heart", adoptService.getHeart(heart));
-//			
-//			int heartCnt = adoptService.getHeart(heart);
-//			if (heartCnt == 1) {
-//				
-//			}
-//			
-//			
-//			return "/adopt/adopt_detail";
-//		}
 	
 }
