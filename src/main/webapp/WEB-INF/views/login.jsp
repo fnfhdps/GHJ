@@ -33,7 +33,7 @@
 				</div>
 
 				<div class="btn-area">
-	                <button id="btn-kakao-login" onclick="location.href = '/login/kakao'" type="button" class="kakao">카카오 로그인</button>
+	                <button id="btn-kakao-login" type="button" class="kakao">카카오 로그인</button>
 	            </div>
 	
 				<div class="caption">

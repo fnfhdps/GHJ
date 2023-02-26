@@ -233,7 +233,6 @@
 	
 	<jsp:include page="../fix/footer.jsp"></jsp:include>
 </div>
-
 <!-- 회원탈퇴 확인 Modal-->
 <div class="modal fade" id="withdrawModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -277,12 +276,13 @@
   </div>
 </div>
 
-<!-- 카카오 로그인 -->
+<!-- 카카오 api -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <!-- 주소 api -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- 회원 정보 수정 js -->
 <script src="/resources/js/user_update_form.js"></script>
-
+<!-- 회원 탈퇴 js -->
+<script src="/resources/js/withdraw.js"></script>
 </body>
 </html>

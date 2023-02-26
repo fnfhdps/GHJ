@@ -1,32 +1,7 @@
 /**
- * 
+ * 회원 정보 수정 js
  */
-	//회원 탈퇴 모달 js
-  $('#modalBtn').click(function(e){
-    e.preventDefault();
-    $('#withdrawModal').modal("show");
-  });
 
-/*   $("input[type='checkbox']").click(function() {
-    if($(this).is(':checked')){
-      $("#withdrawBtn").prop("disabled", false);
-      // $(this).removeAttr("checked");
-    }else{
-      $("#withdrawBtn").prop("disabled", ture);
-    }
-  }); */
-  
-  
-  // 회원탈퇴
-  function withdraw() {
-	  if(!($('input[type="checkbox"]').is(':checked'))){
-		  alert("탈퇴 안내를 확인하고 동의해 주세요.");
-		  return;
-	  }else{
-		  $("#deleteForm").submit();
-	  }
-	}
-  
   //현재 비밀번호 확인
   $('#pwSuccess').css('display', 'none');
   $('#pwDanger').css('display', 'none');
@@ -192,70 +167,3 @@
         }).open();
     }
     
-function drop() {
-	//const loginType = $("#loginType").val();
-
-	if(window.confirm("탈퇴하시면 기존의 저장된 활동 내역이 모두 사라집니다")){
-		if(loginType == "KAKAO"){
-			dropKakao();
-		}else{
-			dropBasic();
-		}
-	}
-}
-
-//회원 탈퇴 (기본)
-function dropBasic() {
-	const id = $("#userId").val();
-	let data = {"userId" : id};
-  	$.ajax({
-  		url : "/mypage/delete",
-  		type: "post",
-		data: JSON.stringify(data),
-		dataType: "json",
-		contentType: "application/json",
-		success : function(result) {
-			alert("성공:"+result);
-			if (result == -1) {
-				alert("통신 오류");
-			} else {
-				alert("탈퇴되었습니다.");
-				window.location.href = "/index";
-			}
-		},
-		error : function(errorThrown) {
-			alert(errorThrown.statusText);
-		}
-	  	});
-}
-
-// 회원 탈퇴 (카카오)
-function dropKakao() {
-  	Kakao.API.request({
-         url: '/v1/user/unlink',
-         success: function (response) {
-     	$.ajax({
-     	url : "/mypage/delete",
-		type : "post",
-		data : {"userId" : "K"+response.id},
-		dataType : "json",
-		contentType : "application/json",
-		success : function(result) {
-			if (result == -1) {
-				alert("통신 오류");
-			} else {
-				alert("탈퇴되었습니다.");
-				window.location.href = "/index";
-			}
-		},
-		error : function(errorThrown) {
-			alert(errorThrown.statusText);
-		}
-         	})
-         },
-         fail: function (error) {
-             alert("카카오 로그인 상태가 아닙니다.");
-         }
-     });
-}
-

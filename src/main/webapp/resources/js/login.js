@@ -15,7 +15,6 @@ $(function(){
 				Kakao.API.request({
 					url: '/v2/user/me',
 					success: function(response){
-						alert(response);
 						// 사용자 정보를 가져와서 폼에 추가.
 						const account = response.kakao_account;
 
