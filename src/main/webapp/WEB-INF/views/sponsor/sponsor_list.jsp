@@ -16,7 +16,7 @@
 <div class="wrap">
   <jsp:include page="../fix/header.jsp"></jsp:include>
 	      
-	<section class="py-5">
+	<section class="">
 	    <div class="container px-4 px-lg-5">
 		    <div class="row">
 			  <img id="id_map_img" class="mb-5 gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4" alt="후원" src="/resources/image/sponsor/sponsor_info.png">
@@ -26,7 +26,7 @@
 			    <div class="col mb-5">
 			        <div class="card h-100">
 			            <!-- Product image-->
-			            <img class="card-img-top" src="${sponsor.sponsorItemImg}" alt="${sponsor.sponsorItemName}" />
+			            <img class="card-img-top" src="/resources/image/sponsor/${sponsor.sponsorItemImg}" alt="${sponsor.sponsorItemName}" />
 			            <!-- Product details-->
 			            <div class="card-body p-4">
 			                <div class="text-center">

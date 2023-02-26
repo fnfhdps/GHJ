@@ -8,12 +8,14 @@ $(function(){
 		
 		// 사용자 키를 전달, 카카오 로그인 서비스 초기화.
 		Kakao.init('5b3c8820856bcfa4a8250cffa00c6d65');
+		console.log(Kakao.isInitialized()); // sdk초기화여부판단
 		// 카카오 로그인 서비스 실행하기 및 사용자 정보 가져오기.
 		Kakao.Auth.login({
 			success:function(auth){
 				Kakao.API.request({
 					url: '/v2/user/me',
 					success: function(response){
+						alert(response);
 						// 사용자 정보를 가져와서 폼에 추가.
 						const account = response.kakao_account;
 

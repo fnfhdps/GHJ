@@ -9,8 +9,12 @@
 	<!-- 후원 내역 입력 -->
 	<insert id="insertSponsor">
 		<![CDATA[
-			INSERT INTO SPONSOR(sponsorSeq, userSeq, sponsorItemSeq, sponsorAmount, sponsorDate, sponsorTotalPrice, sponsorShippingAddr) 
-			VALUES ((SELECT NVL(max(sponsorSeq), 0) + 1 FROM SPONSOR), #{userSeq}, #{sponsorItemSeq}, #{sponsorAmount}, SYSDATE, #{sponsorTotalPrice}, #{sponsorShippingAddr})
+			INSERT INTO
+			SPONSOR(sponsorSeq, userSeq, sponsorItemSeq, sponsorAmount, sponsorTotalPrice,
+			sponsorShippingAddr, sponsorName, sponsorPhone, payment, sponsorState, memo)
+			VALUES ((SELECT NVL(max(sponsorSeq), 0) + 1 FROM SPONSOR), #{userSeq},
+			#{sponsorItemSeq}, #{sponsorAmount}, #{sponsorTotalPrice}, #{sponsorShippingAddr},
+			#{sponsorName}, #{sponsorPhone}, #{payment}, #{sponsorState}, #{memo, jdbcType=VARCHAR})
 		]]>
 	</insert>
 	

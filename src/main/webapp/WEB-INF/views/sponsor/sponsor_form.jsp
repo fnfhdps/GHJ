@@ -10,31 +10,25 @@
 <!-- header&footer css -->
 <link rel="stylesheet" href="/resources/css/fix.css">
 <style type="text/css">
-* {
-	margin: 0;
-	padding: 0;
-	font-family: 'Noto Sans KR', sans-serif;
-}
 
-h1 {
-	font-size: 35px bold;
-}
-
-h2 {
+.sponsor_title {
 	font-size: 22px bold;
-	border-top: 1px solid black;
+	/* border-top: 1px solid black; */
 	border-bottom: 1px solid black;
 	padding: 2.4rem;
 	margin-bottom: 1.5rem;
 }
+.sponsor_border{
+	border-bottom: 1px solid black;
+	padding: 2.4rem;
+	
+}
+.sponsor-input{
+	flex: 1 0 0;
+}
 
 p {
 	font-size: 17px;
-}
-
-form {
-	float: none;
-	margin: 0 auto;
 }
 
 .text-end {
@@ -55,99 +49,156 @@ form {
 	<script src="/resources/js/login_check.js"></script>
 	
 	<section class="container py-5">
-		<div class="row">
+		<div>
+		    <h2 class="sponsor_title">굿즈 구매하기</h2>
+		</div>
+		<div class="row sponsor_border">
 		 	<img class="col-12" src="/resources/image/sponsor/sponsor_content.png">	
-			<img class="col-12" src="${sponsorItem.sponsorItemImg}">
+			<img class="col-12" src="/resources/image/sponsor/${sponsorItem.sponsorItemImg}">
 			<div>			
 				<p id="itemName">${sponsorItem.sponsorItemName}</p><br>
 				${sponsorItem.sponsorItemPrice}원
 			</div>
 		</div>
 		
-		<form class="row justify-content-md-center" id="sponsor_form" action="/sponsor/insert" method="post">
-			<h2>굿즈 구매하기</h2>
+		<form id="sponsor_form" action="/sponsor/insert" method="post">
+			<article class="row py-5 justify-content-md-center">
+				<div class="mb-3 col-5 d-flex">
+					<label class="col-2 my-1">수량</label>
+					<input class="sponsor-input form-control"
+							id="amount"
+							name="sponsorAmount"
+							type="number"
+							min="1"
+							max="100"
+							value="1">
+				</div>
+				<div class="mb-3 col-5 d-flex" id="totalPrice">
+					<label class="col-2 my-1">총 구매가격</label>
+					<input type="hidden" id="price" value="${sponsorItem.sponsorItemPrice}">
+					<input class="form-control"
+							type="text"
+							id="total"
+							name="sponsorTotalPrice"
+							value="${sponsorItem.sponsorItemPrice}"
+							readonly="readonly">
+				</div>
+			</article>
 			
-			<!-- 시퀀스들 -->
-			<input type="hidden" name="userSeq" value="${login.userSeq}">
-			<input type="hidden" name="sponsorItemSeq" value="${sponsorItem.sponsorItemSeq}">
-			
-			<div class="mb-3 col-10">
-				<label class="form-label">후원자명</label>
-				<input class="form-control"
-					 	type="text"
-						placeholder="${login.userName}"
-						disabled>
-			</div>
-			<div class="mb-3 col-10">
-				<label class="form-label">전화번호</label> 
-				<input class="form-control"
-						type="text"
-						placeholder="${login.userPhone}"
-						disabled>
-			</div>
-			<div class="mb-3 col-10">
-				<div class="row">
-					<div class="col-xs-4 col-sm-6">
-						<label class="form-label">우편번호</label> 
-						<input class="form-control"
-								type="text"
-								id="addr1"
-								placeholder="우편번호"
-								value="${login.userAddr1}"
-								readonly="readonly">					
+			<article class="py-5">
+				<div class="row justify-content-md-center">
+					<p class="col-10">주문자 정보</p>
+				</div>
+				<div class="row justify-content-md-center">
+					<div class="mb-3 col-10 d-flex">
+						<label class="col-2 my-1">이름</label>
+						<input class="sponsor-input form-control"
+							 	type="text"
+								placeholder="${login.userName}">
 					</div>
-					
-					<div class="col-xs-4 col-sm-6">
-						<label class="form-label" style="visibility: hidden;">빈공간</label>
-						<input class="form-control btn btn-primary"
-								type="button"
-								value="우편번호 찾기"
-								onclick="excution_addr()">					
+					<div class="mb-3 col-10 d-flex">
+						<label class="col-2 my-1">휴대폰번호</label>
+						<input class="sponsor-input form-control"
+							 	type="text"
+								placeholder="${login.userPhone}"
+								readonly="readonly">
+					</div>
+					<div class="mb-3 col-10 d-flex">
+						<label class="col-2 my-1">이메일</label>
+						<input class="sponsor-input form-control"
+							 	type="text"
+								placeholder="${login.userEmail}"
+								readonly="readonly">
 					</div>
 				</div>
-			</div>
-			<div class="mb-3 col-10">
-				<label class="form-label"></label> 
-				<input class="form-control"
-						type="text"
-						id="addr2"
-						value="${login.userAddr2}"
-						placeholder="주소"
-						readonly="readonly"
-						required="required">
-			</div>
-			<div class="mb-3 col-10">
-				<input class="form-control"
-						type="text"
-						value="${login.userAddr3}"
-						placeholder="상세주소"
-						id="addr3"
-						readonly="readonly">
-			</div>
+			</article>
+			
+			<article class="pb-5">
+				<div class="row justify-content-md-center">
+					<p class="col-10">배송지 정보</p>
+				</div>
+				<div class="row justify-content-md-center">
+					
+					<!-- 시퀀스들 -->
+					<input type="hidden" name="userSeq" value="${login.userSeq}">
+					<input type="hidden" name="sponsorItemSeq" value="${sponsorItem.sponsorItemSeq}">
+					<div class="mb-3 col-10">
+						<label class="form-label">이름</label>
+						<input class="form-control"
+							 	type="text"
+								name="${login.userName}">
+					</div>
+					<div class="mb-3 col-10">
+						<label class="form-label">전화번호</label> 
+						<input class="form-control"
+								type="text"
+								name="sponsorPhone">
+					</div>
+					
+					<!-- 주소 합쳐서 저장하기 -->
+					<input type="hidden" id="addrTotal" name="sponsorShippingAddr">
+					<div class="mb-3 col-10">
+						<div class="row">
+							<div class="col-xs-4 col-sm-6">
+								<label class="form-label">주소</label> 
+								<input class="form-control"
+										type="text"
+										id="addr1"
+										placeholder="우편번호"
+										value="${login.userAddr1}"
+										readonly="readonly"
+										required="required">					
+							</div>
+							<div class="col-xs-4 col-sm-6">
+								<label class="form-label" style="visibility: hidden;">빈공간</label>
+								<input class="form-control btn btn-warning"
+										type="button"
+										value="우편번호 찾기"
+										onclick="excution_addr()">					
+							</div>
+						</div>
+					</div>
+					<div class="mb-3 col-10">
+						<div class="row">
+							<div class="col-xs-4 col-sm-6">
+								<input class="form-control"
+										type="text"
+										id="addr2"
+										placeholder="주소"
+										value="${login.userAddr2}"
+										readonly="readonly"
+										required="required">					
+							</div>
+							<div class="col-xs-4 col-sm-6">
+								<input class="form-control"
+										type="text"
+										id="addr3"
+										placeholder="상세주소"
+										value="${login.userAddr3}"
+										readonly="readonly"
+										required="required">					
+							</div>
+						</div>
+					</div>
 
-			<!-- 주소 합쳐서 저장하기 -->
-			<input type="hidden" id="addrTotal" name="sponsorShippingAddr">
-						
-			<div class="mb-3 col-10">
-				<label class="form-label">수량</label> 
-				<input class="form-control"
-						id="amount"
-						name="sponsorAmount"
-						type="number"
-						min="1"
-						max="100"
-						value="1">
-			</div>
-			<div class="mb-3 col-10 form-check">
-				<input type="checkbox" class="form-check-input">
-				<label class="form-check-label" for="exampleCheck1">구매정보 확인했습니다.</label>
-			</div>
-			<div class="mb-3 col-10 text-end" id="totalPrice">
-				<span class="">총 후원가격</span>
-				<input type="hidden" id="price" value="${sponsorItem.sponsorItemPrice}">
-				<input class="form-control" type="text" id="total" name="sponsorTotalPrice" value="${sponsorItem.sponsorItemPrice}" readonly="readonly">
-			</div>
-			<button type="button" class="btn btn-primary col-10" id="form_btn"  onclick="requestPay(); return false;">Submit</button>
+					<div class="mb-3 col-10">
+						<label class="form-label">배송 메모</label> 
+						<input class="form-control"
+								type="text"
+								name="memo">
+					</div>
+					
+					<div class="mb-3 col-10">
+						<input type="checkbox" class="form-check-input">
+						<label class="form-check-label" for="exampleCheck1">구매정보 확인했습니다.</label>
+					</div>
+					<div class="mb-3 col-10">
+					</div>
+						<button type="button" class="btn btn-warning col-10" id="form_btn"  onclick="requestPay(); return false;">결제하기</button>
+					<div class="mb-3 col-10">
+					</div>
+				</div>
+			</article>
 		</form>
 	</section>
 	
@@ -270,11 +321,6 @@ function requestPay() {
 			});
 		}
 	};
-</script>
-
-
-<script>
-
 </script>
 </body>
 </html>

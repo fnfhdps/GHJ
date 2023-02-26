@@ -54,32 +54,54 @@
 			</div>
 
 			<div class="int-area">
-				<input type="password" id="pwCheck" autocomplete="off" required>
+				<input type="password"
+						id="pwCheck"
+						autocomplete="off"
+						required>
 				<span id="pwCheckMsg2"></span>
 				<label for="pwCheck">패스워드 확인</label>
 			</div>
 			
 			<div class="int-area">
-				<input type="text" name="userName"id="userName" autocomplete="off" required>
+				<input type="text"
+						name="userName"
+						id="userName"
+						autocomplete="off"
+						required>
 				<span id="nameCheckMsg"></span>
 				<label for="userName">이름</label>
 			</div>
 			
 			<div class="int-area">
-			
-				<input type="text" id="phone"
+				<input type="text"
+						id="phone"
 						name="userPhone"
 						oninput="autoHyphen(this)"
 						maxlength="13"
 						required="required">
 				<span id="phoneCheckMsg"></span>
-				<label for="userPhone">휴대전화</label>
-				<button type="button" id="phoneChk" class="doubleChk btn btn-primary">휴대폰 인증번호</button><br>
+				<label for="userPhone">휴대폰번호</label>
+				<button type="button"
+						id="phoneChk"
+						class="doubleChk btn btn-primary">
+						인증번호 발송
+				</button>
+				<br>
 			</div>
 			
 			<div class="int-area">
-				<input type="text" id="phone2" name="userPhone2" title="인증번호 입력" disabled required/>
-				<button type="button" class="btn btn-primary" id="phoneChk2" class="doubleChk">본인인증</button>
+				<input type="text"
+						id="phone2"
+						name="userPhone2"
+						title="인증번호 입력"
+						disabled
+						required/>
+				<button type="button"
+						class="btn btn-primary"
+						id="phoneChk2"
+						class="doubleChk">
+						인증하기
+				</button>
 				<span class="point successPhoneChk"></span>
 				<input type="hidden" id="phoneDoubleChk"/>
 			</div>
