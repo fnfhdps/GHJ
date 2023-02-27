@@ -24,7 +24,7 @@ public class BoardAdminPageController {
 		this.boardService = boardService;
 	}
 	
-	// 입양글, 공지사항, 1:1문의 목록 이동 (관리자페이지)
+	// 입양글, 공지사항, 1:1문의 목록 (관리자페이지)
 	@GetMapping("/admin/{category}")
 	public String getboardList(@PathVariable("category") String category, Model model) throws Exception {
 		BoardDTO board = new BoardDTO();

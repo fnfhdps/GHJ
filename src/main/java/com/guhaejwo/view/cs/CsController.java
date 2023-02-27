@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.guhaejwo.biz.board.BoardDTO;
@@ -27,13 +28,28 @@ public class CsController {
 		return "/cs/faq";
 	}
 
-	// notice 이동
+	// 공지사항 목록
 	@GetMapping("/notice")
-	public String notice(Model model) {
+	public String getNoticeList(Model model) {
 		BoardDTO board = new BoardDTO();
 		board.setBoardCategory(Category.NOTICE);
 		model.addAttribute("boardList", boardService.getBoardList(board));
 		return "/cs/notice";
+	}
+	
+	// 공지사항 상세
+	@GetMapping("/notice/{seq}")
+	public String getnotice(@PathVariable("seq") int boardSeq, Model model) {
+		BoardDTO board = new BoardDTO();
+		board.setBoardSeq(boardSeq);
+
+		BoardDTO boardDetail = boardService.getBoard(board);
+		model.addAttribute("board", boardService.getBoard(boardDetail));
+		
+		// 조회수 카운트
+//		int boardCnt = boardDetail.getBoardCnt();
+		boardService.updateBoardCnt(boardDetail);
+		return "/cs/notice_detail";
 	}
 	
 }

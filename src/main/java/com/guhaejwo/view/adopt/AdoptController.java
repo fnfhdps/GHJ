@@ -90,9 +90,9 @@ public class AdoptController {
 	    model.addAttribute("blame", adoptService.getBlame(blame));
 	    
 	    // 조회수 카운트
-	    int boardCnt = adoptDetail.getBoardCnt();
-	    adopt.setBoardCnt(boardCnt);
-	    adoptService.updateBoardCnt(adopt);
+//	    int boardCnt = adoptDetail.getBoardCnt();
+//	    adopt.setBoardCnt(boardCnt);
+	    adoptService.updateBoardCnt(adoptDetail);
 		
 		return "adopt/adopt_detail";
 	}

@@ -34,4 +34,6 @@ public interface BoardService {
 	// 입양, 공지사항, 1:1 목록 조회 (관리자페이지)
 	public List<BoardDTO> getBoardList(BoardDTO board);
 	
+	// 조회수 증가
+	public void updateBoardCnt(BoardDTO board);
  }

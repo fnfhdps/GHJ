@@ -71,4 +71,10 @@ public class BoardDAO {
 		System.out.println("--> BoardRepository.getBoardList() 실행");
 		return mybatis.selectList("BoardDAO.getBoardList", board);
 	}
+	
+	// 조회수 증가
+	public void updateBoardCnt(BoardDTO board) {
+		System.out.println("--> BoardRepository.updateBoardCnt() 실행");
+		mybatis.update("BoardDAO.updateBoardCnt", board);
+	}
 }

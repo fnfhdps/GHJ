@@ -30,6 +30,15 @@
 		]]>
 	</delete>
 	
+    <!-- 조회수 증가 -->
+	<update id="updateBoardCnt">
+		<![CDATA[
+			update board
+			set boardcnt = boardcnt + 1
+			where boardseq = #{boardSeq}
+		]]>
+	</update>
+	
 	<!-- 글 상세 조회 -->
 	<select id="getBoard" resultType="board">
 		<![CDATA[

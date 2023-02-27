@@ -11,8 +11,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- header&footer css -->
-<link rel="stylesheet" href="/resources/css/fix.css">
 <!-- cs css -->
 <link rel="stylesheet" href="/resources/css/cs.css">
 <title>공지사항</title>
@@ -59,10 +57,9 @@
 	          	<c:choose>
 	       		  <c:when test="${!empty boardList}">
 				    <c:forEach items="${boardList}" var="board">
-	             
-	              <li class="promoted-articles-item">
-	                  <a href="#"><c:out value="${board.boardTitle}"></c:out></a>
-	              </li>
+		              <li class="promoted-articles-item">
+		                  <a href="/cs/notice/${board.boardSeq}"><c:out value="${board.boardTitle}"></c:out></a>
+		              </li>
 				    </c:forEach>
 		          </c:when>
 			   	  <c:otherwise>
@@ -71,11 +68,9 @@
 	     	    </c:choose>
 	          </ul>
 	        </section>
-	      
 	    </section>
 	  
 	    <section class="section home-section activity">
-	      
 	    </section>
 	  </div>
 	</div>
