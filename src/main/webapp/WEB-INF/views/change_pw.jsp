@@ -60,7 +60,7 @@
 	});
 	
 	// 새 비밀번호 확인
-		// submit시 비밀번호 한번더 확인
+	// submit시 비밀번호 한번더 확인
 	$("#btn_pw").click(function() {
 		const currentPw = $("#current_pw").val();
 		const changePw = $('#change_pw').val();
@@ -75,8 +75,6 @@
 			return;
 		}
 	});
-		
-	
 	</script>
 </body>
 </html>

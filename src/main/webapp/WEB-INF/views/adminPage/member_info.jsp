@@ -54,15 +54,15 @@
             <!-- 회원정보 -->
             <article class="art1 col-lg-6 member_content member_mg">
               <form class="pageBody art_border" action="/admin/member/update" method="post">
-                <div>
+                <div class="pb-5">
                   <h3>회원정보</h3>
                 </div>
                 <input type="hidden" value="${member.userSeq}" name="userSeq">
                 
-                <div class="my-4 d-flex flex-column">
+<%--                 <div class="my-4 d-flex flex-column">
                   <img alt="" src="${member.userImg}">
                   <input type="file" accept="image/*" name="userImg">
-                </div>
+                </div> --%>
   
                 <div class="form_info">  
                   <div class="mb-3 formGroup">
@@ -116,7 +116,7 @@
                   </div>
                   <div>
                     <small>최근접속일</small>
-                    <p class="mt-1">${member.lastDate}</p>
+                    <p class="mt-1"><fmt:formatDate value="${member.lastDate}" pattern="yyyy.MM.dd HH:mm:ss"/></p>
                   </div>
   
                   <div>
@@ -223,7 +223,6 @@
 	         });
 		}
 	}
-
 </script> 
 </body>
 </html>

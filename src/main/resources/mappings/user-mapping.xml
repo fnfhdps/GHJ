@@ -14,14 +14,23 @@
 	<!-- 회원 수정 (마이페이지, 관리자페이지) -->
 	<update id="updateUser">
 		<![CDATA[
-			UPDATE USERS SET
-				userEmail = #{userEmail, jdbcType=VARCHAR}, 
+			UPDATE USERS
+			SET userEmail = #{userEmail, jdbcType=VARCHAR}, 
 				userPhone = #{userPhone, jdbcType=VARCHAR},
 				userImg = #{userImg, jdbcType=VARCHAR},
 				userAddr1 = #{userAddr1, jdbcType=VARCHAR},
 				userAddr2 = #{userAddr2, jdbcType=VARCHAR},
 				userAddr3 = #{userAddr3, jdbcType=VARCHAR},
 				userRole = #{userRole, jdbcType=VARCHAR}
+			WHERE userSeq = #{userSeq}
+		]]>
+	</update>
+	
+	<!-- 최근 접속일시 -->
+		<update id="updateLastTime">
+		<![CDATA[
+			UPDATE USERS
+			SET lastDate = sysdate
 			WHERE userSeq = #{userSeq}
 		]]>
 	</update>

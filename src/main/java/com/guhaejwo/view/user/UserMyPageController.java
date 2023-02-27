@@ -27,6 +27,8 @@ import org.springframework.web.util.WebUtils;
 import com.guhaejwo.biz.user.UserDTO;
 import com.guhaejwo.biz.user.impl.UserServiceImpl;
 
+import oracle.jdbc.proxy.annotation.Post;
+
 @Controller
 @SessionAttributes("login")
 public class UserMyPageController {
@@ -84,7 +86,6 @@ public class UserMyPageController {
 		
 		 try {
 			adoptFile.transferTo(saveFile);
-			 
 	    } catch (IOException e) {
 	    	e.printStackTrace();
 	    }
@@ -106,6 +107,19 @@ public class UserMyPageController {
 		session.setAttribute("login", user2);
 		
 		return "myPage/user_update";
+	}
+	
+	// 최근 접속일시
+	@PostMapping("/lastTime")
+	public @ResponseBody int updateLastTime(UserDTO user) throws Exception {
+		try {
+			System.out.println("도입");
+			userService.updateLastTime(user);
+			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
 	
 	// 회원 탈퇴 이동 (마이페이지)

@@ -28,7 +28,6 @@ public class UserDAO implements UserService{
 	public void save(UserDTO user) {
 		System.out.println("---> MybatisUserRepository.save() 실행");
 		mybatis.insert("UserDAO.insertUser", user);
-		// System.out.println("---> MybatisUserRepository.save() 완료");
 	}
 	
 	@Override
@@ -41,7 +40,6 @@ public class UserDAO implements UserService{
 	public void delete(UserDTO user) {
 		System.out.println("---> MybatisUserRepository.delete() 실행");
 		mybatis.delete("UserDAO.deleteUser", user);
-		//System.out.println("---> MybatisUserRepository.delete() 완료");
 	}
 
 	@Override
@@ -65,7 +63,6 @@ public class UserDAO implements UserService{
 	@Override
 	public void update(UserDTO user) {
 		System.out.println("---> MybatisUserRepository.updateUser() 실행");
-		System.out.println(user);
 		mybatis.update("UserDAO.updateUser", user);
 	}
 
@@ -121,6 +118,12 @@ public class UserDAO implements UserService{
 	public int userBlameCnt(UserDTO user) {
 		System.out.println("--> MybatisUserRepository.userBlameCnt() 실행");
 		return mybatis.selectOne("UserDAO.userBlameCnt", user);
+	}
+
+	@Override
+	public void updateLastTime(UserDTO user) {
+		System.out.println("---> MybatisUserRepository.updateLastTime() 실행");
+		mybatis.update("UserDAO.updateLastTime", user);
 	}
 	
 

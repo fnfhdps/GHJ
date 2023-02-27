@@ -141,5 +141,9 @@ public class UserServiceImpl {
 		return userRepository.userBlameCnt(user);
 	}
 	
+	// 최근 접속일시
+	public void updateLastTime(UserDTO user) {
+		userRepository.updateLastTime(user);
+	}
 	
 }

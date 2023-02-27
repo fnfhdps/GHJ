@@ -52,4 +52,6 @@ public interface UserService {
 	// 회원 총 신고받은수 (관리자페이지)
 	public int userBlameCnt(UserDTO user);
 	
+	// 최근 접속일시
+	public void updateLastTime(UserDTO user);
 }

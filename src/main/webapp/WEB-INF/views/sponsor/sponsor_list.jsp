@@ -15,9 +15,12 @@
   <jsp:include page="../fix/header.jsp"></jsp:include>
 	      
 	<section class="">
-	    <div class="container px-4 px-lg-5">
-		    <div class="row">
-			  <img id="id_map_img" class="mb-5 gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4" alt="후원" src="/resources/image/sponsor/sponsor_info.png">
+	    <div class="container-xxl px-4 px-lg-5">
+		    <div class="row py-5">
+	    	  <img class="col-12" src="/resources/image/sponsor/sponsor_content.png">	
+		    </div>
+		    <div class="row py-5">
+			  <img id="id_map_img" class="col-12" alt="후원" src="/resources/image/sponsor/sponsor_info.png">
 		    </div>
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4">
 			    <c:forEach items="${sponsorItemList}" var="sponsor">

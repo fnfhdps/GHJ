@@ -83,17 +83,40 @@
 
 <!-- 상단에 회원,비회원  구분 -->
 <script type="text/javascript">
-$(function() {
-   const loginCkeck1 = $("#login_check").val();
-
-   // 회원이면 class="member"만 보이기
-   if(loginCkeck1 == 0){
-      $(".non_member").css("display", "block");
-      $(".member").css("display", "none");
-   }else{
-      $(".non_member").css("display", "none");
-      $(".member").css("display", "block");
-   }
-});
+	const loginCkeck1 = $("#login_check").val();
+	$(function() {
+	   // 회원이면 class="member"만 보이기
+	   if(loginCkeck1 == 0){
+	      $(".non_member").css("display", "block");
+	      $(".member").css("display", "none");
+	   }else{
+	      $(".non_member").css("display", "none");
+	      $(".member").css("display", "block");
+	   }
+	});
+	
+	if(loginCkeck1 != 0){
+		const data = { "userSeq" : loginCkeck1}
+		
+		setInterval(() => 
+	        $.ajax({
+	            url : "/lastTime",
+	            type : "post",
+	            data : JSON.stringify(data),
+	            dataType : "json",
+	            contentType : "application/json",
+	            async : true,
+	            success : function(result){
+	                if(result == 0){
+	                } else {
+	                	alert("실패");
+	                	return;
+	                }
+	            },
+	            error : function(errorThrown){
+	             alert(errorThrown.statusText);
+	          }
+	         }), 10000);
+	}
 </script>
 </html>

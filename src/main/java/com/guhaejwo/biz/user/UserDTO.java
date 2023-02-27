@@ -22,7 +22,7 @@ public class UserDTO {
 	private LoginType loginType;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date regDate;
-	private String lastDate;
+	private Date lastDate;
 	
 	public UserDTO() {}
 
@@ -111,10 +111,10 @@ public class UserDTO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public String getLastDate() {
+	public Date getLastDate() {
 		return lastDate;
 	}
-	public void setLastDate(String lastDate) {
+	public void setLastDate(Date lastDate) {
 		this.lastDate = lastDate;
 	}
 
