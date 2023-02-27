@@ -41,7 +41,7 @@
 
         <section class="member_container notice_container">
           <div class="css-mieii2 e1yarwt10">
-            <form action="/admin/sponsor/item/update" method="post">
+            <form action="/admin/sponsor/item/update" method="post" enctype="multipart/form-data">
            	  <input type="hidden" value="${sponsorItem.sponsorItemSeq}" name="sponsorItemSeq">
             
               <div class="css-lkffw3 e1yarwt9">
@@ -76,7 +76,7 @@
               </div>
               <div class="css-lkffw3 e1yarwt9">
                 <div width="343" class="css-1v6bcwv e1yarwt7">
-                  <img alt="상품사진" src="${sponsorItem.sponsorItemImg}" style="width: 200px; height: 200px;">                  
+                  <img alt="상품사진" src="/resources/image/sponsor/${sponsorItem.sponsorItemImg}" style="width: 200px; height: 200px;">                  
                 </div>
               </div>
 
@@ -86,7 +86,7 @@
                     <span></span>
                   </span>
                   <span class="css-94jutt e12vmj860">이미지 첨부</span>
-                  <input type="file" name="sponsorItemImg" value="${sponsorItem.sponsorItemImg}" accept="image/*" hidden="">
+                  <input type="file" name="sponsorFile" value="${sponsorItem.sponsorItemImg}" accept="image/*" hidden="">
                 </label>
               </div>
               

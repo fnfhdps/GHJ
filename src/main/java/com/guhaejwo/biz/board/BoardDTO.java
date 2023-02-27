@@ -10,7 +10,7 @@ public class BoardDTO {
 	private String findTitle; // 이전글, 다음글 title
 	
 	private int boardSeq;
-	private String boardCategory;
+	private Category boardCategory;
 	private String boardTitle;
 	private int userSeq;
 	private String boardContent;
@@ -56,10 +56,10 @@ public class BoardDTO {
 	public void setBoardSeq(int boardSeq) {
 		this.boardSeq = boardSeq;
 	}
-	public String getBoardCategory() {
+	public Category getBoardCategory() {
 		return boardCategory;
 	}
-	public void setBoardCategory(String boardCategory) {
+	public void setBoardCategory(Category boardCategory) {
 		this.boardCategory = boardCategory;
 	}
 	public String getBoardTitle() {

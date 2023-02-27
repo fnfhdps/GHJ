@@ -36,26 +36,11 @@
 	          <div class="pageSubtitle">내정보수정</div>
 	
 	          <article class="pageBody">
-	            <form class="user_update_content" action="/mypage/info/update" method="post">
+	            <form class="user_update_content" action="/mypage/info/update" method="post" enctype="multipart/form-data">
 	              <!-- 시퀀스 모음 -->
 	          	  <input type="hidden" id="userSeq" name="userSeq" value="${login.userSeq}">
 	          	  <input type="hidden" id="loginType" name="loginType" value="${login.loginType}">
 	          	  <input type="hidden" id="userRole" name="userRole" value="${login.userRole}">
-	
-	              <!-- 파일 업로드
-	              <div class="formGroup">
-	                <label class="control-label">프로필 이미지 <small>(선택)</small></label>
-	                <div class="fileUpload">
-	
-	                  <div id="profile_area">
-	                    <h5 class="upload">업로드</h5>
-	                    <div id="profileImage">
-	                      <img alt="fnfhdps12@gmail.com" src="../img/sample1.png">
-	                    </div>
-	                  </div>
-	                  <input type="file" name="file" accept="image/.jpg, .jpeg, .png, .gif">
-	                </div>
-	              </div> -->
 	
 	              <div class="mb-4 formGroup profile_info">
 	                <ul class="myinfo_area">
@@ -64,12 +49,13 @@
 		                    <!-- 프로필 사진 없으면 기본 사진 보임 -->
 				          	<c:choose>
 					          	<c:when test="${!empty login.userImg}">
-					            	<img id="profile" src="${login.userImg}">
+					            	<img id="profile" src="/resources/image/profile/${login.userImg}">
 					          	</c:when>
 					          	<c:otherwise>
 					          		<img id="profile" src="/resources/image/profile/profile.png">
 					          	</c:otherwise>
 				            </c:choose>
+				            <input id="" type="file" name="adoptFile" accept="image/*"> 
 	                      </div>
 	                  </li>
 	                  <li>

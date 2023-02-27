@@ -30,6 +30,7 @@ import com.guhaejwo.biz.adopt.AdoptDTO;
 import com.guhaejwo.biz.adopt.AdoptHeartDTO;
 import com.guhaejwo.biz.adopt.AdoptReqDTO;
 import com.guhaejwo.biz.adopt.AdoptService;
+import com.guhaejwo.biz.board.Category;
 import com.guhaejwo.biz.paging.Criteria;
 import com.guhaejwo.biz.paging.PageMakerDTO;
 import com.guhaejwo.biz.reply.ReplyDTO;
@@ -42,29 +43,20 @@ import oracle.net.aso.h;
 @SessionAttributes({"adoptDetail", "adoptList"})
 public class AdoptController {
 	
-	@Autowired
-	private ServletContext ctx;
-	
-	private AdoptService adoptService;
-	private ReplyService replyService;
+	private final AdoptService adoptService;
+	private final ReplyService replyService;
+	private final ServletContext ctx;
 	
 	@Autowired
-	public AdoptController(AdoptService adoptService, ReplyService replyService) {
+	public AdoptController(AdoptService adoptService, ReplyService replyService, ServletContext ctx) {
 		this.adoptService = adoptService; 
 		this.replyService = replyService;
+		this.ctx = ctx;
 	}
-	
-	
-	// 입양 목록 조회
-	/*
-	 * @GetMapping(value = "/list") public String getAdoptList(AdoptDTO adopt, Model
-	 * model) { model.addAttribute("adoptList", adoptService.getAdoptList(adopt));
-	 * return "/adopt/adopt_list"; }
-	 */
-	
+
 	/* 입양 목록 게시판 페이지 접속(페이징 적용) */
     @GetMapping("/list")
-    public String getAdoptList(Model model, Criteria cri) {
+    public String getAdoptList(Model model, Criteria cri) throws Exception {
         System.out.println("getAdoptList");
         
         model.addAttribute("list", adoptService.getAdoptListPaging(cri));
@@ -79,8 +71,7 @@ public class AdoptController {
 	@GetMapping(value = "/detail/{boardCategory}/{boardSeq}/{userSeq}")
 	public String getAdoptDetail(@PathVariable("boardCategory") String category, @PathVariable("boardSeq") int boardSeq,
 		@PathVariable("userSeq") int userSeq, AdoptDTO adopt, ReplyDTO reply, AdoptHeartDTO heart, AdoptBlameDTO blame,  Model model,
-		HttpServletRequest req) {
-		
+		HttpServletRequest req) throws Exception {
 		
 		// 게시글 상세 조회
 		adopt.setBoardSeq(boardSeq);
@@ -114,34 +105,22 @@ public class AdoptController {
 	
 	// 입양 글 입력
 	@PostMapping(value = "/new")
-	public String insertAdopt(@RequestParam MultipartFile[] adoptFiles, AdoptDTO adopt, HttpServletRequest req) throws IllegalStateException, IOException, Exception{
+	public String insertAdopt(@RequestParam MultipartFile[] adoptFiles, AdoptDTO adopt) throws IllegalStateException, IOException, Exception{
 		
 		// 파일 업로드 
 		for (MultipartFile adoptFile : adoptFiles) {
 			
-//			String fileName = FilenameUtils.getBaseName(adoptFile.getOriginalFilename()); // 파일이름(확장자명 제외)
 			String fileName = adoptFile.getOriginalFilename();	// 파일 이름(확장자명 포함)
-			long fileSize = adoptFile.getSize();				// 파일 용량
-		
+			//long fileSize = adoptFile.getSize();				// 파일 용량
 			//서버에 저장할 파일이름의 확장자 명을 구함 (.png 등)
 			String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
-			
-			// fileName + fileExtension = 파일명.확장자명
-			
 			String webPath ="/resources/image/adopt";
 			String realPath = ctx.getRealPath(webPath);
-			System.out.println("realPath : " + realPath);
 			
 			UUID uuid = UUID.randomUUID();
-			System.out.println(uuid.toString());
 			String[] uuids = uuid.toString().split("-");
-			
 			String uniqueName = uuids[0];
-			System.out.println("생성된 고유문자열" + uniqueName);
-			System.out.println("확장자명" + fileExtension);
-			
 			String realSaveFileName = uniqueName + fileName;
-			System.out.println("realSaveFileName:"+realSaveFileName);
 			
 			File savePath = new File(realPath);		// 파일명이 포함되지 않은 경로
 			// 업로드하기 위한 경로가 없을 경우
@@ -156,17 +135,13 @@ public class AdoptController {
 				 
 		    } catch (IOException e) {
 		    	e.printStackTrace();
-		        System.out.println(e.getMessage());
 		    }
-			        
-			System.out.println("saveFile : " + saveFile);
-			System.out.println("고유 fileName : " + realSaveFileName); // 고유 이름
-			System.out.println("저장 경로 + fileName : " + realPath);
-			System.out.println("fileSize : " + fileSize);	
-			
 			adopt.setAdoptImg(realSaveFileName);	// 파일 이름으로 adoptImg set
-			}
+		}
 
+		adopt.setAdoptState("WAIT");
+		adopt.setBoardCategory(Category.ADOPT);
+		
 		adoptService.insertBoard(adopt);
 		adoptService.insertAdopt(adopt);
 		
@@ -176,24 +151,56 @@ public class AdoptController {
 	// 입양 글 수정
 	@GetMapping(value = "/update")
 	public String updateAdopt() {
-		System.out.println("입양글수정 이동");
 		return "/adopt/adopt_update";
 	}
 
 	// 입양 글 수정
 	@PostMapping(value = "/update")
-	public String updateAdopt(AdoptDTO adopt, Model model) {
-		int boardSeq = adopt.getBoardSeq();
-		int userSeq = adopt.getUserSeq();
+	public String updateAdopt(@RequestParam MultipartFile[] adoptFiles, AdoptDTO adopt, Model model) throws IllegalStateException, IOException, Exception {
+		
+		// 파일 업로드 
+		for (MultipartFile adoptFile : adoptFiles) {
+			
+			String fileName = adoptFile.getOriginalFilename();	// 파일 이름(확장자명 포함)
+			//long fileSize = adoptFile.getSize();				// 파일 용량
+			//서버에 저장할 파일이름의 확장자 명을 구함 (.png 등)
+			String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
+			String webPath ="/resources/image/adopt";
+			String realPath = ctx.getRealPath(webPath);
+			
+			UUID uuid = UUID.randomUUID();
+			String[] uuids = uuid.toString().split("-");
+			String uniqueName = uuids[0];
+			String realSaveFileName = uniqueName + fileName;
+			
+			File savePath = new File(realPath);		// 파일명이 포함되지 않은 경로
+			// 업로드하기 위한 경로가 없을 경우
+			if(!savePath.exists())	// savePath의 경로가 존재하는지 존재하지 않는지 boolean 체크
+				savePath.mkdirs();	// make Directory : 경로 만들어줌
+			
+			realPath += File.separator + realSaveFileName;	// File.separator : 구분자 ("\" 또는 "/" 자동으로 지정해서 경로 뒤에 붙여준다.)
+			File saveFile = new File(realPath);		// 파일명이 포함된 경로
+			
+			 try {
+				adoptFile.transferTo(saveFile);
+				 
+		    } catch (IOException e) {
+		    	e.printStackTrace();
+		    }
+			adopt.setAdoptImg(realSaveFileName);	// 파일 이름으로 adoptImg set
+		}
 		
 		adoptService.updateBoard(adopt);
 		adoptService.updateAdopt(adopt);
+
+		int boardSeq = adopt.getBoardSeq();
+		int userSeq = adopt.getUserSeq();
 		return "redirect:/adopt/detail/ADOPT/"+boardSeq+"/"+userSeq;
 	}
 	
 	// 입양 글 삭제
 	@GetMapping(value = "/delete/{seq}")
-	public String deleteAdopt(@PathVariable("seq") int boardSeq) {
+	public String deleteAdopt(@PathVariable("seq") int boardSeq) throws Exception {
 		System.out.println("잘 가져옴??"+boardSeq);
 		AdoptDTO adopt = new AdoptDTO();
 		adopt.setBoardSeq(boardSeq);
@@ -203,7 +210,7 @@ public class AdoptController {
 	
 	// 입양 희망자 신청
 	@PostMapping(value = "/hope")
-	public String insertAdoptReq(AdoptReqDTO adopt, HttpServletRequest request) {
+	public String insertAdoptReq(AdoptReqDTO adopt, HttpServletRequest request) throws Exception {
 		adoptService.insertAdoptReq(adopt);
 		
 		// 이전 주소로 이동
@@ -213,7 +220,7 @@ public class AdoptController {
 	
 	// 입양 희망자 중복 체크
 	@PostMapping(value = "/hope/check")
-	public @ResponseBody Object hopeCheck(@RequestBody AdoptReqDTO adopt) {
+	public @ResponseBody Object hopeCheck(@RequestBody AdoptReqDTO adopt) throws Exception {
 		AdoptReqDTO existAdopt;
 		existAdopt = adoptService.hopeCheck(adopt);
 		try {
@@ -229,7 +236,7 @@ public class AdoptController {
 	
 	// 입양 상태 변경
 	@PostMapping(value = "/detail/state/{num}")
-	public @ResponseBody Object adoptStateUpdate(@PathVariable("num") int num, @RequestBody AdoptDTO adopt) {
+	public @ResponseBody Object adoptStateUpdate(@PathVariable("num") int num, @RequestBody AdoptDTO adopt) throws Exception {
 		String state = null;
 
 		// num이 0이면 wait -> success, 1이면 success -> wait
@@ -250,7 +257,7 @@ public class AdoptController {
 	
 	// 좋아요 조회
 	@GetMapping("/heart")
-	public @ResponseBody int heart(AdoptHeartDTO heart, Model model) {
+	public @ResponseBody int heart(AdoptHeartDTO heart, Model model) throws Exception {
 		int heartCnt = -1;
 		
 		try {
@@ -264,7 +271,7 @@ public class AdoptController {
 	
 	// 좋아요 누름
 	@PostMapping("/insert/heart")
-	public @ResponseBody int insertHeart(@RequestBody AdoptHeartDTO heart) {
+	public @ResponseBody int insertHeart(@RequestBody AdoptHeartDTO heart) throws Exception {
 		try {
 	         adoptService.insertHeart(heart);
 	         return 0;
@@ -275,7 +282,7 @@ public class AdoptController {
 
 	// 좋아요 취소
 	@PostMapping("/delete/heart")
-	public @ResponseBody int deleteHeart(@RequestBody AdoptHeartDTO heart) {
+	public @ResponseBody int deleteHeart(@RequestBody AdoptHeartDTO heart) throws Exception {
 		try {
 			adoptService.deleteHeart(heart);
 			return 0;
@@ -286,7 +293,8 @@ public class AdoptController {
 	   
 	// 신고 내용 작성 창으로 이동
 	@GetMapping(value = "/insert/blaContent/{boardSeq}/{res_userSeq}/{req_userSeq}")
-	public String newBlame(@PathVariable("boardSeq") int boardSeq, @PathVariable("res_userSeq") int res_userSeq, @PathVariable("req_userSeq") int req_userSeq, Model model) {
+	public String newBlame(@PathVariable("boardSeq") int boardSeq, @PathVariable("res_userSeq") int res_userSeq,
+			@PathVariable("req_userSeq") int req_userSeq, Model model) throws Exception {
 
 		AdoptBlameDTO blame = new AdoptBlameDTO();
 
@@ -300,7 +308,7 @@ public class AdoptController {
 
 	// 신고 글 입력
 	@PostMapping("/insert/blaContent")
-	public String insertBlaContent(AdoptBlameDTO blame) {
+	public String insertBlaContent(AdoptBlameDTO blame) throws Exception {
 		adoptService.insertBlame(blame);
 
 		int boardSeq = blame.getBoardSeq();
@@ -311,7 +319,7 @@ public class AdoptController {
 
 	// 신고 삭제 (관리자 페이지)
 	@PostMapping("/delete/blame")
-	public @ResponseBody int deleteBlame(@RequestBody AdoptBlameDTO blame) {
+	public @ResponseBody int deleteBlame(@RequestBody AdoptBlameDTO blame) throws Exception {
 		System.out.println("신고 취소");
 		
 		try {

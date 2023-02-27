@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 
 <title>입양글 작성</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
 <!-- 디자인 전부 임시 -->
@@ -24,17 +23,13 @@
  
       <article class="mypage_content">
         <form id="adoptForm" action="/adopt/new" method="post" enctype="multipart/form-data">
-        
           <!-- 유저 시퀀스 -->	
 	      <input type="hidden" name="userSeq" value="${login.userSeq}">
-	      <!-- 입양 상태 -->
-	      <input type="hidden" name="adoptState" value="WAIT">
-	      <!-- 카테고리 구분 -->
-          <input type="hidden" name="boardCategory" value="ADOPT">
+	      
       <br><br>      
       <div>
 		  <label for="formFileLg" class="form-label">이미지 첨부</label>
-		  <input class="form-control form-control-lg" id="formFileLg" type="file" name="adoptFiles" multiple accept="image/*" hidden=""> 
+		  <input id="formFileLg" type="file" name="adoptFiles" multiple accept="image/*" hidden=""> 
 	  </div>
 	  
 	  <div class="mb-3">

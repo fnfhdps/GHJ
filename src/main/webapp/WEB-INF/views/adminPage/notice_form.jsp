@@ -44,7 +44,6 @@
         
           <div class="css-mieii2 e1yarwt10">
             <form action="/admin/notice/insert" method="post">
-              <input type="hidden" name="boardCategory" value="NOTICE">
               <input type="hidden" name="userSeq" value="${login.userSeq}">
             
 		      <div class="css-lkffw3 e1yarwt9">

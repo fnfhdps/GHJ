@@ -35,21 +35,31 @@
 	          <h1 class="pageH1">계정관리</h1>
 	          <div class="pageSubtitle">내정보</div>
 	
-	          <!-- 새디자인 -->
 	          <article class="pageBody">
 	            <div class="css-itjaqv e1ejty663">
 	
 	              <div class="css-hdhsoq e18gdfbl4">
-	                <div class="css-1uebeg0 e18gdfbl3">
-		                <!-- 프로필 사진 없으면 기본 사진 보임 -->
+	                <div class="css-1uebeg0">
+                      <div class="myphoto css-1cqverl">
+	                    <!-- 프로필 사진 없으면 기본 사진 보임 -->
 			          	<c:choose>
 				          	<c:when test="${!empty login.userImg}">
-				            	<img id="css-1cqverl e18gdfbl2" src="${login.userImg}">
+				            	<img id="profile" src="/resources/image/profile/${login.userImg}">
+				          	</c:when>
+				          	<c:otherwise>
+				          		<img id="profile" src="/resources/image/profile/profile.png">
+				          	</c:otherwise>
+			            </c:choose>
+                      </div>
+		                <!-- 프로필 사진 없으면 기본 사진 보임 -->
+<%-- 			          	<c:choose>
+				          	<c:when test="${!empty login.userImg}">
+				            	<img id="css-1cqverl e18gdfbl2" src="/resources/image/profile/${login.userImg}">
 				          	</c:when>
 				          	<c:otherwise>
 				          		<img id="css-1cqverl e18gdfbl2" src="/resources/image/profile/profile.png">
 				          	</c:otherwise>
-			          	</c:choose>
+			          	</c:choose> --%>
 	                </div>
 	                
 	                <div class="css-oycm3d e18gdfbl1">

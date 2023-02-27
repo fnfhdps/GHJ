@@ -41,7 +41,7 @@
 
         <section class="member_container notice_container">
           <div class="css-mieii2 e1yarwt10">
-            <form action="/admin/sponsor/item/insert" method="post">
+            <form action="/admin/sponsor/item/insert" method="post" enctype="multipart/form-data">
               <div class="css-lkffw3 e1yarwt9">
                 <div width="343" class="css-1v6bcwv e1yarwt7"></div>
               </div>
@@ -76,7 +76,7 @@
                     <span></span>
                   </span>
                   <span class="css-94jutt e12vmj860">첨부파일</span>
-                  <input type="file" name="sponsorItemImg" accept="image/*" hidden="">
+                  <input type="file" name="sponsorFile" accept="image/*" hidden="">
                 </label>
               </div>
               

@@ -34,7 +34,6 @@
 	  <div class="css-mieii2 e1yarwt10">
 	    <form id="qna_form" action="/mypage/qna/new" method="post">
 	 	  <!-- 시퀀스 -->
-          <input type="hidden" name="boardCategory" value="QNA">
           <input type="hidden" name="userSeq" value="${login.userSeq}">
 	    
 	      <div class="css-lkffw3 e1yarwt9">

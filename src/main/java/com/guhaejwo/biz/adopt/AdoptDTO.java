@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.guhaejwo.biz.board.Category;
+
 public class AdoptDTO {
 	
 	private int totalCnt;
@@ -23,7 +25,7 @@ public class AdoptDTO {
 	private String adoptKind;
 	
 	// board 테이블
-	private String boardCategory;
+	private Category boardCategory;
 	private String boardTitle;
 	private int userSeq;
 	private String boardContent;
@@ -116,10 +118,10 @@ public class AdoptDTO {
 	}
 
 	// board 테이블
-	public String getBoardCategory() {
+	public Category getBoardCategory() {
 		return boardCategory;
 	}
-	public void setBoardCategory(String boardCategory) {
+	public void setBoardCategory(Category boardCategory) {
 		this.boardCategory = boardCategory;
 	}
 	public String getBoardTitle() {

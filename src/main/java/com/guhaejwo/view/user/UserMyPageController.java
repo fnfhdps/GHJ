@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -29,10 +32,12 @@ import com.guhaejwo.biz.user.impl.UserServiceImpl;
 public class UserMyPageController {
 	
 	private final UserServiceImpl userService;
+	private final ServletContext ctx;
 	
 	@Autowired
-	public UserMyPageController(UserServiceImpl userService) {
+	public UserMyPageController(UserServiceImpl userService, ServletContext ctx) {
 		this.userService = userService;
+		this.ctx = ctx;
 	}
 	
 	// 내 정보 이동 (마이페이지)
@@ -59,9 +64,32 @@ public class UserMyPageController {
 	
 	// 내 정보 수정 (마이페이지)
 	@PostMapping("/mypage/info/update")
-	public String update(UserDTO user , Model model, HttpServletRequest req) throws Exception {
-		System.out.println(user);
-
+	public String update(@RequestParam MultipartFile adoptFile, UserDTO user , Model model, HttpServletRequest req) throws IllegalStateException, IOException, Exception {
+		String fileName = adoptFile.getOriginalFilename();	// 파일 이름(확장자명 포함)
+		String webPath ="/resources/image/profile";
+		String realPath = ctx.getRealPath(webPath);
+		
+		UUID uuid = UUID.randomUUID();
+		String[] uuids = uuid.toString().split("-");
+		String uniqueName = uuids[0];
+		String realSaveFileName = uniqueName + fileName;
+		
+		File savePath = new File(realPath);		// 파일명이 포함되지 않은 경로
+		// 업로드하기 위한 경로가 없을 경우
+		if(!savePath.exists())	// savePath의 경로가 존재하는지 존재하지 않는지 boolean 체크
+			savePath.mkdirs();	// make Directory : 경로 만들어줌
+		
+		realPath += File.separator + realSaveFileName;	// File.separator : 구분자 ("\" 또는 "/" 자동으로 지정해서 경로 뒤에 붙여준다.)
+		File saveFile = new File(realPath);		// 파일명이 포함된 경로
+		
+		 try {
+			adoptFile.transferTo(saveFile);
+			 
+	    } catch (IOException e) {
+	    	e.printStackTrace();
+	    }
+		user.setUserImg(realSaveFileName);	// 파일 이름으로 adoptImg set
+		
 		userService.update(user);
 		HttpSession session = req.getSession();
 
