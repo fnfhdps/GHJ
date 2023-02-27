@@ -93,7 +93,11 @@
 	                    <td class="text-center">${sponsor.sponsorItemName}</td>
 	                    <td class="text-center">${sponsor.sponsorItemPrice}</td>
 	                    <td class="text-center"><fmt:formatDate value="${sponsor.sponsorItemDate}" pattern="yyyy-MM-dd"/></td>
-	                    <td class="text-center">${sponsor.sponsorItemState}</td>
+	                    <td class="text-center state1" id="state1">
+	                    	<c:if test="${sponsor.sponsorItemState eq '1'}">판매중</c:if>
+	                    	<c:if test="${sponsor.sponsorItemState eq '2'}">일시품절</c:if>
+	                    	<c:if test="${sponsor.sponsorItemState eq '3'}">판매중지</c:if>
+	                    </td>
 	                    <td class="text-center dropdown">
 	                      <i class="bi bi-three-dots-vertical"
 	                          id="dropdownMenuButton1"

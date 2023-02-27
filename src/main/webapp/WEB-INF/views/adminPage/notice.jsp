@@ -106,10 +106,7 @@
 	                    </td>
 	                  </tr>
 				    </c:forEach>
-		          </c:when>
-			   	  <c:otherwise>
-		   		  	<td class="text-center" colspan="5">1:1 문의 내역이 없습니다.</td>
-		   		  </c:otherwise>        
+		          </c:when>       
 	     	    </c:choose>
                 </tbody>
                 

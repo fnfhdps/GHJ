@@ -24,44 +24,20 @@ import com.guhaejwo.biz.sponsor.impl.SponsorServiceImpl;
 
 @Controller
 @RequestMapping("/sponsor")
-public class SponsorController {
+public class SponsorMyPageController {
 
 	private final SponsorServiceImpl sponsorService;
 	
 	@Autowired
-	public SponsorController(SponsorServiceImpl sponsorService) {
+	public SponsorMyPageController(SponsorServiceImpl sponsorService) {
 		this.sponsorService = sponsorService;
 	}
-
-	// 후원 상품 목록 조회
-	@GetMapping(value = "/list")
-	public String getSponsorItemList(SponsorItemDTO sponsor, Model model) {
-		model.addAttribute("sponsorItemList", sponsorService.getSponsorItemList());
-		return "/sponsor/sponsor_list";
-	}
 	
-	// 후원 상품 상세 조회
-	@GetMapping(value = "/get/{seq}")
-	public String getSponsorItem(@PathVariable("seq") int sponsorItemSeq, HttpServletRequest req) {		
-		SponsorItemDTO sponsorItem = new SponsorItemDTO();
-		sponsorItem.setSponsorItemSeq(sponsorItemSeq);
-		
-		HttpSession session = req.getSession();
-		session.setAttribute("sponsorItem", sponsorService.getSponsorItem(sponsorItem));
-		return "/sponsor/sponsor_form";
-	}
-	
-	// 후원 내역 입력
-	@PostMapping(value = "/insert")
-	@ResponseBody
-	public int insertSponsor(@RequestBody SponsorDTO sponsor) {
-		System.out.println("");
-		try {
-			sponsorService.insertSponsor(sponsor);
-			return 0;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return -1;
-		}
+	// 후원 내역 조회 (마이페이지)
+	@GetMapping(value = "/mysponsor/{seq}")
+	public String mySponsor(@PathVariable("seq") int userSeq, SponsorMyPageDTO sponsor, Model model) {
+		sponsor.setUserSeq(userSeq);
+		model.addAttribute("sponsorMyPage", sponsorService.getSponsorMyPage(sponsor));
+		return "/myPage/sponsor_list";
 	}
 }

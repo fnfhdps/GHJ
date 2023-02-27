@@ -1,4 +1,4 @@
-package com.guhaejwo.view.qna;
+package com.guhaejwo.view.board;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

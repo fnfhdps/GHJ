@@ -62,9 +62,16 @@
                   <input type="number" class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" value="${sponsorItem.sponsorItemPrice}" name="sponsorItemPrice" placeholder="가격">
                 </div>
               </div>
+
               <div class="css-lkffw3 e1yarwt9">
                 <div width="343" class="css-1v6bcwv e1yarwt7">
-                  <input type="text" class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" value="${sponsorItem.sponsorItemState}" name="sponsorItemState" placeholder="상태">
+                    <input type="hidden" id="state1" value="${sponsorItem.sponsorItemState}">
+		            <select class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" id="state2" name="sponsorItemState">
+		              <option value="" selected>-- 선택 --</option>
+		              <option value="1">판매중</option>
+		              <option value="2">일시품절</option>
+		              <option value="3">판매중지</option>
+		            </select>
                 </div>
               </div>
               <div class="css-lkffw3 e1yarwt9">
@@ -78,7 +85,7 @@
                   <span class="css-h26ndt e12vmj861">
                     <span></span>
                   </span>
-                  <span class="css-94jutt e12vmj860">첨부파일</span>
+                  <span class="css-94jutt e12vmj860">이미지 첨부</span>
                   <input type="file" name="sponsorItemImg" value="${sponsorItem.sponsorItemImg}" accept="image/*" hidden="">
                 </label>
               </div>
@@ -93,5 +100,15 @@
       </main>
     </div>
   </div>
+<script type="text/javascript">
+	const state = $("#state1").val();
+	if(state == 1){
+		$("#state2").val('1').prop("selected",true);
+	} else if(state == 2){
+		$("#state2").val('2').prop("selected",true);
+	} else{
+		$("#state2").val('3').prop("selected",true);
+	}
+</script>
 </body>
 </html>

@@ -26,18 +26,18 @@ import com.guhaejwo.biz.user.impl.UserServiceImpl;
 
 @Controller
 @SessionAttributes("login")
-public class userController {
+public class UserMyPageController {
 	
 	private final UserServiceImpl userService;
 	
 	@Autowired
-	public userController(UserServiceImpl userService) {
+	public UserMyPageController(UserServiceImpl userService) {
 		this.userService = userService;
 	}
 	
 	// 내 정보 이동 (마이페이지)
 	@GetMapping("/mypage/info/{seq}")
-	public String info(@PathVariable("seq") int userSeq, Model model) {
+	public String info(@PathVariable("seq") int userSeq, Model model) throws Exception {
 		UserDTO user = new UserDTO();
 		user.setUserSeq(userSeq);
 		
@@ -59,7 +59,7 @@ public class userController {
 	
 	// 내 정보 수정 (마이페이지)
 	@PostMapping("/mypage/info/update")
-	public String update(UserDTO user , Model model, HttpServletRequest req) throws Exception{
+	public String update(UserDTO user , Model model, HttpServletRequest req) throws Exception {
 		System.out.println(user);
 
 		userService.update(user);
@@ -86,22 +86,19 @@ public class userController {
 	return "/myPage/user_delete";
 	}
 
-	// 회원 탈퇴
+	// 회원 탈퇴 (마이페이지)
 	// 여기서 invalidate하면 세션은 해제됐음에도 index로 돌아갈때 로그인 정보가 남아있음
 	@PostMapping("/mypage/delete")
-	public String withdraw(UserDTO user, HttpSession session) {
-		System.out.println("-------------id, pw 확인 : "+user);
-
+	public String withdraw(UserDTO user, HttpSession session) throws Exception {
 		session.removeAttribute("login");
 //		session.invalidate();
 		userService.withdraw(user);
 		return "redirect: /logout";
 	}
 
-	// 비밀번호 변경
+	// 비밀번호 변경 (마이페이지)
 	@PostMapping("/change_pw")
-	public @ResponseBody int changePw(@RequestBody UserDTO user, HttpServletRequest req) {
-		System.out.println("비번 번경:"+user);
+	public @ResponseBody int changePw(@RequestBody UserDTO user, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession();
 		
 		try {
@@ -117,6 +114,4 @@ public class userController {
 			return -1;
 		}
 	}
-	
-	
 }

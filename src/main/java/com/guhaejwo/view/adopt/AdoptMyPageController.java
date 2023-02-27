@@ -15,12 +15,12 @@ import com.guhaejwo.biz.adopt.AdoptService;
 
 @Controller
 @RequestMapping("/mypage")
-public class adoptMyPageController {
+public class AdoptMyPageController {
 
 	private AdoptMyPageService adoptMyPageService;
 	
 	@Autowired
-	public adoptMyPageController(AdoptMyPageService adoptMyPageService) {
+	public AdoptMyPageController(AdoptMyPageService adoptMyPageService) {
 		this.adoptMyPageService = adoptMyPageService;
 	}
 	

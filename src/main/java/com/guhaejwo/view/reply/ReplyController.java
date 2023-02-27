@@ -13,12 +13,12 @@ import com.guhaejwo.biz.reply.ReplyDTO;
 import com.guhaejwo.biz.reply.ReplyService;
 
 @Controller
-public class replyController {
+public class ReplyController {
 
 	private ReplyService replyService;
 	
 	@Autowired
-	public replyController(ReplyService replyService) {
+	public ReplyController(ReplyService replyService) {
 		this.replyService = replyService;
 	}
 	

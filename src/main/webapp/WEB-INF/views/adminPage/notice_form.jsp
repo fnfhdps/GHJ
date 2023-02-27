@@ -45,8 +45,7 @@
           <div class="css-mieii2 e1yarwt10">
             <form action="/admin/notice/insert" method="post">
               <input type="hidden" name="boardCategory" value="NOTICE">
-			  <!-- 테스트 시퀀스!!! 나중에 login.userSeq로 바꾸기 -->
-              <input type="hidden" name="userSeq" value="11">
+              <input type="hidden" name="userSeq" value="${login.userSeq}">
             
 		      <div class="css-lkffw3 e1yarwt9">
 		        <div width="343" class="css-1v6bcwv e1yarwt7">

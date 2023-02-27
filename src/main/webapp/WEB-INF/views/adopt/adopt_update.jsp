@@ -33,7 +33,7 @@
 	  <fieldset>
 	  <div>
 		  <label for="formFileLg" class="form-label">이미지 첨부</label>
-		  <input class="form-control form-control-lg" id="formFileLg" type="file" name="adoptImg" value="${adoptDetail.adoptImg}">
+		  <input class="form-control form-control-lg" id="formFileLg" type="file" name="adoptFiles" value="${adoptDetail.adoptImg}" multiple accept="image/*" hidden="">
 	  </div>
 		   	
 		    

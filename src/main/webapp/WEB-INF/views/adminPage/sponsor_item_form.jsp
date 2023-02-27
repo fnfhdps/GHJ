@@ -62,10 +62,14 @@
               </div>
               <div class="css-lkffw3 e1yarwt9">
                 <div width="343" class="css-1v6bcwv e1yarwt7">
-                  <input type="text" class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" name="sponsorItemState" placeholder="상태">
+		            <select  class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" name="sponsorItemState">
+		              <option value="" selected>-- 선택 --</option>
+		              <option value="1">판매중</option>
+		              <option value="2">일시품절</option>
+		              <option value="3">판매중지</option>
+		            </select>
                 </div>
               </div>
-
               <div class="css-lkffw3 e1yarwt9">
                 <label class="css-6lgku7 e12vmj862">
                   <span class="css-h26ndt e12vmj861">

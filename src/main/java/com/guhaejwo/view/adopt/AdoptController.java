@@ -40,7 +40,7 @@ import oracle.net.aso.h;
 @Controller
 @RequestMapping("/adopt")
 @SessionAttributes({"adoptDetail", "adoptList"})
-public class adoptController {
+public class AdoptController {
 	
 	@Autowired
 	private ServletContext ctx;
@@ -49,7 +49,7 @@ public class adoptController {
 	private ReplyService replyService;
 	
 	@Autowired
-	public adoptController(AdoptService adoptService, ReplyService replyService) {
+	public AdoptController(AdoptService adoptService, ReplyService replyService) {
 		this.adoptService = adoptService; 
 		this.replyService = replyService;
 	}
@@ -93,11 +93,6 @@ public class adoptController {
 		reply.setBoardSeq(boardSeq);
 		model.addAttribute("replyList", replyService.getReplyList(reply));
 
-		// 좋아요 조회
-//		heart.setBoardSeq(boardSeq);
-//		heart.setUserSeq(userSeq);
-//		model.addAttribute("heart", adoptService.getHeart(heart));
-		
 	    // 신고 조회
 	    blame.setBoardSeq(boardSeq);
 		blame.setReq_userSeq(userSeq);
@@ -177,7 +172,6 @@ public class adoptController {
 		
 		return "redirect:/adopt/list";
 	}
-	
 
 	// 입양 글 수정
 	@GetMapping(value = "/update")

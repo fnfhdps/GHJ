@@ -142,10 +142,6 @@
                             <th>특이사항</th>
                             <td>${adoptDetail.boardContent}</td>
                         </tr>
-                     <%--    <tr>
-                            <th>현재상황</th>
-                            <td id="state">${adoptDetail.adoptState}</td>
-                        </tr> --%>
                     </tbody>
                 </table>
             </div>
@@ -155,6 +151,7 @@
 	            <input class="btn btn-secondary" type="submit" id="hopeCheck" value="신청하기" onclick="checkSubmit(); return false;">
 	            &nbsp;&nbsp;&nbsp;&nbsp;
 	            
+	            <p>관심<small></small></p>
 	            <input type="hidden" id="heartCnt">
 	            <a id="heart" onclick="checkHeart()"><i id="heartIcon"></i></a>
 	            &nbsp;&nbsp;&nbsp;&nbsp;

@@ -34,7 +34,7 @@
       <br><br>      
       <div>
 		  <label for="formFileLg" class="form-label">이미지 첨부</label>
-		  <input class="form-control form-control-lg" id="formFileLg" type="file" name="adoptFiles" multiple> 
+		  <input class="form-control form-control-lg" id="formFileLg" type="file" name="adoptFiles" multiple accept="image/*" hidden=""> 
 	  </div>
 	  
 	  <div class="mb-3">
