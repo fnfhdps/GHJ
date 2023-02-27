@@ -56,13 +56,12 @@ public class AdoptController {
 
 	/* 입양 목록 게시판 페이지 접속(페이징 적용) */
     @GetMapping("/list")
-    public String getAdoptList(Model model, Criteria cri) throws Exception {
-        System.out.println("getAdoptList");
-        
-        model.addAttribute("list", adoptService.getAdoptListPaging(cri));
+    public String getAdoptList(@PathVariable("state") String state, Model model, Criteria cri) throws Exception {
+    	
+    	model.addAttribute("list", adoptService.getAdoptListPaging(cri));
+
         int total = adoptService.getAdoptTotalCount(cri);
         PageMakerDTO pageMake = new PageMakerDTO(cri, total);
-        System.out.println(pageMake);
         model.addAttribute("pageMaker", pageMake);
         return "/adopt/adopt_list";
     }    

@@ -84,39 +84,49 @@
 <!-- 상단에 회원,비회원  구분 -->
 <script type="text/javascript">
 	const loginCkeck1 = $("#login_check").val();
+	const data = { "userSeq" : loginCkeck1}
+
 	$(function() {
-	   // 회원이면 class="member"만 보이기
-	   if(loginCkeck1 == 0){
-	      $(".non_member").css("display", "block");
-	      $(".member").css("display", "none");
-	   }else{
-	      $(".non_member").css("display", "none");
-	      $(".member").css("display", "block");
-	   }
+		   // 회원이면 class="member"만 보이기
+		   if(loginCkeck1 == 0){
+		      $(".non_member").css("display", "block");
+		      $(".member").css("display", "none");
+		      
+		   }else{
+		      $(".non_member").css("display", "none");
+		      $(".member").css("display", "block");
+		   }
+		});
+	
+	// 최근 접속일 업데이트
+	$(function () {
+		if(loginCkeck1 != 0){
+			// 10초마다 sysdate로 업데이트
+			setInterval(function () {
+				
+		        $.ajax({
+		            url : "/lastTime",
+		            type : "post",
+		            data : JSON.stringify(data),
+		            dataType : "json",
+		            contentType : "application/json",
+		            async : true,
+		            success : function(result){
+		                if(result == 0){
+		                	console.log("성공");
+		                } else {
+		                	console.log("실패");
+		                	return;
+		                }
+		            },
+		            error : function(errorThrown){
+		            	console.log(errorThrown.statusText);
+		          }
+		         });
+		        
+			}, 10000);
+		}
 	});
 	
-	if(loginCkeck1 != 0){
-		const data = { "userSeq" : loginCkeck1}
-		
-		setInterval(() => 
-	        $.ajax({
-	            url : "/lastTime",
-	            type : "post",
-	            data : JSON.stringify(data),
-	            dataType : "json",
-	            contentType : "application/json",
-	            async : true,
-	            success : function(result){
-	                if(result == 0){
-	                } else {
-	                	alert("실패");
-	                	return;
-	                }
-	            },
-	            error : function(errorThrown){
-	             alert(errorThrown.statusText);
-	          }
-	         }), 10000);
-	}
 </script>
 </html>

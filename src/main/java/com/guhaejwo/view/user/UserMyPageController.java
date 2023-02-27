@@ -111,9 +111,9 @@ public class UserMyPageController {
 	
 	// 최근 접속일시
 	@PostMapping("/lastTime")
-	public @ResponseBody int updateLastTime(UserDTO user) throws Exception {
+	public @ResponseBody int updateLastTime(@RequestBody UserDTO user) throws Exception {
 		try {
-			System.out.println("도입");
+			System.out.println("도입"+user);
 			userService.updateLastTime(user);
 			return 0;
 		} catch (Exception e) {

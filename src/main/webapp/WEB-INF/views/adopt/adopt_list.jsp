@@ -89,12 +89,18 @@
 	            <button type="button" style="vertical-align:middle; text-align:middle;" class="btn btn-dark">검색</button>
 	       	</div>
 	   	</div>   
-	
+		
+		<div class="container px-4 px-lg-5 mt-5">
+		  <input class="form-check-input mx-2 p-3" type="checkbox" id="flexCheckDefault">
+		  <label class="form-check-label my-2" for="flexCheckDefault">입양대기만 보이기</label>
+		</div>
+		
 	    <div class="container px-4 px-lg-5 mt-5">
 	        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-	            
+
 	            <c:forEach items="${list}" var="list">
-	            <div class="col mb-5">
+
+	            <div class="col mb-5" >
 	                <div class="card h-100">
 		                <c:choose>
 		                  <c:when test="${list.adoptState eq 'WAIT'}">
@@ -116,7 +122,9 @@
 						</div>
 	                </div>
 	            </div>
+
 	            </c:forEach>
+
 	        </div>
 	    </div>
 	    
@@ -128,22 +136,18 @@
 		    <div class="pageInfo_wrap" >
 	        	<div class="pageInfo_area">
 	        		<ul id="pageInfo" class="pageInfo">
-	        		
 		                <!-- 이전페이지 버튼 -->
-	                <c:if test="${pageMaker.prev}">
-	                    <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
-	                </c:if>
-	                
+		                <c:if test="${pageMaker.prev}">
+		                    <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
+		                </c:if>
 		        		<!-- 각 번호 페이지 버튼 -->
 		                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 		                    <li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a href="${num}">${num}</a></li>
 		                </c:forEach>
-	                
-	                <!-- 다음페이지 버튼 -->
-	                <c:if test="${pageMaker.next}">
-	                    <li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }">Next</a></li>
-	                </c:if>    
-	
+		                <!-- 다음페이지 버튼 -->
+		                <c:if test="${pageMaker.next}">
+		                    <li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }">Next</a></li>
+		                </c:if>    
 	        		</ul>
 	        	</div>
 	    	</div>
@@ -152,9 +156,9 @@
 	</section>	
 	
 	<form id="moveForm" method="get">
-	    <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
-        <input type="hidden" name="amount" value="${pageMaker.cri.amount }">
-        <input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+	    <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+        <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+        <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	</form>
 	
 	<input type="hidden" id="userSeq" value="${login.userSeq}">
@@ -195,9 +199,21 @@
 	});
 	</script>
 
-	<%-- <jsp:include page="../fix/footer.jsp"></jsp:include> --%>
-	
+    <jsp:include page="../fix/footer.jsp"></jsp:include>
 </div>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
+<script type="text/javascript">
+$("input:checkbox").click(function () {
+
+	if($(this).is(":checked")){
+		alert("ff");
+	}else {
+		alert("assd");
+	}
+});
+
+
+
+</script>
+
 </html>
