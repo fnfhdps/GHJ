@@ -117,9 +117,5 @@ public class AdoptServiceImpl implements AdoptService {
     public void deleteBlame(AdoptBlameDTO blame) {
        adoptDAO.deleteBlame(blame);
     }
-
-	
-
-	
-	   
+   
 }

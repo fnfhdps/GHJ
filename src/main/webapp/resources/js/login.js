@@ -98,7 +98,9 @@ $(function(){
 					window.location.href = "/index";
 				} else if(result == 2){
 					window.location.href = "/admin/member";					
-				} else{
+				} else if(result == 3)
+					alert("정지된 계정입니다.");
+				else{
 					alert("통신오류");
 				}
 			},

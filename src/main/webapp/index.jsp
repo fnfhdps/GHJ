@@ -93,23 +93,26 @@
 
 				<c:choose>
 				  <c:when test="${!empty indexAdopt}">
-					<c:forEach items="${indexAdopt}" var="adopt">            
-		              <article class="card-top ">
-		                <div class="card-link " data-event-label="539014062">
-		                    <div class="card-photo ">
-		                        <a href="#"><img alt="동물사진" src="./resources/image/adopt/${board.adoptImg}"></a>
-		                    </div>
-		                    <div class="card-desc">
-		                        <h2 class="card-title">${board.boardTitle}</h2>
-		                        <div class="card-price ">${board.adoptKind}</div>
-		                        <div class="card-region-name">${board.adoptAddr}</div>
-		                        <div class="card-counts">
-		                        	<span>관심 5</span>
-		                        	<span>채팅 41</span>
-		                        </div>
-		                    </div>
-		                </div>
-		              </article>
+					<c:forEach items="${indexAdopt}" var="adopt" varStatus = "status">
+					  <!-- 최근 입양글 4개만 출력 -->            
+		              <c:if test="${status.index < 4}">
+			              <article class="card-top ">
+			                <div class="card-link " data-event-label="539014062">
+			                    <div class="card-photo">
+			                        <a href="/adopt/detail/${adopt.boardCategory}/${adopt.boardSeq}/${login.userSeq}"><img alt="동물사진" src="/resources/image/adopt/${adopt.adoptImg}"></a>
+			                    </div>
+			                    <div class="card-desc">
+			                        <h2 class="card-title">${adopt.boardTitle}</h2>
+			                        <div class="card-price ">${adopt.adoptKind}</div>
+			                        <div class="card-region-name">${adopt.adoptAddr}</div>
+			                        <div class="card-counts">
+			                        	<span>관심 5</span>
+			                        	<span>채팅 41</span>
+			                        </div>
+			                    </div>
+			                </div>
+			              </article>
+		              </c:if>
 				    </c:forEach>
 		          </c:when>
 		   		  <c:otherwise>입양 희망자가 없습니다.</c:otherwise>        

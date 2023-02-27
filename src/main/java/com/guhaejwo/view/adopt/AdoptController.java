@@ -56,7 +56,7 @@ public class AdoptController {
 
 	/* 입양 목록 게시판 페이지 접속(페이징 적용) */
     @GetMapping("/list")
-    public String getAdoptList(@PathVariable("state") String state, Model model, Criteria cri) throws Exception {
+    public String getAdoptList(Model model, Criteria cri) throws Exception {
     	
     	model.addAttribute("list", adoptService.getAdoptListPaging(cri));
 

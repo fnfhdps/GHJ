@@ -67,7 +67,8 @@
                 <div class="form_info">  
                   <div class="mb-3 formGroup">
                     <label class="mb-2">권한</label>
-                    <select class="form-select" name="userRole">
+                    <input type="hidden" value="${member.userRole}" id="memberRole">
+                    <select id="selectRole" class="form-select" name="userRole">
                       <option value="USER">회원</option>
                       <option value="ADMIN">관리자</option>
                       <option value="ALERTER">정지</option>
@@ -196,8 +197,16 @@
   </div>
   
 <script type="text/javascript">
-	const memberId = $("#memberId").val();
+	const memberRole = $("#memberRole").val();
+	if(memberRole == 'USER'){
+		$("#selectRole").val('USER').prop("selected",true);
+	}else if(memberRole == 'ADMIN'){
+		$("#selectRole").val('ADMIN').prop("selected",true);
+	}else{
+		$("#selectRole").val('ALERTER').prop("selected",true);
+	}
 
+	const memberId = $("#memberId").val();
 	function memberDelete() {
 		const data = {"userId" : memberId}
 		

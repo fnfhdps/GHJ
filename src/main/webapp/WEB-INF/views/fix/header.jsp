@@ -84,7 +84,7 @@
 <!-- 상단에 회원,비회원  구분 -->
 <script type="text/javascript">
 	const loginCkeck1 = $("#login_check").val();
-	const data = { "userSeq" : loginCkeck1}
+	let userData = { "userSeq" : loginCkeck1}
 
 	$(function() {
 		   // 회원이면 class="member"만 보이기
@@ -107,7 +107,7 @@
 		        $.ajax({
 		            url : "/lastTime",
 		            type : "post",
-		            data : JSON.stringify(data),
+		            data : JSON.stringify(userData),
 		            dataType : "json",
 		            contentType : "application/json",
 		            async : true,

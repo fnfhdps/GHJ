@@ -40,11 +40,14 @@ public class LoginController {
 		try {
 			loginUser = userService.findById(user);
 			if(loginUser != null && (loginUser.getUserPw()).equals(user.getUserPw())) {	// 성공
-				session.setAttribute("login", loginUser);
 				if((loginUser.getUserRole()).equals(Role.USER)) { // 유저
+					session.setAttribute("login", loginUser);
 					return 1;
-				}else {										// 관리자
+				}else if ((loginUser.getUserRole()).equals(Role.ADMIN)){ // 관리자
+					session.setAttribute("login", loginUser);
 					return 2;
+				}else {
+					return 3;
 				}
 			} else {
 				return -1; // 없을 때
