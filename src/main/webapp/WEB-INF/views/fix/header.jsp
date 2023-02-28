@@ -31,11 +31,12 @@
 </head>
 <body>
   <header class="header">
-    <nav id="navSize" class="container navbar navbar-expand-sm navbar-light">
+    <nav id="navSize" class="container navbar navbar-expand-md navbar-light">
       <div class="container-fluid">
       
-        <a class="navbar-brand" href="/index">
-          <img id="navImg" src="/resources/image/logo/logo_black.png" alt="logo">구해줘!펫즈
+        <a class="navbar-brand mr1" href="/index">
+          <img id="navImg" src="/resources/image/logo/logo_black.png" alt="logo">
+          <span class="brand_ft">구해줘!펫즈</span>
         </a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +44,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+          <ul class="navbar-nav me-auto mb-2 mb-sm-0 nav_mr">
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/map">소개</a>
             </li>

@@ -71,9 +71,8 @@
 	    <div class="vpgu1n0"></div>
 	
 	    <section class="dajteg0">
-	      <h1 class="dajteg1">제목
-	        <span class="dajteg2">입양대기</span>
-	      </h1>
+	      <h1 class="dajteg1">${adoptDetail.boardTitle}</h1>
+	      <small class="dajteg2">입양대기</small>
 	    </section>
 	    
 	    <section class="_1ff3f300">

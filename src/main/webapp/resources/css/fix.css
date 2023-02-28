@@ -24,8 +24,36 @@
   color: black;
 }
 #navImg{
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.8rem;
+  margin-right: -5px;
+}
+/* 헤더 글꼴 설정 */
+.mr1{
+	align-items: center;
+    margin-right: 3rem;
+	margin-top: 0.5rem;
+}
+
+.brand_ft{
+	font-family: 'Jua', sans-serif;
+    font-size: 27px;
+}
+/* @media screen and (min-width: 768px){
+	.nav_mr li a{
+	    line-height: 1.32;
+	    font-size: 1.8rem;
+   		letter-spacing: -2%;
+	}
+} */
+
+.nav_mr li a{
+	font-weight: 700;
+	font-style: normal;
+    margin-right: 1rem;
+	line-height: 1.4;
+    font-size: 1rem;
 }
 
 /* a태그 모두 공통 

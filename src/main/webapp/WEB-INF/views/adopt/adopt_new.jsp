@@ -22,9 +22,43 @@
     
     <section class="container-xxl py-5">
       <h2 class="adopt_title">입양글 작성</h2>
- 
+      
+       <article class="d-flex justify-content-center pb-5 pt-3 mb-5">
+    	 <div class="adoptForm">
+
+			<div class="accordion" id="accordionExample">
+			  <div class="accordion-item">
+			    <h2 class="accordion-header" id="headingOne">
+			      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			        여기 뭐라고 쓰냐
+			      </button>
+			    </h2>
+			    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+			      <div class="accordion-body">
+			        <strong>안내!</strong>
+			        	입소전 보호시설과 시스템을 눈으로 꼭 확인해주시는 것이 가장 중요하며, 보호기간 동안에는 면회 등 정보열람이 가능한 것은 물론, 철저한 입양 심사와 입양 후 사후관리 및 정보열람을 제공함으로써 안심하고 맡길 수 있습니다. 또한, 자택 방문 안전 진단 홈케어 서비스를 통해 타 보호소 대비 차별화된 시스템으로 아이의 입양 후 소식, 상태, 정보 등을 확인해드리고 있습니다.
+			      </div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header" id="headingTwo">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+			        Accordion Item #2
+			      </button>
+			    </h2>
+			    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+			      <div class="accordion-body">
+			        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+			      </div>
+			    </div>
+			  </div>
+		   	</div>
+
+         </div>
+       </article>
+
       <article class="adopt_content d-flex justify-content-center">
-        <form class="px-5" id="adoptForm" action="/adopt/new" method="post" enctype="multipart/form-data">
+        <form class="px-5 adoptForm" action="/adopt/new" method="post" enctype="multipart/form-data">
           <!-- 유저 시퀀스 -->	
 	      <input type="hidden" name="userSeq" value="${login.userSeq}">
 	      <br><br>      
@@ -36,13 +70,15 @@
 		      		class="form-control"
 		      		placeholder="제목"
 		      		name="boardTitle"
-		      		value="임시 제목">
+		      		value="임시 제목"
+		      		required="required"
+		      		title="제목을 입력하세요.">
 	   	  </div> 
 
 		  <div class="mb-3">
 		      <label for="disabledSelect" class="form-label">구분</label>
 		      <input type="hidden" id="adoptKind">
-		      <select id="disabledSelect" class="form-select" name="adoptKind">
+		      <select id="disabledSelect" class="form-select" name="adoptKind" required="required">
 		        	<option value='' selected>-- 선택 --</option>
 					<option value='DOG'>강아지</option>
 					<option value='CAT'>고양이</option>
@@ -53,12 +89,44 @@
 	       <div class="mb-3">
 		      <label for="disabledSelect" class="form-label">성별</label>
 		      <input type="hidden" id="adoptSex">
-		      <select id="disabledSelect" class="form-select" name="adoptSex">
+		      <select id="disabledSelect" class="form-select" name="adoptSex" required="required">
 	        		<option value="" selected>-- 선택 --</option>
 				    <option value="F">암컷</option>
 				    <option value="M">수컷</option>
 		      </select>
 	      </div>
+ 	      
+ 	      <div class="mb-3">
+ 		      <label for="disabledSelect" class="form-label">성별</label>
+ 		      <div>
+				  <div class="form-check form-check-inline">
+				    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="F">
+				    <label class="form-check-label" for="inlineRadio1">암컷</label>
+			  	  </div>
+				  <div class="form-check form-check-inline">
+				    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="M">
+				    <label class="form-check-label" for="inlineRadio2">수컷</label>
+				  </div>
+ 		      </div>
+ 	      </div>
+ 	      
+ 	      <div class="mb-3">
+ 		      <label for="disabledSelect" class="form-label">중성화</label>
+ 		      <div>
+				  <div class="form-check form-check-inline">
+				    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="O">
+				    <label class="form-check-label" for="inlineRadio1">O</label>
+			  	  </div>
+				  <div class="form-check form-check-inline">
+				    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="X">
+				    <label class="form-check-label" for="inlineRadio2">X</label>
+				  </div>
+				  <div class="form-check form-check-inline">
+				    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="IDK">
+				    <label class="form-check-label" for="inlineRadio3">?</label>
+			  	  </div>
+ 		      </div>
+ 	      </div>
 	          
 	      <div class="mb-3">
 	            <label class="form-label">구조일</label>
@@ -68,7 +136,7 @@
 	   	  </div>
 	   	  
 	   	  <div class="mb-3 row">
-	            <label class="form-label">나이</label>
+	            <label class="form-label">나이<small>(추정)</small></label>
 	            <div class="col-lg-3 col-form-label">
 	            <input class="form-control"
 	             	   name="adoptAge"
@@ -80,7 +148,7 @@
 	       </div>
 	          
 	       <div class="mb-3 row">
-	            <label class="form-label">몸무게</label>
+	            <label class="form-label">몸무게<small>(추정)</small></label>
 	            <div class="col-lg-3 col-form-label">
 	            <input class="form-control"
 	             	   name="adoptWeight"
