@@ -7,34 +7,9 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- header&footer css -->
-<link rel="stylesheet" href="/resources/css/fix.css">
-<style type="text/css">
+<!-- 후원 상품 상세 css -->
+<link rel="stylesheet" href="/resources/css/sponsor_form.css">
 
-.sponsor_title {
-	font-size: 22px bold;
-	/* border-top: 1px solid black; */
-	border-bottom: 1px solid black;
-	padding: 2.4rem;
-	margin-bottom: 1.5rem;
-}
-.sponsor_border{
-	border-bottom: 1px solid black;
-	padding: 2.4rem;
-	
-}
-.sponsor-input{
-	flex: 1 0 0;
-}
-
-p {
-	font-size: 17px;
-}
-
-.text-end {
-  text-align: right !important;
-}
-</style>
 <title>후원하기</title>
 </head>
 <body>
@@ -61,143 +36,142 @@ p {
 			</div>
 		</div>
 		
-		<form id="sponsor_form">
-			<article class="row py-5 justify-content-md-center">
-				<div class="mb-3 col-5 d-flex">
-					<label class="col-2 my-1">수량</label>
-					<input class="sponsor-input form-control"
-							id="amount"
-							type="number"
-							min="1"
-							max="100"
-							value="1">
-				</div>
-				<div class="mb-3 col-5 d-flex" id="totalPrice">
-					<label class="col-2 my-1">총 구매가격</label>
-					<input type="hidden" id="price" value="${sponsorItem.sponsorItemPrice}">
-					<input class="form-control"
-							type="text"
-							id="total"
-							value="${sponsorItem.sponsorItemPrice}"
-							readonly="readonly">
-				</div>
-			</article>
-			
-			<article class="py-5">
-				<div class="row justify-content-md-center">
-					<p class="col-10">주문자 정보</p>
-				</div>
-				<div class="row justify-content-md-center">
+		<div class="d-flex justify-content-center py-4">
+			<form id="sponsor_form">
+				<!-- 시퀀스들 -->
+				<input type="hidden" id="userSeq" value="${login.userSeq}">
+				<input type="hidden" id="sponsorItemSeq" value="${sponsorItem.sponsorItemSeq}">
+				
+				<article class="row py-5 justify-content-md-center">
 					<div class="mb-3 col-10 d-flex">
-						<label class="col-2 my-1">이름</label>
+						<label class="col-7 my-1">수량</label>
 						<input class="sponsor-input form-control"
-							 	type="text"
-								value="${login.userName}">
+								id="amount"
+								type="number"
+								min="1"
+								max="100"
+								value="1">
 					</div>
-					<div class="mb-3 col-10 d-flex">
-						<label class="col-2 my-1">휴대폰번호</label>
-						<input class="sponsor-input form-control"
-							 	type="text"
-								value="${login.userPhone}"
-								readonly="readonly">
-					</div>
-					<div class="mb-3 col-10 d-flex">
-						<label class="col-2 my-1">이메일</label>
-						<input class="sponsor-input form-control"
-							 	type="text"
-								value="${login.userEmail}"
-								readonly="readonly">
-					</div>
-				</div>
-			</article>
-			
-			<article class="pb-5">
-				<div class="row justify-content-md-center">
-					<p class="col-10">배송지 정보</p>
-				</div>
-				<div class="row justify-content-md-center">
-					
-					<!-- 시퀀스들 -->
-					<input type="hidden" id="userSeq" value="${login.userSeq}">
-					<input type="hidden" id="sponsorItemSeq" value="${sponsorItem.sponsorItemSeq}">
-					<div class="mb-3 col-10">
-						<label class="form-label">이름</label>
-						<input class="form-control"
-							 	type="text"
-							 	id="sponsorName">
-					</div>
-					<div class="mb-3 col-10">
-						<label class="form-label">전화번호</label> 
+					<div class="mb-3 col-10 d-flex" id="totalPrice">
+						<label class="col-7 my-1">총 구매가격</label>
+						<input type="hidden" id="price" value="${sponsorItem.sponsorItemPrice}">
 						<input class="form-control"
 								type="text"
-								id="sponsorPhone">
+								id="total"
+								value="${sponsorItem.sponsorItemPrice}"
+								readonly="readonly">
 					</div>
+				</article>
+				
+				<article class="py-5">
+					<div class="row justify-content-md-center">
+						<p class="col-10 sponsor_info">주문자 정보</p>
+					</div>
+					<div class="row justify-content-md-center">
 					
-					<!-- 주소 합쳐서 저장하기 -->
-					<input type="hidden" id="addrTotal" name="sponsorShippingAddr">
-					<div class="mb-3 col-10">
-						<div class="row">
-							<div class="col-xs-4 col-sm-6">
-								<label class="form-label">주소</label> 
-								<input class="form-control"
-										type="text"
-										id="addr1"
-										placeholder="우편번호"
-										value="${login.userAddr1}"
-										readonly="readonly"
-										required="required">					
-							</div>
-							<div class="col-xs-4 col-sm-6">
-								<label class="form-label" style="visibility: hidden;">빈공간</label>
-								<input class="form-control btn btn-warning"
-										type="button"
-										value="우편번호 찾기"
-										onclick="excution_addr()">					
-							</div>
+						<div class="mb-3 col-10">
+							<p>이름</p>
+							<p class="sponsor_from_title pb-2">${login.userName}</p>
 						</div>
-					</div>
-					<div class="mb-3 col-10">
-						<div class="row">
-							<div class="col-xs-4 col-sm-6">
-								<input class="form-control"
-										type="text"
-										id="addr2"
-										placeholder="주소"
-										value="${login.userAddr2}"
-										readonly="readonly"
-										required="required">					
-							</div>
-							<div class="col-xs-4 col-sm-6">
-								<input class="form-control"
-										type="text"
-										id="addr3"
-										placeholder="상세주소"
-										value="${login.userAddr3}"
-										readonly="readonly"
-										required="required">					
-							</div>
+						<div class="mb-3 col-10">
+							<p>휴대폰번호</p>
+							<p class="sponsor_from_title pb-2">${login.userPhone}</p>
 						</div>
-					</div>
+						<div class="mb-3 col-10">
+							<p>이메일</p>
+							<p class="sponsor_from_title pb-2">${login.userEmail}</p>
+						</div>
 
-					<div class="mb-3 col-10">
-						<label class="form-label">배송 메모</label> 
-						<input class="form-control"
-								type="text"
-								id="memo">
 					</div>
-					
-					<div class="mb-3 col-10">
-						<input type="checkbox" class="form-check-input">
-						<label class="form-check-label" for="exampleCheck1">구매정보 확인했습니다.</label>
+				</article>
+				
+				<article class="pb-5">
+					<div class="row justify-content-md-center">
+						<p class="col-10 sponsor_info">배송지 정보</p>
 					</div>
-					<div class="mb-3 col-10">
+					<div class="row justify-content-md-center">
+
+						
+						<div class="mb-3 col-10">
+							<label class="form-label">이름</label>
+							<input class="form-control"
+								 	type="text"
+								 	id="sponsorName">
+						</div>
+						<div class="mb-3 col-10">
+							<label class="form-label">휴대폰번호</label> 
+							<input class="form-control"
+									type="text"
+									maxlength="13"
+									id="sponsorPhone"
+									oninput="autoHyphen(this)">
+						</div>
+						
+						<!-- 주소 합쳐서 저장하기 -->
+						<input type="hidden" id="addrTotal" name="sponsorShippingAddr">
+						<div class="mb-3 col-10">
+							<div class="row">
+								<div class="col-xs-4 col-sm-6">
+									<label class="form-label">주소</label> 
+									<input class="form-control"
+											type="text"
+											id="addr1"
+											placeholder="우편번호"
+											value="${login.userAddr1}"
+											readonly="readonly"
+											required="required">					
+								</div>
+								<div class="col-xs-4 col-sm-6">
+									<label class="form-label" style="visibility: hidden;">빈공간</label>
+									<input class="form-control btn btn-warning"
+											type="button"
+											value="우편번호 찾기"
+											onclick="excution_addr()">					
+								</div>
+							</div>
+						</div>
+						<div class="mb-3 col-10">
+							<div class="row">
+								<div class="col-xs-4 col-sm-6">
+									<input class="form-control"
+											type="text"
+											id="addr2"
+											placeholder="주소"
+											value="${login.userAddr2}"
+											readonly="readonly"
+											required="required">					
+								</div>
+								<div class="col-xs-4 col-sm-6">
+									<input class="form-control"
+											type="text"
+											id="addr3"
+											placeholder="상세주소"
+											value="${login.userAddr3}"
+											readonly="readonly"
+											required="required">					
+								</div>
+							</div>
+						</div>
+	
+						<div class="mb-3 col-10">
+							<label class="form-label">배송 메모</label> 
+							<input class="form-control"
+									type="text"
+									id="memo">
+						</div>
+						
+						<div class="mb-5 col-10">
+							<input type="checkbox" class="form-check-input">
+							<label class="form-check-label" for="exampleCheck1">구매정보 확인했습니다.</label>
+						</div>
+						<div class="my-5 col-10">
+							<button type="button" class="btn btn-warning col-12" id="form_btn"  onclick="requestPay(); return false;">결제하기</button>
+						</div>
 					</div>
-						<button type="button" class="btn btn-warning col-10" id="form_btn"  onclick="requestPay(); return false;">결제하기</button>
-					<div class="mb-3 col-10">
-					</div>
-				</div>
-			</article>
-		</form>
+				</article>
+				
+			</form>
+		</div>
 	</section>
 	
 	<jsp:include page="../fix/footer.jsp"></jsp:include>
@@ -223,7 +197,12 @@ $(function () {
 	$("#addrTotal").val(addrTotal);	
 });
 
-
+//휴대폰 번호 패턴
+const autoHyphen = function(target) {
+	 target.value = target.value
+	   .replace(/[^0-9]/g, '')
+	  .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+	}
 
 </script>
 

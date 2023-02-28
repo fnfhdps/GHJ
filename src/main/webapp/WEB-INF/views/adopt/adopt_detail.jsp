@@ -8,59 +8,10 @@
 <head>
 <meta charset="UTF-8">
 
-<style type="text/css">
-	#adopt_img{
-		width: 50%;
-	}
-	
-	#blame i{
-		color : red;
-	}
-	
-	i{
-		width: 50px;
-		height: 50px;
-	}
-	
-	.dotted {
-	    height: 1px;
-	    background: url(https://iei.or.kr/resources/images/common/point_bar.png);
-	}
-	
-	._7l1omc0 {
-    display: flex;
-	}
-
-	.adopt_detail_content{
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	
-	.detail_top {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	
-	.image_center, .userInfo_center {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	
-	.action_center {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-</style>
 <!-- 입양 상세 css -->
 <link rel="stylesheet" href="/resources/css/adopt_detail.css">
 <title>입양 목록 상세 조회</title>
+
 </head>
 
 <body>
@@ -87,26 +38,35 @@
 	  </div>
 	
 	  <section class="_5w2z0c0">
-	    <div class="_7l1omc0">
+
 	      <div class="_7l1omc1">
-	        <img src="/resources/image/profile/${login.userImg}" alt="" style="width: 100%; height: 100%;">
+         	<c:choose>
+          	<c:when test="${!empty login.userImg}">
+            	<img id="profile" src="/resources/image/profile/${login.userImg}" alt="" style="width: 100%; height: 100%;">
+          	</c:when>
+          	<c:otherwise>
+          		<img id="profile" src="/resources/image/profile/profile.png" alt="" style="width: 100%; height: 100%;">
+          	</c:otherwise>
+           </c:choose>
 	      </div>
+	      
 	      <div class="_7l1omc3">
 	        <div class="_7l1omc4">${adoptDetail.userId}</div>
 	        <!-- <div class="_7l1omc2">등촌동(여기 뭐씀)</div> -->
-	        </div>
-	        <div class="ms-5">
-	          <div>
+	      </div>
+	      
+	      <div class="d-flex justify-content-end ms-5 h_b_icon">
+	          <div class="">
 	            <input type="hidden" id="heartCnt">
 	            <a id="heart" onclick="checkHeart()"><i id="heartIcon"></i></a>
 	          </div>
-			  <div>
+			  <div class="ms-4">
 	            <input type="hidden" id="blameCnt" value="${blame}">
 	            <a id="blame" onclick="checkBlame()"><i class="bi bi-exclamation-triangle-fill"></i></a>
 			  </div>
-	        </div>
 	      </div>
-	    </section>
+
+	  </section>
 	    
 	    <div class="vpgu1n0"></div>
 	
@@ -169,8 +129,8 @@
 	      <h2 class="_1ff3f301">특이사항 및 상세 설명</h2>
 	      <p class="_1rxa1o40">${adoptDetail.boardContent}</p>
 	
-	      <div class="d-flex">
-	        <p id="article-counts">관심 34 ∙ 신청 45 ∙ 조회 ${adoptDetail.boardCnt} </p>
+	      <div class="d-flex justify-content-between pt-5">
+	        <p id="article-counts" class="reply_text">관심 34 ∙ 신청 45 ∙ 조회 ${adoptDetail.boardCnt} </p>
 	        <div class="text-center dropdown" id="up_del">
 	          <i class="bi bi-three-dots-vertical"
 	              id="dropdownMenuButton1"
@@ -185,30 +145,21 @@
 	      </div>
 	    </section>
 	
-		<!-- ajax로 변경 -->
 	    <article class="pb-5">
-	        <form method="post" id="adopt_form" action="/adopt/hope">
-	          <!-- 시퀀스들 -->
-	          <input type="hidden" id="userSeq" name="userSeq" value="${login.userSeq}">
-	          <input type="hidden" id="boardSeq" name="boardSeq" value="${adoptDetail.boardSeq}">
-	          <input type="hidden" id="detailUserSeq" value="${adoptDetail.userSeq}">
-	          <input type="hidden" id="boardCategory" value="${adoptDetail.boardCategory}">
-		      
-		      <div class="d-grid gap-2 col-12 mx-auto">
-		        <button type="submit"
-		        		class="btn btn-warning"
-		        		id="hopeCheck"
-		        		value="신청하기"
-		        		onclick="checkSubmit(); return false;">
-		        		신청하기
-		        </button>
-		      </div>		
-			</form>
+	      <div class="d-grid gap-2 col-12 mx-auto">
+	        <button type="button"
+	        		class="btn btn-warning"
+	        		id="hopeCheck"
+	        		value="신청하기"
+	        		onclick="checkSubmit(); return false;">
+	        		신청하기
+	        </button>
+	      </div>		
 	    </article>
 	
 	    <article>
-	      <div class="shadow-lg p-3 mb-5 bg-body rounded">
-	          <!-- 댓글 입력 -->
+	      <div class="shadow p-3 mb-5 bg-body rounded">
+	        <!-- 댓글 입력 -->
 	        <div>
 	            <div class="input-group mb-3">
 	              <input id="insert_content" type="text" class="form-control" placeholder="댓글을 입력해주세요.">
@@ -228,38 +179,48 @@
 	        <c:set var="replyUser" value="${reply.userSeq}" />
 	        
 	        <div>
-	          <div class="d-flex">
+	          <div class="d-flex px-2 reply_title">
 	            <!-- 프로필 이미지  -->
-	            <div class="_7l1omc1">
-	              <img src="/resources/image/profile/${reply.userImg}" alt="" style="width: 100%; height: 100%;">
+	            <div class="_7l1omc1 reply_item">
+		         	<c:choose>
+		          	<c:when test="${!empty login.userImg}">
+		            	<img id="profile" src="/resources/image/profile/${login.userImg}" alt="" style="width: 100%; height: 100%;">
+		          	</c:when>
+		          	<c:otherwise>
+		          		<img id="profile" src="/resources/image/profile/profile.png" alt="" style="width: 100%; height: 100%;">
+		          	</c:otherwise>
+		           </c:choose>
 	            </div>
-	            <div class="pt-3">
-	                <span>${reply.userId}</span>
+	            <div class="pt-1 ps-3 reply_item">
+	                <span class="reply_text">${reply.userId}</span>
 	            <c:if test="${replyUser eq loginUser}">
-	                <a class="update_btn" onclick="updateBtn(${reply.replySeq});">수정</a>
-	                <a class="delete_btn" onclick="replyDelete(${reply.replySeq});">삭제</a>
+	                <a class="update_btn reply_text" onclick="updateBtn(${reply.replySeq});">수정</a>
+	                <a class="delete_btn reply_text" onclick="replyDelete(${reply.replySeq});">삭제</a>
 	            </c:if>
+	            </div>
+	            <div class="reply_item">
 	                <fmt:formatDate value="${reply.replyDate}" pattern="yyyy-MM-dd"/>
 	            </div>
 	          </div>
 	            <div>
 	                <input type="hidden" id="replySeq" value="${reply.replySeq}">
 	                <!-- 댓글 -->
-	                <p id="show_content_${reply.replySeq}">${reply.replyContent}</p>
-	                <div class="dotted" style="margin-top: 5px; margin-bottom: 5px;"></div>
+	                <p class="pt-3 px-2" id="show_content_${reply.replySeq}">${reply.replyContent}</p>
+	                <div class="mb-3"></div>
 	                <!-- 수정 누르면 이걸로 바뀜-->
-	                <div class="input-group mb-3">
+	                <div class="input-group">
 	                    <input type="text"
-	                    		class="update_content form-control"
+	                    		class="update_content form-control mb-4"
 	                    		id="content_${reply.replySeq}"
 	                    		value="${reply.replyContent}">
 	                    <button type="button"
-	                    		class="update_content btn btn-outline-secondary"
+	                    		class="update_content btn btn-outline-secondary mb-4"
 	                    		id="button-addon2"
 	                    		onclick="replyUpdate(${reply.replySeq},'#content_${reply.replySeq}');">
 	                    		입력
 	                    </button>
 	                </div>
+	                
 	            </div>
 	        </div>
 	
@@ -268,7 +229,6 @@
 	    </article>
 	    
 	    <article>
-	        <br><br>
 	        <div id="detail_mv">
 	            <div>
 	                <i class="bi bi-chevron-up"></i>
@@ -281,9 +241,15 @@
 	        </div>
 	    </article>
 	</section>
-	
     <jsp:include page="../fix/footer.jsp"></jsp:include>
 </div>
+
+<!-- 시퀀스들 -->
+<input type="hidden" id="userSeq" name="userSeq" value="${login.userSeq}">
+<input type="hidden" id="boardSeq" name="boardSeq" value="${adoptDetail.boardSeq}">
+<input type="hidden" id="detailUserSeq" value="${adoptDetail.userSeq}">
+<input type="hidden" id="boardCategory" value="${adoptDetail.boardCategory}">
+
 <!-- 입양 상세 페이지 js -->
 <script src="/resources/js/adopt_detail.js"></script>
 <!-- 입양 댓글  js -->

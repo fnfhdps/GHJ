@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+.sponsor_title {
+	font-size: 22px bold;
+	/* border-top: 1px solid black; */
+	border-bottom: 1px solid black;
+	padding: 2.4rem;
+	margin-bottom: 1.5rem;
+}
+.sponsor_border{
+ 	border-bottom: 1px solid #ced4da;
+	padding: 2.4rem;
+	
+}
+.sponsor-input{
+	flex: 1 0 0;
+}
+.sponsor_info{
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 1.5rem;
+}
+#sponsor_form{
+	width: 70%;
+	align-content: center;
+}
+.sponsor_from_title{
+	border-bottom: 1px solid #ced4da;
+	font-size: 1rem;
+}
+
+p {
+	font-size: 17px;
+}
+
+.text-end {
+  text-align: right !important;
+}

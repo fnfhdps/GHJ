@@ -14,7 +14,7 @@
 	let url = "";
 	let type = "post";
 	let msg1 = "";
-	let msg2 = "통신오류";
+	let msg2 = "통신 오류";
 	let data = "";
 	
 	// 글 작성자한테는 상태변경, 수정, 삭제 버튼 / 다른 사람한테는 좋아요, 신고, 신청 보이기
@@ -163,12 +163,11 @@
 			contentType: "application/json",
 			success: function(result){
 				if(result == 0) {
-					alert("신청 완료")
-					$("#adopt_form").submit();
+					hopeInsert();
 				} else if(result == 1){
 					alert("이미 신청한 글입니다.");
 					return;
-				} else if(result == 9) {
+				} else {
 					alert("통신 오류");
 					return;
 				}
@@ -179,6 +178,26 @@
 		});
 	};
 
+function hopeInsert() {
+	$.ajax({
+		url: "/adopt/hope",
+		type: "post",
+		data: JSON.stringify(data),
+		dataType: "json",
+		contentType: "application/json",
+		success: function(result){
+			if(result == 0) {
+			} else {
+				alert("통신 오류");
+				return;
+			}
+		},
+		error : function(errorThrown){
+			alert(errorThrown.statusText);
+		}
+	});
+}
+	
 // ---------------------------------------------	
 	
 	let beforeState = $('#state').val();

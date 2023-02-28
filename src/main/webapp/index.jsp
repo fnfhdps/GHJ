@@ -59,8 +59,8 @@
                 유기동물 입양에서 후원까지, 함께해요.<br>가깝고 따뜻한 당신의 가족을 만들어요.
               </p>
             </div>
-            <div class="home-main-image-top">
-                <img srcset="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-top-d6869a79bc4cb58ea59aa5a408decfdf4a4ba60ac639837081da12861083cdbb.webp " class="home-main-image-top" alt="중고거래, 동네생활 질문글과 동네가게" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-top-68ba12f0da7b5af9a574ed92ca8b3a9c0068db176b566dd374ee50359693358b.png">
+            <div class="home-main-image-top main_img">
+                <img src="resources/image/logo/logo2.png" width="540px" height="680px">
             </div>
           </div>
         </section>
@@ -86,9 +86,7 @@
        
         <section class="home-main-section background-gray">
           <div class="home-hot-content">
-            <h1 class="home-main-title text-center home-hot-title">
-               최근 올라온 입양글
-            </h1>
+            <h1 class="home-main-title text-center home-hot-title">최근 올라온 입양글</h1>
             <div class="cards-wrap">
 
 				<c:choose>

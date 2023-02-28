@@ -207,17 +207,7 @@ public class AdoptController {
 		return "redirect:/adopt/list";
 	}
 	
-	// 입양 희망자 신청
-	@PostMapping(value = "/hope")
-	public String insertAdoptReq(AdoptReqDTO adopt, HttpServletRequest request) throws Exception {
-		adoptService.insertAdoptReq(adopt);
-		
-		// 이전 주소로 이동
-		String referer = request.getHeader("Referer");
-		return "redirect:"+referer;
-	}
-	
-	// 입양 희망자 중복 체크
+	// 입양 신청 중복 체크
 	@PostMapping(value = "/hope/check")
 	public @ResponseBody Object hopeCheck(@RequestBody AdoptReqDTO adopt) throws Exception {
 		AdoptReqDTO existAdopt;
@@ -229,8 +219,25 @@ public class AdoptController {
 				return 1;
 			}
 		} catch (Exception e) {
-			return 9;
+			e.printStackTrace();
+			return -1;
 		}
+	}
+	
+	// 입양 신청
+	@PostMapping(value = "/hope")
+	public @ResponseBody int insertAdoptReq(@RequestBody AdoptReqDTO adopt, HttpServletRequest request) throws Exception {
+		try {
+			adoptService.insertAdoptReq(adopt);
+			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+		
+		// 이전 주소로 이동
+//		String referer = request.getHeader("Referer");
+//		return "redirect:"+referer;
 	}
 	
 	// 입양 상태 변경
@@ -250,6 +257,7 @@ public class AdoptController {
 			adoptService.adoptStateUpdate(adopt);
 			return num;
 		} catch (Exception e){
+			e.printStackTrace();
 			return -1;
 		}
 	}

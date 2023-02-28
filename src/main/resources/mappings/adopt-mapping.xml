@@ -117,15 +117,15 @@
 		]]>
 	</update>
 	
-	<!-- 입양 희망자 입력 -->
+	<!-- 입양 신청 -->
 	<insert id="insertAdoptReq" parameterType="int">
 		<![CDATA[
-			INSERT INTO ADOPT_REQ(adoptreqseq, boardseq, userseq, adoptreqdate)
-			VALUES ((select nvl(max(adoptreqseq), 0) + 1 from ADOPT_REQ), #{boardSeq}, #{userSeq}, sysdate)
+			INSERT INTO ADOPT_REQ(adoptreqseq, boardseq, userseq)
+			VALUES ((select nvl(max(adoptreqseq), 0) + 1 from ADOPT_REQ), #{boardSeq}, #{userSeq})
 		]]>
 	</insert>
 	
-	<!-- 입양 희망자 중복 체크  -->
+	<!-- 입양 신청 중복 체크  -->
 	<select id="hopeCheck" resultType="adoptReq">
 		<![CDATA[
 			select *
@@ -164,6 +164,9 @@
 			where boardSeq = #{boardSeq} and userseq = #{userSeq} 
 	   ]]>
 	</delete>
+	
+	<!-- 게시글 총 좋아요 수 -->
+	
 	
 	<!-- 신고 조회 -->
 	<select id="getBlame" resultType="int">

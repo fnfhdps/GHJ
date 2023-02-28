@@ -43,7 +43,6 @@ p {
 }
 html {
         font-size: 62.5%;
-        height: 100%;
     }
     /* 1 section start */
     #home-main-section-top {
@@ -254,3 +253,9 @@ html {
         font-size: 13px;
     }
     /* 3section end */
+    
+    
+    .main_img > img{
+    	margin-left: 100px; 
+   	
+   	}
