@@ -13,7 +13,7 @@
 <div class="wrap">
 	<jsp:include page="/WEB-INF/views/fix/header.jsp"></jsp:include>
 
-	<section class="container">
+	<section class="container-xxl">
 
 		<!-- 광고칸 -->
 		<div id="advertisement">
@@ -50,8 +50,8 @@
 			</div>
 		</div>
 	
-		<main>
-        <section id="home-main-section-top" class="background-pale-peach">
+	  <main>
+<!--         <section id="home-main-section-top" class="background-pale-peach">
           <div id="home-main-top">
             <div class="home-main-desc">
               <h1 class="home-main-title">우리 근처의<br>유기동물</h1>
@@ -63,8 +63,21 @@
                 <img src="resources/image/logo/logo2.png" width="540px" height="680px">
             </div>
           </div>
-        </section>
+        </section> -->
+        
         <section class="home-main-section">
+          <div class="home-main-content">
+            <div>
+              <h1 class="home-main-title">우리 근처의<br>유기동물</h1>
+              <p class="text-m">유기동물 입양에서 후원까지, 함께해요.<br>가깝고 따뜻한 당신의 가족을 만들어요.</p>
+            </div>
+            <div class="home-main-image home-main-image-01">
+                <img srcset="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-1-cc678e9a217b96f5cb459f7f0684f5ba67706f9889801618b8cf879fbc2c0ea7.webp " class="home-main-image-01" alt="우리동네 중고 직거래 사진" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-1-39ac203e8922f615aa3843337871cb654b81269e872494128bf08236157c5f6a.png">
+            </div>
+          </div>
+        </section>
+        
+        <section class="home-main-section sction-top">
           <div class="home-main-content">
             <div class="home-main-image home-main-image-01">
                 <img srcset="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-1-cc678e9a217b96f5cb459f7f0684f5ba67706f9889801618b8cf879fbc2c0ea7.webp " class="home-main-image-01" alt="우리동네 중고 직거래 사진" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-1-39ac203e8922f615aa3843337871cb654b81269e872494128bf08236157c5f6a.png">
@@ -76,15 +89,15 @@
                 
                 지금 나누어 보세요.
               </p>
-              <div class="home-buttons">
-                <a class="home-button text-l text-bold" href="/hot_articles">입양하러 가기</a>
-                <a class="home-button text-l text-bold ml-3" href="/trust">후원하러 가기</a>
+              <div class="home-buttons d-flex">
+                <a id="text-l" class="home-button text-bold btn btn-warning" href="/hot_articles">입양하러 가기</a>
+                <a id="text-l" class="home-button text-bold btn btn-warning ml-3" href="/trust">후원하러 가기</a>
               </div>
             </div>
           </div>
         </section>
        
-        <section class="home-main-section background-gray">
+        <section class="home-main-section">
           <div class="home-hot-content">
             <h1 class="home-main-title text-center home-hot-title">최근 올라온 입양글</h1>
             <div class="cards-wrap">
@@ -103,10 +116,6 @@
 			                        <h2 class="card-title">${adopt.boardTitle}</h2>
 			                        <div class="card-price ">${adopt.adoptKind}</div>
 			                        <div class="card-region-name">${adopt.adoptAddr}</div>
-			                        <div class="card-counts">
-			                        	<span>관심 5</span>
-			                        	<span>채팅 41</span>
-			                        </div>
 			                    </div>
 			                </div>
 			              </article>
@@ -117,7 +126,7 @@
       		</c:choose>
             
             </div>
-            <div class="text-center">
+            <div class="text-center my-5">
               <a class="text-bold text-black text-m" id="hot-articles-more" href="/adopt/list">입양글 더 보기</a>
             </div>
           </div>
