@@ -21,7 +21,7 @@
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
 	
-    <section class="container py-5">
+    <section class="container-xxl py-5">
       <h2 class="adopt_title">입양글 수정</h2>
       <article class="adopt_content d-flex justify-content-center">
         <form class="px-5" id="adoptForm" action="/adopt/update" method="post" enctype="multipart/form-data">

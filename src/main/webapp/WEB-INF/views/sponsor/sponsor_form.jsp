@@ -31,7 +31,7 @@
 		 	<img class="col-12" src="/resources/image/sponsor/sponsor_content.png">	
 			<img class="col-12" src="/resources/image/sponsor/${sponsorItem.sponsorItemImg}">
 		</div>
-		<div class="sponsor_border"></div>
+<!-- 		<div class="sponsor_border"></div> -->
 
 		<div class="d-flex justify-content-center py-4">
 			<form id="sponsor_form">
@@ -164,7 +164,7 @@
 							<input type="checkbox" class="form-check-input">
 							<label class="form-check-label" for="exampleCheck1">구매정보 확인했습니다.</label>
 						</div>
-						<div class="my-5 col-10">
+						<div class=" col-10">
 							<button type="button" class="btn btn-warning col-12" id="form_btn"  onclick="requestPay(); return false;">결제하기</button>
 						</div>
 					</div>

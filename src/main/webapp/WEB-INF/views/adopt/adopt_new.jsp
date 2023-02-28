@@ -20,7 +20,7 @@
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
     
-    <section class="container py-5">
+    <section class="container-xxl py-5">
       <h2 class="adopt_title">입양글 작성</h2>
  
       <article class="adopt_content d-flex justify-content-center">
