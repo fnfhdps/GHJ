@@ -139,7 +139,7 @@ public class AdoptController {
 		}
 
 		adopt.setAdoptState("WAIT");
-		adopt.setBoardCategory(Category.ADOPT);
+		adopt.setBoardCategory("ADOPT");
 		
 		adoptService.insertBoard(adopt);
 		adoptService.insertAdopt(adopt);

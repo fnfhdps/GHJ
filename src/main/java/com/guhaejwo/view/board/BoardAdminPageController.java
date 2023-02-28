@@ -30,6 +30,7 @@ public class BoardAdminPageController {
 		BoardDTO board = new BoardDTO();
 		
 		if(category.equals("adopt")) {
+			System.out.println("adopt 맞음");
 			board.setBoardCategory(Category.ADOPT);
 		}else if(category.equals("notice")) {
 			board.setBoardCategory(Category.NOTICE);

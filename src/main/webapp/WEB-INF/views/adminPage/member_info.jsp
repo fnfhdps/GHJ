@@ -149,7 +149,7 @@
               </article>
   
               <!-- 해당 회원의 작성글?정보? 뭐써야하지 -->
-<!--               <article class="art_sub2 member_content pageBody art_border">
+               <article class="art_sub2 member_content pageBody art_border">
                 <div class="art2_text">
                   <h3>작성게시글</h3>
                 </div>
@@ -187,7 +187,7 @@
                   </table>
               </div>
   
-              </article> -->
+              </article>
             </div>
           </div>
         </section>

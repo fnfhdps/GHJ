@@ -71,6 +71,13 @@
               <span> | </span>
               <a href="/logout">로그아웃</a>
             </div>
+            
+            <div class="admin">
+              <span class="font_bold">${login.userName}님</span>
+              <a href="/admin/member">관리자페이지</a>
+              <span> | </span>
+              <a href="/logout">로그아웃</a>
+            </div>
           </div>
         </div>
 
@@ -78,25 +85,40 @@
     </nav>
     <!-- 유저 시퀀스 -->
     <input id="login_check" type="hidden" value="${login.userSeq}">
+    <!-- 유저 권한 -->
+    <input id="role" type="hidden" value="${login.userRole}">
   </header>
 </body>
 
 <!-- 상단에 회원,비회원  구분 -->
 <script type="text/javascript">
 	const loginCkeck1 = $("#login_check").val();
+	const role = $("#role").val();
+	
 	let userData = { "userSeq" : loginCkeck1}
 
 	$(function() {
-		   // 회원이면 class="member"만 보이기
-		   if(loginCkeck1 == 0){
-		      $(".non_member").css("display", "block");
-		      $(".member").css("display", "none");
-		      
-		   }else{
-		      $(".non_member").css("display", "none");
-		      $(".member").css("display", "block");
-		   }
-		});
+		// 비회원
+		if(loginCkeck1 == 0){
+		   $(".member").css("display", "none");
+		   $(".admin").css("display", "none");
+		   $(".non_member").css("display", "block");
+		}
+		// 회원   
+		else{
+		   $(".non_member").css("display", "none");
+		   if(role === 'USER'){
+			   // 유저
+			   $(".member").css("display", "block");
+			   $(".admin").css("display", "none");
+			}else{
+			   // 관리자
+			   $(".member").css("display", "none");
+			   $(".admin").css("display", "block");
+			}
+		}
+		
+	});
 	
 	// 최근 접속일 업데이트
 	$(function () {

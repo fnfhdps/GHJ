@@ -25,7 +25,7 @@ public class AdoptDTO {
 	private String adoptKind;
 	
 	// board 테이블
-	private Category boardCategory;
+	private String boardCategory;
 	private String boardTitle;
 	private int userSeq;
 	private String boardContent;
@@ -118,10 +118,10 @@ public class AdoptDTO {
 	}
 
 	// board 테이블
-	public Category getBoardCategory() {
+	public String getBoardCategory() {
 		return boardCategory;
 	}
-	public void setBoardCategory(Category boardCategory) {
+	public void setBoardCategory(String boardCategory) {
 		this.boardCategory = boardCategory;
 	}
 	public String getBoardTitle() {
