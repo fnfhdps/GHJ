@@ -23,26 +23,26 @@
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
 	
-	<section class="container py-5">
+	<section class="container-xxl py-5">
 		<div>
 		    <h2 class="sponsor_title">굿즈 구매하기</h2>
 		</div>
-		<div class="row sponsor_border">
+		<div class="row p-5">
 		 	<img class="col-12" src="/resources/image/sponsor/sponsor_content.png">	
 			<img class="col-12" src="/resources/image/sponsor/${sponsorItem.sponsorItemImg}">
-			<div>			
-				<p id="itemName">${sponsorItem.sponsorItemName}</p><br>
-				${sponsorItem.sponsorItemPrice}원
-			</div>
 		</div>
-		
+		<div class="sponsor_border"></div>
+
 		<div class="d-flex justify-content-center py-4">
 			<form id="sponsor_form">
 				<!-- 시퀀스들 -->
 				<input type="hidden" id="userSeq" value="${login.userSeq}">
 				<input type="hidden" id="sponsorItemSeq" value="${sponsorItem.sponsorItemSeq}">
 				
-				<article class="row py-5 justify-content-md-center">
+				<article class="row pt-5 justify-content-md-center">
+					<div class="py-3 col-10">
+						<p class="fs-4 fw-bold" id="itemName">${sponsorItem.sponsorItemName}</p>
+					</div>
 					<div class="mb-3 col-10 d-flex">
 						<label class="col-7 my-1">수량</label>
 						<input class="sponsor-input form-control"

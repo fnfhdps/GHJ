@@ -94,7 +94,7 @@
 	        </div>
 	        <div class="c1kbeo0">
 	          <i class="bi bi-funnel"></i>
-	          <div class="c1kbeo1 c1kbeo2 fw-bold">분류&nbsp;&nbsp;- </div>
+	          <div class="c1kbeo1 c1kbeo2 fw-bold">구분&nbsp;&nbsp;- </div>
 	          <div class="c1kbeo1 c1kbeo2">${adoptDetail.adoptKind}</div>
 	        </div>
 	        <div class="c1kbeo0">

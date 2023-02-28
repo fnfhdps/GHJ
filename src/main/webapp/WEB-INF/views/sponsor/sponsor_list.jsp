@@ -27,7 +27,7 @@
 			    <div class="col mb-5">
 			        <div class="card h-100">
 			            <!-- Product image-->
-			            <img class="card-img-top" src="/resources/image/sponsor/${sponsor.sponsorItemImg}" alt="${sponsor.sponsorItemName}" />
+			            <img class="card-img-top" style="height: 200px" src="/resources/image/sponsor/${sponsor.sponsorItemImg}" alt="${sponsor.sponsorItemName}" />
 			            <!-- Product details-->
 			            <div class="card-body p-4">
 			                <div class="text-center">

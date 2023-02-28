@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 	
 <title>입양 목록 조회</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <style>
  .adopt_img{
@@ -28,9 +27,9 @@
 	padding: 7px;
 	font-weight: 500;
  }
- a:link {color:black; text-decoration: none;}
+/*  a:link {color:black; text-decoration: none;}
  a:visited {color:black; text-decoration: none;}
- a:hover {color:black; text-decoration: underline;}
+ a:hover {color:black; text-decoration: underline;} */
  
  .active{
 	background-color: #cdd5ec;
@@ -81,7 +80,7 @@
 
 	<jsp:include page="../fix/header.jsp"></jsp:include>
 	
-	<section class="py-5">
+	<section class="container py-5">
 		<hr>
 		<div class="search_wrap adopt_list_interface" style="vertical-align:middle; text-align:middle;">
 	       	<div class="search_area">
@@ -111,13 +110,13 @@
 		                  </c:otherwise>
 		                </c:choose>
 	                    <a class="loginCheck" href="/adopt/detail/${list.boardCategory}/${list.boardSeq}/${login.userSeq}">
-	                    	<img class="card-img-top" alt="" src="/resources/image/adopt/${list.adoptImg}">
+	                    	<img class="card-img-top" style="height: 200px" alt="" src="/resources/image/adopt/${list.adoptImg}">
 	                    </a>
 	                    <div class="card-body p-3">
 							<div class="text-center">
 								<h5 class="fw-bolder">${list.boardTitle}</h5>
 								<p>${list.adoptKind}</p>
-								<p>${list.adoptAddr}</p>
+								<p class="m-0">${list.adoptAddr}</p>
 							</div>
 						</div>
 	                </div>
@@ -129,8 +128,8 @@
 	    </div>
 	    
 	    <div>
-		    <div class="text-center">
-				<a href="/adopt/new" style="width:200px; height:50px; color:white;" class="btn btn-secondary">글쓰기</a>
+		    <div class="container px-4 px-lg-5 mt-1 text-end">
+				<a href="/adopt/new" style="width:150px; height:40px;" class="btn btn-outline-dark pt-2">글쓰기</a>
 			</div>
 		     
 		    <div class="pageInfo_wrap" >
