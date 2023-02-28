@@ -9,6 +9,24 @@
 <title>index</title>
 </head>
 
+<style>
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: black;
+  -webkit-box-shadow: 0 0 0px 1000px #b2b2b2 inset;
+  box-shadow: 0 0 0 1000px white inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+</style>
+
 <body>
 <div class="wrap">
 	<jsp:include page="/WEB-INF/views/fix/header.jsp"></jsp:include>

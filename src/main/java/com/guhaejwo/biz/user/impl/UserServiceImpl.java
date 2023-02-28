@@ -70,8 +70,8 @@ public class UserServiceImpl {
 	
 	// 휴대폰 번호 인증
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
-		String api_key = "NCSP1Q8KU7TNOPM4";
-	    String api_secret = "O9ARSGZNYCVH2XDC2NVVKARPQO7YKCRV";
+		String api_key = "NCSBRJQ8ZJL88KHJ";
+	    String api_secret = "GD5KGRDQ8724D8KULIYQSSGIQ90POLNP";
 	    Message coolsms = new Message(api_key, api_secret);
 
 	    // 4 params(to, from, type, text) are mandatory. must be filled
