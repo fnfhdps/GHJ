@@ -35,7 +35,7 @@
       <div class="container-fluid">
       
         <a class="navbar-brand" href="/index">
-          <img id="navImg" src="/resources/image/logo/nav_logo.png" alt="logo">구해줘!펫즈
+          <img id="navImg" src="/resources/image/logo/logo_black.png" alt="logo">구해줘!펫즈
         </a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
