@@ -103,9 +103,9 @@
 	                      </span>
 	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 	                        <li><a class="dropdown-item state">상품준비중</a></li>
-	                        <li><a class="dropdown-item state" onclick="sponsorState(${sponsor.sponsorSeq}, '배송대기중')">배송대기중</a></li>
-	                        <li><a class="dropdown-item state" onclick="sponsorState(${sponsor.sponsorSeq}, '배송중')">배송중</a></li>
-	                        <li><a class="dropdown-item state" onclick="sponsorState(${sponsor.sponsorSeq}, '배송완료')">배송완료</a></li>
+	                        <li><a class="dropdown-item state">배송대기중</a></li>
+	                        <li><a class="dropdown-item state">배송중</a></li>
+	                        <li><a class="dropdown-item state">배송완료</a></li>
 	                      </ul>
 	                      <input type="hidden" value="${sponsor.sponsorSeq}">
 	                      

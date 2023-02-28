@@ -35,14 +35,14 @@ public class SponsorController {
 
 	// 후원 상품 목록 조회
 	@GetMapping(value = "/list")
-	public String getSponsorItemList(SponsorItemDTO sponsor, Model model) {
+	public String getSponsorItemList(SponsorItemDTO sponsor, Model model) throws Exception {
 		model.addAttribute("sponsorItemList", sponsorService.getSponsorItemList());
 		return "/sponsor/sponsor_list";
 	}
 	
 	// 후원 상품 상세 조회
 	@GetMapping(value = "/get/{seq}")
-	public String getSponsorItem(@PathVariable("seq") int sponsorItemSeq, HttpServletRequest req) {		
+	public String getSponsorItem(@PathVariable("seq") int sponsorItemSeq, HttpServletRequest req) throws Exception{		
 		SponsorItemDTO sponsorItem = new SponsorItemDTO();
 		sponsorItem.setSponsorItemSeq(sponsorItemSeq);
 		
@@ -51,10 +51,16 @@ public class SponsorController {
 		return "/sponsor/sponsor_form";
 	}
 	
-	// 후원 내역 입력
+	// 후원 상품 구매
 	@PostMapping(value = "/insert")
-	@ResponseBody
-	public int insertSponsor(@RequestBody SponsorDTO sponsor) {
+	public String insertSponsor(SponsorDTO sponsor) throws Exception {
+		System.out.println("후원값 확인"+sponsor);
+		sponsorService.insertSponsor(sponsor);
+		
+		return "redirect:/sponsor/list";
+	}
+	
+/*	public int insertSponsor(@RequestBody SponsorDTO sponsor) {
 		System.out.println("");
 		try {
 			sponsorService.insertSponsor(sponsor);
@@ -63,5 +69,5 @@ public class SponsorController {
 			e.printStackTrace();
 			return -1;
 		}
-	}
+	}*/
 }

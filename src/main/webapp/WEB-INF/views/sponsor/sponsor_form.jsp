@@ -34,10 +34,12 @@
 <!-- 		<div class="sponsor_border"></div> -->
 
 		<div class="d-flex justify-content-center py-4">
-			<form id="sponsor_form">
+			<form id="sponsor_form" action="/sponsor/insert" method="post">
 				<!-- 시퀀스들 -->
-				<input type="hidden" id="userSeq" value="${login.userSeq}">
-				<input type="hidden" id="sponsorItemSeq" value="${sponsorItem.sponsorItemSeq}">
+				<input type="hidden" id="userSeq" name="userSeq" value="${login.userSeq}">
+				<input type="hidden" id="sponsorItemSeq" name="sponsorItemSeq" value="${sponsorItem.sponsorItemSeq}">
+				<!-- 결제 방법 이거 테스트용이라 결과 값이 안받아짐-->
+				<input type="hidden" name="payment" value="kakao">
 				
 				<article class="row pt-5 justify-content-md-center">
 					<div class="py-3 col-10">
@@ -47,6 +49,7 @@
 						<label class="col-7 my-1">수량</label>
 						<input class="sponsor-input form-control"
 								id="amount"
+								name="sponsorAmount"
 								type="number"
 								min="1"
 								max="100"
@@ -58,6 +61,7 @@
 						<input class="form-control"
 								type="text"
 								id="total"
+								name="sponsorTotalPrice"
 								value="${sponsorItem.sponsorItemPrice}"
 								readonly="readonly">
 					</div>
@@ -96,7 +100,9 @@
 							<label class="form-label">이름</label>
 							<input class="form-control"
 								 	type="text"
-								 	id="sponsorName">
+								 	id="sponsorName"
+								 	name="sponsorName"
+								 	value="${login.userName}">
 						</div>
 						<div class="mb-3 col-10">
 							<label class="form-label">휴대폰번호</label> 
@@ -104,7 +110,9 @@
 									type="text"
 									maxlength="13"
 									id="sponsorPhone"
-									oninput="autoHyphen(this)">
+									name="sponsorPhone"
+									oninput="autoHyphen(this)"
+									value="${login.userPhone}">
 						</div>
 						
 						<!-- 주소 합쳐서 저장하기 -->
@@ -157,7 +165,8 @@
 							<label class="form-label">배송 메모</label> 
 							<input class="form-control"
 									type="text"
-									id="memo">
+									id="memo"
+									name="memo">
 						</div>
 						
 						<div class="mb-5 col-10">
@@ -180,6 +189,7 @@
 <script type="text/javascript">
 
 // 상품 총 가격
+
 $("#amount").click(function() {
 	let amount = $("#amount").val();
 	const price = $("#price").val();
@@ -189,12 +199,13 @@ $("#amount").click(function() {
 });
 
 // 주소 합치기
-$(function () {
+let addrTotal = "";
+$("#form_btn").click(function () {
 	let addr1 = $("#addr1").val();
 	let addr2 = $("#addr2").val();
 	let addr3 = $("#addr3").val();
-	const addrTotal = "(" + addr1 + ") " + addr2 + " " + addr3;
-	$("#addrTotal").val(addrTotal);	
+	addrTotal = "(" + addr1 + ") " + addr2 + " " + addr3;
+	$("#addrTotal").val(addrTotal);
 });
 
 //휴대폰 번호 패턴

@@ -80,7 +80,7 @@
 
 	<jsp:include page="../fix/header.jsp"></jsp:include>
 	
-	<section class="container py-5">
+	<section class="container-xxl py-5">
 		<hr>
 		<div class="search_wrap adopt_list_interface" style="vertical-align:middle; text-align:middle;">
 	       	<div class="search_area">
