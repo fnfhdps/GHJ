@@ -24,8 +24,9 @@
 		$("#blame").css('display', 'none');
 	}else{
 		$("#stateupdate").css('display', 'none');
-		$("#update").css('display', 'none');
-		$("#delete").css('display', 'none');
+		$("#up_del").css('display', 'none');
+//		$("#update").css('display', 'none');
+//		$("#delete").css('display', 'none');
 	}
 	
 	// 중복 ajax 함수로 만듦
