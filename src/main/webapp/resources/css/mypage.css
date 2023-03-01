@@ -387,16 +387,12 @@ background-color: rgba(0,0,0,0.6);
 }
 .myinfo_area .myphoto img {
   border: 1px solid rgba(0, 0, 0, 0.07);
-/*   box-shadow: 0 3px 6px 0 rgb(29 34 53 / 8%); */
   border-radius: 50%;
   vertical-align: top;
   width: 100px;
   height: 100px;
 }
-/* .myinfo_area .myaccount .myname {
-  position: relative;
-  padding-right: 70px;
-} */
+
 .myinfo_area .myaccount .myname{
   margin: 0 16px;
 }

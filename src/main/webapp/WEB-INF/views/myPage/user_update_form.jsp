@@ -11,8 +11,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- header&footer css -->
-<link rel="stylesheet" href="/resources/css/fix.css">
 <!-- mypage css -->
 <link rel="stylesheet" href="/resources/css/mypage.css">
 <title>내정보수정</title>
@@ -47,15 +45,17 @@
 	                  <li>
 	                      <div class="myphoto">
 		                    <!-- 프로필 사진 없으면 기본 사진 보임 -->
-				          	<c:choose>
-					          	<c:when test="${!empty login.userImg}">
-					            	<img id="profile" src="/resources/image/profile/${login.userImg}" >
-					          	</c:when>
-					          	<c:otherwise>
-					          		<img id="profile" src="/resources/image/profile/profile.png">
-					          	</c:otherwise>
-				            </c:choose>
-				            <input id="" type="file" name="adoptFile" accept="image/*" onchange="readURL(this);"> 
+		                    <label for="file">
+					            <input id="file" type="file" name="adoptFile" accept="image/*" onchange="readURL(this);" hidden=""> 
+					          	<c:choose>
+						          	<c:when test="${!empty login.userImg}">
+						            	<img id="img_read" src="/resources/image/profile/${login.userImg}">
+						          	</c:when>
+						          	<c:otherwise>
+						          		<img id="img_read" src="/resources/image/profile/profile.png">
+						          	</c:otherwise>
+					            </c:choose>
+		                    </label>
 	                      </div>
 	                  </li>
 	                  <li>
@@ -261,26 +261,17 @@
   </div>
 </div>
 
-<script type="text/javascript">
-function readURL(input) {
-	  if (input.files && input.files[0]) {
-	    var reader = new FileReader();
-	    reader.onload = function(e) {
-	      document.getElementById('profile').src = e.target.result;
-	    };
-	    reader.readAsDataURL(input.files[0]);
-	  } else {
-	    document.getElementById('profile').src = "";
-	  }
-	}
-</script>
+<!-- 이미지 미리보기 js -->
+<script src="/resources/js/readURL.js"></script>
 
 <!-- 카카오 api -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
 <!-- 주소 api -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- 주소 js -->
 <script src="/resources/js/addr.js"></script>
+
 <!-- 회원 정보 수정 js -->
 <script src="/resources/js/user_update_form.js"></script>
 <!-- 회원 탈퇴 js -->

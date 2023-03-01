@@ -89,8 +89,6 @@ public class AdoptController {
 	    model.addAttribute("blame", adoptService.getBlame(blame));
 	    
 	    // 조회수 카운트
-//	    int boardCnt = adoptDetail.getBoardCnt();
-//	    adopt.setBoardCnt(boardCnt);
 	    adoptService.updateBoardCnt(adoptDetail);
 		
 		return "adopt/adopt_detail";
@@ -233,11 +231,7 @@ public class AdoptController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
-		}
-		
-		// 이전 주소로 이동
-//		String referer = request.getHeader("Referer");
-//		return "redirect:"+referer;
+		}	
 	}
 	
 	// 입양 상태 변경
@@ -310,7 +304,6 @@ public class AdoptController {
 		blame.setReq_userSeq(req_userSeq);
 		model.addAttribute("blaSeq", blame);
 		return "/adopt/adoptBlameAction";
-
 	}
 
 	// 신고 글 입력
