@@ -32,7 +32,7 @@ public class CsController {
 	@GetMapping("/notice")
 	public String getNoticeList(Model model) {
 		BoardDTO board = new BoardDTO();
-		board.setBoardCategory(Category.NOTICE);
+		board.setBoardCategory("NOTICE");
 		model.addAttribute("boardList", boardService.getBoardList(board));
 		return "/cs/notice";
 	}

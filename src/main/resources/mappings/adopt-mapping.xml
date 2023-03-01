@@ -98,7 +98,7 @@
    		
     </select>
 	
-	 <!-- 입양 목록 게시물 총 갯수 -->
+	<!-- 입양 목록 게시물 총 갯수 -->
     <select id="getAdoptTotalCount" resultType="int">
 	    <![CDATA[
 	        select count(*) from board, adopt where 1=1 and board.boardseq = adopt.boardseq

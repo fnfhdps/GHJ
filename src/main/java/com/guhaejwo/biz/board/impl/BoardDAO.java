@@ -6,7 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.guhaejwo.biz.adopt.AdoptDTO;
 import com.guhaejwo.biz.board.BoardDTO;
+import com.guhaejwo.biz.paging.Criteria;
 
 @Repository
 public class BoardDAO {
@@ -42,6 +44,7 @@ public class BoardDAO {
 		return mybatis.selectOne("BoardDAO.getBoard", board);
 	}
 	
+	
 	// 내 qna 목록 조회 (마이페이지)
 	public List<BoardDTO> getBoardListMyPage(BoardDTO board){
 		System.out.println("--> BoardRepository.getBoardListMyPage() 실행");
@@ -71,6 +74,18 @@ public class BoardDAO {
 		System.out.println("--> BoardRepository.getBoardList() 실행");
 		return mybatis.selectList("BoardDAO.getBoardList", board);
 	}
+	
+	// 입양, 공지사항, 1:1 목록 조회 (관리자페이지) / 페이징 적용
+	public List<BoardDTO> getBoardListPaging(Criteria cri){
+		System.out.println("--> BoardRepository.getBoardListPaging() 실행");
+		return mybatis.selectList("BoardDAO.getBoardListPaging", cri);
+	}
+	
+	// 입양, 공지사항, 1:1 목록 조회 (관리자페이지) / 총 갯수
+		public int getBoardTotalCount(Criteria cri){
+			System.out.println("--> AdoptRepository.getBoardTotalCount() 실행");
+			return mybatis.selectOne("BoardDAO.getBoardTotalCount", cri);
+		}
 	
 	// 조회수 증가
 	public void updateBoardCnt(BoardDTO board) {

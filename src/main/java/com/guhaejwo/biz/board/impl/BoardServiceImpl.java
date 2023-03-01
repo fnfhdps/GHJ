@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.guhaejwo.biz.adopt.AdoptDTO;
 import com.guhaejwo.biz.board.BoardDTO;
 import com.guhaejwo.biz.board.BoardService;
+import com.guhaejwo.biz.paging.Criteria;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService{
@@ -41,7 +43,7 @@ public class BoardServiceImpl implements BoardService{
 	public BoardDTO getBoard(BoardDTO board) {
 		return boardDAO.getBoard(board);
 	}
-
+	
 	@Override
 	public List<BoardDTO> getBoardListMyPage(BoardDTO board) {
 		return boardDAO.getBoardListMyPage(board);
@@ -65,6 +67,16 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<BoardDTO> getBoardList(BoardDTO board) {
 		return boardDAO.getBoardList(board);
+	}
+	
+	@Override
+	public List<BoardDTO> getBoardListPaging(Criteria cri) {
+		return boardDAO.getBoardListPaging(cri);
+	}
+	
+	@Override
+	public int getBoardTotalCount(Criteria cri) {
+		return boardDAO.getBoardTotalCount(cri);
 	}
 
 	@Override
