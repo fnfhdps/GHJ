@@ -49,13 +49,13 @@
 		                    <!-- 프로필 사진 없으면 기본 사진 보임 -->
 				          	<c:choose>
 					          	<c:when test="${!empty login.userImg}">
-					            	<img id="profile" src="/resources/image/profile/${login.userImg}">
+					            	<img id="profile" src="/resources/image/profile/${login.userImg}" >
 					          	</c:when>
 					          	<c:otherwise>
 					          		<img id="profile" src="/resources/image/profile/profile.png">
 					          	</c:otherwise>
 				            </c:choose>
-				            <input id="" type="file" name="adoptFile" accept="image/*"> 
+				            <input id="" type="file" name="adoptFile" accept="image/*" onchange="readURL(this);"> 
 	                      </div>
 	                  </li>
 	                  <li>
@@ -260,6 +260,20 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+function readURL(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('profile').src = e.target.result;
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+	    document.getElementById('profile').src = "";
+	  }
+	}
+</script>
 
 <!-- 카카오 api -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
