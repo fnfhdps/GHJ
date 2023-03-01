@@ -7,7 +7,7 @@ public class ChartServiceImpl implements ChartService{
 
 	@Override
 	public ChartDTO weekJoinCnt() {
-		return 
+		return null;
 	}
 
 	@Override
