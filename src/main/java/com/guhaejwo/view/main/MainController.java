@@ -33,9 +33,4 @@ public class MainController {
 		model.addAttribute("indexAdopt", adoptService.getAdoptList(adopt));
 		return "redirect: index.jsp";
 	}
-	
-//	@GetMapping("/index")
-//	public String getMainPage(HttpSession session) {
-//		return "redirect: index.jsp";
-//	}
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.guhaejwo.biz.adopt.AdoptDTO;
 import com.guhaejwo.biz.board.BoardDTO;
 import com.guhaejwo.biz.board.BoardService;
 import com.guhaejwo.biz.paging.Criteria;

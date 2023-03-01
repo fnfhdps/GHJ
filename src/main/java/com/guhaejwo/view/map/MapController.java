@@ -12,9 +12,4 @@ public class MapController {
 	public String kakaoMap() {
 		return "/map/map";
 	}
-	
-	@GetMapping("/chart")
-	public String userChart() {
-		return "/adminPage/index";
-	}
 }

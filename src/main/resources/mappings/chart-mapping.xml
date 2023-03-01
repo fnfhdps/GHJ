@@ -11,37 +11,37 @@
 			        from users
 			        where to_char(regdate,'yyyymmdd') =
 			        to_char(trunc(sysdate, 'd'),'yyyymmdd'
-			        ))as "sun",
+			        ))as sun,
 			        (select count(*)
 			        from users
 			        where to_char(regdate,'yyyymmdd') =
 			        to_char(trunc(sysdate, 'd')+1,'yyyymmdd'
-			        ))as "mon",
+			        ))as mon,
 			        (select count(*)
 			        from users
 			        where to_char(regdate,'yyyymmdd') =
 			        to_char(trunc(sysdate, 'd')+2,'yyyymmdd'
-			        ))as "tue",
+			        ))as tue,
 			        (select count(*)
 			        from users
 			        where to_char(regdate,'yyyymmdd') =
 			        to_char(trunc(sysdate, 'd')+3,'yyyymmdd'
-			        ))as "wed",
+			        ))as wed,
 			        (select count(*)
 			        from users
 			        where to_char(regdate,'yyyymmdd') =
 			        to_char(trunc(sysdate, 'd')+4,'yyyymmdd'
-			        ))as "thu",
+			        ))as thu,
 			        (select count(*)
 			        from users
 			        where to_char(regdate,'yyyymmdd') =
 			        to_char(trunc(sysdate, 'd')+5,'yyyymmdd'
-			        ))as "fri",
+			        ))as fri,
 			        (select count(*)
 			        from users
 			        where to_char(regdate,'yyyymmdd') =
 			        to_char(trunc(sysdate, 'd')+6,'yyyymmdd'
-			        ))as "sat"
+			        ))as sat
 			from dual
 		]]>
 	</select>
