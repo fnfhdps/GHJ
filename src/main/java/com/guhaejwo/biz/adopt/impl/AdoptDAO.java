@@ -68,13 +68,13 @@ public class AdoptDAO {
 	
 	// 입양 목록 조회(페이징)
 		public List<AdoptDTO> getAdoptListPaging(Criteria cri){
-			System.out.println("--> AdoptRepository.getAdoptList() 실행2");
+			System.out.println("--> AdoptRepository.getAdoptListPaging() 실행");
 			return mybatis.selectList("AdoptDAO.getAdoptListPaging", cri);
 		}
 	
 	// 입양 목록 게시판 총 갯수 
 	public int getAdoptTotalCount(Criteria cri){
-		System.out.println("--> AdoptRepository.getAdoptList() 실행3");
+		System.out.println("--> AdoptRepository.getAdoptTotalCount() 실행");
 		return mybatis.selectOne("AdoptDAO.getAdoptTotalCount");
 	}
 	

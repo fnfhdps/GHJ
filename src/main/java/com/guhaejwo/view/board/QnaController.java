@@ -30,7 +30,7 @@ public class QnaController {
 	// qna 목록 조회 (마이페이지)
 	@GetMapping("/mypage/qna/{seq}")
 	public String qnaList(@PathVariable("seq") int userSeq, BoardDTO board, Model model) throws Exception {
-		board.setBoardCategory(Category.QNA);
+		board.setBoardCategory("QNA");
 		board.setUserSeq(userSeq);
 		model.addAttribute("qnaList", boardService.getBoardListMyPage(board));
 	return "/myPage/qna_list";
@@ -60,7 +60,7 @@ public class QnaController {
 	// qna 입력 (마이페이지)
 	@PostMapping("/mypage/qna/new")
 	public String qnaNew(BoardDTO board) throws Exception {
-		board.setBoardCategory(Category.QNA);
+		board.setBoardCategory("QNA");
 		boardService.insertBoard(board);
 
 		int userSeq = board.getUserSeq();

@@ -82,6 +82,42 @@
 		]]>
 	</select>
 	
+	<!-- 입양, 공지사항, 1:1 목록 조회 (관리자페이지) / 페이징 적용 -->
+    <select id="getBoardListPaging" resultType="board">
+    	<![CDATA[
+		     SELECT * FROM (SELECT rownum as rn, a.*
+		     FROM (select ROW_NUMBER() OVER(ORDER BY board.boardseq) as num, board.*, users.userid
+				   from board, users
+				   where 1=1
+				   and users.userseq = board.userseq
+				   and boardCategory = #{boardCategory}
+	    ]]>
+		    <if test="keyword != null">
+		    	and boardTitle like '%'||#{keyword}||'%'
+		    </if>
+	    <![CDATA[
+			    order by num desc
+			    ) a
+			  	WHERE ROWNUM <= ${pageNum} * ${amount}
+				)
+				WHERE rn > (${pageNum} - 1) * ${amount}
+   		]]>
+   		
+    </select>
+    
+    <!-- 입양, 공지사항, 1:1 목록 조회 (관리자페이지) / 총 갯수 -->
+    <select id="getBoardTotalCount" resultType="int">
+	    <![CDATA[
+	        select count(*) from board, users
+	        where 1=1
+	        and users.userseq = board.userseq
+	        and boardCategory = #{boardCategory}
+	    ]]>
+	    	<if test="keyword != null">
+				and boardTitle like '%'||#{keyword}||'%'
+			</if>
+    </select>
+	
 	<!-- qna 이전글 조회 -->
 	<select id="getBefore" resultType="board">
 			select *

@@ -1,5 +1,7 @@
 package com.guhaejwo.biz.paging;
 
+import com.guhaejwo.biz.board.Category;
+
 public class Criteria {
 	
 	 /* 현재 페이지 */
@@ -11,6 +13,8 @@ public class Criteria {
     /* 검색어 키워드 */
     private String keyword;
     
+    private String boardCategory;
+    
     /* 기본 생성자 -> 기본 세팅 : pageNum = 1, amount = 12 */
     public Criteria() {
         this(1,12);
@@ -21,6 +25,14 @@ public class Criteria {
         this.pageNum = pageNum;
         this.amount = amount;
     }
+    
+	public String getBoardCategory() {
+		return boardCategory;
+	}
+
+	public void setBoardCategory(String boardCategory) {
+		this.boardCategory = boardCategory;
+	}
 
 	public int getPageNum() {
 		return pageNum;
@@ -48,7 +60,9 @@ public class Criteria {
 
 	@Override
 	public String toString() {
-		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + "]";
+		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + ", boardCategory="
+				+ boardCategory + "]";
 	}
+
     
 }

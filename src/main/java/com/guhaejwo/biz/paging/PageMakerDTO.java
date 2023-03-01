@@ -17,6 +17,8 @@ public class PageMakerDTO {
     /* 현재 페이지, 페이지당 게시물 표시수 정보 */
     private Criteria cri;
 	
+    private String boardCategory;
+    
     /* 생성자 */
     public PageMakerDTO(Criteria cri, int total) {
         
@@ -42,7 +44,18 @@ public class PageMakerDTO {
         /* 마지막 페이지(endPage)값이 1보다 큰 경우 true */
         this.next = this.endPage < realEnd;
         
+        // 카테고리 값
+        this.boardCategory = cri.getBoardCategory();
+        
     }
+    
+	public String getBoardCategory() {
+		return boardCategory;
+	}
+
+	public void setBoardCategory(String boardCategory) {
+		this.boardCategory = boardCategory;
+	}
 
 	public int getStartPage() {
 		return startPage;
@@ -95,9 +108,7 @@ public class PageMakerDTO {
 	@Override
 	public String toString() {
 		return "PageMakerDTO [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
-				+ ", total=" + total + ", cri=" + cri + "]";
+				+ ", total=" + total + ", cri=" + cri + ", boardCategory=" + boardCategory + "]";
 	}
     
-    
-	
 }
