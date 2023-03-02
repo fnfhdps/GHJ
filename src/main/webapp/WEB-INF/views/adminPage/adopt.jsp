@@ -37,51 +37,44 @@
           <h1 class="h2">입양글관리</h1>
         </div>
 
-            
-<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
-    	<section class="container-xxl py-5">
-    		<article class="member_content member_size pageBody">
+    	<section class="member_container">
+    	  <article class="member_content member_size pageBody">
+    	
+	        <div class="search_area input-group mb-4">
+	       		<input type="text" class="form-control" name="keyword" placeholder="검색할 제목을 입력해주세요" value="${pageMaker.cri.keyword }">
+	            <button type="button" class="btn btn-outline-secondary">검색</button>
+	       	</div>
     		
-    		 <div class="d-flex comment_title tbl_caption">
-	              <div class="mt-2">
+    		<div class="d-flex comment_title tbl_caption">
+    			<div class="mt-2">
 	                <span>게시글수</span>
 	                <span>${totalCnt}</span>
-	              </div>
-	              </div>
+           		</div>
+
+		   	    <div class="pageInfo_wrap" >
+		        	<div class="pageInfo_area">
+		        		<ul id="pageInfo" class="pageInfo pagination">
+			                <!-- 이전페이지 버튼 -->
+			                <c:if test="${pageMaker.prev}">
+			                    <li class="pageInfo_btn previous page-item"><a class="page-link" href="${pageMaker.startPage-1}">Previous</a></li>
+			                </c:if>
+			        		<!-- 각 번호 페이지 버튼 -->
+			                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                    <li class="pageInfo_btn page-item ${pageMaker.cri.pageNum == num ? "active":"" }"><a class="page-link" href="${num}">${num}</a></li>
+			                </c:forEach>
+			                <!-- 다음페이지 버튼 -->
+			                <c:if test="${pageMaker.next}">
+			                    <li class="pageInfo_btn next page-item"><a class="page-link" href="${pageMaker.endPage + 1 }">Next</a></li>
+			                </c:if>    
+		        		</ul>
+		        	</div>
+		    	</div>
+			</div>
     		
-    		
-	  			<div class="search_area input-group">
-		       		<input type="text" class="form-control" name="keyword" placeholder="검색할 제목을 입력해주세요" value="${pageMaker.cri.keyword }">
-		            <button type="button" class="btn btn-outline-secondary">검색</button>
-		       	</div>
-		   		<br>
-	   		
-	   	 <div class="pageInfo_wrap" >
-	        	<div class="pageInfo_area">
-	        		<ul id="pageInfo" class="pageInfo pagination">
-		                <!-- 이전페이지 버튼 -->
-		                <c:if test="${pageMaker.prev}">
-		                    <li class="pageInfo_btn previous page-item"><a class="page-link" href="${pageMaker.startPage-1}">Previous</a></li>
-		                </c:if>
-		        		<!-- 각 번호 페이지 버튼 -->
-		                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-		                    <li class="pageInfo_btn page-item ${pageMaker.cri.pageNum == num ? "active":"" }"><a class="page-link" href="${num}">${num}</a></li>
-		                </c:forEach>
-		                <!-- 다음페이지 버튼 -->
-		                <c:if test="${pageMaker.next}">
-		                    <li class="pageInfo_btn next page-item"><a class="page-link" href="${pageMaker.endPage + 1 }">Next</a></li>
-		                </c:if>    
-	        		</ul>
-	        	</div>
-	    	</div>
-	    	
-<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
-  
             <div class="table_content">
               <table class="table">
                 <thead>
                   <tr>
-                    <th class=""><input type="checkbox" name="" id=""></th>
                     <th class="">번호</th>
                     <th class="">제목</th>
                     <th class="">작성자</th>
@@ -97,9 +90,6 @@
 	       		  <c:when test="${!empty boardList}">
 				    <c:forEach items="${boardList}" var="board">
 	                  <tr>
-	                    <td class="text-center">
-	                      <input type="checkbox" name="" id="">
-	                    </td>	                    
 	                    <td class="text-center">${board.num}</td>
 	                    <td class="text-center">${board.boardTitle}</td>
 	                    <td class="text-center">${board.userId}</td>
@@ -114,24 +104,19 @@
 	                      </i>
 	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 	                        <li><a class="dropdown-item" href="/adopt/detail/${board.boardCategory}/${board.boardSeq}/${board.userSeq}">이동</a></li>
-	                        <li><a class="dropdown-item" href="#">숨김</a></li>
-	                        <li><a class="dropdown-item" href="#">삭제</a></li>
+	                        <li><a class="dropdown-item" onclick="boardDelete(${board.boardSeq});">삭제</a></li>
 	                      </ul>
 	                    </td>
 	                  </tr>
 				    </c:forEach>
 		          </c:when>
 			   	  <c:otherwise>
-		   		  	<td class="text-center" colspan="4">1:1 문의 내역이 없습니다.</td>
+		   		  	<td class="text-center" colspan="7">검색 결과가 없습니다.</td>
 		   		  </c:otherwise>        
 	     	    </c:choose>
                 </tbody>
                 
               </table>
-            </div>
-
-            <div class="notice_btn d-flex justify-content-end">
-              <a href="#" type="button" class="btn btnAuthentication">선택 삭제</a>
             </div>
             </article>
         </section>
@@ -144,23 +129,15 @@
         <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	</form>
   
-  <script>
-	let moveForm = $("#moveForm");
+<script type="text/javascript">
+	const url = "/admin/adopt/delete"; 
+	const successPath = "/admin/adopt";
+</script>
 
-	$(".pageInfo a").on("click", function(e){
-	       e.preventDefault();
-	       moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-	       moveForm.attr("action", "/admin/adopt");
-	       moveForm.submit();
-	});
-  
-  $(".search_area button").on("click", function(e){
-      e.preventDefault();
-      let val = $("input[name='keyword']").val();
-      moveForm.find("input[name='keyword']").val(val);
-      moveForm.find("input[name='pageNum']").val(1);
-      moveForm.submit();
-  });
-  </script>
+<!-- 검색 이벤트 js -->
+<script src="/resources/js/search.js"></script>
+
+<!-- 관리자 계정 삭제 js -->
+<script src="/resources/js/admin_board_delete.js"></script>
 </body>
 </html>

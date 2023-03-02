@@ -37,76 +37,40 @@
           <h1 class="h2">1:1문의관리</h1>
         </div>
 
-        <%-- <section class="member_container">
-          <article class="member_content member_size pageBody">
-            <div class="mb-4">
-              <input class="form-control" type="text" placeholder="Search" type="text" name="" id="">
-            </div>
-  
-            <div class="d-flex comment_title tbl_caption">
-              <div class="mt-2">
-                <span>문의수</span>
-                <span>${totalCnt}</span>
-              </div>
-              
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div> --%>
-            
-<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
-    	<section class="container-xxl py-5">
-    		<article class="member_content member_size pageBody">
+    	<section class="member_container">
+    	  <article class="member_content member_size pageBody">
+    	
+	        <div class="search_area input-group mb-4">
+	       		<input type="text" class="form-control" name="keyword" placeholder="검색할 제목을 입력해주세요" value="${pageMaker.cri.keyword }">
+	            <button type="button" class="btn btn-outline-secondary">검색</button>
+	       	</div>
     		
     		<div class="d-flex comment_title tbl_caption">
     			<div class="mt-2">
-	                <span>문의수</span>
+	                <span>게시글수</span>
 	                <span>${totalCnt}</span>
            		</div>
+           		
+		   	 	<div class="pageInfo_wrap" >
+		        	<div class="pageInfo_area">
+		        		<ul id="pageInfo" class="pageInfo pagination">
+			                <!-- 이전페이지 버튼 -->
+			                <c:if test="${pageMaker.prev}">
+			                    <li class="pageInfo_btn previous page-item"><a class="page-link" href="${pageMaker.startPage-1}">Previous</a></li>
+			                </c:if>
+			        		<!-- 각 번호 페이지 버튼 -->
+			                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                    <li class="pageInfo_btn page-item ${pageMaker.cri.pageNum == num ? "active":"" }"><a class="page-link" href="${num}">${num}</a></li>
+			                </c:forEach>
+			                <!-- 다음페이지 버튼 -->
+			                <c:if test="${pageMaker.next}">
+			                    <li class="pageInfo_btn next page-item"><a class="page-link" href="${pageMaker.endPage + 1 }">Next</a></li>
+			                </c:if>    
+		        		</ul>
+		        	</div>
+		    	</div>
            	</div>
-           	<br>
-    		
-		       	<div class="search_area input-group">
-		       		<input type="text" class="form-control" name="keyword" placeholder="검색할 제목을 입력해주세요" value="${pageMaker.cri.keyword }">
-		            <button type="button" class="btn btn-outline-secondary">검색</button>
-		       	</div>
-		   		<br>
-	   	
-	   	 <div class="pageInfo_wrap" >
-	        	<div class="pageInfo_area">
-	        		<ul id="pageInfo" class="pageInfo pagination">
-		                <!-- 이전페이지 버튼 -->
-		                <c:if test="${pageMaker.prev}">
-		                    <li class="pageInfo_btn previous page-item"><a class="page-link" href="${pageMaker.startPage-1}">Previous</a></li>
-		                </c:if>
-		        		<!-- 각 번호 페이지 버튼 -->
-		                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-		                    <li class="pageInfo_btn page-item ${pageMaker.cri.pageNum == num ? "active":"" }"><a class="page-link" href="${num}">${num}</a></li>
-		                </c:forEach>
-		                <!-- 다음페이지 버튼 -->
-		                <c:if test="${pageMaker.next}">
-		                    <li class="pageInfo_btn next page-item"><a class="page-link" href="${pageMaker.endPage + 1 }">Next</a></li>
-		                </c:if>    
-	        		</ul>
-	        	</div>
-	    	</div>
-	    	
-<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
-  
+
             <div class="table_content">
               <table class="table">
                 <thead>
@@ -160,24 +124,12 @@
         <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
         <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	</form>
-  
-  <script>
-  let moveForm = $("#moveForm");
 
-	$(".pageInfo a").on("click", function(e){
-	       e.preventDefault();
-	       moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-	       moveForm.attr("action", "/admin/qna");
-	       moveForm.submit();
-	});
+<script type="text/javascript">
+	const successPath = "/admin/qna";
+</script>
 
-	$(".search_area button").on("click", function(e){
-	    e.preventDefault();
-	    let val = $("input[name='keyword']").val();
-	    moveForm.find("input[name='keyword']").val(val);
-	    moveForm.find("input[name='pageNum']").val(1);
-	    moveForm.submit();
-	});
-  </script>
+<!-- 검색 이벤트 js -->
+<script src="/resources/js/search.js"></script>
 </body>
 </html>
