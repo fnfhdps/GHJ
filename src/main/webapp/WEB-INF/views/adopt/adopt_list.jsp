@@ -14,7 +14,6 @@
  	width: 40px;
  	height: 40px;
  }
- 
  .pageInfo{
 	list-style : none;
 	display: inline-block;
@@ -27,14 +26,9 @@
 	padding: 7px;
 	font-weight: 500;
  }
-/*  a:link {color:black; text-decoration: none;}
- a:visited {color:black; text-decoration: none;}
- a:hover {color:black; text-decoration: underline;} */
- 
  .active{
 	background-color: #cdd5ec;
  }
-  
  .search_area{
 	display: inline-block;
 	margin-top: 30px;
@@ -65,13 +59,72 @@
     width: 100%;
     color: var(--seed-scale-color-gray-900);
 }
+.search_wrap, .pageInfo_wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
 
-	.search_wrap, .pageInfo_wrap {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
+/* 검색부분 */
+.section {
+  margin-bottom: 40px;
+}
+.hero {
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  padding: 0 20px;
+  text-align: center;
+  width: 100%;
+  background-color: blanchedalmond;
+}
+.hero-inner {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 610px;
+  margin: 0 auto;
+}
+.search {
+  position: relative;
+}
+.search input{
+  line-height: normal;
+  font-size: 14px;
+  font-weight: 300;
+  max-width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border .12s ease-in-out;
+}
+.search input[type="search"] {
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  box-sizing: border-box;
+  color: #999;
+  height: 40px;
+  padding-left: 40px;
+  padding-right: 20px;
+  /* -webkit-appearance: none; */
+  width: 100%;
+}
+.search-full input[type="search"] {
+  border: 1px solid #fff;
+}
+.search::before {
+  line-height: 1em;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  color: #777;
+  content: "\1F50D";
+  font-size: 18px;
+  position: absolute;
+  left: 15px;
+}
 </style>
 <body>
 
@@ -80,13 +133,23 @@
 
 	<jsp:include page="../fix/header.jsp"></jsp:include>
 	
+	  <section class="hero">
+	    <div class="hero-inner">
+	      <form role="search" class="search search-full">
+	       <!--  <input name="keyword" type="hidden" value="✓" autocomplete="off"> -->
+	        <input type="search"
+	        		name="keyword"
+	        		id="query"
+	        		placeholder="검색"
+	        		autocomplete="off"
+	        		aria-label="검색"
+	        		value="${pageMaker.cri.keyword}">
+	      </form>
+	    </div>
+	  </section>
+	
 	<section class="container-xxl py-5">
 		<div class="search_wrap adopt_list_interface" style="vertical-align:middle; text-align:middle;">
-	       	<div class="search_area">
-	       		<input type="text" style="vertical-align:middle; text-align:middle;" class="_1knjz49b" name="keyword" placeholder="검색할 제목을 입력해주세요" value="${pageMaker.cri.keyword }">
-	            <button type="button" style="vertical-align:middle; text-align:middle;" class="btn btn-dark">검색</button>
-	       	</div>
-	       	
 	       	<div class="container px-4 px-lg-5 mt-5">
 				<input class="form-check-input mx-2 p-3" type="checkbox" id="flexCheckDefault" style="float:left;" name="keyword2" value="WAIT">
 				<label class="form-check-label my-2" for="flexCheckDefault">입양대기만 보이기</label>
@@ -101,10 +164,7 @@
 					<option value="제주권">제주권</option>
 			   </select>
 			</div>
-			
 	   	</div>   
-		
-		
 		
 	    <div class="container px-4 px-lg-5 mt-5">
 	        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -166,6 +226,8 @@
     	
 	</section>	
 	
+    <jsp:include page="../fix/footer.jsp"></jsp:include>
+
 	<form id="moveForm" method="get">
 	    <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
         <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
@@ -173,61 +235,60 @@
         <input type="hidden" name="keyword2" value="${pageMaker.cri.keyword2}">
         <input type="hidden" name="keyword3" value="${pageMaker.cri.keyword3}">
 	</form>
-	
 	<input type="hidden" id="userSeq" value="${login.userSeq}">
 	
-	<script>
-	
-	let moveForm = $("#moveForm");
-	
-	$(".move").on("click", function(e){
-		e.preventDefault();
-		moveForm.append("<input type='hidden' name='boardSeq' value='"+$(this).attr("href")+ "'>");
-		moveForm.attr("action", "/adopt/get");
-		moveForm.submit();
-	});
-	
-	$(".pageInfo a").on("click", function(e){
-        e.preventDefault();
-        moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-        moveForm.attr("action", "/adopt/list");
-        moveForm.submit();
-    });
-	
-	$(".search_area button").on("click", function(e){
-        e.preventDefault();
-        let val = $("input[name='keyword']").val();
-        moveForm.find("input[name='keyword']").val(val);
-        moveForm.find("input[name='pageNum']").val(1);
-        
-        moveForm.submit();
-    });
-	
-	$("#select-search").on("change", function(e){
-		alert('fffffffffff');
-    });
-	
-	// 로그인 체크후 게시글 상세 이동
-	const loginCkeck2 = $("#userSeq").val();
-	$("a.loginCheck").click(function () {
-		if (loginCkeck2 == 0) {
-			alert("로그인 후 열람 가능");
-			return false;
-		}
-	});
-	
-	$("input:checkbox").click(function(e) {
-		if($(this).is(":checked")){
-			alert('aa');
-		}else {
-			alert('bb');
-		}
-	});
-
-	</script>
-
-    <jsp:include page="../fix/footer.jsp"></jsp:include>
 </div>
+
+<script>
+let moveForm = $("#moveForm");
+
+$(".move").on("click", function(e){
+	e.preventDefault();
+	moveForm.append("<input type='hidden' name='boardSeq' value='"+$(this).attr("href")+ "'>");
+	moveForm.attr("action", "/adopt/get");
+	moveForm.submit();
+});
+
+$(".pageInfo a").on("click", function(e){
+       e.preventDefault();
+       moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+       moveForm.attr("action", "/adopt/list");
+       moveForm.submit();
+   });
+
+// 검색 js
+$("input[type='search']").on("keyup", function(e){
+    // 엔터키 눌렀을 때 이벤트 실행
+	if(key.keyCode==13) {
+       e.preventDefault();
+       let val = $("input[name='keyword']").val();
+       moveForm.find("input[name='keyword']").val(val);
+       moveForm.find("input[name='pageNum']").val(1);
+       moveForm.submit();
+    }
+   });
+
+$("#select-search").on("change", function(e){
+	alert('fffffffffff');
+   });
+
+// 로그인 체크후 게시글 상세 이동
+const loginCkeck2 = $("#userSeq").val();
+$("a.loginCheck").click(function () {
+	if (loginCkeck2 == 0) {
+		alert("로그인 후 열람 가능");
+		return false;
+	}
+});
+
+$("input:checkbox").click(function(e) {
+	if($(this).is(":checked")){
+		alert('aa');
+	}else {
+		alert('bb');
+	}
+});
+</script>
 </body>
 
 </html>

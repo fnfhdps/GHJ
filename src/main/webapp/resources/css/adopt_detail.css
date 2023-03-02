@@ -1,6 +1,24 @@
+/* 캐러셀(이미지슬라이드) 이미지 크기변경 */
+ .carousel-inner{
+   width:auto;
+   height: 468px; /* 이미지 높이 변경 */
+ }
+ .carousel-inner img{
+   overflow: hidden;
+object-fit: cover;
+ }
+ .carousel-item{
+   width: auto;
+   height:100%;
+ }
+ .d-block {
+   display:block;
+   width: auto;
+   height: 100%;
+ }
+
 .reply_text{
-	font-size: 14px;
-	
+	font-size: 14px;	
 }
 .update_btn, .delete_btn, #article-counts{
 	color: rgb(130, 140, 148);

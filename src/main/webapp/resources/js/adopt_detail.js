@@ -3,6 +3,7 @@
  */
 
 // input을 공백으로 넘기면 null이 아니라 0으로 인식됨
+	
 	const category = $('#boardCategory').val();
 	const boardSeq = $('#boardSeq').val();
 	const userSeq2 = $('#userSeq').val();

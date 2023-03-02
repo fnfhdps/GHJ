@@ -11,7 +11,6 @@
 <!-- 입양 상세 css -->
 <link rel="stylesheet" href="/resources/css/adopt_detail.css">
 <title>입양 목록 상세 조회</title>
-
 </head>
 
 <body>
@@ -20,12 +19,42 @@
 	<jsp:include page="../fix/header.jsp"></jsp:include>
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
+
+	<!-- 부트스트랩 캐러셀 적용 디자인, 단점 화질구지 -->
+	<section class="xg0zir1 undefined">
+		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+		  <div class="carousel-indicators">
+		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		  </div>
+		  
+		  <div class="carousel-inner">
+		    <div class="carousel-item active">
+		      <img src="/resources/image/adopt/${adoptDetail.adoptImg}" class="d-block w-100" alt="...">
+		    </div>
+		    <div class="carousel-item">
+		      <img src="/resources/image/adopt/${adoptDetail.adoptImg}" class="d-block w-100" alt="...">
+		    </div>
+		    <div class="carousel-item">
+		      <img src="/resources/image/adopt/${adoptDetail.adoptImg}" class="d-block w-100" alt="...">
+		    </div>
+		  </div>
+		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Previous</span>
+		  </button>
+		  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Next</span>
+		  </button>
+		</div>
+	</section>
 	
+	<!-- 당근 디자인 -->
 	<section class="xg0zir1 undefined">
 	  <div class="swiper swiper-initialized swiper-horizontal swiper-pointer-events _14tcepa0 swiper-backface-hidden">
-	    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock">
-	      <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-	    </div>
+	    
 	    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 	      <div class="swiper-slide swiper-slide-active" style="width: 768px;">
 	        <div class="_14tcepa4">
@@ -35,7 +64,8 @@
 	        </div>
 	      </div>
 	    </div>
-	    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+	    
+<%-- 	    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 	      <div class="swiper-slide swiper-slide-active" style="width: 768px;">
 	        <div class="_14tcepa4">
 	          <span style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:absolute;top:0;left:0;bottom:0;right:0">
@@ -52,7 +82,7 @@
 	          </span>
 	        </div>
 	      </div>
-	    </div>
+	    </div> --%>
 	  </div>
 	
 	  <section class="_5w2z0c0">
@@ -73,14 +103,18 @@
 	        <!-- <div class="_7l1omc2">등촌동(여기 뭐씀)</div> -->
 	      </div>
 	      
+	      
 	      <div class="d-flex justify-content-end ms-5 h_b_icon">
+		      <div class="">
+		       	  <input type="hidden" id="state" value="${adoptDetail.adoptState}">
+		          <input type="button" class="btn btn-outline-dark" id="stateupdate" onclick="stateUpdate();"> 
+		      </div>
 	          <div class="">
 	            <input type="hidden" id="heartCnt">
-	            <a id="heart" onclick="checkHeart()"><i id="heartIcon"></i></a>
+	            <a id="heart" onclick="checkHeart();"><i id="heartIcon"></i></a>
 	          </div>
 			  <div class="ms-4">
-	            <input type="hidden" id="blameCnt" value="${blame}">
-	            <a id="blame" onclick="checkBlame()"><i class="bi bi-exclamation-triangle-fill"></i></a>
+	            <a id="blame" onclick="checkBlame();"><i class="bi bi-exclamation-triangle-fill"></i></a>
 			  </div>
 	      </div>
 
@@ -122,20 +156,22 @@
 	        <div class="c1kbeo0">
 	          <i class="bi bi-sort-numeric-up-alt"></i>
 	          <div class="c1kbeo1 c1kbeo2 fw-bold">
-	            나이<small>(추정)</small>&nbsp;&nbsp;-
+	            	나이<small>(추정)</small>&nbsp;&nbsp;-
 	          </div>
 	          <div class="c1kbeo1 c1kbeo2">${adoptDetail.adoptAge}살</div>
 	        </div>
 	        <div class="c1kbeo0">
 	          <i class="bi bi-speedometer2"></i>
 	          <div class="c1kbeo1 c1kbeo2 fw-bold">
-	            몸무게<small>(추정)</small>&nbsp;&nbsp;-
+	            	몸무게<small>(추정)</small>&nbsp;&nbsp;-
 	          </div>
 	          <div class="c1kbeo1 c1kbeo2">${adoptDetail.adoptWeight}Kg</div>
 	        </div>
 	        <div class="c1kbeo0">
 	          <i class="bi bi-clipboard-check"></i>
-	          <div class="c1kbeo1 c1kbeo2 fw-bold">중성화&nbsp;&nbsp;- </div>
+	          <div class="c1kbeo1 c1kbeo2 fw-bold">
+	          		중성화<small>(추정)</small>&nbsp;&nbsp;-
+	          </div>
 	          <div class="c1kbeo1 c1kbeo2">${adoptDetail.adoptNeutor}</div>
 	        </div>
 	
@@ -190,7 +226,7 @@
 	            <hr>
 	        </div>
 	        
-	        <!-- 댓글 목록, 수정, 삭제 -->
+	    <!-- 댓글 목록, 수정, 삭제 -->
 	    <c:forEach items="${replyList}" var="reply">
 	        <c:set var="loginUser" value="${login.userSeq}" />
 	        <c:set var="replyUser" value="${reply.userSeq}" />
@@ -259,6 +295,51 @@
 	    </article>
 	</section>
     <jsp:include page="../fix/footer.jsp"></jsp:include>
+</div>
+
+<!-- 신고하기 Modal-->
+<div class="modal fade" id="withdrawModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">신고하기</h3>
+        <button type="button" class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><i class="bi bi-x-lg"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="modalBody">
+
+	        <form>
+	          <div class="mb-4">
+			      <label class="form-label">신고사유</label>
+			      <select class="form-select" id="blaTitle" required="required">
+			        	<option value='' selected>-- 선택 --</option>
+						<option value='1'>음란물입니다.</option>
+						<option value='2'>불법정보를 포함하고 있습니다.</option>
+						<option value='3'>청소년에게 유해한 내용입니다.</option>
+						<option value='4'>욕설/생명경시/혐오/차별적 표현입니다.</option>
+						<option value='5'>개인정보 노출 개시물입니다,</option>
+						<option value='6'>불쾌한 표현이 있습니다.</option>
+			      </select>
+	   	  	  </div>
+	   	  	  <div class="mb-3">
+				  <label class="form-label">신고내용</label>
+				  <textarea class="form-control" id="blaContent" rows="7" placeholder="신고글의 내용을 입력하세요"></textarea>
+		 	  </div> 
+	        </form>
+
+          </div>
+      </div>
+      <div class="modal-footer">
+        <div class="px-3">
+			<input class="btn btn-dark" type="button" value="신고하기" onclick="insertBlame();">
+        </div>
+        
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- 시퀀스들 -->

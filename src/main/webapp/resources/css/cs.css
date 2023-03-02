@@ -101,8 +101,6 @@
 .blocks-item .blocks-item-link:hover{
   color: white;
 }
-
-
 .blocks-item-title {
   margin-bottom: 0;
   font-weight: 700;
@@ -155,14 +153,9 @@ ul {
 }
 
 .search::before {
-  /* font-family: "copenhagen-icons";
-  font-style: normal;
-  font-weight: normal;
-  speak: none; */
   line-height: 1em;
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;
-  /* position: relative; */
   top: 50%;
   transform: translateY(-50%);
   background-color: #fff;
