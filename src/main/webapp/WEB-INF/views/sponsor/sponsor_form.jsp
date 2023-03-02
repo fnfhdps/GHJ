@@ -9,15 +9,10 @@
 
 <!-- 후원 상품 상세 css -->
 <link rel="stylesheet" href="/resources/css/sponsor_form.css">
-
 <title>후원하기</title>
 </head>
+
 <body>
-<!--
-여러 상품 등록시 선택한 상품 정보 입력되도록
-저장된 전화번호가 없으면 회원 정보에서 수정하도록 만들기
-입력 이후
--->
 <div class="wrap">
 	<jsp:include page="../fix/header.jsp"></jsp:include>
 	<!-- 회원만 열람 가능 -->

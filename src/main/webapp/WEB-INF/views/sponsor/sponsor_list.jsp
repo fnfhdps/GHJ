@@ -28,7 +28,7 @@
 			        <div class="card h-100">
 						<a href="/sponsor/get/${sponsor.sponsorItemSeq}">
 				            <img class="card-img-top"
-				            	style="height: 250px"
+				            	style="height: 250px;overflow: hidden;object-fit: cover;"
 				            	src="/resources/image/sponsor/${sponsor.sponsorItemImg}"
 				            	alt="${sponsor.sponsorItemName}" />
 						</a>
@@ -38,10 +38,6 @@
 			                    <small>${sponsor.sponsorItemPrice} 원</small>
 			                </div>
 			            </div>
-			            <!-- Product actions-->
-<%-- 			            <div class="card-footer pt-2 border-top-0 bg-transparent">
-			                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/sponsor/get/${sponsor.sponsorItemSeq}">후원하기</a></div>
-			            </div> --%>
 			        </div>
 			    </div>
 			    </c:forEach> 

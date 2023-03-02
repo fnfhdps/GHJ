@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+ .adopt_img{
+ 	width: 40px;
+ 	height: 40px;
+ }
+ .pageInfo{
+	list-style : none;
+	display: inline-block;
+	margin: 50px 0 0 100px;      
+ }
+ .pageInfo li{
+	float: left;
+	font-size: 20px;
+	margin-left: 18px;
+	padding: 7px;
+	font-weight: 500;
+ }
+ .active{
+	background-color: #cdd5ec;
+ }
+ .search_area{
+	display: inline-block;
+	margin-top: 30px;
+	margin-left: 260px;
+ }
+ .search_area input{
+	height: 30px;
+	width: 250px;
+ }
+ .search_area button{
+	width: 100px;
+	height: 36px;
+ }
+ 
+ .adoptSize{
+ 	width: 70px;
+ }
+ 
+ #gnb-root ._1knjz49b {
+    line-height: 1.4;
+    font-size: 1.4rem;
+    background-color: var(--seed-scale-color-gray-100);
+    box-sizing: border-box;
+    height: 4rem;
+    padding: 0.9rem 1.2rem;
+    border: none;
+    border-radius: 0.6rem;
+    width: 100%;
+    color: var(--seed-scale-color-gray-900);
+}
+.search_wrap, .pageInfo_wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 검색부분 */
+.section {
+  margin-bottom: 40px;
+}
+.hero {
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  padding: 0 20px;
+  text-align: center;
+  width: 100%;
+  background-color: blanchedalmond;
+}
+.hero-inner {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 610px;
+  margin: 0 auto;
+}
+.search {
+  position: relative;
+}
+.search input{
+  line-height: normal;
+  font-size: 14px;
+  font-weight: 300;
+  max-width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border .12s ease-in-out;
+}
+.search input[type="search"] {
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  box-sizing: border-box;
+  color: #999;
+  height: 40px;
+  padding-left: 40px;
+  padding-right: 20px;
+  /* -webkit-appearance: none; */
+  width: 100%;
+}
+.search-full input[type="search"] {
+  border: 1px solid #fff;
+}
+.search::before {
+  line-height: 1em;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  color: #777;
+  content: "\1F50D";
+  font-size: 18px;
+  position: absolute;
+  left: 15px;
+}

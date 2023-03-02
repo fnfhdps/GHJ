@@ -6,129 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	
+
+<!-- 입양 목록 css -->
+<link rel="stylesheet" href="/resources/css/adopt_list.css">
 <title>입양 목록 조회</title>
 </head>
-<style>
- .adopt_img{
- 	width: 40px;
- 	height: 40px;
- }
- .pageInfo{
-	list-style : none;
-	display: inline-block;
-	margin: 50px 0 0 100px;      
- }
- .pageInfo li{
-	float: left;
-	font-size: 20px;
-	margin-left: 18px;
-	padding: 7px;
-	font-weight: 500;
- }
- .active{
-	background-color: #cdd5ec;
- }
- .search_area{
-	display: inline-block;
-	margin-top: 30px;
-	margin-left: 260px;
- }
- .search_area input{
-	height: 30px;
-	width: 250px;
- }
- .search_area button{
-	width: 100px;
-	height: 36px;
- }
- 
- .adoptSize{
- 	width: 70px;
- }
- 
- #gnb-root ._1knjz49b {
-    line-height: 1.4;
-    font-size: 1.4rem;
-    background-color: var(--seed-scale-color-gray-100);
-    box-sizing: border-box;
-    height: 4rem;
-    padding: 0.9rem 1.2rem;
-    border: none;
-    border-radius: 0.6rem;
-    width: 100%;
-    color: var(--seed-scale-color-gray-900);
-}
-.search_wrap, .pageInfo_wrap {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
 
-/* 검색부분 */
-.section {
-  margin-bottom: 40px;
-}
-.hero {
-  background-position: center;
-  background-size: cover;
-  height: 300px;
-  padding: 0 20px;
-  text-align: center;
-  width: 100%;
-  background-color: blanchedalmond;
-}
-.hero-inner {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: 610px;
-  margin: 0 auto;
-}
-.search {
-  position: relative;
-}
-.search input{
-  line-height: normal;
-  font-size: 14px;
-  font-weight: 300;
-  max-width: 100%;
-  box-sizing: border-box;
-  outline: none;
-  transition: border .12s ease-in-out;
-}
-.search input[type="search"] {
-  border: 1px solid #ddd;
-  border-radius: 30px;
-  box-sizing: border-box;
-  color: #999;
-  height: 40px;
-  padding-left: 40px;
-  padding-right: 20px;
-  /* -webkit-appearance: none; */
-  width: 100%;
-}
-.search-full input[type="search"] {
-  border: 1px solid #fff;
-}
-.search::before {
-  line-height: 1em;
-  vertical-align: middle;
-  -webkit-font-smoothing: antialiased;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #fff;
-  color: #777;
-  content: "\1F50D";
-  font-size: 18px;
-  position: absolute;
-  left: 15px;
-}
-</style>
 <body>
-
-	
 <div class="wrap">
 
 	<jsp:include page="../fix/header.jsp"></jsp:include>
@@ -136,7 +20,6 @@
 	  <section class="hero">
 	    <div class="hero-inner">
 	      <form role="search" class="search search-full">
-	       <!--  <input name="keyword" type="hidden" value="✓" autocomplete="off"> -->
 	        <input type="search"
 	        		name="keyword"
 	        		id="query"
@@ -148,7 +31,7 @@
 	    </div>
 	  </section>
 	
-	<section class="container-xxl py-5">
+	<section class="container-xxl px-4 px-lg-5">
 		<div class="search_wrap adopt_list_interface" style="vertical-align:middle; text-align:middle;">
 	       	<div class="container px-4 px-lg-5 mt-5">
 				<input class="form-check-input mx-2 p-3" type="checkbox" id="flexCheckDefault" style="float:left;" name="keyword2" value="WAIT">
@@ -168,32 +51,42 @@
 		
 	    <div class="container px-4 px-lg-5 mt-5">
 	        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
 	            <c:forEach items="${list}" var="list">
-
 	            <div class="col mb-5" >
 	                <div class="card h-100">
 		                <c:choose>
 		                  <c:when test="${list.adoptState eq 'WAIT'}">
-			                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">입양대기</div>
+			                <div class="badge bg-dark text-white position-absolute" style="top: 0.6rem; right: 0.6rem">입양대기</div>
 		                  </c:when>
 		                  <c:otherwise>
-		                  	<div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">입양완료</div>
+		                  	<div class="badge bg-danger text-white position-absolute" style="top: 0.6rem; right: 0.6rem">입양완료</div>
 		                  </c:otherwise>
 		                </c:choose>
 	                    <a class="loginCheck" href="/adopt/detail/${list.boardCategory}/${list.boardSeq}/${login.userSeq}">
-	                    	<img class="card-img-top" style="height: 200px" alt="" src="/resources/image/adopt/${list.adoptImg}">
+	                    	<img class="card-img-top"
+	                    		style="height: 250px;overflow: hidden;object-fit: cover;"
+	                    		alt="${list.boardTitle}"
+	                    		src="/resources/image/adopt/${list.adoptImg}">
 	                    </a>
-	                    <div class="card-body p-3">
-							<div class="text-center">
-								<h5 class="fw-bolder">${list.boardTitle}</h5>
-								<p>${list.adoptKind}</p>
-								<p class="m-0">${list.adoptAddr}</p>
+	                    <div class="card-body">
+							<div class="">
+								<div class="fw-normal pb-2">${list.boardTitle}</div>
+								<c:choose>
+									<c:when test="${list.adoptKind eq 'DOG'}">
+										<small>강아지</small>
+									</c:when>
+									<c:when test="${list.adoptKind eq 'CAT'}">
+										<small>고양이</small>
+									</c:when>
+									<c:otherwise>
+										<small>${list.adoptKind}</small>
+									</c:otherwise>
+								</c:choose>
+								<small> / ${list.adoptAddr}</small>
 							</div>
 						</div>
 	                </div>
 	            </div>
-
 	            </c:forEach>
 
 	        </div>
@@ -236,7 +129,6 @@
         <input type="hidden" name="keyword3" value="${pageMaker.cri.keyword3}">
 	</form>
 	<input type="hidden" id="userSeq" value="${login.userSeq}">
-	
 </div>
 
 <script>

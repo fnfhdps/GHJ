@@ -58,7 +58,6 @@
          });
 	}
     
-    
 // ----------------------------------------------
     
     // 신고 조회
@@ -76,6 +75,7 @@
             	alert(JSON.stringify(result));
                 if(result == 1){
                 	alert("이미 신고 하였습니다");
+                	$('#withdrawModal').modal("hide");
                 } else if (result == 0){
                     $('#withdrawModal').modal("show");
                 } else {
@@ -109,8 +109,8 @@
             dataType : 'json',
             contentType : "application/json",
             success : function(result){
-            	alert(JSON.stringify(result));
                 if(result == 0){
+                	$('#withdrawModal').modal("hide");
                 	alert("신고 완료");
                 } else {
                 	alert("통신 오류");
