@@ -15,9 +15,9 @@
 	<!-- 입양 글 입력-->
 	<insert id="insertAdopt">
 		<![CDATA[
-			INSERT INTO adopt(boardSeq, adoptImg, adoptSex, adoptRescueDate, adoptAge, adoptAddr, adoptWeight, adoptNeutor, adoptState, adoptKind)
+			INSERT INTO adopt(boardSeq, adoptImg, adoptSex, adoptRescueDate, adoptAge, adoptAddr, adoptWeight, adoptNeutor, adoptState, adoptKind, adoptImg2, adoptImg3)
 			VALUES ((select max(boardseq) from BOARD), #{adoptImg}, #{adoptSex}, #{adoptRescueDate},
-			#{adoptAge}, #{adoptAddr}, #{adoptWeight}, #{adoptNeutor, jdbcType=VARCHAR}, #{adoptState}, #{adoptKind})
+			#{adoptAge}, #{adoptAddr}, #{adoptWeight}, #{adoptNeutor, jdbcType=VARCHAR}, #{adoptState}, #{adoptKind}, #{adoptImg2, jdbcType=VARCHAR}, #{adoptImg3, jdbcType=VARCHAR})
 		]]>
 	</insert>
 	
@@ -55,7 +55,7 @@
 			select username, userid, board.boardSeq, board.boardCategory, board.boardTitle,
 					board.userSeq, board.boardContent, board.boardDate, adopt.adoptImg,
 					adopt.adoptSex, adopt.adoptRescueDate, adopt.adoptAge, adopt.adoptAddr,
-					adopt.adoptWeight, adopt.adoptNeutor, adopt.adoptState, adopt.adoptKind, board.boardCnt
+					adopt.adoptWeight, adopt.adoptNeutor, adopt.adoptState, adopt.adoptKind, board.boardCnt, adopt.adoptImg2, adopt.adoptImg3
 			from board, adopt, users
 			where board.boardseq = adopt.boardseq
 			and board.userseq = users.userseq
@@ -87,6 +87,12 @@
 	    ]]>
 		    <if test="keyword != null">
 		    	and boardTitle like '%'||#{keyword}||'%'
+		    </if>
+		    <if test="keyword2 != null">
+		    	and adoptState like '%'||#{keyword2}||'%'
+		    </if>
+		    <if test="keyword3 != null">
+		    	and adoptAddr like '%'||#{keyword3}||'%'
 		    </if>
 	    <![CDATA[
 			    order by board.boardseq desc
