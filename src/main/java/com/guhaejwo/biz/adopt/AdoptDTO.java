@@ -14,6 +14,8 @@ public class AdoptDTO {
 	// adopt 테이블
 	private int boardSeq;
 	private String adoptImg;
+	private String adoptImg2;
+	private String adoptImg3;
 	private String adoptSex;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date adoptRescueDate;
@@ -56,9 +58,27 @@ public class AdoptDTO {
 	}
 
 	// adopt 테이블
+	
+	
 	public int getBoardSeq() {
 		return boardSeq;
 	}
+	public String getAdoptImg2() {
+		return adoptImg2;
+	}
+
+	public void setAdoptImg2(String adoptImg2) {
+		this.adoptImg2 = adoptImg2;
+	}
+
+	public String getAdoptImg3() {
+		return adoptImg3;
+	}
+
+	public void setAdoptImg3(String adoptImg3) {
+		this.adoptImg3 = adoptImg3;
+	}
+
 	public void setBoardSeq(int boardSeq) {
 		this.boardSeq = boardSeq;
 	}
@@ -169,15 +189,16 @@ public class AdoptDTO {
 		this.userId = userId;
 	}
 
+
 	@Override
 	public String toString() {
 		return "AdoptDTO [totalCnt=" + totalCnt + ", rownum=" + rownum + ", boardSeq=" + boardSeq + ", adoptImg="
-				+ adoptImg + ", adoptSex=" + adoptSex + ", adoptRescueDate=" + adoptRescueDate + ", adoptAge="
-				+ adoptAge + ", adoptAddr=" + adoptAddr + ", adoptWeight=" + adoptWeight + ", adoptNeutor="
-				+ adoptNeutor + ", adoptState=" + adoptState + ", adoptKind=" + adoptKind + ", boardCategory="
-				+ boardCategory + ", boardTitle=" + boardTitle + ", userSeq=" + userSeq + ", boardContent="
-				+ boardContent + ", boardDate=" + boardDate + ", boardCnt=" + boardCnt + ", userName=" + userName
-				+ ", userId=" + userId + "]";
+				+ adoptImg + ", adoptImg2=" + adoptImg2 + ", adoptImg3=" + adoptImg3 + ", adoptSex=" + adoptSex
+				+ ", adoptRescueDate=" + adoptRescueDate + ", adoptAge=" + adoptAge + ", adoptAddr=" + adoptAddr
+				+ ", adoptWeight=" + adoptWeight + ", adoptNeutor=" + adoptNeutor + ", adoptState=" + adoptState
+				+ ", adoptKind=" + adoptKind + ", boardCategory=" + boardCategory + ", boardTitle=" + boardTitle
+				+ ", userSeq=" + userSeq + ", boardContent=" + boardContent + ", boardDate=" + boardDate + ", boardCnt="
+				+ boardCnt + ", userName=" + userName + ", userId=" + userId + "]";
 	}
 
 }

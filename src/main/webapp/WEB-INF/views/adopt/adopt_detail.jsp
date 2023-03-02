@@ -35,6 +35,24 @@
 	        </div>
 	      </div>
 	    </div>
+	    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+	      <div class="swiper-slide swiper-slide-active" style="width: 768px;">
+	        <div class="_14tcepa4">
+	          <span style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:absolute;top:0;left:0;bottom:0;right:0">
+	            <img alt="" src="/resources/image/adopt/${adoptDetail.adoptImg2}" class="_19qbbiq0 _19qbbiq1" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover">
+	          </span>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+	      <div class="swiper-slide swiper-slide-active" style="width: 768px;">
+	        <div class="_14tcepa4">
+	          <span style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:absolute;top:0;left:0;bottom:0;right:0">
+	            <img alt="" src="/resources/image/adopt/${adoptDetail.adoptImg3}" class="_19qbbiq0 _19qbbiq1" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover">
+	          </span>
+	        </div>
+	      </div>
+	    </div>
 	  </div>
 	
 	  <section class="_5w2z0c0">

@@ -81,18 +81,30 @@
 	<jsp:include page="../fix/header.jsp"></jsp:include>
 	
 	<section class="container-xxl py-5">
-		<hr>
 		<div class="search_wrap adopt_list_interface" style="vertical-align:middle; text-align:middle;">
 	       	<div class="search_area">
 	       		<input type="text" style="vertical-align:middle; text-align:middle;" class="_1knjz49b" name="keyword" placeholder="검색할 제목을 입력해주세요" value="${pageMaker.cri.keyword }">
 	            <button type="button" style="vertical-align:middle; text-align:middle;" class="btn btn-dark">검색</button>
 	       	</div>
+	       	
+	       	<div class="container px-4 px-lg-5 mt-5">
+				<input class="form-check-input mx-2 p-3" type="checkbox" id="flexCheckDefault" style="float:left;" name="keyword2" value="WAIT">
+				<label class="form-check-label my-2" for="flexCheckDefault">입양대기만 보이기</label>
+				
+		       <select class="form-select" id="select-search" name="keyword3" aria-label="Default select example" style="float:right; margin-left:10px; width:30%" value="${pageMaker.cri.keyword3 }">
+					<option selected>지역을 선택하세요</option>
+					<option value="수도권">수도권</option>
+					<option value="강원권">강원권</option>
+					<option value="충청권">충청권</option>
+					<option value="전라권">전라권</option>
+					<option value="경상권">경상권</option>
+					<option value="제주권">제주권</option>
+			   </select>
+			</div>
+			
 	   	</div>   
 		
-		<div class="container px-4 px-lg-5 mt-5">
-		  <input class="form-check-input mx-2 p-3" type="checkbox" id="flexCheckDefault">
-		  <label class="form-check-label my-2" for="flexCheckDefault">입양대기만 보이기</label>
-		</div>
+		
 		
 	    <div class="container px-4 px-lg-5 mt-5">
 	        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -158,6 +170,8 @@
 	    <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
         <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
         <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+        <input type="hidden" name="keyword2" value="${pageMaker.cri.keyword2}">
+        <input type="hidden" name="keyword3" value="${pageMaker.cri.keyword3}">
 	</form>
 	
 	<input type="hidden" id="userSeq" value="${login.userSeq}">
@@ -185,7 +199,12 @@
         let val = $("input[name='keyword']").val();
         moveForm.find("input[name='keyword']").val(val);
         moveForm.find("input[name='pageNum']").val(1);
+        
         moveForm.submit();
+    });
+	
+	$("#select-search").on("change", function(e){
+		alert('fffffffffff');
     });
 	
 	// 로그인 체크후 게시글 상세 이동
@@ -196,23 +215,19 @@
 			return false;
 		}
 	});
+	
+	$("input:checkbox").click(function(e) {
+		if($(this).is(":checked")){
+			alert('aa');
+		}else {
+			alert('bb');
+		}
+	});
+
 	</script>
 
     <jsp:include page="../fix/footer.jsp"></jsp:include>
 </div>
 </body>
-<script type="text/javascript">
-$("input:checkbox").click(function () {
-
-	if($(this).is(":checked")){
-		alert("ff");
-	}else {
-		alert("assd");
-	}
-});
-
-
-
-</script>
 
 </html>

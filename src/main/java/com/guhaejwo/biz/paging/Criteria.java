@@ -13,6 +13,13 @@ public class Criteria {
     /* 검색어 키워드 */
     private String keyword;
     
+    /* 검색어 키워드 */
+    private String keyword2;
+    
+    /* 검색어 키워드 */
+    private String keyword3;
+    
+    
     private String boardCategory;
     
     /* 기본 생성자 -> 기본 세팅 : pageNum = 1, amount = 12 */
@@ -25,14 +32,6 @@ public class Criteria {
         this.pageNum = pageNum;
         this.amount = amount;
     }
-    
-	public String getBoardCategory() {
-		return boardCategory;
-	}
-
-	public void setBoardCategory(String boardCategory) {
-		this.boardCategory = boardCategory;
-	}
 
 	public int getPageNum() {
 		return pageNum;
@@ -47,9 +46,9 @@ public class Criteria {
 	}
 
 	public void setAmount(int amount) {
-		this.amount = amount;	
+		this.amount = amount;
 	}
-	
+
 	public String getKeyword() {
 		return keyword;
 	}
@@ -58,11 +57,34 @@ public class Criteria {
 		this.keyword = keyword;
 	}
 
-	@Override
-	public String toString() {
-		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + ", boardCategory="
-				+ boardCategory + "]";
+	public String getKeyword2() {
+		return keyword2;
 	}
 
-    
+	public void setKeyword2(String keyword2) {
+		this.keyword2 = keyword2;
+	}
+
+	public String getKeyword3() {
+		return keyword3;
+	}
+
+	public void setKeyword3(String keyword3) {
+		this.keyword3 = keyword3;
+	}
+
+	public String getBoardCategory() {
+		return boardCategory;
+	}
+
+	public void setBoardCategory(String boardCategory) {
+		this.boardCategory = boardCategory;
+	}
+
+	@Override
+	public String toString() {
+		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + ", keyword2=" + keyword2
+				+ ", keyword3=" + keyword3 + ", boardCategory=" + boardCategory + "]";
+	}
+
 }
