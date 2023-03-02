@@ -2,14 +2,12 @@
   margin-bottom: 40px;
 }
 .hero {
-  /* background-image: url(//theme.zdassets.com/theme_assets/9483888/758e21b��.png); */
   background-position: center;
   background-size: cover;
   height: 300px;
   padding: 0 20px;
   text-align: center;
   width: 100%;
-  /* �엫�떆 */
   background-color: blanchedalmond;
 }
 .hero-inner {
@@ -181,6 +179,11 @@ ul {
   }
 }
 @media (max-width: 1199px){
+  .blocks-item {
+    margin: 0 8px 64px;
+  }
+}
+@media (max-width: 767px){
   .blocks-item {
     margin: 0 8px 16px;
   }

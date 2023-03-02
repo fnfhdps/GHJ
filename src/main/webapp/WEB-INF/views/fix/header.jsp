@@ -13,11 +13,13 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 
 <!-- 구글 폰트 적용 -->
-<link href="https://fonts.googleapis.com">
-<link href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- 로고 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
+<!-- 전체 폰트 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+
 
 <!-- jQuery -->
 <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
@@ -60,24 +62,24 @@
           </ul>
 
           <div class="d-flex">
-            <div class="non_member">
-              <a class="me-2" href="/login">로그인</a>
-              <span> | </span>
-              <a class="m-2" href="/join">회원가입</a>
+            <div class="non_member head_font">
+              <a class="me-1" href="/login">로그인</a>
+              <span>|</span>
+              <a class="m-1" href="/join">회원가입</a>
             </div>
 
-            <div class="member">
-              <span class="font_bold">${login.userName}님</span>
-              <a href="/mypage/info/${login.userSeq}">마이페이지</a>
-              <span> | </span>
-              <a href="/logout">로그아웃</a>
+            <div class="member head_font">
+              <span class="pe-2">${login.userName}님</span>
+              <a class="me-1" href="/mypage/info/${login.userSeq}">마이페이지</a>
+              <span>|</span>
+              <a class="m-1" href="/logout">로그아웃</a>
             </div>
             
-            <div class="admin">
-              <span class="font_bold">${login.userName}님</span>
-              <a href="/admin/member">관리자페이지</a>
-              <span> | </span>
-              <a href="/logout">로그아웃</a>
+            <div class="admin head_font">
+              <span class="pe-2">${login.userName}님</span>
+              <a class="me-1" href="/admin/member">관리자페이지</a>
+              <span>|</span>
+              <a class="m-1" href="/logout">로그아웃</a>
             </div>
           </div>
         </div>
@@ -147,7 +149,7 @@
 		          }
 		         });
 		        
-			}, 10000);
+			}, 60000);
 		}
 	});
 	

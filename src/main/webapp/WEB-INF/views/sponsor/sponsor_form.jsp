@@ -27,11 +27,10 @@
 		<div>
 		    <h2 class="sponsor_title">굿즈 구매하기</h2>
 		</div>
-		<div class="row p-5">
-		 	<img class="col-12" src="/resources/image/sponsor/sponsor_content.png">	
-			<img class="col-12" src="/resources/image/sponsor/${sponsorItem.sponsorItemImg}">
+		<div class="row p-5 justify-content-md-center">
+		 	<img class="col-12 pb-5 mb-5" src="/resources/image/sponsor/sponsor_content.png">	
+			<img class="col-8 mb-4" style="text-align: center; border-radius: 7%;" src="/resources/image/sponsor/${sponsorItem.sponsorItemImg}">
 		</div>
-<!-- 		<div class="sponsor_border"></div> -->
 
 		<div class="d-flex justify-content-center py-4">
 			<form id="sponsor_form" action="/sponsor/insert" method="post">
@@ -43,8 +42,9 @@
 				
 				<article class="row pt-5 justify-content-md-center">
 					<div class="py-3 col-10">
-						<p class="fs-4 fw-bold" id="itemName">${sponsorItem.sponsorItemName}</p>
+						<p class="sponsor_info" id="itemName">${sponsorItem.sponsorItemName}</p>
 					</div>
+					
 					<div class="mb-3 col-10 d-flex">
 						<label class="col-7 my-1">수량</label>
 						<input class="sponsor-input form-control"
