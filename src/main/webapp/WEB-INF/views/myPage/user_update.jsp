@@ -40,7 +40,7 @@
 	
 	              <div class="css-hdhsoq e18gdfbl4">
 	                <div class="css-1uebeg0">
-                      <div class="myphoto css-1cqverl">
+                      <div class="myphoto css-1cqverl ">
 	                    <!-- 프로필 사진 없으면 기본 사진 보임 -->
 			          	<c:choose>
 				          	<c:when test="${!empty login.userImg}">
@@ -51,15 +51,6 @@
 				          	</c:otherwise>
 			            </c:choose>
                       </div>
-		                <!-- 프로필 사진 없으면 기본 사진 보임 -->
-<%-- 			          	<c:choose>
-				          	<c:when test="${!empty login.userImg}">
-				            	<img id="css-1cqverl e18gdfbl2" src="/resources/image/profile/${login.userImg}">
-				          	</c:when>
-				          	<c:otherwise>
-				          		<img id="css-1cqverl e18gdfbl2" src="/resources/image/profile/profile.png">
-				          	</c:otherwise>
-			          	</c:choose> --%>
 	                </div>
 	                
 	                <div class="css-oycm3d e18gdfbl1">

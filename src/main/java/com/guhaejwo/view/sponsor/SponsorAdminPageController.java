@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.guhaejwo.biz.fileUpload.fileUpload;
 import com.guhaejwo.biz.sponsor.SponsorDTO;
 import com.guhaejwo.biz.sponsor.SponsorItemDTO;
 import com.guhaejwo.biz.sponsor.impl.SponsorServiceImpl;
@@ -54,31 +55,13 @@ public class SponsorAdminPageController {
 	// 후원 상품 입력 (관리자페이지)
 	@PostMapping("/admin/sponsor/item/insert")
 	public String insertSponsorItem(@RequestParam MultipartFile sponsorFile, SponsorItemDTO sponsor) throws IllegalStateException, IOException, Exception {
-		String fileName = sponsorFile.getOriginalFilename();	// 파일 이름(확장자명 포함)
+		String realSaveFileName;
 		String webPath ="/resources/image/sponsor";
-		String realPath = ctx.getRealPath(webPath);
 		
-		UUID uuid = UUID.randomUUID();
-		String[] uuids = uuid.toString().split("-");
-		String uniqueName = uuids[0];
-		String realSaveFileName = uniqueName + fileName;
-		
-		File savePath = new File(realPath);		// 파일명이 포함되지 않은 경로
-		// 업로드하기 위한 경로가 없을 경우
-		if(!savePath.exists())	// savePath의 경로가 존재하는지 존재하지 않는지 boolean 체크
-			savePath.mkdirs();	// make Directory : 경로 만들어줌
-		
-		realPath += File.separator + realSaveFileName;	// File.separator : 구분자 ("\" 또는 "/" 자동으로 지정해서 경로 뒤에 붙여준다.)
-		File saveFile = new File(realPath);		// 파일명이 포함된 경로
-		
-		 try {
-			 sponsorFile.transferTo(saveFile);
-			 
-	    } catch (IOException e) {
-	    	e.printStackTrace();
-	    }
-		 sponsor.setSponsorItemImg(realSaveFileName); // 파일 이름으로 adoptImg set
-		
+		realSaveFileName = fileUpload.file(sponsorFile, ctx, webPath); // 파일 업로드 후 파일 식별자명 반환
+		if(realSaveFileName != null) {
+			sponsor.setSponsorItemImg(realSaveFileName); // 파일 이름으로 adoptImg set
+		}
 		sponsorService.insertSponsorItem(sponsor);
 		return "redirect:/admin/sponsor/item";
 	}
@@ -96,30 +79,13 @@ public class SponsorAdminPageController {
 	// 후원 상품 수정 (관리자페이지)
 	@PostMapping("/admin/sponsor/item/update")
 	public String updateSponsorItem(@RequestParam MultipartFile sponsorFile, SponsorItemDTO sponsor) throws IllegalStateException, IOException, Exception {
-		String fileName = sponsorFile.getOriginalFilename();	// 파일 이름(확장자명 포함)
+		String realSaveFileName;
 		String webPath ="/resources/image/sponsor";
-		String realPath = ctx.getRealPath(webPath);
 		
-		UUID uuid = UUID.randomUUID();
-		String[] uuids = uuid.toString().split("-");
-		String uniqueName = uuids[0];
-		String realSaveFileName = uniqueName + fileName;
-		
-		File savePath = new File(realPath);		// 파일명이 포함되지 않은 경로
-		// 업로드하기 위한 경로가 없을 경우
-		if(!savePath.exists())	// savePath의 경로가 존재하는지 존재하지 않는지 boolean 체크
-			savePath.mkdirs();	// make Directory : 경로 만들어줌
-		
-		realPath += File.separator + realSaveFileName;	// File.separator : 구분자 ("\" 또는 "/" 자동으로 지정해서 경로 뒤에 붙여준다.)
-		File saveFile = new File(realPath);		// 파일명이 포함된 경로
-		
-		try {
-			sponsorFile.transferTo(saveFile);
-	    } catch (IOException e) {
-	    	e.printStackTrace();
-	    }
-		 sponsor.setSponsorItemImg(realSaveFileName); // 파일 이름으로 adoptImg set
-		
+		realSaveFileName = fileUpload.file(sponsorFile, ctx, webPath); // 파일 업로드 후 파일 식별자명 반환
+		if(realSaveFileName != null) {
+			sponsor.setSponsorItemImg(realSaveFileName); // 파일 이름으로 adoptImg set
+		}
 		sponsorService.updateSponsorItem(sponsor);
 		return "redirect:/admin/sponsor/item";
 	}

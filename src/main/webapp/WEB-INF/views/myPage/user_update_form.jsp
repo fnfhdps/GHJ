@@ -46,7 +46,7 @@
 	                      <div class="myphoto">
 		                    <!-- 프로필 사진 없으면 기본 사진 보임 -->
 		                    <label for="file">
-					            <input id="file" type="file" name="adoptFile" accept="image/*" onchange="readURL(this);" hidden=""> 
+					            <input id="file" type="file" name="profileFile" accept="image/*" onchange="readURL(this);" hidden=""> 
 					          	<c:choose>
 						          	<c:when test="${!empty login.userImg}">
 						            	<img id="img_read" src="/resources/image/profile/${login.userImg}">

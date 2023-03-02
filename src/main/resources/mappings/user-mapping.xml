@@ -15,9 +15,14 @@
 	<update id="updateUser">
 		<![CDATA[
 			UPDATE USERS
-			SET userEmail = #{userEmail, jdbcType=VARCHAR}, 
-				userPhone = #{userPhone, jdbcType=VARCHAR},
+			SET
+		]]>
+			<if test="userImg != null">
 				userImg = #{userImg, jdbcType=VARCHAR},
+			</if>
+		<![CDATA[
+				userEmail = #{userEmail, jdbcType=VARCHAR}, 
+				userPhone = #{userPhone, jdbcType=VARCHAR},
 				userAddr1 = #{userAddr1, jdbcType=VARCHAR},
 				userAddr2 = #{userAddr2, jdbcType=VARCHAR},
 				userAddr3 = #{userAddr3, jdbcType=VARCHAR},

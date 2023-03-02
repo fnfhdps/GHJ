@@ -72,7 +72,7 @@
               </div>
               <div class="css-lkffw3 e1yarwt9">
                 <div width="343" class="css-1v6bcwv e1yarwt7">
-                  <img id="img_read" alt="상품사진" style="width: 200px; height: 200px;">                  
+                  <img id="img_read" style="width: 200px; height: 200px;">                  
                 </div>
               </div>
               

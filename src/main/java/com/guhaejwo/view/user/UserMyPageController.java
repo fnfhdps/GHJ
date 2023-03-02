@@ -1,10 +1,8 @@
 package com.guhaejwo.view.user;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -20,14 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.util.WebUtils;
 
+import com.guhaejwo.biz.fileUpload.fileUpload;
 import com.guhaejwo.biz.user.UserDTO;
 import com.guhaejwo.biz.user.impl.UserServiceImpl;
-
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @SessionAttributes("login")
@@ -66,46 +61,29 @@ public class UserMyPageController {
 	
 	// 내 정보 수정 (마이페이지)
 	@PostMapping("/mypage/info/update")
-	public String update(@RequestParam MultipartFile adoptFile, UserDTO user , Model model, HttpServletRequest req) throws IllegalStateException, IOException, Exception {
-		String fileName = adoptFile.getOriginalFilename();	// 파일 이름(확장자명 포함)
+	public String update(@RequestParam MultipartFile profileFile, UserDTO user , Model model, HttpServletRequest req) throws IllegalStateException, IOException, Exception {
+		String realSaveFileName;
 		String webPath ="/resources/image/profile";
-		String realPath = ctx.getRealPath(webPath);
 		
-		UUID uuid = UUID.randomUUID();
-		String[] uuids = uuid.toString().split("-");
-		String uniqueName = uuids[0];
-		String realSaveFileName = uniqueName + fileName;
-		
-		File savePath = new File(realPath);		// 파일명이 포함되지 않은 경로
-		// 업로드하기 위한 경로가 없을 경우
-		if(!savePath.exists())	// savePath의 경로가 존재하는지 존재하지 않는지 boolean 체크
-			savePath.mkdirs();	// make Directory : 경로 만들어줌
-		
-		realPath += File.separator + realSaveFileName;	// File.separator : 구분자 ("\" 또는 "/" 자동으로 지정해서 경로 뒤에 붙여준다.)
-		File saveFile = new File(realPath);		// 파일명이 포함된 경로
-		
-		 try {
-			adoptFile.transferTo(saveFile);
-	    } catch (IOException e) {
-	    	e.printStackTrace();
-	    }
-		user.setUserImg(realSaveFileName);	// 파일 이름으로 adoptImg set
-		
-		userService.update(user);
-		HttpSession session = req.getSession();
-
 		// 기존 login 세션을 데이터 user2에 저장 후 비밀번호만 바꾸고 다시 세션에 저장함
+		HttpSession session = req.getSession();
 		UserDTO user2 = (UserDTO) session.getAttribute("login");
-		System.out.println();
+
+		realSaveFileName = fileUpload.file(profileFile, ctx, webPath); // 파일 업로드 후 파일 식별자명 반환
+		if(realSaveFileName != null) {
+			user.setUserImg(realSaveFileName);	// 파일 이름으로 adoptImg set
+			user2.setUserImg(realSaveFileName); // login세션에 덮어쓰기
+		
+		}
+		userService.update(user);
+
 		user2.setUserEmail(user.getUserEmail());			
 		user2.setUserPhone(user.getUserPhone());			
-		user2.setUserImg(user.getUserImg());			
 		user2.setUserAddr1(user.getUserAddr1());			
 		user2.setUserAddr2(user.getUserAddr2());	
 		user2.setUserAddr3(user.getUserAddr3());	
 		
 		session.setAttribute("login", user2);
-		
 		return "myPage/user_update";
 	}
 	

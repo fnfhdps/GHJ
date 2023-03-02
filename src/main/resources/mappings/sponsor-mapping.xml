@@ -72,7 +72,7 @@
 	<insert id="insertSponsorItem">
 		<![CDATA[
 			INSERT INTO sponsor_item(sponsorItemSeq, sponsorItemName, sponsorItemImg, sponsorItemPrice, sponsorItemCode, sponsorItemState)
-			VALUES ((select nvl(max(sponsorItemSeq), 0) + 1 from sponsor_item), #{sponsorItemName}, #{sponsorItemImg}, #{sponsorItemPrice}, #{sponsorItemCode}, #{sponsorItemState})
+			VALUES ((select nvl(max(sponsorItemSeq), 0) + 1 from sponsor_item), #{sponsorItemName}, #{sponsorItemImg, jdbcType=VARCHAR}, #{sponsorItemPrice}, #{sponsorItemCode}, #{sponsorItemState})
 		]]>
 	</insert>
 	
@@ -80,10 +80,15 @@
 	<update id="updateSponsorItem">
 		<![CDATA[
 			UPDATE sponsor_item
-			SET sponsorItemName = #{sponsorItemName},
+			SET
+		]]>
+			<if test="sponsorItemImg != null">
 			    sponsorItemImg = #{sponsorItemImg, jdbcType=VARCHAR},
-			    sponsorItemPrice = #{sponsorItemPrice, jdbcType=VARCHAR},
-			    sponsorItemCode = #{sponsorItemCode, jdbcType=VARCHAR},
+			</if>
+		<![CDATA[
+				sponsorItemName = #{sponsorItemName},
+			    sponsorItemPrice = #{sponsorItemPrice},
+			    sponsorItemCode = #{sponsorItemCode},
 			    sponsorItemState = #{sponsorItemState}
 			where sponsorItemSeq = #{sponsorItemSeq}
 		]]>
