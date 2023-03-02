@@ -35,15 +35,10 @@ public class ChartController {
 	@RequestMapping("/admin/chart")
 	public @ResponseBody List<Integer> weekJoinCnt() throws Exception {
 		ChartDTO chart = new ChartDTO();
-		Map<String, Integer> map = new HashMap<String, Integer>();
 		List<Integer> cnt = new ArrayList<Integer>();
 		
 		chart = chartService.weekJoinCnt();
-//		map.put("sum", chart.getSun());
-//		map.put("mon", chart.getMon());
-//		map.put("tue", chart.getTue());
-//		map.put("wed", chart.getWed());
-//		
+		
 		cnt.add(0,chart.getSun());
 		cnt.add(1,chart.getMon());
 		cnt.add(2,chart.getTue());

@@ -23,10 +23,10 @@
 	<div class="main">
 	  <section class="section hero">
 	    <div class="hero-inner">
-	      <form role="search" class="search search-full" data-search="" data-instant="true" autocomplete="off" action="#" method="get">
-	        <!-- <input name="utf8" type="hidden" value="✓" autocomplete="off"> -->
+<!-- 	      <form role="search" class="search search-full" data-search="" data-instant="true" autocomplete="off" action="#" method="get">
+	        <input name="utf8" type="hidden" value="✓" autocomplete="off">
 	        <input type="search" name="query" id="query" placeholder="검색" autocomplete="off" aria-label="검색">
-	      </form>
+	      </form> -->
 	    </div>
 	  </section>
 

@@ -72,7 +72,6 @@
               <table class="table">
                 <thead>
                   <tr>
-                  <!--   <th class=""><input type="checkbox" name="" id=""></th> -->
                     <th class="">번호</th>
                     <th class="">상품코드</th>
                     <th class="">상품명</th>

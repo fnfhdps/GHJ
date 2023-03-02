@@ -72,7 +72,6 @@
               <table class="table">
                 <thead>
                 <tr>
-     <!--              <th class="">번호</th> -->
                   <th class="">아이디</th>
                   <th class="">가입일</th>
                   <th class="">로그인유형</th>
@@ -86,7 +85,6 @@
 	       		  <c:when test="${!empty memberList}">
 				    <c:forEach items="${memberList}" var="member">
 	                  <tr>
-	                  <!--   <td class="text-center">번호 추가?</td> -->
 	                    <td class="text-center">${member.userId}</td>
 	                    <td class="text-center"><fmt:formatDate value="${member.regDate}" pattern="yyyy-MM-dd"/></td>
 	                    <td class="text-center">${member.userRole}</td>

@@ -57,19 +57,71 @@
          });
 	}
     
+    
+// ----------------------------------------------
+    
     // 신고 조회
 	function checkBlame() {
-	    // 신고가 있는지 확인한 값을 blameval에 저장
-	    const blameval = $('#blame').val();
-	    const blameCnt = $('#blameCnt').val();
 	    
-	    //alert(blameval + blameCnt);
-	    if(blameCnt == 0) {
-	        window.location.href = "/adopt/insert/blaContent/"+boardSeq+"/"+detailUserSeq+"/"+userSeq2;
-	    } else {
-	    	alert("이미 신고 하였습니다");
-	    }
+	    data = {"req_userSeq" : userSeq2, "boardSeq" : boardSeq};
+	    
+		$.ajax({
+            url : "/adopt/blame",
+            type : 'get',
+            data : data,
+            dataType : 'json',
+            contentType : "application/json",
+            success : function(result){
+            	alert(JSON.stringify(result));
+                if(result == 1){
+                	alert("이미 신고 하였습니다");
+                } else if (result == 0){
+                    $('#withdrawModal').modal("show");
+                } else {
+                	alert("통신 오류");
+                	return;
+                }
+            },
+            error : function(errorThrown){
+            	alert(errorThrown.statusText);
+            },
+		});
 	};
+	
+	// 신고 하기
+	function insertBlame() {
+		const blaTitle = $("#blaTitle").val();
+		const blaContent = $("#blaContent").val();
+		
+		data = {
+				"boardSeq" : boardSeq,
+				"req_userSeq" : userSeq2, // 신고자
+				"res_userSeq" : detailUserSeq, // 피신고자
+				"blaTitle" : blaTitle,
+				"blaContent" : blaContent
+		};
+		
+		$.ajax({
+            url : "/adopt/insert/blame",
+            type : 'POST',
+            data : JSON.stringify(data),
+            dataType : 'json',
+            contentType : "application/json",
+            success : function(result){
+            	alert(JSON.stringify(result));
+                if(result == 0){
+                	alert("신고 완료");
+                } else {
+                	alert("통신 오류");
+                }
+            },
+            error : function(errorThrown){
+            	alert(errorThrown.statusText);
+            },
+        });
+	}
+	
+// --------------------------------------------	
 	
 	// 페이지 로드 후 좋아요 조회
 	$(function() {
@@ -89,7 +141,7 @@
             		$("#heartCnt").val(result);
                 	$("#heartIcon").attr("class", "bi bi-heart");
                 } else {
-                	alert("실패");
+                	alert("통신 오류");
                 	return;
                 }
             },
@@ -137,6 +189,8 @@
          });
 	};
 
+// ------------------------------------------	
+	
 	// 입양 수정 페이지 이동
 	function adoptUpdate() {
 	 	window.location.href = '/adopt/update';
@@ -149,6 +203,8 @@
 		}
 	};
 
+// ------------------------------------------
+	
 	// 입양 신청 중복체크
 	function checkSubmit(){
 		data = {"userSeq": userSeq2, "boardSeq":boardSeq};
@@ -177,27 +233,28 @@
 			}
 		});
 	};
-
-function hopeInsert() {
-	$.ajax({
-		url: "/adopt/hope",
-		type: "post",
-		data: JSON.stringify(data),
-		dataType: "json",
-		contentType: "application/json",
-		success: function(result){
-			if(result == 0) {
-			} else {
-				alert("통신 오류");
-				return;
-			}
-		},
-		error : function(errorThrown){
-			alert(errorThrown.statusText);
-		}
-	});
-}
 	
+	// 입양 신청하기
+	function hopeInsert() {
+		$.ajax({
+			url: "/adopt/hope",
+			type: "post",
+			data: JSON.stringify(data),
+			dataType: "json",
+			contentType: "application/json",
+			success: function(result){
+				if(result == 0) {
+				} else {
+					alert("통신 오류");
+					return;
+				}
+			},
+			error : function(errorThrown){
+				alert(errorThrown.statusText);
+			}
+		});
+	}
+		
 // ---------------------------------------------	
 	
 	let beforeState = $('#state').val();

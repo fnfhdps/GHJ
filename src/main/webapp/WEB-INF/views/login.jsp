@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
-<link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="../resources/css/style.css">
 <title>로그인</title>
 
 
@@ -16,7 +16,7 @@
 	<div class="container">
 		<section class="login-form">
 			<div>
-				<img class="logo" src="resources/image/logo/logo_black.png">
+				<img class="logo" src="/resources/image/logo/logo_black.png">
 				<h1>로그인</h1>
 			</div>
 	

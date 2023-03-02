@@ -15,11 +15,22 @@ textarea {
   resize: none;
 }
 .adopt_content label{
-	font-size: 18px;
-	padding-bottom: 5px;
+	padding-bottom: 2px;
+	font-weight: 700;
 }
 .adopt_content form{
 	border-radius: 0.75rem;
     box-shadow: 1px 1px 10px 0 rgb(72 75 108 / 8%);
     border: 0.0625rem solid #D7E2EB;
 }
+
+input[type='radio']{
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-right: 1rem;
+}
+.adopt_content .form-check-label{
+	margin-top: 4px;
+	font-weight: normal;
+}
+

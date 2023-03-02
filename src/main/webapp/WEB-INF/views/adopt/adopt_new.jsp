@@ -23,7 +23,7 @@
     <section class="container-xxl py-5">
       <h2 class="adopt_title">입양글 작성</h2>
       
-       <article class="d-flex justify-content-center pb-5 pt-3 mb-5">
+       <article class="adopt_content d-flex justify-content-center pb-5 pt-3 mb-2">
     	 <div class="adoptForm">
 
 			<div class="accordion" id="accordionExample">
@@ -63,7 +63,7 @@
 	      <input type="hidden" name="userSeq" value="${login.userSeq}">
 	      <br><br>      
 	      	      
-	      <div class="mb-3">
+	      <div class="mb-4">
 		      <label for="disabledTextInput" class="form-label">제목</label>
 		      <input type="text"
 		      		id="disabledTextInput"
@@ -75,7 +75,7 @@
 		      		title="제목을 입력하세요.">
 	   	  </div> 
 
-		  <div class="mb-3">
+		  <div class="mb-4">
 		      <label for="disabledSelect" class="form-label">구분</label>
 		      <input type="hidden" id="adoptKind">
 		      <select id="disabledSelect" class="form-select" name="adoptKind" required="required">
@@ -85,57 +85,47 @@
 					<option value='ETC'>기타</option>
 		      </select>
 	      </div>
-	      
-	       <div class="mb-3">
-		      <label for="disabledSelect" class="form-label">성별</label>
-		      <input type="hidden" id="adoptSex">
-		      <select id="disabledSelect" class="form-select" name="adoptSex" required="required">
-	        		<option value="" selected>-- 선택 --</option>
-				    <option value="F">암컷</option>
-				    <option value="M">수컷</option>
-		      </select>
-	      </div>
  	      
- 	      <div class="mb-3">
+ 	      <div class="mb-4">
  		      <label for="disabledSelect" class="form-label">성별</label>
  		      <div>
 				  <div class="form-check form-check-inline">
-				    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="F">
-				    <label class="form-check-label" for="inlineRadio1">암컷</label>
-			  	  </div>
-				  <div class="form-check form-check-inline">
-				    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="M">
+				    <input class="form-check-input" type="radio" name="adoptSex" id="inlineRadio2" value="M"  checked="checked">
 				    <label class="form-check-label" for="inlineRadio2">수컷</label>
 				  </div>
+				  <div class="form-check form-check-inline">
+				    <input class="form-check-input" type="radio" name="adoptSex" id="inlineRadio1" value="F">
+				    <label class="form-check-label" for="inlineRadio1">암컷</label>
+			  	  </div>
  		      </div>
  	      </div>
  	      
- 	      <div class="mb-3">
+ 	      <div class="mb-4">
  		      <label for="disabledSelect" class="form-label">중성화</label>
  		      <div>
 				  <div class="form-check form-check-inline">
-				    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="O">
+				    <input class="form-check-input" type="radio" name="adoptNeutor" id="inlineRadio1" value="O" checked="checked">
 				    <label class="form-check-label" for="inlineRadio1">O</label>
 			  	  </div>
 				  <div class="form-check form-check-inline">
-				    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="X">
+				    <input class="form-check-input" type="radio" name="adoptNeutor" id="inlineRadio2" value="X">
 				    <label class="form-check-label" for="inlineRadio2">X</label>
 				  </div>
 				  <div class="form-check form-check-inline">
-				    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="IDK">
+				    <input class="form-check-input" type="radio" name="adoptNeutor" id="inlineRadio3" value="IDK">
 				    <label class="form-check-label" for="inlineRadio3">?</label>
 			  	  </div>
  		      </div>
  	      </div>
-	          
-	      <div class="mb-3">
+	      
+	      <div class="mb-4">
 	            <label class="form-label">구조일</label>
 	            <div class="col-xl-4 col-lg-3 col-form-label">
-	              <input type="date" id="rescueDate" name="adoptRescueDate" class="form-control">
+	              <input type="date" id="rescueDate" name="adoptRescueDate" class="form-control" required="required">
 	            </div>
 	   	  </div>
 	   	  
-	   	  <div class="mb-3 row">
+	   	  <div class="mb-4 row">
 	            <label class="form-label">나이<small>(추정)</small></label>
 	            <div class="col-lg-3 col-form-label">
 	            <input class="form-control"
@@ -147,7 +137,7 @@
 	            </div>
 	       </div>
 	          
-	       <div class="mb-3 row">
+	       <div class="mb-4 row">
 	            <label class="form-label">몸무게<small>(추정)</small></label>
 	            <div class="col-lg-3 col-form-label">
 	            <input class="form-control"
@@ -159,34 +149,26 @@
 	            </div>
 	       </div>   
 	          
-	       <div class="mb-3">
+	       <div class="mb-4">
 		      	<label class="form-label">구조위치</label>
 		      	<div class="d-flex">
-				    <select class="form-control" name="adoptAddr" id="adoptAddr"></select>
-				    <select class="form-control" name="addressDo" id="addressDo2"></select>
+				    <select class="form-control me-3" name="adoptAddr" id="adoptAddr"></select>
+				    <select class="form-control me-3" name="addressDo" id="addressDo2"></select>
 				    <select class="form-control" name="addressSiGunGu" id="addressSiGunGu2"></select>
 		      	</div>
 	   	  </div>     
 	          
-	      <div class="mb-3">
-		      <label class="form-label">중성화 여부</label>
-		      <input type="hidden" id="adoptNeutor">
-		      <select id="disabledSelect" class="form-select" name="adoptNeutor">
-	       		  <option value="" selected>-- 선택 --</option>
-			      <option value="O">O</option>
-				  <option value="X">X</option>
-				  <option value="IDK">알수없음</option>
-		      </select>
-	      </div>    
-	          
-	      <div class="mb-3">
+	      <div class="mb-4">
 		  	<label class="form-label">특이사항</label>
 			<textarea class="form-control" name="boardContent" rows="7">임시 특이사항</textarea>
 		  </div>
 		  
-	      <div class="mb-3">
-			  <label for="formFileLg" class="btn btn-light ">이미지 첨부</label>
-			  <input id="formFileLg" type="file" name="adoptFiles" multiple accept="image/*" hidden=""> 
+		  <div class="mb-3">
+			<img id="img_read" alt="" style="width: 200px; height: 200px;">
+		  </div>
+	      <div class="mb-4">
+			  <label for="formFileLg" class="btn btn-light">이미지 첨부</label>
+			  <input id="formFileLg" type="file" name="adoptFiles" multiple accept="image/*" onchange="readURL(this);" hidden=""> 
 		  </div>
 		  
 		  <br>
@@ -255,6 +237,8 @@
 		}
 	});
 </script>
+<!-- 이미지 미리보기 js -->
+<script src="/resources/js/readURL.js"></script>
 <!-- 구조 위치 js -->
 <script src="/resources/js/adopt_addr.js"></script>
 </body>

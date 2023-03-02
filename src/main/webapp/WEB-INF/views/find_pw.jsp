@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
-<link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="../resources/css/style.css">
 <title>비밀번호 찾기</title>
 </head>
 

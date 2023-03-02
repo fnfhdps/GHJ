@@ -76,17 +76,14 @@
               </div>
               <div class="css-lkffw3 e1yarwt9">
                 <div width="343" class="css-1v6bcwv e1yarwt7">
-                  <img alt="상품사진" src="/resources/image/sponsor/${sponsorItem.sponsorItemImg}" style="width: 200px; height: 200px;">                  
+                  <img id="img_read" alt="상품사진" src="/resources/image/sponsor/${sponsorItem.sponsorItemImg}" style="width: 200px; height: 200px;">                  
                 </div>
               </div>
 
               <div class="css-lkffw3 e1yarwt9">
                 <label class="css-6lgku7 e12vmj862">
-                  <span class="css-h26ndt e12vmj861">
-                    <span></span>
-                  </span>
                   <span class="css-94jutt e12vmj860">이미지 첨부</span>
-                  <input type="file" name="sponsorFile" value="${sponsorItem.sponsorItemImg}" accept="image/*" hidden="">
+                  <input type="file" name="sponsorFile" accept="image/*" onchange="readURL(this);" hidden="">
                 </label>
               </div>
               
@@ -100,6 +97,8 @@
       </main>
     </div>
   </div>
+<!-- 이미지 미리보기 js -->
+<script src="/resources/js/readURL.js"></script>
 <script type="text/javascript">
 	const state = $("#state1").val();
 	if(state == 1){
