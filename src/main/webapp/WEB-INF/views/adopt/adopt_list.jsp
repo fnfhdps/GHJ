@@ -37,8 +37,8 @@
 				<input class="form-check-input mx-2 p-3" type="checkbox" id="flexCheckDefault" style="float:left;" name="keyword2" value="WAIT">
 				<label class="form-check-label my-2" for="flexCheckDefault">입양대기만 보이기</label>
 				
-		       <select class="form-select" id="select-search" name="keyword3" aria-label="Default select example" style="float:right; margin-left:10px; width:30%" value="${pageMaker.cri.keyword3 }">
-					<option selected>지역을 선택하세요</option>
+		       <select class="form-select" id="address-search" name="keyword3" aria-label="Default select example" style="float:right; margin-left:10px; width:30%" value="${pageMaker.cri.keyword3 }">
+					<option value="" selected>지역을 선택하세요</option>
 					<option value="수도권">수도권</option>
 					<option value="강원권">강원권</option>
 					<option value="충청권">충청권</option>
@@ -121,12 +121,13 @@
 	
     <jsp:include page="../fix/footer.jsp"></jsp:include>
 
-	<form id="moveForm" method="get">
+	<form id="moveForm" method="get" action="/adopt/list">
 	    <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
         <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-        <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-        <input type="hidden" name="keyword2" value="${pageMaker.cri.keyword2}">
-        <input type="hidden" name="keyword3" value="${pageMaker.cri.keyword3}">
+        <input type="hidden" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">			<!-- 제목 검색 keyword -->
+        <input type="hidden" id="keyword2" name="keyword2" value="${pageMaker.cri.keyword2}">		<!-- 상태 검색 keyword -->
+        <input type="hidden" id="keyword3" name="keyword3" value="${pageMaker.cri.keyword3}">		<!-- 주소 검색 keyword -->
+        
 	</form>
 	<input type="hidden" id="userSeq" value="${login.userSeq}">
 </div>
@@ -134,12 +135,12 @@
 <script>
 let moveForm = $("#moveForm");
 
-$(".move").on("click", function(e){
+/* $(".move").on("click", function(e){
 	e.preventDefault();
 	moveForm.append("<input type='hidden' name='boardSeq' value='"+$(this).attr("href")+ "'>");
 	moveForm.attr("action", "/adopt/get");
 	moveForm.submit();
-});
+}); */
 
 $(".pageInfo a").on("click", function(e){
        e.preventDefault();
@@ -154,14 +155,20 @@ $("input[type='search']").on("keyup", function(e){
 	if(key.keyCode==13) {
        e.preventDefault();
        let val = $("input[name='keyword']").val();
-       moveForm.find("input[name='keyword']").val(val);
+       alert(val);
+       moveForm.find("#keyword").val(val);
+       
+       alert($("#keyword").val());
        moveForm.find("input[name='pageNum']").val(1);
        moveForm.submit();
     }
    });
 
-$("#select-search").on("change", function(e){
-	alert('fffffffffff');
+$("#address-search").on("change", function(e){
+	let val = $(this).val();
+    moveForm.find("input[name='keyword3']").val(val);
+    moveForm.find("input[name='pageNum']").val(1);
+    moveForm.submit();
    });
 
 // 로그인 체크후 게시글 상세 이동
@@ -175,11 +182,33 @@ $("a.loginCheck").click(function () {
 
 $("input:checkbox").click(function(e) {
 	if($(this).is(":checked")){
-		alert('aa');
+	   let val = $("input[name='keyword2']").val();
+       moveForm.find("input[name='keyword2']").val(val);
+       moveForm.find("input[name='pageNum']").val(1);
+       moveForm.submit();
 	}else {
-		alert('bb');
 	}
 });
+if($("#keyword2").val()=="WAIT"){
+	$("input:checkbox").prop("checked", true);
+}
+
+const keyword3 = $("#keyword3").val();
+if(keyword3 == "수도권"){
+	$('#address-search').val('수도권').prop("selected",true);
+}else if(keyword3 == "강원권"){
+	$('#address-search').val('강원권').prop("selected",true);
+}else if(keyword3 == "충청권"){
+	$('#address-search').val('충청권').prop("selected",true);
+}else if(keyword3 == "전라권"){
+	$('#address-search').val('전라권').prop("selected",true);
+}else if(keyword3 == "경상권"){
+	$('#address-search').val('경상권').prop("selected",true);
+}else if(keyword3 == "제주권"){
+	$('#address-search').val('제주권').prop("selected",true);
+}
+
+
 </script>
 </body>
 

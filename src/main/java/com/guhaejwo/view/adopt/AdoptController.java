@@ -58,8 +58,20 @@ public class AdoptController {
 	/* 입양 목록 게시판 페이지 접속(페이징 적용) */
 	@GetMapping("/list")
 	public String getAdoptList(Model model, Criteria cri) throws Exception {
+		System.out.println("검색값 확인:"+cri);
+		
 		model.addAttribute("list", adoptService.getAdoptListPaging(cri));
 
+		System.out.println("!@$!@$!@$!@$!@$!@$!$@!$!$@$!@cri.getKeyword2()"+cri.getKeyword2());
+		if (cri.getKeyword2() != null) {
+			model.addAttribute("checkState", "WAIT");
+		}
+		
+		System.out.println("!@$!@$!@$!@$!@$!@$!$@!$!$@$!@cri.getKeyword33333333()"+cri.getKeyword3());
+		if (cri.getKeyword3() != null) {
+			model.addAttribute("addressSearch", cri.getKeyword3());
+		}
+		
 		int total = adoptService.getAdoptTotalCount(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
@@ -97,10 +109,12 @@ public class AdoptController {
 	@PostMapping(value = "/new")
 	public String insertAdopt(@RequestParam MultipartFile[] adoptFiles, AdoptDTO adopt)
 			throws IllegalStateException, IOException, Exception {
-		System.out.println(adoptFiles[0]);
+		
+		String setName[] = new String[adoptFiles.length];
+		
 		// 파일 업로드
-		for (MultipartFile adoptFile : adoptFiles) {
-			String fileName = adoptFile.getOriginalFilename(); // 파일 이름(확장자명 포함)
+		for (int i=0; i<adoptFiles.length; i++) {
+			String fileName = adoptFiles[i].getOriginalFilename(); // 파일 이름(확장자명 포함)
 			System.out.println("fileName " + fileName);
 			
 			// long fileSize = adoptFile.getSize(); // 파일 용량
@@ -117,6 +131,7 @@ public class AdoptController {
 			
 			String realSaveFileName = uniqueName + fileName;
 
+			
 			File savePath = new File(realPath); // 파일명이 포함되지 않은 경로
 			// 업로드하기 위한 경로가 없을 경우
 			if (!savePath.exists()) // savePath의 경로가 존재하는지 존재하지 않는지 boolean 체크
@@ -124,16 +139,29 @@ public class AdoptController {
 
 			realPath += File.separator + realSaveFileName; // File.separator : 구분자 ("\" 또는 "/" 자동으로 지정해서 경로 뒤에 붙여준다.)
 			File saveFile = new File(realPath); // 파일명이 포함된 경로
-
+			
 			try {
-				adoptFile.transferTo(saveFile);
+				adoptFiles[i].transferTo(saveFile);
 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			adopt.setAdoptImg(realSaveFileName); // 파일 이름으로 adoptImg set
+			//adopt.setAdoptImg(realSaveFileName); // 파일 이름으로 adoptImg set
+			setName[i] = realSaveFileName;
 		}
-
+		
+		for (int j = 0; j < adoptFiles.length; j++) {
+			if(j == 0) {
+				adopt.setAdoptImg(setName[0]);
+			}
+			if(j == 1) {
+				adopt.setAdoptImg2(setName[1]);
+			}
+			if(j == 2) {
+				adopt.setAdoptImg3(setName[2]);
+			}
+		}
+		
 		adopt.setAdoptState("WAIT");
 		adopt.setBoardCategory("ADOPT");
 
@@ -154,10 +182,12 @@ public class AdoptController {
 	public String updateAdopt(@RequestParam MultipartFile[] adoptFiles, AdoptDTO adopt, Model model)
 			throws IllegalStateException, IOException, Exception {
 		
+		String setName[] = new String[adoptFiles.length];
+		
 		 // 파일 업로드
-		 for (MultipartFile adoptFile : adoptFiles) {
+		 for (int i=0; i<adoptFiles.length; i++) {
 		  
-		 String fileName = adoptFile.getOriginalFilename(); // 파일 이름(확장자명 포함) //long
+		 String fileName = adoptFiles[i].getOriginalFilename(); // 파일 이름(확장자명 포함) //long
 		 //long fileSize = adoptFile.getSize(); // 파일 용량 //서버에 저장할 파일이름의 확장자 명을 구함 (.png 등)
 		 //String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
 		 String webPath ="/resources/image/adopt";
@@ -177,14 +207,27 @@ public class AdoptController {
 		 File saveFile = new File(realPath); // 파일명이 포함된 경로
 		 
 		 try { 
-			 adoptFile.transferTo(saveFile);
+			 adoptFiles[i].transferTo(saveFile);
 		 } catch (IOException e) { 
 			 e.printStackTrace(); 
 		 }
 		
-		 adopt.setAdoptImg(realSaveFileName); // 파일 이름으로 adoptImg set }
+//		 adopt.setAdoptImg(realSaveFileName); // 파일 이름으로 adoptImg set }
+		 setName[i] = realSaveFileName;
 		
 		 }
+		 
+		 for (int j = 0; j < adoptFiles.length; j++) {
+				if(j == 0) {
+					adopt.setAdoptImg(setName[0]);
+				}
+				if(j == 1) {
+					adopt.setAdoptImg2(setName[1]);
+				}
+				if(j == 2) {
+					adopt.setAdoptImg3(setName[2]);
+				}
+			}
 		 
 		 adoptService.updateBoard(adopt); 
 		 adoptService.updateAdopt(adopt);
