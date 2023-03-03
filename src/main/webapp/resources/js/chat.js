@@ -19,7 +19,7 @@ $('#btnConnect').click(function() {
 	   	// 소켓 이벤트 매핑
 	   	ws.onopen = function (evt) {
 	   		// console.log('서버 연결 성공');
-	   		print($('#user').val(), '입장했습니다.');
+	   		print($('#user').val(), '가 입장했습니다.');
 	   				
 	   		// 현재 사용자가 입장했다고 서버에게 통지(유저명 전달)
 	   		// -> 1#유저명
