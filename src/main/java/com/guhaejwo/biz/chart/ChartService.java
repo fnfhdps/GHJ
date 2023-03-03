@@ -8,4 +8,5 @@ public interface ChartService {
 	// 이번달 가입자수
 	public ChartDTO monthJoinCnt();
 	
+	
 }

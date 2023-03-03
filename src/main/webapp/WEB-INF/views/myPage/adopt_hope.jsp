@@ -43,7 +43,7 @@
 		                  <small>5일 전</small>
 		                </div>
 		                <h6>${hope.boardTitle}</h6>
-		                <a class="btn btn-md btn-outline-primary" rel="nofollow" data-method="post" href="#">대화하기</a>
+		                <a class="btn btn-md btn-outline-primary" rel="nofollow" data-method="post" href="/chat">대화하기</a>
 		              </li>
 			        </c:forEach>
 	          	  </c:when>
