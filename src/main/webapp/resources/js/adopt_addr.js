@@ -48,15 +48,15 @@ let areaSelectMaker = function(target){
 
     for(i=0; i<$(target).length; i++){
         (function(z){
-            var a1 = $(target).eq(z);
-            var a2 = a1.next();
-            var a3 = a2.next();
+            let a1 = $(target).eq(z);
+            let a2 = a1.next();
+            let a3 = a2.next();
 
             //초기화
             init(a1, true);
 
             //권역 기본 생성
-            var areaKeys1 = Object.keys(area);
+            let areaKeys1 = Object.keys(area);
             areaKeys1.forEach(function(Region){
                 a1.append("<option value="+Region+">"+Region+"</option>");
             });
@@ -64,8 +64,8 @@ let areaSelectMaker = function(target){
             //변경 이벤트
             $(a1).on("change", function(){
                 init($(this), false);
-                var Region = $(this).val();
-                var keys = Object.keys(area[Region]);
+                let Region = $(this).val();
+                let keys = Object.keys(area[Region]);
                 keys.forEach(function(Do){
                     a2.append("<option value="+Do+">"+Do+"</option>");    
                 });
@@ -73,9 +73,9 @@ let areaSelectMaker = function(target){
 
             $(a2).on("change", function(){
                 a3.empty().append("<option value=''>선택</option>");
-                var Region = a1.val();
-                var Do = $(this).val();
-                var keys = Object.keys(area[Region][Do]);
+                let Region = a1.val();
+                let Do = $(this).val();
+                let keys = Object.keys(area[Region][Do]);
                 keys.forEach(function(SiGunGu){
                     a3.append("<option value="+area[Region][Do][SiGunGu]+">"+area[Region][Do][SiGunGu]+"</option>");    
                 });

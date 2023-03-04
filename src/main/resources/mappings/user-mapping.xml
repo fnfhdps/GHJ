@@ -171,10 +171,9 @@
 	<select id="userBlameCnt" resultType="int">
 		<![CDATA[
 			select count(*) totalcnt
-			from users, blame
+			from blame
 			WHERE 1=1
-			and users.userseq = blame.blaseq
-			and users.userseq = #{userSeq}
+			and blame.res_userseq = #{userSeq}
 		]]>
 	</select>
 	

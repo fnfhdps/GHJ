@@ -20,30 +20,6 @@
 					};
 			url = "/reply/insert";
 			
-//	        $.ajax({
-//	            url : url,
-//	            type : type,
-//	            data : JSON.stringify(data),
-//	            dataType : "json",
-//	            contentType : "application/json",
-//	            async : true,
-//	            success : function(result){
-//	                if(result == 0){
-//	                	if(msg1 != ""){
-//	                		alert(msg1);                		
-//	                	}
-//	                	if(successPath != ""){
-//	                		window.location.href = successPath;
-//	                	}
-//	                } else {
-//	                	alert(msg2);
-//	                	return;
-//	                }
-//	            },
-//	            error : function(errorThrown){
-//	             alert(errorThrown.statusText);
-//	          }
-//	         });
 			ajaxFn(url, type, data, msg1, msg2);
 		}
 	};

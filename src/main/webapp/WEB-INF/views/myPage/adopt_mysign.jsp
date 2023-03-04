@@ -59,7 +59,12 @@
 							        <td class="text-center"><fmt:formatDate value="${mysign.adoptReqDate}" pattern="yyyy-MM-dd"/></td>
 							        <td class="text-center"><a href="/adopt/detail/ADOPT/${mysign.boardSeq}/${login.userSeq}">${mysign.boardTitle}</a></td>							        
 							        <td class="text-center">${mysign.userId}</td>
-							        <td class="text-center">${mysign.adoptState}</td>
+						        	<c:if test="${mysign.adoptState eq 'WAIT'}">
+								        <td class="text-center">입양대기</td>
+							        </c:if>
+							        <c:if test="${mysign.adoptState eq 'SUCCESS'}">
+								        <td class="text-center">입양완료</td>
+							        </c:if>
 							      </tr>
 							    </c:forEach>
 					          </c:when>

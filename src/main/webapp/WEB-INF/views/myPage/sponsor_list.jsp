@@ -32,7 +32,7 @@
 	
 	      <section class="sidebarContent col-lg-9 col-md-9 col-sm-12 col-xs-12">
 	        <div>
-	          <h1 class="pageH1">주문내역</h1>
+	          <h1 class="pageH1">후원내역</h1>
 	
 	          <article class="pageBody">
 	              <!-- 파일 업로드 -->

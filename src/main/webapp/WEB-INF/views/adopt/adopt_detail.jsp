@@ -20,7 +20,7 @@
 	<!-- 회원만 열람 가능 -->
 	<script src="/resources/js/login_check.js"></script>
 
-	<!-- 부트스트랩 캐러셀 적용 디자인, 단점 화질구지 -->
+	<!-- 캐러셀 적용 이미지  -->
 	<section class="xg0zir1 undefined">
 		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
 		  <div class="carousel-indicators">
@@ -51,7 +51,6 @@
 		</div>
 	</section>
 	
-	<!-- 당근 디자인 -->
 	<section class="xg0zir1 undefined">
 	  <section class="_5w2z0c0">
 

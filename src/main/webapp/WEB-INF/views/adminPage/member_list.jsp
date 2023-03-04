@@ -65,8 +65,16 @@
 	                  <tr>
 	                    <td class="text-center">${member.userId}</td>
 	                    <td class="text-center"><fmt:formatDate value="${member.regDate}" pattern="yyyy-MM-dd"/></td>
-	                    <td class="text-center">${member.userRole}</td>
 	                    <td class="text-center">${member.loginType}</td>
+	                    <c:if test="${member.userRole eq 'USER'}">
+		                    <td class="text-center">회원</td>
+	                    </c:if>
+	                    <c:if test="${member.userRole eq 'ADMIN'}">
+		                    <td class="text-center">관리자</td>
+	                    </c:if>
+	                    <c:if test="${member.userRole eq 'ALERTER'}">
+		                    <td class="text-center">정지회원</td>
+	                    </c:if>
 	                    <td class="text-center">
 	                      <a href="/admin/member/info/${member.userSeq}">
 	                        <i class="bi bi-box-arrow-up-right"></i>
