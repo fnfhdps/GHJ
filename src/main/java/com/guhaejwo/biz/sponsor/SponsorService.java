@@ -16,7 +16,7 @@ public interface SponsorService{
 	public void StateupdateSponsor(SponsorDTO sponsor);
 	
 	// 후원 내역 조회 (마이페이지)
-	public List<SponsorMyPageDTO> getSponsorMyPage(SponsorMyPageDTO sponsor);
+	public List<SponsorDTO> getSponsorMyPage(SponsorDTO sponsor);
 	
 	// 총 주문수 (관리자페이지)
 	public int sponsorTotalCnt();

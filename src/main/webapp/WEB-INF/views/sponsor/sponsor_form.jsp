@@ -33,7 +33,7 @@
 				<input type="hidden" id="userSeq" name="userSeq" value="${login.userSeq}">
 				<input type="hidden" id="sponsorItemSeq" name="sponsorItemSeq" value="${sponsorItem.sponsorItemSeq}">
 				<!-- 결제 방법 이거 테스트용이라 결과 값이 안받아짐-->
-				<input type="hidden" name="payment" value="kakao">
+				<input type="hidden" name="payment" value="카카오페이">
 				
 				<article class="row pt-5 justify-content-md-center">
 					<div class="py-3 col-10">
@@ -126,7 +126,7 @@
 								</div>
 								<div class="col-xs-4 col-sm-6">
 									<label class="form-label" style="visibility: hidden;">빈공간</label>
-									<input class="form-control btn btn-warning"
+									<input class="form-control btn btn-outline-dark"
 											type="button"
 											value="우편번호 찾기"
 											onclick="excution_addr()">					
@@ -169,7 +169,7 @@
 							<label class="form-check-label" for="exampleCheck1">구매정보 확인했습니다.</label>
 						</div>
 						<div class=" col-10">
-							<button type="button" class="btn btn-warning col-12" id="form_btn"  onclick="requestPay(); return false;">결제하기</button>
+							<button type="button" class="btn btn-outline-dark col-12" id="form_btn"  onclick="requestPay(); return false;">결제하기</button>
 						</div>
 					</div>
 				</article>
@@ -184,7 +184,6 @@
 <script type="text/javascript">
 
 // 상품 총 가격
-
 $("#amount").click(function() {
 	let amount = $("#amount").val();
 	const price = $("#price").val();

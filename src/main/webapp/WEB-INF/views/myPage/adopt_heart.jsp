@@ -44,7 +44,9 @@
 			                    <div class="css-prip86 e1lm7yo60">
 			                      <div class="css-beq49r e1vfbmcc3">
 			                       	<input type="hidden" id="boardSeq" value="${heart.boardSeq}">
-			                      	<img class="css-1b4920d e1vfbmcc2" src="/resources/image/adopt/${heart.adoptImg}" alt="관심동물">
+			                      	<img class="css-1b4920d e1vfbmcc2"
+		                      			src="/resources/image/adopt/${heart.adoptImg}"
+		                      			style="overflow: hidden;object-fit: cover;" alt="관심동물">
 	  		                          <a class="css-1q3ntsa e1vfbmcc1" id="heart" onclick="checkHeart(${heart.boardSeq})">
 				                        <i class="bi bi-heart-fill"></i>
 	 		                          </a>

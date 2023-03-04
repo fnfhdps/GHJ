@@ -34,7 +34,7 @@ public class SponsorDAO {
 	}
 	
 	// 후원 내역 조회 (마이페이지)
-	public List<SponsorMyPageDTO> getSponsorMyPage(SponsorMyPageDTO sponsor) {
+	public List<SponsorDTO> getSponsorMyPage(SponsorDTO sponsor) {
 		System.out.println("--> SponsorRepository.getSponsorMyPage() 실행");
 		return mybatis.selectList("SponsorDAO.getSponsorMyPage", sponsor);
 	}

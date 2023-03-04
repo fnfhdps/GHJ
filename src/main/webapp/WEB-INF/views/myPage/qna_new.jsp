@@ -29,7 +29,7 @@
 	<section class="css-6vucnj ew8njf63">
 	  <div class="css-1h7izmk ew8njf62">
 	    <p class="css-1afs6cq ew8njf61">1:1 문의하기</p>
-	    <p class="css-zce699 ew8njf60">상품/배송 등 쇼핑 관련 문의는<a href="#">고객센터</a>에서 요청해주세요.</p>
+	    <p class="css-zce699 ew8njf60">상품/배송 등 쇼핑 관련 문의는 <a href="/cs/faq"> 자주묻는질문</a>에서 확인해주세요.</p>
 	  </div>
 	  <div class="css-mieii2 e1yarwt10">
 	    <form id="qna_form" action="/mypage/qna/new" method="post">
@@ -61,11 +61,6 @@
 	        </div>
 	      </div>
 	      <div class="css-lkffw3 e1yarwt9">
-	        <div width="343" class="css-1v6bcwv e1yarwt7">
-	          <input class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" value="${login.userEmail}" readonly="readonly">
-	        </div>
-	      </div>
-	      <div class="css-lkffw3 e1yarwt9">
 	        <input class="_3ASDR _1qwAY css-1dwz3w6 e1yarwt6" id="board_title" value="${qnaDetail.boardTitle}" name="boardTitle" placeholder="제목">
 	      </div>
 	      <div class="css-lkffw3 e1yarwt9">
@@ -81,15 +76,6 @@
         			${qnaDetail.boardContent}
 	        </textarea>
 	      </div>
-	      <!-- <div class="css-lkffw3 e1yarwt9">
-	        <label class="css-6lgku7 e12vmj862">
-	          <span class="css-h26ndt e12vmj861">
-	            <span>nav_logo2.png</span>
-	          </span>
-	          <span class="css-94jutt e12vmj860">첨부파일</span>
-	          <input type="file" name="file" hidden="">
-	        </label>
-	      </div> -->
 	      <div class="css-1bkpu5b e1yarwt5">
 	        <button class="_1eWD8 _3SroY _27do9 css-1pz165y e1yarwt0" id="qna_submit" type="button">저장</button>
 	      </div>

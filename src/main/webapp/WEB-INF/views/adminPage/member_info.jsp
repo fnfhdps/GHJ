@@ -58,11 +58,6 @@
                   <h3>회원정보</h3>
                 </div>
                 <input type="hidden" value="${member.userSeq}" name="userSeq">
-                
-<%--                 <div class="my-4 d-flex flex-column">
-                  <img alt="" src="${member.userImg}">
-                  <input type="file" accept="image/*" name="userImg">
-                </div> --%>
   
                 <div class="form_info">  
                   <div class="mb-3 formGroup">
@@ -149,7 +144,7 @@
               </article>
   
               <!-- 해당 회원의 작성글?정보? 뭐써야하지 -->
-               <article class="art_sub2 member_content pageBody art_border">
+<!--                <article class="art_sub2 member_content pageBody art_border">
                 <div class="art2_text">
                   <h3>작성게시글</h3>
                 </div>
@@ -186,8 +181,7 @@
                     </tbody>
                   </table>
               </div>
-  
-              </article>
+              </article> -->
             </div>
           </div>
         </section>

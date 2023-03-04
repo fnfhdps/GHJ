@@ -24,22 +24,28 @@
 		    </div>
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 pb-5 mb-5">
 			    <c:forEach items="${sponsorItemList}" var="sponsor">
-			    <div class="col mb-5">
-			        <div class="card h-100">
-						<a href="/sponsor/get/${sponsor.sponsorItemSeq}">
-				            <img class="card-img-top"
-				            	style="height: 250px;overflow: hidden;object-fit: cover;"
-				            	src="/resources/image/sponsor/${sponsor.sponsorItemImg}"
-				            	alt="${sponsor.sponsorItemName}" />
-						</a>
-			            <div class="card-body">
-			                <div class="">
-			                    <div class="fw-normal pb-1">${sponsor.sponsorItemName}</div>
-			                    <small>${sponsor.sponsorItemPrice} 원</small>
-			                </div>
-			            </div>
-			        </div>
-			    </div>
+			    <c:if test="${sponsor.sponsorItemState ne 3}">
+				    <div class="col mb-4 px-2">
+				        <div class="card h-100">
+		                  	<c:if test="${sponsor.sponsorItemState eq 2}">
+			                	<div class="badge bg-dark  text-white position-absolute" style="top: 0.6rem; right: 0.6rem">일시품절</div>
+						  	</c:if>
+							<a href="/sponsor/get/${sponsor.sponsorItemSeq}">
+					            <img class="card-img-top"
+					            	style="height: 250px;overflow: hidden;object-fit: cover;"
+					            	src="/resources/image/sponsor/${sponsor.sponsorItemImg}"
+					            	alt="${sponsor.sponsorItemName}" />
+							</a>
+				            <div class="card-body">
+				                <div class="">
+				                    <div class="fw-normal pb-1">${sponsor.sponsorItemName}</div>
+				                    <small>${sponsor.sponsorItemPrice} 원</small>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+			    
+			    </c:if>
 			    </c:forEach> 
 			</div>
 <!-- 			<div class="d-flex justify-content-center mt-3 mb-5">

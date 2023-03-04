@@ -67,7 +67,7 @@
 	                  </table>
 	                  
 	                  <div class="mt-2 mb-2 formRow">
-	                    <a class="col-auto btn btn-secondary ps-3 pe-3" type="button" href="/mypage/qna/new">글쓰기</a>
+	                    <a class="col-auto btn btn-outline-dark ps-3 pe-3" type="button" href="/mypage/qna/new">글쓰기</a>
 	                  </div>
 	              </div>
 	          </article>

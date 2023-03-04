@@ -31,7 +31,7 @@ public class SponsorServiceImpl implements SponsorService{
 	}
 
 	@Override
-	public List<SponsorMyPageDTO> getSponsorMyPage(SponsorMyPageDTO sponsor) {
+	public List<SponsorDTO> getSponsorMyPage(SponsorDTO sponsor) {
 		return sponsorRepository.getSponsorMyPage(sponsor);
 	}
 

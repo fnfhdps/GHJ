@@ -222,7 +222,7 @@
 		let tags = [];
 		tags[0] = $("#adoptForm").find('input');
 		tags[1] = $("#adoptForm").find('select');
-		tags[2] = $("#adoptForm").find('textarea');
+		//tags[2] = $("#adoptForm").find('textarea');
 	
 		let nullCnt = 0;
 		tags.forEach(function(tag) {

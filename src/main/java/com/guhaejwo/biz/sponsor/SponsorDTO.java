@@ -22,7 +22,7 @@ public class SponsorDTO {
 	
 	private String sponsorItemName;
 	
-	private int userId;
+	private String userId;
 	private String userName;
 	private String userPhone;
 	private String userEmail;
@@ -123,10 +123,10 @@ public class SponsorDTO {
 		this.sponsorItemName = sponsorItemName;
 	}
 	
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getUserName() {

@@ -35,9 +35,9 @@ public class SponsorMyPageController {
 	
 	// 후원 내역 조회 (마이페이지)
 	@GetMapping(value = "/mysponsor/{seq}")
-	public String mySponsor(@PathVariable("seq") int userSeq, SponsorMyPageDTO sponsor, Model model) {
+	public String mySponsor(@PathVariable("seq") int userSeq, SponsorDTO sponsor, Model model) {
 		sponsor.setUserSeq(userSeq);
-		model.addAttribute("sponsorMyPage", sponsorService.getSponsorMyPage(sponsor));
+		model.addAttribute("sponsorList", sponsorService.getSponsorMyPage(sponsor));
 		return "/myPage/sponsor_list";
 	}
 }

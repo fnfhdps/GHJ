@@ -44,27 +44,27 @@
 	                        <th class="date">기간</th>
 	                        <th class="amount">갯수</th>
 	                        <th class="price">금액</th>
-	                        <!-- <th class="method">방법</th> -->
-	                        <th class="status">상태</th>
+	                        <th class="addr">배송지</th>
+	                        <th class="status">배송상태</th>
 	                    </tr>
 	                    </thead>
 	                    <tbody>
 							<c:choose>
-							  <c:when test="${!empty sponsorMyPage}">    
-								<c:forEach items="${sponsorMyPage}" var="sponsor">
+							  <c:when test="${!empty sponsorList}">    
+								<c:forEach items="${sponsorList}" var="sponsor">
 								  <tr>
-							  		<!-- <th scope="row">${sponsor.rownum}</th> -->
 									<td class="text-center">${sponsor.sponsorItemName}</td>
 									<td class="text-center"><fmt:formatDate value="${sponsor.sponsorDate}" pattern="yyyy-MM-dd"/></td>
 									<td class="text-center">${sponsor.sponsorAmount}</td>
 									<td class="text-center">${sponsor.sponsorTotalPrice}</td>
 									<td class="text-center">${sponsor.sponsorShippingAddr}</td>
+									<td class="text-center">${sponsor.sponsorState}</td>
 								  </tr>          
 								</c:forEach>
 							  </c:when>
 							  <c:otherwise>
 							    <tr>
-								  <td colspan="5" class="text-center">후원 내역이 없습니다.</td>
+								  <td colspan="6" class="text-center">후원 내역이 없습니다.</td>
 								</tr>
 							  </c:otherwise>
 							</c:choose>

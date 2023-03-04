@@ -28,9 +28,9 @@
 	</update>
 	
 	<!-- 후원 내역 조회 (마이페이지) -->
-	<select id="getSponsorMyPage" parameterType="int" resultType="sponsorMyPage">
+	<select id="getSponsorMyPage" parameterType="int" resultType="sponsor">
 		<![CDATA[
-			select rownum, s.sponsorseq, si.sponsoritemname, s.sponsoramount, s.sponsortotalprice, s.sponsorshippingaddr, s.sponsordate
+			select rownum, s.sponsorseq, si.sponsoritemname, s.sponsoramount, s.sponsortotalprice, s.sponsorshippingaddr, s.sponsordate, s.sponsorstate
 			from sponsor s, sponsor_item si
 			where s.sponsoritemseq = si.sponsoritemseq
 			and s.userseq = #{userSeq}
@@ -49,9 +49,10 @@
 	<!-- 주문 내역 조회 (관리자페이지) -->
 	<select id="getSponsorList" resultType="sponsor">
 		<![CDATA[
-			select ROW_NUMBER() OVER(ORDER BY sponsor.sponsorseq) as num, sponsor.*, sponsor_item.sponsoritemname
-			from sponsor, sponsor_item
+			select ROW_NUMBER() OVER(ORDER BY sponsor.sponsorseq) as num, sponsor.*, sponsor_item.sponsoritemname, users.username
+			from sponsor, sponsor_item, users
 			where sponsor_item.sponsoritemseq = sponsor.sponsoritemseq
+			and users.userseq = sponsor.userseq
 			order by num desc
 		]]>
 	</select>

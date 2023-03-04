@@ -90,7 +90,6 @@
 	    <div class="vpgu1n0"></div>
 	    <section class="dajteg0">
 	      <h1 class="dajteg1">${adoptDetail.boardTitle}</h1>
-	      <small class="dajteg2">입양대기</small>
 	    </section>
 	    
 	    <section class="_1ff3f300">
@@ -144,12 +143,12 @@
 	      </div>
 	    </section>
 	
-	    <section class="_1ff3f300">
+	    <section class="_1ff3f300 mb-2">
 	      <h2 class="_1ff3f301">특이사항 및 상세 설명</h2>
 	      <p class="_1rxa1o40">${adoptDetail.boardContent}</p>
 	
 	      <div class="d-flex justify-content-between pt-5">
-	        <p id="article-counts" class="reply_text">관심 34 ∙ 신청 45 ∙ 조회 ${adoptDetail.boardCnt} </p>
+	        <p id="article-counts" class="reply_text">관심 3 ∙ 신청 2 ∙ 조회 ${adoptDetail.boardCnt} </p>
 	        <div class="text-center dropdown" id="up_del">
 	          <i class="bi bi-three-dots-vertical"
 	              id="dropdownMenuButton1"
@@ -167,7 +166,7 @@
 	    <article class="pb-5">
 	      <div class="d-grid gap-2 col-12 mx-auto">
 	        <button type="button"
-	        		class="btn btn-warning"
+	        		class="btn btn-outline-dark"
 	        		id="hopeCheck"
 	        		value="신청하기"
 	        		onclick="checkSubmit(); return false;">
@@ -182,7 +181,7 @@
 	        <div>
 	            <div class="input-group mb-3">
 	              <input id="insert_content" type="text" class="form-control" placeholder="댓글을 입력해주세요.">
-	              <button class="btn btn-outline-secondary"
+	              <button class="btn btn-outline-dark"
 	              			type="button"
 	              			id="button-addon2"
 	              			onclick="replyInsert();">
@@ -202,8 +201,8 @@
 	            <!-- 프로필 이미지  -->
 	            <div class="_7l1omc1 reply_item">
 		         	<c:choose>
-		          	<c:when test="${!empty login.userImg}">
-		            	<img id="profile" src="/resources/image/profile/${login.userImg}" alt="" style="width: 100%; height: 100%;">
+		          	<c:when test="${!empty reply.userImg}">
+		            	<img id="profile" src="/resources/image/profile/${reply.userImg}" alt="" style="width: 100%; height: 100%;">
 		          	</c:when>
 		          	<c:otherwise>
 		          		<img id="profile" src="/resources/image/profile/profile.png" alt="" style="width: 100%; height: 100%;">
@@ -233,7 +232,7 @@
 	                    		id="content_${reply.replySeq}"
 	                    		value="${reply.replyContent}">
 	                    <button type="button"
-	                    		class="update_content btn btn-outline-secondary mb-4"
+	                    		class="update_content btn btn-outline-dark mb-4"
 	                    		id="button-addon2"
 	                    		onclick="replyUpdate(${reply.replySeq},'#content_${reply.replySeq}');">
 	                    		입력
@@ -247,7 +246,7 @@
 	    </div>
 	    </article>
 	    
-	    <article>
+	    <article class="pb-5">
 	        <div id="detail_mv">
 	            <div>
 	                <i class="bi bi-chevron-up"></i>

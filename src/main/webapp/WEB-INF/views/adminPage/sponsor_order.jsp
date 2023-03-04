@@ -38,88 +38,7 @@
         </div>
 
         <section class="member_container">
-          <article class="member_content member_size pageBody">
-            <div class="mb-4">
-              <input class="form-control" type="text" placeholder="Search" type="text" name="" id="">
-            </div>
-  
-            <div class="d-flex comment_title tbl_caption">
-              <div class="mt-2">
-                <span>주문수</span>
-                <span>${totalCnt}</span>
-              </div>
-              
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-  
-            <div class="table_content">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th class="">주문번호</th>
-                    <th class="">주문자</th>
-                    <th class="">상품명</th>
-                    <th class="">갯수</th>
-                    <th class="">결제금액</th>
-                    <th class="">결제일시</th>
-                    <th class="">주문상태</th>
-                  </tr>
-                </thead>
-                
-                <tbody>
-	          	<c:choose>
-	       		  <c:when test="${!empty sponsorList}">
-				    <c:forEach items="${sponsorList}" var="sponsor">
-	                  <tr>
-	                    <td class="text-center">${sponsor.num}</td>
-	                    <td class="text-center"><a href="/admin/sponsor/order/info/${sponsor.sponsorSeq}">${sponsor.sponsorItemName}</a></td>
-	                    <td class="text-center">${sponsor.sponsorItemName}</td>
-	                    <td class="text-center">${sponsor.sponsorAmount}</td>
-	                    <td class="text-center">${sponsor.sponsorTotalPrice}</td>
-	                    <td class="text-center"><fmt:formatDate value="${sponsor.sponsorDate}" pattern="yyyy.MM.dd HH:mm:ss"/></td>
-	                    <!-- 셀렉트랑 드롭다운중에 뭐할지 -->
-	                    <td class="text-center dropdown">
-	                      <span class="fw-bold"
-	                            id="dropdownMenuButton1"
-	                            data-bs-toggle="dropdown"
-	                            aria-expanded="false">
-	                            	${sponsor.sponsorState}
-	                      </span>
-	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-	                        <li><a class="dropdown-item state">상품준비중</a></li>
-	                        <li><a class="dropdown-item state">배송대기중</a></li>
-	                        <li><a class="dropdown-item state">배송중</a></li>
-	                        <li><a class="dropdown-item state">배송완료</a></li>
-	                      </ul>
-	                      <input type="hidden" value="${sponsor.sponsorSeq}">
-	                      
-	                    </td>
-	                  </tr>
-				    </c:forEach>
-		          </c:when>       
-	     	    </c:choose>
-                </tbody>
-                
-              </table>
-            </div>
-          </article>
-
+        
         <c:if test="${!empty sponsorDetail}">
           <article class="sponsor_art member_content member_size pageBody css-y8viq9 ezu2kv83">
             <div class="css-py8xgp ezu2kv82">
@@ -157,20 +76,16 @@
               <div class="css-vqaf4p ekrx5n62">
                 <div class="css-17fh4sh ekrx5n61">
                   <div class="css-k8dhob e1fwbpos2">
-                    <div class="css-xlcpif e1fwbpos1">상품금액</div>
-                    <div class="css-17qztlv e1fwbpos0">${sponsorDetail.sponsorTotalPrice}원</div>
-                  </div>
-                  <div class="css-k8dhob e1fwbpos2">
-                    <div class="css-xlcpif e1fwbpos1">배송비</div>
-                    <div class="css-17qztlv e1fwbpos0">(+) 0원</div>
-                  </div>
-                  <div class="css-k8dhob e1fwbpos2">
                     <div class="css-xlcpif e1fwbpos1">결제금액</div>
                     <div class="css-17qztlv e1fwbpos0">${sponsorDetail.sponsorTotalPrice}원</div>
                   </div>
                   <div class="css-k8dhob e1fwbpos2">
                     <div class="css-xlcpif e1fwbpos1">결제방법</div>
                     <div class="css-17qztlv e1fwbpos0">${sponsorDetail.payment}</div>
+                  </div>
+                  <div class="css-k8dhob e1fwbpos2">
+                    <div class="css-xlcpif e1fwbpos1">결제일시</div>
+                    <div class="css-17qztlv e1fwbpos0"><fmt:formatDate value="${sponsorDetail.sponsorDate}" pattern="yyyy.MM.dd HH:mm:ss"/></div>
                   </div>
                 </div>
                 <div class="css-17fh4sh ekrx5n61">
@@ -191,6 +106,68 @@
             </div>
           </article>
 		</c:if>
+        
+          <article class="member_content member_size pageBody">
+            <div class="d-flex comment_title tbl_caption">
+              <div class="mt-2 mb-4">
+                <span>주문수</span>
+                <span>${totalCnt}</span>
+              </div>
+            </div>
+  
+            <div class="table_content">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="">주문번호</th>
+                    <th class="">주문자</th>
+                    <th class="">상품명</th>
+                    <th class="">갯수</th>
+                    <th class="">결제금액</th>
+                    <!-- <th class="">결제일시</th> -->
+                    <th class="">주문상태</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+	          	<c:choose>
+	       		  <c:when test="${!empty sponsorList}">
+				    <c:forEach items="${sponsorList}" var="sponsor">
+	                  <tr>
+	                    <td class="text-center">${sponsor.num}</td>
+	                    <td class="text-center"><a href="/admin/sponsor/order/info/${sponsor.sponsorSeq}">${sponsor.userName}</a></td>
+	                    <td class="text-center">${sponsor.sponsorItemName}</td>
+	                    <td class="text-center">${sponsor.sponsorAmount}</td>
+	                    <td class="text-center">${sponsor.sponsorTotalPrice}</td>
+	                   <%--  <td class="text-center"><fmt:formatDate value="${sponsor.sponsorDate}" pattern="yyyy.MM.dd HH:mm:ss"/></td> --%>
+	                    <!-- 셀렉트랑 드롭다운중에 뭐할지 -->
+	                    <td class="text-center dropdown">
+	                      <span class="fw-bold"
+	                            id="dropdownMenuButton1"
+	                            data-bs-toggle="dropdown"
+	                            aria-expanded="false">
+	                            	${sponsor.sponsorState}
+	                      </span>
+	                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+	                        <li><a class="dropdown-item state">결제완료</a></li>
+	                        <li><a class="dropdown-item state">상품준비중</a></li>
+	                        <li><a class="dropdown-item state">배송대기중</a></li>
+	                        <li><a class="dropdown-item state">배송중</a></li>
+	                        <li><a class="dropdown-item state">배송완료</a></li>
+	                      </ul>
+	                      <input type="hidden" value="${sponsor.sponsorSeq}">
+	                      
+	                    </td>
+	                  </tr>
+				    </c:forEach>
+		          </c:when>       
+	     	    </c:choose>
+                </tbody>
+                
+              </table>
+            </div>
+          </article>
+
         </section>
 
       </main>
