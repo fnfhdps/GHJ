@@ -8,7 +8,6 @@ let pw_check = false;
 let name_check = false;
 let phone_check = false;
 
-
 // 휴대폰 번호 패턴
 const autoHyphen = function(target) {
 	 target.value = target.value
@@ -202,11 +201,30 @@ $("#pwView").click(function() {
 	}
 });
 
+// 
+$("#userName").focusout(function() {
+	if($(this).val() != ""){
+		name_check = true;
+		$("#nameCheckMsg").text("");
+	}else{
+		name_check = false;
+	}
+})
+
+
 // 회원가입 체크 후 submit
 function checkSummit(){
-	if($("#userName").val() != ""){
-		name_check = true;
+
+	// 이메일 합치기
+	let beforeEmail = $("#beforeEmail").val();
+	let afterEmail = $("#afterEmail").val();
+
+
+	let emailVal = beforeEmail + '@' + beforeEmail;
+	if(beforeEmail != ''){
+		$("#emailVal").val(emailVal);
 	}
+
 	
 	if(!($('#member').is(':checked') && $('#individual').is(':checked'))){
 		alert("약관에 동의해주세요");
@@ -218,6 +236,8 @@ function checkSummit(){
 	}
 	if(pw_check != true){
 		$("#pwCheckMsg").text("필수 정보입니다.")
+		.css("color","red");
+		$("#pwCheckMsg2").text("필수 정보입니다.")
 		.css("color","red");
 	}
 	if(name_check != true){

@@ -40,7 +40,7 @@
 				<span id="idCheckMsg"></span>
 			</div>
 			
-			<div class="input-group mb-3">
+			<div class="input-group">
 				<!-- 영문 대소문자, 숫자, 특수문자 꼭 포함 8~16자 -->
 				<input class="form-control"
 						type="password"
@@ -51,12 +51,12 @@
 						placeholder="패스워드 "
 						autocomplete="new-password"
 						required>
-				<button type="button" id="pwView">
+				<div id="pwView">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
 					  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
 					  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
 					</svg>
-				</button>
+				</div>
 			</div>
 			<div class="int-area">
 				<span id="pwCheckMsg" class="int-area"></span>
@@ -92,15 +92,16 @@
 						maxlength="13"
 						placeholder="휴대폰 번호 "
 						required="required">
-				<span id="phoneCheckMsg"></span>
 				<label for="userPhone"></label>
 				<button type="button"
 						id="phoneChk"
-						class="doubleChk btn btn-outline-secondary">
+						class="doubleChk btn btn-outline-secondary me-2">
 						인증번호 발송
 				</button>
-				<br>
 			</div>
+			<div class="int-area">
+				<span id="phoneCheckMsg"></span>
+			</div>			
 			
 			<div class="input-group">
 				<input class="form-control"
@@ -111,7 +112,7 @@
 						disabled
 						required/>
 				<button type="button"
-						class="btn btn-outline-secondary"
+						class="btn btn-outline-secondary me-2"
 						id="phoneChk2"
 						class="doubleChk">
 						인증하기
@@ -122,7 +123,25 @@
 				<input type="hidden" id="phoneDoubleChk"/>
 			</div>
 			
-			<div class="input-group">
+			
+			
+			<div class="input-group d-felx">
+			<input type="hidden" id="emailVal" name="userEmail">
+				<input class="form-control"
+						type="text"
+						id="beforeEmail"
+						placeholder="이메일(선택)"/>
+				<div class="">@</div>
+				<select class="form-select me-2" id="afterEmail" aria-label="Default select example">
+				  <option value="naver.com" selected="selected">naver.com</option>
+				  <option value="gmail.com">gmail.com</option>
+				  <option value="hanmail.net">hanmail.net</option>
+				  <option value="daum.net">daum.net</option>
+				  <option value="nate.com">nate.com</option>
+				</select>
+			</div>
+			
+<!-- 			<div class="input-group">
 				<input class="form-control"
 						type="text"
 						id="userEmail"
@@ -154,7 +173,7 @@
 			<div class="int-area">
 				<span class="point successEmailChk"></span>
 				<input type="hidden" id="emailDoubleChk"/>
-			</div>
+			</div> -->
 			
 			<div class="caption">
 				<div>
@@ -171,8 +190,8 @@
 				<button class="default" type="submit" onclick="checkSummit(); return false;">회원가입</button>
 			</div>
 			
-			<div class="btn-area">
-				<a href="/login">로그인으로 돌아가기</a>
+			<div class="btn-area text-center">
+				<a href="/login" style="text-decoration-line: none;color: black;a:hover;color: black;">로그인으로 돌아가기</a>
 			</div>
 		</form>
 	</section>
