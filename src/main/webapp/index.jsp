@@ -90,7 +90,7 @@ select:-webkit-autofill:focus {
               <p class="text-m">유기동물 입양에서 후원까지, 함께해요.<br>가깝고 따뜻한 당신의 가족을 만들어요.</p>
             </div>
             <div class="home-main-image home-main-image-01">
-                <img srcset="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-1-cc678e9a217b96f5cb459f7f0684f5ba67706f9889801618b8cf879fbc2c0ea7.webp " class="home-main-image-01" alt="우리동네 중고 직거래 사진" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-1-39ac203e8922f615aa3843337871cb654b81269e872494128bf08236157c5f6a.png">
+                <img src="/resources/image/main_image.png " class="home-main-image-01" alt="우리동네 중고 직거래 사진">
             </div>
           </div>
         </section>
