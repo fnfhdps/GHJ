@@ -3,47 +3,85 @@
 			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 			
 <mapper namespace="ChartDAO">
+	<resultMap type="HashMap" id="sponsorMap">
+		<id column="chartDate" property="chartDate" />
+		<id column="chartVal" property="chartVal" />
+	</resultMap>
 	
-	<!-- 이번주 가입자 수 -->
-	<select id="weekJoinCnt" resultType="chart">
+	
+	<!-- 열흘간 가입자 수 -->
+	<select id="weekJoinCnt" resultType="HashMap">
 		<![CDATA[
-			select (select count(*)
-			        from users
-			        where to_char(regdate,'yyyymmdd') =
-			        to_char(trunc(sysdate, 'd'),'yyyymmdd'
-			        ))as sun,
-			        (select count(*)
-			        from users
-			        where to_char(regdate,'yyyymmdd') =
-			        to_char(trunc(sysdate, 'd')+1,'yyyymmdd'
-			        ))as mon,
-			        (select count(*)
-			        from users
-			        where to_char(regdate,'yyyymmdd') =
-			        to_char(trunc(sysdate, 'd')+2,'yyyymmdd'
-			        ))as tue,
-			        (select count(*)
-			        from users
-			        where to_char(regdate,'yyyymmdd') =
-			        to_char(trunc(sysdate, 'd')+3,'yyyymmdd'
-			        ))as wed,
-			        (select count(*)
-			        from users
-			        where to_char(regdate,'yyyymmdd') =
-			        to_char(trunc(sysdate, 'd')+4,'yyyymmdd'
-			        ))as thu,
-			        (select count(*)
-			        from users
-			        where to_char(regdate,'yyyymmdd') =
-			        to_char(trunc(sysdate, 'd')+5,'yyyymmdd'
-			        ))as fri,
-			        (select count(*)
-			        from users
-			        where to_char(regdate,'yyyymmdd') =
-			        to_char(trunc(sysdate, 'd')+6,'yyyymmdd'
-			        ))as sat
-			from dual
+			SELECT TO_CHAR(b.dt, 'YYYY/MM/DD') AS chartDate
+			     , NVL(SUM(a.cnt), 0) cnt
+			  FROM ( SELECT TO_CHAR(regdate, 'YYYY-MM-DD') AS regdate
+			          , count(regdate) cnt
+			           FROM users
+			          WHERE regdate BETWEEN trunc(sysdate-10, 'dd') and sysdate 
+			          GROUP BY regdate
+			        ) a
+			      , ( SELECT trunc((sysdate-10) + LEVEL, 'dd')AS dt
+			            FROM dual 
+			         CONNECT BY LEVEL <=  sysdate - trunc(sysdate-10, 'dd')
+			        ) b
+			  WHERE b.dt = a.regdate(+)
+			  GROUP BY b.dt
+			  ORDER BY b.dt
 		]]>
 	</select>
+	
+	<!-- 한달간 일별 결제건수 -->
+	<select id="monthSponsorCnt" resultType="HashMap">
+		<![CDATA[
+			SELECT TO_CHAR(b.dt, 'YYYY/MM/DD') AS chartDate
+			     , NVL(SUM(a.cnt), 0) chartVal
+			  FROM ( SELECT TO_CHAR(sponsordate, 'YYYY-MM-DD') AS sponsordate
+			          , count(sponsortotalprice) cnt, SUM(sponsortotalprice) price
+			           FROM sponsor
+			          WHERE sponsordate BETWEEN add_months(sysdate,-1) and sysdate
+			          GROUP BY sponsordate
+			        ) a
+			      , ( SELECT trunc(add_months(sysdate,-1)+ LEVEL, 'DD') AS dt
+			            FROM dual 
+			         CONNECT BY LEVEL <= (sysdate
+			                            - add_months(sysdate,-1))
+			        ) b
+			  WHERE b.dt = a.sponsordate(+)
+			  GROUP BY b.dt
+			  ORDER BY b.dt
+		]]>
+	</select>
+	
+	<!-- 한달간 일별 결제금액 -->
+	<select id="monthSponsorPrice" resultType="HashMap">
+		<![CDATA[
+			SELECT TO_CHAR(b.dt, 'YYYY/MM/DD') AS chartDate
+			     , NVL(SUM(a.price), 0) chartVal
+			  FROM ( SELECT TO_CHAR(sponsordate, 'YYYY-MM-DD') AS sponsordate
+			          , count(sponsortotalprice) cnt, SUM(sponsortotalprice) price
+			           FROM sponsor
+			          WHERE sponsordate BETWEEN add_months(sysdate,-1) and sysdate
+			          GROUP BY sponsordate
+			        ) a
+			      , ( SELECT trunc(add_months(sysdate,-1)+ LEVEL, 'DD') AS dt
+			            FROM dual 
+			         CONNECT BY LEVEL <= (sysdate
+			                            - add_months(sysdate,-1))
+			        ) b
+			  WHERE b.dt = a.sponsordate(+)
+			  GROUP BY b.dt
+			  ORDER BY b.dt
+		]]>
+	</select>
+	
+	<!-- 배송 상태 집계 -->
+	<select id="totalsponsorState" resultType="HashMap">
+		<![CDATA[
+			select sponsorstate, NVL(count(*), 0) cnt
+			from sponsor group by sponsorstate
+		]]>
+	</select>
+	
+	
 	
 </mapper>

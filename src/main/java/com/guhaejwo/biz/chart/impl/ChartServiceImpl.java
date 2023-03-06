@@ -1,5 +1,8 @@
 package com.guhaejwo.biz.chart.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +20,23 @@ public class ChartServiceImpl implements ChartService{
 	}
 	
 	@Override
-	public ChartDTO weekJoinCnt() {
+	public List<Map<String, Object>> weekJoinCnt() {
 		return chartDAO.weekJoinCnt();
 	}
 
 	@Override
-	public ChartDTO monthJoinCnt() {
-		return null;
+	public List<Map<String, Object>> monthSponsorCnt() {
+		return chartDAO.monthSponsorCnt();
+	}
+
+	@Override
+	public List<Map<String, Object>> monthSponsorPrice() {
+		return chartDAO.monthSponsorPrice();
+	}
+
+	@Override
+	public List<Map<String, Object>> totalsponsorState() {
+		return chartDAO.totalsponsorState();
 	}
 
 }
