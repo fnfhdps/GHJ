@@ -31,20 +31,20 @@
 			  <div class="accordion-item">
 			    <h2 class="accordion-header" id="headingOne">
 			      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-			        여기 뭐라고 쓰냐
+			        	<span class="fw-bold">작성전 필독 안내!</span>
 			      </button>
 			    </h2>
 			    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 			      <div class="accordion-body">
-			        <strong>필독 안내!</strong>
+			        <strong>글 작성 전 주의사항 및 안내</strong><br>
 			        	입소전 보호시설과 시스템을 눈으로 꼭 확인해주시는 것이 가장 중요하며, 보호기간 동안에는 면회 등 정보열람이 가능한 것은 물론, 철저한 입양 심사와 입양 후 사후관리 및 정보열람을 제공함으로써 안심하고 맡길 수 있습니다. 또한, 자택 방문 안전 진단 홈케어 서비스를 통해 타 보호소 대비 차별화된 시스템으로 아이의 입양 후 소식, 상태, 정보 등을 확인해드리고 있습니다.
-			      	<div class="guide">
-			      		주의사항을 숙지했습니다.<input type="checkbox" >
-			      	</div>
+			      		<div class="pt-3">
+			      		<input id="chk1" type="checkbox"> 확인했습니다.
+			      		</div>
 			      </div>
 			    </div>
 			  </div>
-			  <div class="accordion-item">
+<%-- 			  <div class="accordion-item">
 			    <h2 class="accordion-header" id="headingTwo">
 			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 			        Accordion Item #2
@@ -58,7 +58,7 @@
 			      	</div>
 			      </div>
 			    </div>
-			  </div>
+			  </div> --%>
 		   	</div>
 
          </div>
