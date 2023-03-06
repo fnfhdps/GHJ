@@ -25,103 +25,71 @@
     <jsp:include page="../fix/admin_nav.jsp"></jsp:include>
   	
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-5 mt-4">
-			<div style="width: 900px; height: 900px;">
-				<!--차트가 그려질 부분-->
-				<canvas id="myChart"></canvas>
+        <div class="chartjs-size-monitor">
+          <div class="chartjs-size-monitor-expand">
+            <div class=""></div>
+          </div>
+          <div class="chartjs-size-monitor-shrink">
+            <div class=""></div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">통계</h1>
+        </div>
+        
+		<section class="member_container">
+          <article class="member_content member_size pageBody pb-4">
+            <div class="d-flex comment_title tbl_caption">
+              <div class="mt-2 mb-3">
+                <span>매출 통계</span>
+              </div>
+            </div>
+			<div class="row">
+				<div class="col-12 py-3">
+					<button class="btn btn-light" id="cnt" type="button">결제건수</button>
+					<button class="btn btn-light" id="price" type="button">결제금액</button>
+				</div>
+				<div class="col-lg-7 col-md-12 col-sm-12">
+					<!--차트가 그려질 부분-->
+					<canvas id="monthSponsor"></canvas>
+				</div>
+            <div class="col-lg-3 col-md-12 col-sm-12 ms-5 mt-4">
+              <table class="border border-1">
+                <tbody class="p-5">
+				    <c:forEach items="${totalsponsorState}" var="sponsor">
+                  <tr>
+                    <td class="p-2 pe-5">${sponsor.SPONSORSTATE}</td>
+                    <td class="p-2">${sponsor.CNT}</td>
+                  </tr>
+					</c:forEach>
+                </tbody>
+                
+              </table>
+            </div>
+
 			</div>
-	
+          </article>
+          <article class="member_content member_size pageBody">
+            <div class="d-flex comment_title tbl_caption">
+              <div class="mt-2 mb-3">
+                <span>최근 가입자 수</span>
+              </div>
+            </div>
+          	<div>
+				<div class="col-lg-7 col-md-12 col-sm-12">
+					<!--차트가 그려질 부분-->
+					<canvas id="weekJoin"></canvas>
+				</div>
+          	</div>
+          </article>
+        </section>
+        
       </main>
     </div>
   </div>
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<script type="text/javascript">
-            
-      /*       let context = document
-                .getElementById('myChart')
-                .getContext('2d'); */
-            
-            
-            $(function () {
-				getWeekJoinCnt();
-            });    
-                
-            function getWeekJoinCnt() {
-				let weekCnt = [];
-				
-                $.ajax({
-                    url : "/admin/chart",
-                    type : "GET",
-                    //data : JSON.stringify(data),
-                    dataType : "json",
-                    contentType : "application/json",
-                    success : function(data){
-                       for(let i=0;i<data.length;i++){
-                    	   weekCnt.push(data[i]);
-                       }
-                       
-                       new Chart(document.getElementById('myChart'),{
-                           type: 'bar', // 차트의 형태
-                           data: { // 차트에 들어갈 데이터
-                               labels: [
-                                   //x 축
-                                   '일','월','화','수','목','금','토'
-                               ],
-                               datasets: [
-                                   { //데이터
-                                       label: '주차별 가입자수', //차트 제목
-                                       //fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
-                                       backgroundColor: [
-                                           //색상
-                                           'rgba(255, 99, 132, 0.2)',
-                                           'rgba(54, 162, 235, 0.2)',
-                                           'rgba(255, 206, 86, 0.2)',
-                                           'rgba(75, 192, 192, 0.2)',
-                                           'rgba(153, 102, 255, 0.2)',
-                                           'rgba(255, 159, 64, 0.2)',
-                                           'rgba(255, 99, 132, 0.2)'
-                                       ],
-                                       borderColor: [
-                                           //경계선 색상
-                                           'rgba(255, 99, 132, 1)',
-                                           'rgba(54, 162, 235, 1)',
-                                           'rgba(255, 206, 86, 1)',
-                                           'rgba(75, 192, 192, 1)',
-                                           'rgba(153, 102, 255, 1)',
-                                           'rgba(255, 159, 64, 1)',
-                                           'rgba(255, 99, 132, 1)'
-                                       ],
-                                       borderWidth: 1, //경계선 굵기
-                                       data: weekCnt // ajax결과 데이터 값
-                                   }
-                               ]
-                           },
-                           options: {
-                               scales: {
-                                   yAxes: [
-                                       {
-                                           ticks: {
-                                               beginAtZero: true
-                                           }
-                                       }
-                                   ]
-                               }
-                           }
-                       })
-                    },
-                    error : function(errorThrown){
-                     alert(errorThrown.statusText);
-                  }
-                 });
-			}
-            
-            
-            
-
-            
-        </script>
-    </body>
-</html>
-
+<!-- 차트 js -->
+<script src="/resources/js/chart.js"></script>
 </body>
 </html>
