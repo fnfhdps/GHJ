@@ -58,20 +58,14 @@ public class AdoptController {
 	/* 입양 목록 게시판 페이지 접속(페이징 적용) */
 	@GetMapping("/list")
 	public String getAdoptList(Model model, Criteria cri) throws Exception {
-		System.out.println("검색값 확인:"+cri);
 		
 		model.addAttribute("list", adoptService.getAdoptListPaging(cri));
-
-		System.out.println("!@$!@$!@$!@$!@$!@$!$@!$!$@$!@cri.getKeyword2()"+cri.getKeyword2());
 		if (cri.getKeyword2() != null) {
 			model.addAttribute("checkState", "WAIT");
 		}
-		
-		System.out.println("!@$!@$!@$!@$!@$!@$!$@!$!$@$!@cri.getKeyword33333333()"+cri.getKeyword3());
 		if (cri.getKeyword3() != null) {
 			model.addAttribute("addressSearch", cri.getKeyword3());
 		}
-		
 		int total = adoptService.getAdoptTotalCount(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
@@ -94,8 +88,14 @@ public class AdoptController {
 		model.addAttribute("replyList", replyService.getReplyList(reply));
 
 		// 조회수 카운트
-		adoptService.updateBoardCnt(adoptDetail);
-
+		adoptService.updateBoardCnt(adopt);
+		
+		// 좋아요 수, 신청 수
+		Map<String, Integer> cnt = new HashMap<String, Integer>();
+		cnt.put("heart", adoptService.totalheartCnt(adopt));
+		cnt.put("req", adoptService.totalReqCnt(adopt));
+		model.addAttribute("cnt", cnt);
+		
 		return "adopt/adopt_detail";
 	}
 
@@ -115,7 +115,6 @@ public class AdoptController {
 		// 파일 업로드
 		for (int i=0; i<adoptFiles.length; i++) {
 			String fileName = adoptFiles[i].getOriginalFilename(); // 파일 이름(확장자명 포함)
-			System.out.println("fileName " + fileName);
 			
 			// long fileSize = adoptFile.getSize(); // 파일 용량
 			// 서버에 저장할 파일이름의 확장자 명을 구함 (.png 등)
@@ -124,11 +123,8 @@ public class AdoptController {
 			String realPath = ctx.getRealPath(webPath);
 
 			UUID uuid = UUID.randomUUID();
-			
 			String[] uuids = uuid.toString().split("-");
-			
 			String uniqueName = uuids[0];
-			
 			String realSaveFileName = uniqueName + fileName;
 
 			

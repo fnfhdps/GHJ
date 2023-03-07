@@ -117,5 +117,15 @@ public class AdoptServiceImpl implements AdoptService {
     public void deleteBlame(AdoptBlameDTO blame) {
        adoptDAO.deleteBlame(blame);
     }
+
+	@Override
+	public int totalheartCnt(AdoptDTO adopt) {
+		return adoptDAO.totalheartCnt(adopt);
+	}
+
+	@Override
+	public int totalReqCnt(AdoptDTO adopt) {
+		return adoptDAO.totalReqCnt(adopt);
+	}
    
 }

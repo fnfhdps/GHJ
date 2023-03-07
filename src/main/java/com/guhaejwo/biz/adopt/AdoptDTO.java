@@ -37,6 +37,7 @@ public class AdoptDTO {
 	// users 테이블
 	private String userName;
 	private String userId;
+	private String userImg;
 	
 	public AdoptDTO() {}
 	
@@ -188,7 +189,12 @@ public class AdoptDTO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
+	public String getUserImg() {
+		return userImg;
+	}
+	public void setUserImg(String userImg) {
+		this.userImg = userImg;
+	}
 
 	@Override
 	public String toString() {
@@ -198,7 +204,7 @@ public class AdoptDTO {
 				+ ", adoptWeight=" + adoptWeight + ", adoptNeutor=" + adoptNeutor + ", adoptState=" + adoptState
 				+ ", adoptKind=" + adoptKind + ", boardCategory=" + boardCategory + ", boardTitle=" + boardTitle
 				+ ", userSeq=" + userSeq + ", boardContent=" + boardContent + ", boardDate=" + boardDate + ", boardCnt="
-				+ boardCnt + ", userName=" + userName + ", userId=" + userId + "]";
+				+ boardCnt + ", userName=" + userName + ", userId=" + userId + ", userImg=" + userImg + "]";
 	}
 
 }

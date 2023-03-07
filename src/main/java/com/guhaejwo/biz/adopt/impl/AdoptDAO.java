@@ -138,10 +138,22 @@ public class AdoptDAO {
 		mybatis.insert("AdoptDAO.insertblaContent", blame);
 	}
 	
-	
 	// 신고 삭제 (관리자페이지)
 	public void deleteBlame(AdoptBlameDTO blame) {
 		System.out.println("--> AdoptRepository.deleteBlame() 실행");
 		mybatis.delete("AdoptDAO.deleteBlame", blame);
 	}
+	
+    // 입양글 총 좋아요 수
+    public int totalheartCnt(AdoptDTO adopt) {
+		System.out.println("--> AdoptRepository.totalheartCnt() 실행");
+		return mybatis.selectOne("AdoptDAO.totalheartCnt", adopt);
+    }
+    
+    // 입양글 총 신청 수
+    public int totalReqCnt(AdoptDTO adopt) {
+		System.out.println("--> AdoptRepository.totalReqCnt() 실행");
+		return mybatis.selectOne("AdoptDAO.totalReqCnt", adopt);
+    }
+	
 }

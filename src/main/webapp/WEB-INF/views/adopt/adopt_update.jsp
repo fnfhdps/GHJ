@@ -144,18 +144,25 @@
 	            </div>
 	       </div>
 	       
-	       <div class="mb-4">
+<!-- 	       <div class="mb-4">
 		      	<label class="form-label">구조위치</label>
 		      	<div class="d-flex">
 				    <select class="form-control me-3" name="adoptAddr11" id="adoptAddr"></select>
 				    <select class="form-control me-3" name="addressDo" id="addressDo2"></select>
 				    <select class="form-control" name="addressSiGunGu" id="addressSiGunGu2"></select>
 		      	</div>
-	   	  </div>  	       
+	   	  </div> -->  	       
 
-     	  <div class="mb-4">
+     	  <div class="mb-4 row">
 		      <label for="disabledTextInput" class="form-label">구조위치</label>
-		      <input type="text" id="disabledTextInput" class="form-control" name="adoptAddr" value="${adoptDetail.adoptAddr}" required="required">
+	            <div class="col-lg-3 col-form-label">
+		        <input type="text"
+		        		id="disabledTextInput"
+		        		class="form-control col-lg-3"
+		        		name="adoptAddr"
+		        		value="${adoptDetail.adoptAddr}"
+		        		required="required">
+	            </div>
 	   	  </div> 
 
 	      <div class="mb-4">

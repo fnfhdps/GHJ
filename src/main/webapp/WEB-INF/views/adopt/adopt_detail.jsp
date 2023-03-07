@@ -56,8 +56,8 @@
 
 	      <div class="_7l1omc1">
          	<c:choose>
-          	<c:when test="${!empty login.userImg}">
-            	<img id="profile" src="/resources/image/profile/${login.userImg}" alt="" style="width: 100%; height: 100%;">
+          	<c:when test="${!empty adoptDetail.userImg}">
+            	<img id="profile" src="/resources/image/profile/${adoptDetail.userImg}" alt="" style="width: 100%; height: 100%;">
           	</c:when>
           	<c:otherwise>
           		<img id="profile" src="/resources/image/profile/profile.png" alt="" style="width: 100%; height: 100%;">
@@ -147,7 +147,7 @@
 	      <p class="_1rxa1o40">${adoptDetail.boardContent}</p>
 	
 	      <div class="d-flex justify-content-between pt-5">
-	        <p id="article-counts" class="reply_text">관심 3 ∙ 신청 2 ∙ 조회 ${adoptDetail.boardCnt} </p>
+	        <p id="article-counts" class="reply_text">관심 ${cnt.heart} ∙ 신청 ${cnt.req} ∙ 조회 ${adoptDetail.boardCnt} </p>
 	        <div class="text-center dropdown" id="up_del">
 	          <i class="bi bi-three-dots-vertical"
 	              id="dropdownMenuButton1"

@@ -67,22 +67,7 @@ select:-webkit-autofill:focus {
 				</button>
 			</div>
 		</div>
-	
 	  <main>
-<!--         <section id="home-main-section-top" class="background-pale-peach">
-          <div id="home-main-top">
-            <div class="home-main-desc">
-              <h1 class="home-main-title">우리 근처의<br>유기동물</h1>
-              <p class="text-m">
-                유기동물 입양에서 후원까지, 함께해요.<br>가깝고 따뜻한 당신의 가족을 만들어요.
-              </p>
-            </div>
-            <div class="home-main-image-top main_img">
-                <img src="resources/image/logo/logo2.png" width="540px" height="680px">
-            </div>
-          </div>
-        </section> -->
-        
         <section class="home-main-section">
           <div class="home-main-content">
             <div>
@@ -108,8 +93,8 @@ select:-webkit-autofill:focus {
                 지금 나누어 보세요.
               </p>
               <div class="home-buttons d-flex">
-                <a id="text-l" class="home-button text-bold btn btn-warning" href="/hot_articles">입양하러 가기</a>
-                <a id="text-l" class="home-button text-bold btn btn-warning ml-3" href="/trust">후원하러 가기</a>
+                <a id="text-l" class="home-button text-bold btn btn-outline-secondary" href="/adopt/list">입양하러 가기</a>
+                <a id="text-l" class="home-button text-bold btn btn-outline-secondary ml-3" href="/sponsor/list">후원하러 가기</a>
               </div>
             </div>
           </div>
@@ -154,26 +139,5 @@ select:-webkit-autofill:focus {
 	
 	<jsp:include page="/WEB-INF/views/fix/footer.jsp"></jsp:include>
 </div>
-
-<script type="text/javascript">
-/* 	alert("시잗");
-	$.ajax({
-		url: "/index",
-		type: "get",
-		success: function(result){
-			if(result == 0) {
-				alert("ok");
-			} else {
-				alert(result);
-				alert("통신 오류");
-			}
-		},
-		error : function(errorThrown){
-			alert(errorThrown.statusText);
-		}
-	}); */
-	
-	// test
-</script>
 </body>
 </html>

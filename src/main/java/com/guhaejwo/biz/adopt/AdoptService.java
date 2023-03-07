@@ -62,5 +62,11 @@ public interface AdoptService {
       
     // 신고 삭제 (관리자페이지)
     public void deleteBlame(AdoptBlameDTO blame);
-
+    
+    // 입양글 총 좋아요 수
+    public int totalheartCnt(AdoptDTO adopt);
+    
+    // 입양글 총 신청 수
+    public int totalReqCnt(AdoptDTO adopt);
+    
 }

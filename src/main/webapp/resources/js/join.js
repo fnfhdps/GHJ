@@ -166,7 +166,6 @@ $("#userPw").focusout(function() {
 	let userPw  = $(this).val();
 	
 	if(pwPtnchk(userPw)){
-		alert(userPw+": 비밀번호 패턴 확인");
 		$("#pwCheckMsg").text("");
 	}else{
 		$("#pwCheckMsg").text("8~16자 영문 대 소문자, 숫자, 특수문자를 포함해야 합니다.")
@@ -220,7 +219,7 @@ function checkSummit(){
 	let afterEmail = $("#afterEmail").val();
 
 
-	let emailVal = beforeEmail + '@' + beforeEmail;
+	let emailVal = beforeEmail + '@' + afterEmail;
 	if(beforeEmail != ''){
 		$("#emailVal").val(emailVal);
 	}

@@ -121,19 +121,6 @@
 	                  <div class="flex-grow-1">
 	                      <input id="user_phone" class="form-control" value="${login.userEmail}" name="userEmail">
 	                  </div>
-	                  <div class="col-auto">
-	                        <button type="button" class="btn btnAuthentication">이메일 인증</button>
-	                  </div>
-	                </div>
-	              </div>
-	              <div class="formGroup">
-	                <div class="formRow">
-	                  <div class="flex-grow-1">
-	                      <input class="form-control">
-	                  </div>
-	                  <div class="col-auto">
-	                        <button type="button" class="btn btnAuthentication">인증하기</button>
-	                  </div>
 	                </div>
 	              </div>
 

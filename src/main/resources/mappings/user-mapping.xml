@@ -139,7 +139,7 @@
 			select count(*) totalcnt
 			from users, sponsor
 			WHERE 1=1
-			and users.userseq = sponsor.sponsorseq
+			and users.userseq = sponsor.userseq
 			and users.userseq = #{userSeq}
 		]]>
 	</select>

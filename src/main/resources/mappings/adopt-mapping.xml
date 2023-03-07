@@ -52,7 +52,7 @@
 	<!-- 입양 목록 상세 조회 -->
 	<select id="getAdoptDetail" parameterType="int" resultType="adopt">
 		<![CDATA[
-			select username, userid, board.boardSeq, board.boardCategory, board.boardTitle,
+			select username, userid, userImg, board.boardSeq, board.boardCategory, board.boardTitle,
 					board.userSeq, board.boardContent, board.boardDate, adopt.adoptImg,
 					adopt.adoptSex, adopt.adoptRescueDate, adopt.adoptAge, adopt.adoptAddr,
 					adopt.adoptWeight, adopt.adoptNeutor, adopt.adoptState, adopt.adoptKind, board.boardCnt, adopt.adoptImg2, adopt.adoptImg3
@@ -171,8 +171,25 @@
 	   ]]>
 	</delete>
 	
-	<!-- 게시글 총 좋아요 수 -->
-	
+	<!-- 입양글 총 좋아요 수 -->
+	<select id="totalheartCnt" resultType="int">
+	   <![CDATA[
+			select NVL(count(*), 0)
+			from board, user_heart
+			where user_heart.boardseq = board.boardseq
+			and board.boardseq = #{boardSeq}
+	   ]]>
+	 </select>
+	 
+	<!-- 입양글 총 신청 수 -->
+	<select id="totalReqCnt" resultType="int">
+	   <![CDATA[
+			select NVL(count(*), 0)
+			from board, adopt_req
+			where adopt_req.boardseq = board.boardseq
+			and board.boardseq = #{boardSeq}
+	   ]]>
+	 </select>
 	
 	<!-- 신고 조회 -->
 	<select id="getBlame" resultType="int">
