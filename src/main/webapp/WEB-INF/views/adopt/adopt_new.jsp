@@ -73,7 +73,7 @@
 		      		class="form-control"
 		      		placeholder="제목"
 		      		name="boardTitle"
-		      		value="임시 제목"
+		      		value=""
 		      		required="required"
 		      		title="제목을 입력하세요.">
 	   	  </div> 
@@ -163,7 +163,7 @@
 	          
 	      <div class="mb-4">
 		  	<label class="form-label">특이사항</label>
-			<textarea class="form-control" name="boardContent" rows="7">임시 특이사항</textarea>
+			<textarea class="form-control" name="boardContent" rows="7"></textarea>
 		  </div>
 		  
 		  <div class="mb-3">

@@ -98,7 +98,7 @@ select:-webkit-autofill:focus {
         <section class="home-main-section sction-top">
           <div class="home-main-content">
             <div class="home-main-image home-main-image-01">
-                <img src="/resources/image/main_image.png " class="home-main-image-01" alt="우리동네 중고 직거래 사진">
+                <img src="/resources/image/main_image.png " class="home-main-image-01" alt="우리동네 중고 직거래 사진" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-1-39ac203e8922f615aa3843337871cb654b81269e872494128bf08236157c5f6a.png">
             </div>
             <div>
               <h1 class="home-main-title">동네 검색 후<br>동네 유기동물 입양</h1>
