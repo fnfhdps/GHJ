@@ -97,7 +97,7 @@ $(function(){
 				} else if(result == 1) {
 					window.location.href = "/index";
 				} else if(result == 2){
-					window.location.href = "/admin/member";					
+					window.location.href = "/admin/index";					
 				} else if(result == 3)
 					alert("정지된 계정입니다.");
 				else{

@@ -1,5 +1,7 @@
 package com.guhaejwo.biz.chart;
 
+import java.util.Map;
+
 public class ChartDTO {
 	
 	// 요일 통계시 사용
@@ -11,8 +13,25 @@ public class ChartDTO {
 	private int fri;
 	private int sat;
 	
+	// 한달간 일별 통계
+	private String chartDate; // 오늘부터 한달전까지의 날짜
+	private int chartVal; // 통계 값
+	
 	public ChartDTO() {}
 	
+	public String getChartDate() {
+		return chartDate;
+	}
+	public void setChartDate(String chartDate) {
+		this.chartDate = chartDate;
+	}
+	public int getChartVal() {
+		return chartVal;
+	}
+	public void setChartVal(int chartVal) {
+		this.chartVal = chartVal;
+	}
+
 	public int getSun() {
 		return sun;
 	}

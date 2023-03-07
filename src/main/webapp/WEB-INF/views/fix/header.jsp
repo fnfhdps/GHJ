@@ -77,7 +77,7 @@
             
             <div class="admin head_font">
               <span class="pe-2">${login.userName}님</span>
-              <a class="me-1" href="/admin/member">관리자페이지</a>
+              <a class="me-1" href="/admin/index">관리자페이지</a>
               <span>|</span>
               <a class="m-1" href="/logout">로그아웃</a>
             </div>
