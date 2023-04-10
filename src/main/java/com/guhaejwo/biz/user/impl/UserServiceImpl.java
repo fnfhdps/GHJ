@@ -83,7 +83,7 @@ public class UserServiceImpl {
 	    params.put("app_version", "test app 1.2"); // application name and version
 
 	    try {
-	        JSONObject obj = (JSONObject) coolsms.send(params);
+	        JSONObject obj = (JSONObject) coolsms.send(params); // 메세지를 보내는 함수
 	        System.out.println(obj.toString());
 	      } catch (CoolsmsException e) {
 	        System.out.println(e.getMessage());

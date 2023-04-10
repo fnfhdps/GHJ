@@ -11,7 +11,7 @@ let phone_check = false;
 // 휴대폰 번호 패턴
 const autoHyphen = function(target) {
 	 target.value = target.value
-	   .replace(/[^0-9]/g, '')
+	   .replace(/[^0-9]/g, '') // 숫자가 아닌 모든 문자열을 빈 문자로 변경
 	  .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
 	}
 
